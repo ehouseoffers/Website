@@ -1,0 +1,188 @@
+/* http://developer.yahoo.com/yui/3/cssgrids/#page_width */
+html { background : url(/images/bg.png) repeat-x scroll 0 0 #b4d66a; }
+body {
+    margin : auto;
+    width  : 953px;
+    font-family : arial, helvetica, sans-serif;
+}
+.app_sprite {
+    background : url(/images/sprites/application.png) repeat-x scroll 0px 0px transparent;
+}
+/* ----------------- Header -------------- */
+#headerC {
+    height   : 95px;
+    position : relative;
+}
+#headerC img#main_logo  {
+    background-position: 0px -289px;
+    height : 59px;
+    width  : 312px;
+    position : absolute;
+    left : 12px;
+    top  : 18px;
+}
+#headerC img#free_consult {
+    background-position : -312px -289px;
+    width  : 196px;
+    height : 34px;
+    position : absolute;
+    right : 2px;
+    top   : 38px;
+}
+/* ------------------ Menu --------------- */
+#menuC {
+    height : 53px;
+    margin-bottom : 19px;
+}
+#menuC ul {
+    margin : 0;
+    padding : 0;
+}
+#menuC li {
+    float : left;
+    list-style : none;
+}
+#menuC img {
+    height : 53px;
+}
+#menuC #home               { background-position :    0px -55px; width : 161px; }
+#menuC #trends             { background-position : -162px -55px; width : 188px; }
+#menuC #spotlight          { background-position : -351px -55px; width : 188px; }
+#menuC #reasons            { background-position : -540px -55px; width : 188px; }
+#menuC #guides             { background-position : -729px -55px; width : 225px; }
+
+#menuC #home:hover,     #menuC #home.selected      { background-position :    0px 0px; }
+#menuC #trends:hover,   #menuC #trends.selected    { background-position : -162px 0px; }
+#menuC #spotlight:hover,#menuC #spotlight.selected { background-position : -351px 0px; }
+#menuC #reasons:hover,  #menuC #reasons.selected   { background-position : -540px 0px; }
+#menuC #guides:hover,   #menuC #guides.selected    { background-position : -729px 0px; }
+
+
+/* ------------------ Main --------------- */
+#mainC {
+    margin-bottom : 19px;
+}
+#mainC img#top {
+    background-position : -0px -235px;
+    height : 25px;
+    width  : 100%;
+}
+#mainC div#content{
+    background-color : #fff;
+    margin  : -5px 0 0 0;
+    padding : 5px 10px 0px;
+}
+html* div#content { font-size : .9em; }
+
+#mainC img#bottom {
+    background-position : -0px -261px;
+    height : 25px;
+    width  : 100%;
+}
+
+/* ----------------- Footer -------------- */
+#footerC {
+    background : url(/images/sprites/application.png) repeat-x scroll 0px -109px transparent;
+    height : 124px;
+    width  : 100%;
+    position : relative;
+    color : #666666;
+    font-size : .8em;
+}
+html* #footerC { font-size : .7em; }
+#footerC a {
+    color : #7fb86b;
+    text-decoration : none;
+}
+#footerC a:hover {
+    text-decoration : underline;
+}
+#footerC #footer {
+    width : 803px;
+    position : absolute;
+    left : 120px;
+    top  : 23px;
+}
+div#f_right {
+    text-align : right;
+    margin-top : -7px;
+}
+#footer h5 {
+    font-size : 1.2em;
+    font-weight : bold;
+    margin-bottom : 2px;
+    letter-spacing : -0.1px;
+}
+#footer h6 {
+    float : right;
+    font-size : 1em;
+    font-weight : bold;
+    color : #889c59;
+    line-height : 35px;
+    margin-right : 5px;
+}
+
+#footer p {
+    margin-bottom : 8px;
+}
+#footer #copyright {
+    float : left;
+    background-position : -510px -289px;
+    height : 14px;
+    width  : 14px;
+}
+#footer_links a { float : left; }
+#footer_links div.delimeter {
+    float : left;
+    width : 15px;
+    text-align : center;
+    color : #7FB86B;
+}
+
+#footer #follow_us {
+    float : right;
+    background-color : #e3edbf;
+    padding : 6px 5px 2px 8px;
+    border-radius : 4px;
+    -moz-border-radius: 4px;
+    -webkit-border-radius: 4px;
+}
+#follow_us img {
+    height : 24px;
+    width  : 25px;
+    margin-right : 3px;
+}
+#email          { background-position : -675px -290px; }
+#twitter        { background-position : -705px -290px; }
+#facebook       { background-position : -733px -290px; }
+
+#f_right > p {
+    margin-top : 10px;
+}
+#get_home_offer {
+    background-position : -528px -290px;
+    height : 28px;
+    width  : 145px;
+}
+
+/*------------------------*/
+.right { float : right; }
+.left  { float : left; }
+
+/*------------Clearfix : stolen from blueprint ---------------------*/
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container {display:block;}
+.clear {clear:both;}
+html * .clearfix.ie_stretch{ width:100%}
+
+
+
+
+
+
+
+
+
+
+
+

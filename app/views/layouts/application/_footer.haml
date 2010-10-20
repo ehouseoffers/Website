@@ -1,0 +1,34 @@
+%div#footer.yui3-g
+  %div#f_left.yui3-u-5-8
+    %h5 Call eHouseOffers.com today for a Free Cash Home Offer 866.384.9068
+
+    %p
+      = raw "or, #{link_to 'contact us directly', contact_path} &amp; learn more about becoming a Certified Home Buyer with eHouseOffers.com"
+
+    %p
+      = image_tag '/images/transparent.gif', :id => 'copyright', :class => 'app_sprite', :alt => '&copy;'
+      = "Copyright #{Time.now.year} eHouseOffers LLC. All Rights Reserved."
+
+    %div#footer_links
+      = link_to 'About', about_path, :class => 'left'
+      = render 'shared/delimeter'
+      = link_to 'Site Map', site_map_path
+      = render 'shared/delimeter'
+      = link_to 'Terms of Service', terms_path
+      = render 'shared/delimeter'
+      = link_to 'Contact Us', contact_path
+
+  %div#f_right.yui3-u-3-8
+    %div.clearfix.ie_stretch
+      %div#follow_us
+        = image_tag '/images/transparent.gif', :id => 'facebook', :class => 'app_sprite', :alt => 'Facebook'
+        = image_tag '/images/transparent.gif', :id => 'twitter', :class => 'app_sprite', :alt => 'Twitter'
+        = image_tag '/images/transparent.gif', :id => 'email', :class => 'app_sprite', :alt => 'Email'
+
+      %h6 Follow us on
+
+    %p
+      Get a Home Offer from a Qualified Local Buyer
+      
+    = image_tag '/images/transparent.gif', :id => 'get_home_offer', :class => 'app_sprite', :alt => 'Get a Home Offer!'
+      
