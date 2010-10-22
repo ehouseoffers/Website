@@ -1,5 +1,5 @@
 %ul
-  - %w[home trends spotlight reasons guides].each do |section|
+  - %w[home trends spotlighters reasons guides].each do |section|
     %li
       - img = image_tag '/images/transparent.gif', :id => section, :class => "app_sprite #{active_section?(section) ? 'selected' : ''}", :alt => section.capitalize
-      = link_to_unless active_section?(section), img, root_path
+      = link_to_unless active_section?(section), img, send("#{section}_path")

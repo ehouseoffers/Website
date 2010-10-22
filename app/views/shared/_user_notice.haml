@@ -1,0 +1,22 @@
+:ruby
+  # 1. if we are using this to show flash messages, we should have a message and optional klass
+  #    = render :partial => 'shared/user_notice', :locals => {:klass => key, :msg => msg}
+  # 2. Model Forms : give us a model object and we will give you the errors.
+  #    render :partial => 'shared/user_notice', :locals => {:model_obj => @user}
+  msg   = msg.blank? ? '' : msg
+  klass = %w[debug notice warning error].include?(klass.to_s) ? klass.to_s : 'notice'
+  model_obj = !model_obj ? nil : model_obj
+
+- unless msg.empty?
+  %div.user_noticeC{:class => klass}
+    %div.gutter
+      %h2= msg
+
+- if model_obj && model_obj.errors.any?
+  %div.user_noticeC.error
+    %div.gutter
+      %h2
+        = "#{pluralize(model_obj.errors.count, "error")} prohibited this record from being saved:"
+      %ul
+        - model_obj.errors.full_messages.each do |msg|
+          %li= msg

@@ -1,20 +1,3 @@
-:ruby
-  # YUI Grids
-  # Grid  - http://developer.yahoo.com/yui/3/cssgrids/
-  # Base  - http://developer.yahoo.com/yui/3/cssbase/
-  # Reset - http://developer.yahoo.com/yui/3/cssreset/
-
-  # - if user_signed_in?
-  #   = "Signed in as #{current_user.email}. Not you?"
-  #   = link_to "Sign out", destroy_user_session_path
-  # 
-  # - else
-  #   = raw "#{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}"
-
-  # TODO -- younker [2010-10-19 23:46]
-  # Add Flash stuff (flash.css already exists)
-  # flash.now[:error] = 'foo bar'
-
 :plain
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 %html
@@ -52,7 +35,7 @@
         = yield(:page_title)
 
       - flash.each do |key, msg|
-        = content_tag :div, msg, :class => key
+        = render :partial => 'shared/user_notice', :locals => {:klass => key, :msg => msg}
 
       = yield
     = image_tag '/images/transparent.gif', :id => 'bottom', :class => 'app_sprite'

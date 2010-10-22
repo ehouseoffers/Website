@@ -1,4 +1,3 @@
-/* http://developer.yahoo.com/yui/3/cssgrids/#page_width */
 html { background : url(/images/bg.png) repeat-x scroll 0 0 #b4d66a; }
 body {
     margin : auto;
@@ -45,17 +44,22 @@ body {
 #menuC img {
     height : 53px;
 }
-#menuC #home               { background-position :    0px -55px; width : 161px; }
-#menuC #trends             { background-position : -162px -55px; width : 188px; }
-#menuC #spotlight          { background-position : -351px -55px; width : 188px; }
-#menuC #reasons            { background-position : -540px -55px; width : 188px; }
-#menuC #guides             { background-position : -729px -55px; width : 225px; }
+#menuC #home         { background-position :    0px -55px; width : 161px; }
+#menuC #reasons      { background-position : -162px -55px; width : 188px; }
+#menuC #spotlighters { background-position : -351px -55px; width : 188px; }
+#menuC #trends       { background-position : -540px -55px; width : 188px; }
+#menuC #guides       { background-position : -729px -55px; width : 225px; }
 
-#menuC #home:hover,     #menuC #home.selected      { background-position :    0px 0px; }
-#menuC #trends:hover,   #menuC #trends.selected    { background-position : -162px 0px; }
-#menuC #spotlight:hover,#menuC #spotlight.selected { background-position : -351px 0px; }
-#menuC #reasons:hover,  #menuC #reasons.selected   { background-position : -540px 0px; }
-#menuC #guides:hover,   #menuC #guides.selected    { background-position : -729px 0px; }
+#menuC #home:hover,
+#menuC #home.selected         { background-position :    0px 0px; }
+#menuC #reasons:hover,
+#menuC #reasons.selected      { background-position : -162px 0px; }
+#menuC #spotlighters:hover,
+#menuC #spotlighters.selected { background-position : -351px 0px; }
+#menuC #trends:hover,
+#menuC #trends.selected       { background-position : -540px 0px; }
+#menuC #guides:hover,
+#menuC #guides.selected       { background-position : -729px 0px; }
 
 
 /* ------------------ Main --------------- */
