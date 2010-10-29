@@ -3,8 +3,6 @@ class SellerListingsController < ApplicationController
   # ensure the user is logged in
   # before_filter :authenticate_user!, :except => [:index]
 
-  # GET /seller_listings
-  # GET /seller_listings.xml
   def index
     @seller_listings = SellerListing.all
 

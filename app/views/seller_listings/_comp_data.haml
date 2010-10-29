@@ -10,11 +10,11 @@
       %span
         no
         %br
-        = f.radio_button :currently_listed, :no
+        = f.radio_button :currently_listed, false
       %span
         yes
         %br
-        = f.radio_button :currently_listed, :yes
+        = f.radio_button :currently_listed, true
 
   .field
     .yui3-u-5-24.left_col
@@ -45,15 +45,15 @@
       %span
         no
         %br
-        = f.radio_button :payments_are_current, :no
+        = f.radio_button :payments_are_current, true
       %span
         yes
         %br
-        = f.radio_button :payments_are_current, :yes
+        = f.radio_button :payments_are_current, false
       %span
         N/A
         %br
-        = f.radio_button :payments_are_current, :na
+        = f.radio_button :payments_are_current, :na, {:checked => @seller_listing.payments_are_current.nil?}
 
   .submitC
     = image_submit_tag '/images/transparent.gif', :id => 'make_offer', :class => 'sprite'
