@@ -10,7 +10,8 @@ class SellerListing < ActiveRecord::Base
   # B/c I mass assign, help guard against hackers inserting values
   # http://railscasts.com/episodes/26-hackers-love-mass-assignment
   # http://railscasts.com/episodes/237-dynamic-attr-accessible
-  attr_accessible :estimated_value, :asking_price, :loan_amount, :currently_listed, :payments_are_current
+  attr_accessible :user_id, :phone_number_id, :address_id, :estimated_value, :asking_price, :loan_amount,
+                  :currently_listed, :payments_are_current
 
   def initialize(args={})
     super(args)
