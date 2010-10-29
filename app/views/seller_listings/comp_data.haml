@@ -1,0 +1,15 @@
+:ruby
+  extra_css('comp_data')
+
+%div#titlebarC
+  %div#money_icon.sprite &nbsp;
+  = image_tag '/images/transparent.gif', :id => 'get_cash_title', :class => 'sprite', :alt => 'Geta Cash Offer'
+
+%div#step_two_contentC
+  %div.box
+    %div.box_gutter
+      = image_tag '/images/transparent.gif', :id => 'step_two_comps', :class => 'sprite', :alt => 'Step 2: Help Identify Comparable Homes'
+
+      %div#form_gutter
+        = render :partial => 'seller_listings/comp_data'
+

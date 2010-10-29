@@ -1,0 +1,105 @@
+/* Start Sprites */
+.sprite { background : url(/images/sprites/seller-register-thank-you.png) no-repeat scroll 0px 500px transparent; }
+#goldbox_icon  {
+    background-position : 0px 0px;
+    height : 96px;
+    width  : 119px;
+    position : relative;
+    top  : 2px;
+    left : 21px;
+}
+#thank_you_title  {
+    background-position : -120px -0px;
+    height : 33px;
+    width : 149px;
+    position : absolute;
+    top : 32px;
+    left : 150px;
+}
+#thanks_tmp  {
+    background-position : 0px -98px;
+    height : 125px;
+    width  : 886px;
+}
+/*#blue_ribbon {
+    background-position : 0px 0px;
+    height : 75px;
+    width  : 592px;
+}
+#thanks_for_choosing {
+    background-position : 0px 0px;
+    height : 75px;
+    width  : 592px;
+}
+*/
+
+.discount { background : url(/images/sprites/discounts.png) no-repeat scroll 0px 500px transparent; }
+#uhaul_icon {
+    background-position : -164px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#public_storage_icon {
+    background-position : -81px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#american_finance_icon {
+    background-position : 0px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#send_me_discounts {
+    background-position : 0px 0px;
+    height : 53px;
+    width  : 224px;
+    margin-top : 20px;
+}
+
+/* END Sprites */
+
+#mainC img#top {
+    background-position : 0px -350px;
+    height : 88px;
+}
+#mainC div#content { position : relative; padding : 0px; }
+#titlebarC {
+    position : absolute;
+    left   : 0;
+    top    : -84px;
+    height : 84px;
+    width  : 953px;
+}
+.box_contentC {
+    padding-left : 33px;
+    padding-right : 33px;
+}
+#thanksC {
+    padding-top : 35px;
+    padding-bottom : 10px;
+}
+#discountsC .box_gutter {
+    padding : 36px 40px 36px 50px;
+}
+div#discountsC h4 {
+    font-size : .95em;
+    font-weight : bold;
+    padding-bottom : 5px;
+}
+div#discountsC p {
+    font-size : .8em;
+    padding-right : 5px;
+}
+#buttonC {
+    text-align : center;
+}
+
+
+
+
+
+
+

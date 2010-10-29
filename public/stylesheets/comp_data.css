@@ -1,0 +1,66 @@
+/* Start Sprites */
+.sprite { background : url(/images/sprites/seller-register-step2.png) no-repeat scroll 0px 500px transparent; }
+#get_cash_title  {
+    background-position : -1px -78px;
+    height : 30px;
+    width : 418px;
+    position : absolute;
+    top : 32px;
+    left : 182px;
+}
+#money_icon  {
+    background-position : -647px 1px;
+    height : 94px;
+    width  : 165px;
+    position : relative;
+    top : 0px;
+    left : 13px;
+}
+#step_two_comps {
+    background-position : 0px 0px;
+    height : 75px;
+    width  : 592px;
+}
+input[type="image"] {
+    background-position : -423px -75px;
+    height : 47px;
+    width  : 223px;
+    margin : 16px 0 0 58px;
+}
+/* END Sprites */
+
+#mainC img#top {
+    background-position : 0px -350px;
+    height : 88px;
+}
+#mainC div#content { position : relative; padding : 0px; }
+#titlebarC {
+    position : absolute;
+    left   : 0;
+    top    : -84px;
+    height : 84px;
+    width  : 953px;
+}
+#step_two_contentC {
+    padding : 35px 33px;
+}
+div#form_gutter {
+    padding : 25px 0 0 29px;
+}
+input[type="text"] {
+    width : 550px;
+}
+.field {
+    font-size : .95em;
+    color : #7a7a7a;
+}
+.field .left_col  { text-align : right; vertical-align : middle; }
+.field .right_col { padding-left : 20px; }
+
+.radioC span {
+    width : 40px;
+    display : inline-block;
+}
+.radioC span, .field div.note {
+    font-size : .75em;
+}

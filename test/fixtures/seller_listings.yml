@@ -1,0 +1,17 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  user_id: 
+  currently_listed: false
+  estimated_value: 
+  asking_price: 
+  loan_amount: 
+  payments_are_current: false
+
+two:
+  user_id: 
+  currently_listed: false
+  estimated_value: 
+  asking_price: 
+  loan_amount: 
+  payments_are_current: false

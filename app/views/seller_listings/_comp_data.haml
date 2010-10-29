@@ -1,0 +1,59 @@
+= form_for @seller_listing do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @seller_listing}
+
+  .field
+    .yui3-u-5-24.left_col
+      = f.label :currently_listed, 'Is Property Listed?'
+      %div.note w/a realtor
+
+    .yui3-u-3-4.right_col.radioC
+      %span
+        no
+        %br
+        = f.radio_button :currently_listed, :no
+      %span
+        yes
+        %br
+        = f.radio_button :currently_listed, :yes
+
+  .field
+    .yui3-u-5-24.left_col
+      = f.label :estimated_value, 'Estimated Home Value'
+    .yui3-u-3-4.right_col.radioC
+      = f.text_field :estimated_value
+
+  .field
+    .yui3-u-5-24.left_col
+      = f.label :asking_price, 'Asking Price'
+      %div.note or lowest acceptable offer
+    .yui3-u-3-4.right_col.radioC
+      = f.text_field :asking_price
+
+  .field
+    .yui3-u-5-24.left_col
+      = f.label :loan_amount, 'Loan Amount'
+      %div.note if applicable      
+    .yui3-u-3-4.right_col.radioC
+      = f.text_field :loan_amount
+
+  .field
+    .yui3-u-5-24.left_col
+      = f.label :payments_are_current, 'Are You Behind?'
+      %div.note on your mortgage payments
+    .yui3-u-3-4.right_col.radioC
+      -#= f.check_box :payments_are_current
+      %span
+        no
+        %br
+        = f.radio_button :payments_are_current, :no
+      %span
+        yes
+        %br
+        = f.radio_button :payments_are_current, :yes
+      %span
+        N/A
+        %br
+        = f.radio_button :payments_are_current, :na
+
+  .submitC
+    = image_submit_tag '/images/transparent.gif', :id => 'make_offer', :class => 'sprite'

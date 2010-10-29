@@ -1,0 +1,18 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @phone_number.user_id
+%p
+  %b Number:
+  = @phone_number.number
+%p
+  %b Label:
+  = @phone_number.label
+%p
+  %b Primary:
+  = @phone_number.primary
+
+= link_to 'Edit', edit_phone_number_path(@phone_number)
+\|
+= link_to 'Back', phone_numbers_path

@@ -33,7 +33,7 @@ module Ehouseoffers
 
     # JavaScript files you want as :defaults (application.js is always included).
     config.action_view.javascript_expansions[:defaults] = %w(application jquery rails)
-    config.action_view.stylesheet_expansions[:defaults] = %w(application)
+    config.action_view.stylesheet_expansions[:defaults] = %w(application flash)
 
     config.generators do |g|
       g.template_engine :haml

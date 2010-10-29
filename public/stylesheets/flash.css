@@ -5,9 +5,12 @@
     margin-bottom: 15px;
     border: 1px solid #666;
     text-align: justify;
-    border-radius : 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border-radius : 15px;
+    -moz-border-radius: 15px;
+    -webkit-border-radius: 15px;
+    margin-top : -17px;
+    position : relative;
+    z-index : 99;
 }
 .user_noticeC a,
 .user_noticeC a:visited {

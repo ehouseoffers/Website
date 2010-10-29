@@ -1,0 +1,40 @@
+= form_for @seller_listing do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @seller_listing}
+
+  = f.fields_for @seller_listing.user do |field|
+    .field#first_name
+      = field.label :first_name, 'First Name'
+      = field.text_field :first_name, :class => 'validate(required)', 'data-example' => 'First Name'
+
+    .field#last_name
+      = field.label :last_name, 'Last Name'
+      = field.text_field :last_name, :class => 'validate(required)', 'data-example' => 'Last Name'
+
+    .field
+      = field.label :email
+      = field.text_field :email, :class => 'validate(required, email)', 'data-example' => 'Email'
+
+  = f.fields_for @seller_listing.user.phone_for_form do |field|
+    .field
+      = field.label :number, 'Phone'
+      = field.text_field :number, :class => 'validate(required)', 'data-example' => 'Phone Number'
+
+  = f.fields_for @seller_listing.user.addresses.new do |field|
+    .field
+      = field.label :address1, 'Address'
+      = field.text_field :address1, :class => 'validate(required)', 'data-example' => 'Address'
+
+  = f.fields_for @seller_listing.user.addresses.new do |field|
+    .field#address_zip
+      = field.label :zip, 'Zip Code'
+      = field.text_field :zip, :class => 'validate(required, minlength(5))', 'data-example' => 'Zip Code'
+
+  .submitC
+    = image_submit_tag '/images/transparent.gif', :id => 'get_cash_offer_btn', :class => 'sprite'
+    #securityC
+      = image_tag '/images/transparent.gif', :id => 'lock_icon', :class => 'sprite', :alt => 'Secure!'
+      %span security guaranteed
+    #security_iconsC
+      = image_tag '/images/transparent.gif', :id => 'mcafee', :class => 'sprite', :alt => 'McAfee'
+      = image_tag '/images/transparent.gif', :id => 'truste', :class => 'sprite', :alt => 'Truste Certified Privacy'
+      = image_tag '/images/transparent.gif', :id => 'verisign', :class => 'sprite last', :alt => 'Verisign'

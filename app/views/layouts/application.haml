@@ -14,8 +14,11 @@
     %link{:rel => :stylesheet, :type => "text/css", :href => "http://yui.yahooapis.com/3.2.0/build/cssbase/base-min.css"}
     %link{:rel => :stylesheet, :type => "text/css", :href => "http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css"}
 
-    = stylesheet_link_tag :all
+
+    = stylesheet_link_tag :defaults
+    = yield(:extra_css) if content_for?(:extra_css)
     = javascript_include_tag :defaults
+    = yield(:extra_js) if content_for?(:extra_js)
     = csrf_meta_tag
 
     :javascript

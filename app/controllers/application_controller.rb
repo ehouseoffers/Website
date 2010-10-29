@@ -11,4 +11,5 @@ class ApplicationController < ActionController::Base
   def active_section?(section)
     @active_section && @active_section.to_s.eql?(section)
   end
+
 end

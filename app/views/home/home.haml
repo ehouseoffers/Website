@@ -1,0 +1,86 @@
+:ruby
+  extra_js('jquery.ketchup','jquery.default_values')
+  extra_css('jquery.ketchup','home')
+
+%div#homeC.yui3-g
+  %div#welcome_messageC.yui3-u-3-5
+    = image_tag '/images/transparent.gif', :id => 'satisfied_sellers', :class => 'sprite', :alt => 'Tom &amp; Sharon: Satisfied Home Sellers'
+    %div#welcome_message_opacity &nbsp;
+    %div#welcome_message
+      %h1
+        = image_tag '/images/transparent.gif', :id => 'welcome_title', :class => 'sprite', :alt => 'Welcome to eHouseOffers!'
+      %p
+        At eHouseOffers.com you'll find helpful resources for home sellers, information on real estate trands &amp; a
+        community of professional homebuyers.
+
+
+  %div#cash_offer_formC.yui3-u-2-5
+    = image_tag '/images/transparent.gif', :id => 'get_cash_offer', :class => 'sprite', :alt => 'Get a cash offer on your house today!'
+    = render :partial => 'seller_listings/form'
+
+  %hr.indent
+  %hr.space
+
+  %div#resources_rowC
+    %div.yui3-u-3-8
+      = image_tag '/images/transparent.gif', :id => 'video_preview', :class => 'sprite', :alt => 'Video Preview'
+      %div#sv_contentC.bottom_contentC
+        %h1
+          = image_tag '/images/transparent.gif', :id => 'sellers_video_title', :class => 'sprite', :alt => 'Sellers Video'
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+
+        %p
+          = link_to '__Fix Link__', ''
+          = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
+      
+    %div.yui3-u-15-48
+      = image_tag '/images/transparent.gif', :id => 'trust_us_icon', :class => 'sprite', :alt => 'You can trust us!'
+      %div#tu_contentC.bottom_contentC
+        %h1
+          = image_tag '/images/transparent.gif', :id => 'trust_us_title', :class => 'sprite', :alt => 'Trust Us'
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+
+        %p
+          = link_to '__Fix Link__', ''
+          = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
+
+    %div.yui3-u-7-24
+      = image_tag '/images/transparent.gif', :id => 'resources_icon', :class => 'sprite', :alt => 'Available Resources'
+      %div#rs_contentC.bottom_contentC
+        %h1
+          = image_tag '/images/transparent.gif', :id => 'resources_title', :class => 'sprite', :alt => 'Resources'
+        %p
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+
+        %p
+          = link_to '__Fix Link__', ''
+          = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
+
+
+  %hr.indent
+  %hr.space
+  
+  %div#quotes_rowC
+    %div.yui3-u-1-2
+      = image_tag '/images/transparent.gif', :id => 'other_others_quote', :class => 'sprite', :alt => 'Unlike Other Real Estate Investors...'
+      %p
+        \...Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+      %p.author
+        Cleveland M, Seattle WA
+
+    %div.yui3-u-1-2
+      = image_tag '/images/transparent.gif', :id => 'top_pick_quote', :class => 'sprite', :alt => 'A Top Pick to Sell Your House'
+      %p
+        \...Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+      %p.author
+        Cleveland M, Seattle WA
+
+
+    
+:javascript
+  $(document).ready(function() {
+    $('#new_seller_listing').ketchup();
+    $('#new_seller_listing').default_form_values();
+  });

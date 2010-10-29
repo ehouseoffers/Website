@@ -1,0 +1,24 @@
+%p#notice= notice
+
+%p
+  %b User:
+  = @seller_listing.user_id
+%p
+  %b Currently listed:
+  = @seller_listing.currently_listed
+%p
+  %b Estimated value:
+  = @seller_listing.estimated_value
+%p
+  %b Asking price:
+  = @seller_listing.asking_price
+%p
+  %b Load amount:
+  = @seller_listing.loan_amount
+%p
+  %b Payments are current:
+  = @seller_listing.payments_are_current
+
+= link_to 'Edit', edit_seller_listing_path(@seller_listing)
+\|
+= link_to 'Back', seller_listings_path

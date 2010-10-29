@@ -1,17 +1,23 @@
 Ehouseoffers::Application.routes.draw do
+  resources :addresses
+
+  resources :phone_numbers
+
   devise_for :users
 
-  resources :trends
-  resources :spotlight, :as => :spotlighters
-  resources :reasons_to_sell, :as => :reasons
-  resources :guides
   resources :contact, :as => :contacts
+  resources :guides
+  resources :reasons_to_sell, :as => :reasons
+  resources :seller_listings do
+    get :comp_data, :on => :member # Registration 2nd step form display
+    get :thank_you, :on => :member # Registration confirmation/appreciation
+  end
+  resources :spotlight, :as => :spotlighters
+  resources :trends
 
-  match '/about',    :to => 'home#about'
-  # match '/site_map', :to => 'home#site_map'
-  match '/terms',    :to => 'home#terms'
-  # match '/contact',  :to => 'home#contact'
+  match '/about', :to => 'home#about'
+  match '/terms_of_service', :to => 'home#terms', :as => 'terms'
 
-  root :to => 'home#welcome'
-  match '/', :to => 'home#welcome', :as => 'home'
+  root :to => 'home#home'
+  match '/', :to => 'home#home', :as => 'home'
 end
