@@ -1,23 +1,6 @@
 
 /* Start Sprites */
 .sprite { background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent; }
-
-#get_cash_title  {
-    background-position : 0px 0px;
-    height : 30px;
-    width : 418px;
-    position : absolute;
-    top : 32px;
-    left : 182px;
-}
-#money_icon  {
-    background-position : 0px -30px;
-    height : 94px;
-    width  : 165px;
-    position : relative;
-    top : 0px;
-    left : 13px;
-}
 #step_one_register  {
     background-position : -166px -32px;
     height : 75px;
@@ -56,31 +39,21 @@ form input[type="image"] {
 /* end sprites */
 
 #mainC img#top {
-    background-position : 0px -350px;
-    height : 88px;
+    height : 96px;
+    background : url(/images/page_banners/seller-listing-register-step1.png) no-repeat scroll 0px 0px transparent;
 }
-#mainC div#content { position : relative; padding : 0px; }
-#titlebarC {
-    position : absolute;
-    left   : 0;
-    top    : -84px;
-    height : 84px;
-    width  : 953px;
-}
+#mainC div#content { padding : 0px; }
+
 #step_one_contentC {
-    padding : 35px 33px;
+    padding : 27px 33px;
 }
 div#form_gutter {
     padding : 25px 0 0 91px;
 }
-
 form#new_seller_listing .field {
-/*    margin-bottom : 10px;*/
     width : 697px;
 }
 form#new_seller_listing label {
-/*    display : inline-block;*/
-/*    width : 100px;*/
     display : none;
 }
 form#new_seller_listing input[type="text"] {
@@ -105,8 +78,6 @@ form#new_seller_listing div#last_name.field {
 #security_iconsC {
     margin-top : 8px;
 }
-
-
 .submitC {
     padding-top : 12px;
 }

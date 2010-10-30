@@ -1,23 +1,7 @@
 /* Start Sprites */
 .sprite { background : url(/images/sprites/seller-register-thank-you.png) no-repeat scroll 0px 500px transparent; }
-#goldbox_icon  {
-    background-position : 0px 0px;
-    height : 96px;
-    width  : 119px;
-    position : relative;
-    top  : 2px;
-    left : 21px;
-}
-#thank_you_title  {
-    background-position : -120px -0px;
-    height : 33px;
-    width : 149px;
-    position : absolute;
-    top : 32px;
-    left : 150px;
-}
 #thanks_tmp  {
-    background-position : 0px -98px;
+    background-position : 0px 0px;
     height : 125px;
     width  : 886px;
 }
@@ -62,23 +46,16 @@
 /* END Sprites */
 
 #mainC img#top {
-    background-position : 0px -350px;
-    height : 88px;
+    height : 102px;
+    background : url(/images/page_banners/seller-listing-register-thank-you.png) no-repeat scroll 0px 0px transparent;
 }
-#mainC div#content { position : relative; padding : 0px; }
-#titlebarC {
-    position : absolute;
-    left   : 0;
-    top    : -84px;
-    height : 84px;
-    width  : 953px;
-}
+#mainC div#content { padding : 0px; }
 .box_contentC {
     padding-left : 33px;
     padding-right : 33px;
 }
 #thanksC {
-    padding-top : 35px;
+    padding-top : 21px;
     padding-bottom : 10px;
 }
 #discountsC .box_gutter {
