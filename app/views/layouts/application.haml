@@ -32,6 +32,7 @@
     = render :partial => 'layouts/application/menu'
     
   %div#mainC
+    %div#tab_arrow &nbsp;
     = image_tag '/images/transparent.gif', :id => 'top', :class => 'app_sprite'
     %div#content
       - if content_for?(:page_title)

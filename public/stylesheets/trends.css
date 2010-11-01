@@ -1,0 +1,15 @@
+/* Start Page Banner */
+#menuC { margin-bottom : 7px; }
+#mainC div#tab_arrow {
+    display : block;
+    left : 240px;
+    top  : -1px;
+}
+#mainC img#top {
+    background : url(/images/page_banners/trends.png) no-repeat scroll 0px 0px transparent;
+    height : 108px;
+}
+
+
+/* Start Sprites */
+.sprite { background : url(/images/sprites/trends.png) no-repeat scroll 0px 500px transparent; }
