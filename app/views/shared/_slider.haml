@@ -9,7 +9,7 @@
       - collection.each_with_index do |object, idx|
         %div.panel{:id => "panel_#{idx+1}"}
           %div.inside
-            = image_tag object.photo.url(:medium), :alt => object.title, 'data-path' => send("#{object.class.name.downcase}_path", object)
+            = image_tag object.photo.url(:medium), :alt => object.title, 'data-path' => send("#{object.class.name.downcase}_path", object.url_friendly_title)
 
   %h2 &nbsp;
 
