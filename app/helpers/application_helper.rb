@@ -23,16 +23,27 @@ module ApplicationHelper
     end
   end
 
+  @@js_targets = []
   def extra_js(*targets)
-    targets.each do |f|
-      content_for :extra_js do "<script src='/javascripts/#{f}.js' type='text/javascript'></script>\n" end
+    targets.each do |filename|
+      unless extra_js?(filename)
+        @@js_targets.push(filename)
+        content_for :extra_js do "<script src='/javascripts/#{filename}.js' type='text/javascript'></script>\n" end
+      end
     end
   end
+  def extra_js?(target) ; @@js_targets.include?(target) ; end
 
+  @@css_targets = []
   def extra_css(*targets)
-    targets.each do |f|
-      content_for :extra_css do "<link href='/stylesheets/#{f}.css' media='screen' rel='stylesheet' type='text/css' />\n" end
+    targets.each do |filename|
+      unless extra_css?(filename)
+        @@css_targets.push(filename)
+        content_for :extra_css do "<link href='/stylesheets/#{filename}.css' media='screen' rel='stylesheet' type='text/css' />\n" end
+      end
     end
   end
+  def extra_css?(target) ; @@css_targets.include?(target) ; end
+
 
 end

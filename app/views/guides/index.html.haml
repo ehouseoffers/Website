@@ -1,3 +1,11 @@
 :ruby
   extra_css('guides')
 
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:guides, nil]]
+
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = render "shared/slider", :id => 'trends_slider'
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"

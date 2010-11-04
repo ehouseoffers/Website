@@ -1,0 +1,20 @@
+:ruby
+  extra_js('jquery.slider')
+  extra_css('jquery.slider')
+  
+%div.slider{:id => id}
+  %div.slider_bg
+  %div.scroll
+    %div.scrollContainer.clearfix
+      - %w[1 2 3 4 5 6].each do |idx|
+        %div.panel{:id => "panel_#{idx}"}
+          %div.inside
+            = image_tag "remove_me/test#{idx}.png", :alt=>"Slide ##{idx} -- Some Big Title Here", 'data-path' => "/foo/#{idx}"
+
+  %h2 &nbsp;
+
+  %div.scroll_actionsC
+    %div.scroll_left &nbsp;
+    %div.scrollbarC
+      %div.scrollbar &nbsp;
+    %div.scroll_right &nbsp;

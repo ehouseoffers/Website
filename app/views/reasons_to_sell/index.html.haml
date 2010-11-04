@@ -1,4 +1,11 @@
 :ruby
   extra_css('reasons_to_sell')
 
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:reasons_to_sell, nil]]
 
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    left col
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"

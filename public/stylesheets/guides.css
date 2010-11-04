@@ -9,7 +9,9 @@
     background : url(/images/page_banners/guides.png) no-repeat scroll 0px 0px transparent;
     height : 110px;
 }
-
+ul.breadcrumbC {
+    margin-top : -2px;
+}
 
 /* Start Sprites */
 .sprite { background : url(/images/sprites/guides.png) no-repeat scroll 0px 500px transparent; }

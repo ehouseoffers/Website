@@ -1,6 +1,5 @@
 :ruby
-  extra_js('jquery.ketchup','jquery.default_values')
-  extra_css('jquery.ketchup','home')
+  extra_css('home')
 
 %div#homeC.yui3-g
   %div#welcome_messageC.yui3-u-3-5
@@ -76,11 +75,3 @@
         \...Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
       %p.author
         Cleveland M, Seattle WA
-
-
-    
-:javascript
-  $(document).ready(function() {
-    $('#new_seller_listing').ketchup();
-    $('#new_seller_listing').default_form_values();
-  });

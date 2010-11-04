@@ -1,0 +1,26 @@
+:ruby
+  extra_css('seller_signup')
+
+  # FIXME -- younker [2010-11-03 16:52]
+  # This should NOT be in the view. In fact, this exact code is sprinkled in the controllers several times and needs
+  # to be consolidated somewhere!
+  if user_signed_in?
+    @seller_listing = SellerListing.new(:user_id => current_user.id)
+  else
+    @seller_listing = SellerListing.new()
+    @seller_listing.user = User.new
+  end
+
+%div.seller_signup_boxC.box
+  %div.gutter
+    %h2
+      Get an Offer Today!
+
+    %p
+      We're so sure that we will connect you with the right people that we will get your house sold that we will eat a
+      squirrel if you don't sell within the first month!
+
+    %strong
+      Sell Your House Today!
+
+    = render :partial => 'seller_listings/form'

@@ -1,4 +1,11 @@
-= form_for @seller_listing do |f|
+:ruby
+  extra_js('jquery.ketchup','jquery.default_values')
+  extra_css('jquery.ketchup')
+
+  # We have a bunch of css which hinges on this, so...
+  form_id = 'new_seller_listing'
+  
+= form_for @seller_listing, :html => {:id => form_id} do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @seller_listing}
 
   = f.fields_for @seller_listing.user do |field|
@@ -10,17 +17,17 @@
       = field.label :last_name, 'Last Name'
       = field.text_field :last_name, :class => 'validate(required)', 'data-example' => 'Last Name'
 
-    .field
+    .field#email
       = field.label :email
       = field.text_field :email, :class => 'validate(required, email)', 'data-example' => 'Email'
 
   = f.fields_for @seller_listing.user.phone_for_form do |field|
-    .field
+    .field#number
       = field.label :number, 'Phone'
       = field.text_field :number, :class => 'validate(required)', 'data-example' => 'Phone Number'
 
   = f.fields_for @seller_listing.user.addresses.new do |field|
-    .field
+    .field#address1
       = field.label :address1, 'Address'
       = field.text_field :address1, :class => 'validate(required)', 'data-example' => 'Address'
 
@@ -38,3 +45,8 @@
       = image_tag '/images/transparent.gif', :id => 'mcafee', :class => 'sprite', :alt => 'McAfee'
       = image_tag '/images/transparent.gif', :id => 'truste', :class => 'sprite', :alt => 'Truste Certified Privacy'
       = image_tag '/images/transparent.gif', :id => 'verisign', :class => 'sprite last', :alt => 'Verisign'
+
+:javascript
+  $(document).ready(function() {
+    $('form##{form_id}').ketchup().default_form_values();
+  });

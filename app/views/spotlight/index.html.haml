@@ -1,4 +1,14 @@
 :ruby
   extra_css('spotlight')
+  
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, nil]]
+
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    left col
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+
 
 
