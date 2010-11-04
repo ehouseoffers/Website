@@ -4,12 +4,7 @@ class HomeController < ApplicationController
 
   def home
     active_section(:home)
-    if user_signed_in?
-      @seller_listing = SellerListing.new(:user_id => current_user.id)
-    else
-      @seller_listing = SellerListing.new()
-      @seller_listing.user = User.new
-    end
+    set_seller_listing()
   end
   
   def about

@@ -1,0 +1,31 @@
+:ruby
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init')
+
+= form_for @guide, :html => { :multipart => true } do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @guide}
+
+  = hidden_field_tag 'guide[user_id]', current_user.id
+
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  .field
+    = f.label :content
+    = f.text_area :content
+
+
+  .yui3-g
+    - if @guide.photo?
+      = image_tag @guide.photo.url, :style => 'margin-right:10px'
+
+    .yui3-u-1-2
+      .field
+        = f.label :photo, "#{@guide.photo? ? 'Replace Current' : 'Upload'} Photo"
+        = f.file_field :photo
+
+
+  .actions
+    = f.submit 'Save'
+    = link_to 'Cancel', guides_path
+    

@@ -190,7 +190,10 @@ div#f_right {
 .box div.gutter {
     padding : 17px 15px;
 }
-
+div#content > div.admin {
+    float : right;
+    font-size : .75em;
+}
 /*------------ Stolen from Blueprint ---------------------*/
 .clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
 .clearfix, .container {display:block;}
@@ -232,6 +235,13 @@ a {
 a:hover {
     text-decoration : underline;
 }
+label.empty {
+    color : #999;
+}
+.field {
+    margin-bottom : 10px;
+}
+
 textarea,
 input[type="text"],
 input[type="password"] {
@@ -239,12 +249,11 @@ input[type="password"] {
     border  : 1px solid #dadada;
     color   : #333;
 }
-label.empty {
-    color : #999;
+input[type="checkbox"] {
+    float : left;
+    margin-right : 5px;
 }
-.field {
-    margin-bottom : 10px;
-}
+
 
 /* The most common, x-site content two-col setup */
 .xs_two_col .left_col  { }
@@ -262,6 +271,13 @@ label.empty {
     vertical-align : middle;
 }
 
+/* /shared/spacers/<class name> */
+hr.guides_spacer {
+    background : #dadada;
+    color      : #dadada;
+    width      : 95%;
+    margin     : 36px auto 40px;
+}
 /*---------------- Breadcrumb ---------------------------*/
 ul.breadcrumbC {
     font-size : .75em;

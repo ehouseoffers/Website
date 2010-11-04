@@ -45,5 +45,9 @@ module ApplicationHelper
   end
   def extra_css?(target) ; @@css_targets.include?(target) ; end
 
+  # http://media.railscasts.com/videos/208_erb_blocks_in_rails_3.mov
+  def admin_area(&block)
+    content_tag(:div, :class => "admin", &block) if user_signed_in? && current_user.admin?
+  end
 
 end

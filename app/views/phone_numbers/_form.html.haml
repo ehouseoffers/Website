@@ -1,10 +1,5 @@
 = form_for @phone_number do |f|
-  -if @phone_number.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@phone_number.errors.count, "error")} prohibited this phone_number from being saved:"
-      %ul
-        - @phone_number.errors.full_messages.each do |msg|
-          %li= msg
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @phone_number}
 
   .field
     = f.label :user_id

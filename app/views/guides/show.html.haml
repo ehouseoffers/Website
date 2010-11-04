@@ -1,0 +1,18 @@
+:ruby
+  extra_css('guides_shared')
+
+= admin_area do
+  = link_to "Edit This Article", edit_guide_path(@guide)
+  \|
+  = link_to "Create New Guide", new_guide_path()
+
+
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:guides, guides_path], ["#{@guide.title}", nil]]
+
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = render :partial => "guide", :object => @guide
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+

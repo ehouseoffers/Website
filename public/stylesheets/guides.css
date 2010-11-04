@@ -1,17 +1,18 @@
-/* Start Page Banner */
-#menuC { margin-bottom : 12px; }
 #mainC div#tab_arrow {
     display : block;
     left : 815px;
     top  : -6px;
 }
-#mainC img#top {
-    background : url(/images/page_banners/guides.png) no-repeat scroll 0px 0px transparent;
-    height : 110px;
-}
-ul.breadcrumbC {
-    margin-top : -2px;
-}
 
 /* Start Sprites */
-.sprite { background : url(/images/sprites/guides.png) no-repeat scroll 0px 500px transparent; }
+.read_full_article {
+    background : url(/images/sprites/guides.png) no-repeat scroll 0px 0px transparent;
+    height : 33px;
+    width : 110px;
+    margin : 10px 0 0 0;
+}
+
+/* the rest of it */
+div#left_col hr.space {
+    margin : 0 0 50px 0;
+}

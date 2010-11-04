@@ -1,10 +1,5 @@
 = form_for @address do |f|
-  -if @address.errors.any?
-    #error_explanation
-      %h2= "#{pluralize(@address.errors.count, "error")} prohibited this address from being saved:"
-      %ul
-        - @address.errors.full_messages.each do |msg|
-          %li= msg
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @guide}
 
   .field
     = f.label :user_id
@@ -30,5 +25,6 @@
   .field
     = f.label :primary
     = f.check_box :primary
+
   .actions
     = f.submit 'Save'

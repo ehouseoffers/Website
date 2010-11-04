@@ -1,11 +1,17 @@
 :ruby
-  extra_css('guides')
+  extra_css('guides_shared','guides')
+
+= admin_area do
+  = link_to "Create New Blog", new_guide_path()
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:guides, nil]]
 
 %div.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    = render "shared/slider", :id => 'trends_slider'
+    = render "shared/slider", :id => 'trends_slider', :collection => @guides
+    %hr.space
+    = render :partial => "guide", :collection => @guides, :locals => {:teaser => true}, :spacer_template => 'shared/spacers/guides_index'
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"
+

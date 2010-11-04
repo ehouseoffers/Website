@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101023225748) do
+ActiveRecord::Schema.define(:version => 20101104070034) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -21,6 +21,19 @@ ActiveRecord::Schema.define(:version => 20101023225748) do
     t.integer  "zip",                           :null => false
     t.string   "label"
     t.boolean  "primary",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "guides", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "title"
+    t.string   "url_friendly_title"
+    t.text     "content"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -48,9 +61,9 @@ ActiveRecord::Schema.define(:version => 20101023225748) do
   end
 
   create_table "users", :force => true do |t|
-    t.string   "email",                               :default => "", :null => false
-    t.string   "encrypted_password",   :limit => 128, :default => "", :null => false
-    t.string   "password_salt",                       :default => "", :null => false
+    t.string   "email",                               :default => "",    :null => false
+    t.string   "encrypted_password",   :limit => 128, :default => "",    :null => false
+    t.string   "password_salt",                       :default => "",    :null => false
     t.string   "reset_password_token"
     t.string   "remember_token"
     t.datetime "remember_created_at"
@@ -61,8 +74,9 @@ ActiveRecord::Schema.define(:version => 20101023225748) do
     t.string   "last_sign_in_ip"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.string   "first_name",                                          :null => false
+    t.string   "first_name",                                             :null => false
     t.string   "last_name"
+    t.boolean  "admin",                               :default => false
   end
 
   add_index "users", ["email"], :name => "index_users_on_email", :unique => true

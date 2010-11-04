@@ -25,14 +25,7 @@ class SellerListingsController < ApplicationController
 
   # Step 1a: Form Display
   def new
-    # @seller_listing = SellerListing.new
-
-    if user_signed_in?
-      @seller_listing = SellerListing.new(:user_id => current_user.id)
-    else
-      @seller_listing = SellerListing.new()
-      @seller_listing.user = User.new
-    end
+    set_seller_listing
 
     respond_to do |format|
       format.html # new.html.erb

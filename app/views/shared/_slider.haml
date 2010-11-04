@@ -1,15 +1,15 @@
 :ruby
   extra_js('jquery.slider')
   extra_css('jquery.slider')
-  
+
 %div.slider{:id => id}
   %div.slider_bg
   %div.scroll
     %div.scrollContainer.clearfix
-      - %w[1 2 3 4 5 6].each do |idx|
-        %div.panel{:id => "panel_#{idx}"}
+      - collection.each_with_index do |object, idx|
+        %div.panel{:id => "panel_#{idx+1}"}
           %div.inside
-            = image_tag "remove_me/test#{idx}.png", :alt=>"Slide ##{idx} -- Some Big Title Here", 'data-path' => "/foo/#{idx}"
+            = image_tag object.photo.url(:medium), :alt => object.title, 'data-path' => send("#{object.class.name.downcase}_path", object)
 
   %h2 &nbsp;
 
