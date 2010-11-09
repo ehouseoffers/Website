@@ -7,19 +7,19 @@ p {
 
 .sprite { background : url(/images/sprites/home.png) no-repeat scroll 0px 500px transparent; }
 
-#video_preview  {
+#what_we_do_video_preview  {
     background-position : 0px -2px;
     height : 106px;
     width : 119px;
     margin-top : 4px;
 }
-#resources_icon {
+#seller_resources_icon {
     background-position : -119px -2px;
     height : 85px;
     width : 88px;
     margin : 24px 0 0 -7px;
 }
-#trust_us_icon {
+#our_home_buyers_icons {
     background-position : -214px -2px;
     height : 83px;
     width : 87px;
@@ -71,20 +71,21 @@ p {
     height : 17px;
     width  : 256px;
 }
-#sellers_video_title {
-    background-position : -349px -111px;
-    height : 17px;
-    width  : 128px;
+#what_we_do_title {
+    background-position : -509px -113px;
+    height : 15px;
+    width  : 117px;
 }
-#trust_us_title {
-    background-position : -41px -111px;
-    height : 16px;
-    width  : 77px;
+#our_home_buyers_title {
+    background-position : -258px -164px;
+    height : 21px;
+    width  : 157px;
+    margin-top : 2px;
 }
-#resources_title {
-    background-position : -481px -111px;
+#seller_resources_title {
+    background-position : -345px -111px;
     height : 17px;
-    width  : 96px;
+    width  : 160px;
 }
 #other_others_quote {
     background-position : 0px -138px;

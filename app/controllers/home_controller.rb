@@ -1,5 +1,6 @@
 class HomeController < ApplicationController
 
+  layout :layout
   # before_filter { |app_cont| app_cont.active_section(:home) }
 
   def home
@@ -7,6 +8,9 @@ class HomeController < ApplicationController
     set_seller_listing()
   end
   
+  def what_we_do
+  end
+
   def about
   end
   

@@ -9,8 +9,8 @@
       %h1
         = image_tag '/images/transparent.gif', :id => 'welcome_title', :class => 'sprite', :alt => 'Welcome to eHouseOffers!'
       %p
-        At eHouseOffers.com you'll find helpful resources for home sellers, information on real estate trands &amp; a
-        community of professional homebuyers.
+        At eHouseOffers you’ll find resources for home sellers, information on real estate trends & a community of
+        professional home buyers.
 
 
   %div#cash_offer_formC.yui3-u-2-5
@@ -22,39 +22,45 @@
 
   %div#resources_rowC
     %div.yui3-u-3-8
-      = image_tag '/images/transparent.gif', :id => 'video_preview', :class => 'sprite', :alt => 'Video Preview'
+      - video_img = image_tag '/images/transparent.gif', :id => 'what_we_do_video_preview', :class => 'sprite', :alt => 'Video Preview'
+      = link_to video_img, what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
       %div#sv_contentC.bottom_contentC
         %h1
-          = image_tag '/images/transparent.gif', :id => 'sellers_video_title', :class => 'sprite', :alt => 'Sellers Video'
+          - seller_vid = image_tag '/images/transparent.gif', :id => 'what_we_do_title', :class => 'sprite', :alt => 'Sellers Video'
+          = link_to seller_vid, what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
         %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          Click on the above video above to learn who we are and find out how we can help you sell your house.
 
         %p
-          = link_to '__Fix Link__', ''
-          = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
+          = link_to 'Watch Demo Video', what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
+          = image_tag '/images/transparent.gif', :class => 'sprite rArr'
       
     %div.yui3-u-15-48
-      = image_tag '/images/transparent.gif', :id => 'trust_us_icon', :class => 'sprite', :alt => 'You can trust us!'
+      - bicon_img = image_tag '/images/transparent.gif', :id => 'our_home_buyers_icons', :class => 'sprite', :alt => 'About Our Home Buyers'
+      = link_to bicon_img, about_path()
       %div#tu_contentC.bottom_contentC
         %h1
-          = image_tag '/images/transparent.gif', :id => 'trust_us_title', :class => 'sprite', :alt => 'Trust Us'
+          - btitle_img = image_tag '/images/transparent.gif', :id => 'our_home_buyers_title', :class => 'sprite', :alt => 'Our Home Buyers'
+          = link_to btitle_img, about_path()
         %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          Across the US, our certified professional home buyers give real estate owners cash offers for their homes.
 
         %p
-          = link_to '__Fix Link__', ''
-          = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
+          = link_to 'Learn About Us', about_path()
+          = image_tag '/images/transparent.gif', :class => 'sprite rArr'
 
     %div.yui3-u-7-24
-      = image_tag '/images/transparent.gif', :id => 'resources_icon', :class => 'sprite', :alt => 'Available Resources'
+      - ricon_img = image_tag '/images/transparent.gif', :id => 'seller_resources_icon', :class => 'sprite', :alt => 'Seller Resources'
+      = link_to ricon_img, guides_path()
       %div#rs_contentC.bottom_contentC
         %h1
-          = image_tag '/images/transparent.gif', :id => 'resources_title', :class => 'sprite', :alt => 'Resources'
+          - rtitle_img = image_tag '/images/transparent.gif', :id => 'seller_resources_title', :class => 'sprite', :alt => 'Seller Resources'
+          = link_to rtitle_img, guides_path()
         %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis
+          Our free guides give home sellers the tools they need to make informed home sale decisions
 
         %p
-          = link_to '__Fix Link__', ''
+          = link_to 'Read Seller Guides', guides_path()
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
 
 
@@ -65,13 +71,17 @@
     %div.yui3-u-1-2
       = image_tag '/images/transparent.gif', :id => 'other_others_quote', :class => 'sprite', :alt => 'Unlike Other Real Estate Investors...'
       %p
-        \...Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+        The experienced home buyers at eHouseOffers meet unparalleled financial and real estate qualifications. Their
+        honesty & helpfulness make informed home sales easy.
+
       %p.author
         Cleveland M, Seattle WA
 
     %div.yui3-u-1-2
       = image_tag '/images/transparent.gif', :id => 'top_pick_quote', :class => 'sprite', :alt => 'A Top Pick to Sell Your House'
       %p
-        \...Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in 
+        It was exactly what we were looking for. We got a cash offer as well as a ton of information to help us if we
+        decided not to sell. We accepted and closed 12 days later!
+
       %p.author
-        Cleveland M, Seattle WA
+        Amy, San Jose CA

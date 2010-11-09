@@ -18,6 +18,7 @@ Ehouseoffers::Application.routes.draw do
   match '/about', :to => 'home#about'
   match '/terms_of_service', :to => 'home#terms', :as => 'terms'
 
+  match '/what_we_do', :to => 'home#what_we_do'
   root :to => 'home#home'
   match '/', :to => 'home#home', :as => 'home'
 end

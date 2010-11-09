@@ -4,6 +4,10 @@ class ApplicationController < ActionController::Base
   # make these available to the views
   helper_method :active_section?
 
+  def layout
+    request.xhr? ? false : 'application'
+  end
+
   def active_section(section)
     @active_section = section
   end

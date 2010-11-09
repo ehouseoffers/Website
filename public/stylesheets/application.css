@@ -9,7 +9,7 @@ body {
 }
 /* ----------------- Header -------------- */
 #headerC {
-    height   : 95px;
+    height   : 90px;
     position : relative;
 }
 #headerC img#main_logo  {
@@ -20,13 +20,32 @@ body {
     left : 12px;
     top  : 18px;
 }
+#headerC div#request_offerC  {
+    position : absolute;
+    right : 220px;
+    top   : 33px;
+    width : 333px;
+    text-align : right;
+}
+div#request_offerC p  {
+    color : #57662f;
+    font-size : .8em;
+    margin-top : 7px;
+    line-height : 1em;
+}
+div#request_offerC img#request_offer  {
+    background-position: -762px -290px;
+    height : 37px;
+    width  : 99px;
+}
+
 #headerC img#free_consult {
     background-position : -312px -289px;
     width  : 196px;
     height : 34px;
     position : absolute;
-    right : 5px;
-    top   : 38px;
+    right : 14px;
+    top   : 35px;
 }
 /* ------------------ Menu --------------- */
 #menuC {
