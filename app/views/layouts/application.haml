@@ -39,7 +39,7 @@
         = yield(:page_title)
 
       - flash.each do |key, msg|
-        = render :partial => 'shared/user_notice', :locals => {:klass => key, :msg => msg}
+        = render :partial => 'shared/user_notice', :locals => {:klass => key, :msg => msg, :timeout => 5000}
 
       = yield
     = image_tag '/images/transparent.gif', :id => 'bottom', :class => 'app_sprite'

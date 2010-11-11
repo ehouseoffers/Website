@@ -1,0 +1,13 @@
+
+div.reasonC {}
+.reason_imageC h1 {
+    color : #84963a;
+    font-size : 1.3em;
+    font-weight : bold;
+    margin : -2px 0 5px 0;
+}
+.reason_contentC p {
+    color : #666;
+    font-size : .85em;
+    line-height : 1.4em;
+}

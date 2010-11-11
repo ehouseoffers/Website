@@ -1,0 +1,6 @@
+:ruby
+  copy_code_img = image_tag reason.photo.url, :alt => "eHouseOffers.com: #{reason.title}"
+
+= link_to(copy_code_img, :controller => :reasons_to_sell, :action => :show, :id => reason.title_for_url, :only_path => false)
+%br>
+%span{:style => "font-size:.85em;color:#666"}= raw "Powered by #{ link_to 'eHouseOffers.com', :controller => :reasons_to_sell, :action => :index, :only_path => false }"

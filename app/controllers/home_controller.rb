@@ -16,4 +16,8 @@ class HomeController < ApplicationController
   
   def terms
   end
+  
+  def generate_url_friendly_string
+    render :text => params[:string].make_url_friendly
+  end
 end

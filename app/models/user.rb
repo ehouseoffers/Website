@@ -1,4 +1,6 @@
 class User < ActiveRecord::Base
+  has_many :guides
+  has_many :reasons_to_sell, :class_name => 'ReasonToSell'
   has_many :seller_listings
   has_many :phone_numbers do 
     def primary  ; self.detect{|pn| pn.primary} ; end

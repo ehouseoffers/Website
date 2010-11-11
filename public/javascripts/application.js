@@ -63,5 +63,15 @@ jQuery.extend(jQuery, {
         } catch(e) {
             alert(e);
         }
-    }
+    },
+
+    // HTML Encode -- trying to keep it similar to rail's h()
+    h : function(string) {
+        return $(document.createElement('span')).text(string).html();
+    },
+
+    preserve_newlines : function(string) {
+        return $.h(string).replace(/\n/gi, '<br />');
+    },
+
 });

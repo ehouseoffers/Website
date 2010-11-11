@@ -7,16 +7,49 @@
   klass = %w[debug notice warning error].include?(klass.to_s) ? klass.to_s : 'notice'
   model_obj = !model_obj ? nil : model_obj
 
+  # Timeout can be an integer (expiry in milliseconds) or false (if you do not want it to timeout).
+  # jquery.growl defaults true into something like 2 seconds.
+  timeout = timeout.nil? ? false : timeout
+
+  extra_js('jquery.growl')
+  extra_css('jquery.growl')
+
 - unless msg.empty?
-  %div.user_noticeC{:class => klass}
-    %div.gutter
-      %h2= msg
+  :javascript
+    $.Growl.show({
+      message : $.h("#{msg}"),
+      icon    : $.h("#{klass}"),
+      timeout : #{timeout}
+    });
 
 - if model_obj && model_obj.errors.any?
-  %div.user_noticeC.error
-    %div.gutter
-      %h2
-        = "#{pluralize(model_obj.errors.count, "error")} prohibited this record from being saved:"
-      %ul
-        - model_obj.errors.full_messages.each do |msg|
-          %li= msg
+  %div{:style => 'display:none'}
+    %h2= "#{pluralize(model_obj.errors.count, "error")} prohibited this record from being saved:"
+    %ul
+      - model_obj.errors.full_messages.each do |msg|
+        %li= msg
+
+  :javascript
+    $.Growl.show({
+      message : $("div##{id}").html(),
+      icon    : $.h("#{klass}"),
+      timeout : #{timeout}
+    });
+
+
+
+-# %noscript
+-#   - unless msg.empty?
+-#     %div.user_noticeC{:class => klass}
+-#       %div.gutter
+-#         %h2= msg
+-# 
+-#   - if model_obj && model_obj.errors.any?
+-#     %div.user_noticeC.error
+-#       %div.gutter
+-#         %h2
+-#           = "#{pluralize(model_obj.errors.count, "error")} prohibited this record from being saved:"
+-#         %ul
+-#           - model_obj.errors.full_messages.each do |tmp_msg|
+-#             %li= tmp_msg
+-# 

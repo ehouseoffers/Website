@@ -14,6 +14,9 @@ tinyMCE.init({
     theme_advanced_statusbar_location : "bottom",
     theme_advanced_resizing           : true,
 
+    // width: "830",
+    height : '500',
+
     // Drop lists for link/image/media/template dialogs
     template_external_list_url : "js/template_list.js",
     external_link_list_url     : "js/link_list.js",

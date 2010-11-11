@@ -1,0 +1,14 @@
+:ruby
+  copy_code = render 'reasons_to_sell/copy_image_code_create', :reason => reason
+
+%div.box
+  %div.gutter
+    %strong Share this image on your website
+
+    %textarea.copy_image_code= copy_code
+    %div.footnote
+      click the below icon to copy the above embed code
+    = render 'shared/clippy', :text => copy_code
+    -#= image_tag '/images/transparent.gif', :id => 'copy_embed_code_btn', :class => 'reasons_sprite', :alt => 'Copy Embed Code'
+
+

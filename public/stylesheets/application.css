@@ -121,6 +121,7 @@ html* div#content { font-size : .9em; }
     position : relative;
     color : #666666;
     font-size : .8em;
+    margin-bottom : 20px;
 }
 html* #footerC { font-size : .7em; }
 #footerC #footer {
@@ -202,9 +203,9 @@ div#f_right {
     border : 1px solid #d4e3a9;
     color : #7a7a7a;
     background-color : #f0f3da;
-    border-radius : 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border-radius : 10px;
+    -moz-border-radius: 10px;
+    -webkit-border-radius: 10px;
 }
 .box div.gutter {
     padding : 17px 15px;
@@ -323,3 +324,28 @@ li#crumb_home .rArr {
     width  : 14px;
     vertical-align : middle;
 }
+
+/* shared/other_resources */
+.other_resourcesC {
+    color : #7A7A7A;
+}
+.other_resourcesC h3 {
+    font-weight : bold;
+    margin-bottom : 9px;
+}
+.other_resourcesC .other_resourceC {
+    text-align : center;
+}
+.other_resourceC p,
+.other_resourceC div {
+    text-align : left;
+    margin : 0 6px;
+    font-size : .85em;
+}
+.other_resourceC a.title       { color : #7A7A7A; }
+.other_resourceC a.title:hover { color : #333333; text-decoration : none; }
+
+
+
+
+

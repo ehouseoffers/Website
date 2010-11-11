@@ -1,11 +1,27 @@
 :ruby
-  extra_css('reasons_to_sell')
+  extra_js('reasons_to_sell')
+  extra_css('reasons_to_sell','pagination')
+
+%hr#reason_page.space
+
+= admin_area do
+  = link_to "Create New Reason", new_reason_path()
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:reasons_to_sell, nil]]
 
-%div.xs_two_col.yui3-g
-  %div#left_col.yui3-u-33-48
-    left col
+- if @reasons.empty?
+  %h2 We're Sorry
+  %p But there are no articles currently available. Please check back later.
 
-  %div#right_col.yui3-u-7-24
-    = render :partial => "shared/seller_signup"
+- else
+  %div.xs_two_col.yui3-g
+    %div#left_col.yui3-u-33-48
+      = render "shared/slider", :id => 'reasons_slider', :collection => @slider_reasons
+      %hr.space
+      = render :partial => "reason", :collection => @reasons, :locals => {:full_article => false}, :spacer_template => 'shared/spacers/guides_index'
+      %hr.space
+      = will_paginate @reasons
+
+    %div#right_col.yui3-u-7-24
+      = render :partial => "shared/seller_signup"
+

@@ -1,0 +1,44 @@
+:ruby
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init')
+
+  url    = @reason.new_record? ? reasons_path : object_path(@reason)
+  method = @reason.new_record? ? :post : :put
+
+= form_for @reason, :html => {:multipart => true}, :url => url, :method => method do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @reason}
+
+  .field
+    = f.label :title
+    = f.text_field :title
+
+  - if @reason.new_record?
+    .field
+      %label{:for => :reason_to_sell_title_for_url}
+        URL Friendly Title
+        %span{:style => 'margin-left:5px;font-size:.85em'}
+          = link_to 'generate from title', generate_url_friendly_string_path, :id => 'generate_string'
+
+      = f.text_field :title_for_url
+  - else
+    .field
+      = f.label :title_for_url
+      %div.disabled_form_field= @reason.title_for_url
+
+
+  .field
+    = f.label :content
+    = f.text_area :content
+
+  .yui3-g
+    - if @reason.photo?
+      = image_tag @reason.photo.url, :style => 'margin-right:10px'
+
+    .yui3-u-1-2
+      .field
+        = f.label :photo, "#{@reason.photo? ? 'Replace Current' : 'Upload'} Photo"
+        = f.file_field :photo
+
+  .actions
+    = f.submit 'Save'
+    = link_to 'Cancel', reasons_path
+    

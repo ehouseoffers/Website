@@ -75,33 +75,38 @@ $(function() {
 			var leftValue    = $(".scrollContainer").css("left");
 			var movement	 = move_right ? parseFloat(leftValue, 10) - movingDistance : parseFloat(leftValue, 10) + movingDistance;
 
+            // The first panel stays in the far left slot, so if we are move from the second panel to the first or the
+            // first to the second, there is no movement, only resizing.
+            if ( next <= 2 ) movement = 0;
+            if ( next == totalPanels || (!move_right && next == (totalPanels-1)) ) movement = parseFloat(leftValue, 10);
+
 			$(".scrollContainer")
-				.stop()
-				.animate({
-					"left": movement
-				}, function() {
-					$(".slider").data("currentlyMoving", false);
-				});
-			
+			.stop()
+			.animate({
+				"left": movement
+			}, function() {
+				$(".slider").data("currentlyMoving", false);
+			});
+
             scroll_to(move_right, curPanel);
 
 			returnToNormal("#panel_"+curPanel);
 			growBigger("#panel_"+next);
-			
+		
 			curPanel = next;
-			
+
 			//remove all previous bound functions
 			$("#panel_"+(curPanel+1)).unbind();	
-			
+		
 			//go forward
 			$("#panel_"+(curPanel+1)).click(function(){ change(true); });
-			
+		
             //remove all previous bound functions															
 			$("#panel_"+(curPanel-1)).unbind();
-			
+		
 			//go back
 			$("#panel_"+(curPanel-1)).click(function(){ change(false); }); 
-			
+		
 			//remove all previous bound functions
 			$("#panel_"+curPanel).unbind();
 		}

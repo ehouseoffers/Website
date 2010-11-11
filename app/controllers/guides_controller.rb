@@ -18,16 +18,16 @@ class GuidesController < ApplicationController
   end
 
   def show
-    @guide = Guide.find_by_url_friendly_title(params[:id])
+    @guide = Guide.find_by_title_for_url(params[:id])
   end
   
   def create
-    create! { guide_path(@guide.url_friendly_title) }
+    create! { guide_path(@guide.title_for_url) }
     flash.clear
   end
 
   def update
-    update! { guide_path(@guide.url_friendly_title) }
+    update! { guide_path(@guide.title_for_url) }
     flash.clear
   end
 

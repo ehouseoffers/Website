@@ -7,16 +7,20 @@ h1,h2 {
     margin-bottom : 20px;
 }
 h2 { font-size : 1.2em; margin-bottom : 15px; }
-.field {}
+.field {
+    margin-bottom : 20px;
+}
 .field label {
     display : block;
-    color : #666;
+    color : #333;
+    font-weight : bold;
 }
 .field label[data-type="checkbox"] {
     display : inline;
     margin-left : 5px;
 }
 
+div.disabled_form_field,
 .field textarea,
 .field input[type="text"],
 .field input[type="password"] {
@@ -25,12 +29,15 @@ h2 { font-size : 1.2em; margin-bottom : 15px; }
     color   : #333;
     width   : 700px;
 }
+div.disabled_form_field {
+    background-color : #ececec;
+}
 .field textarea {
     height : 200px;
 }
 
 .actions {
-    margin : 10px 0;
+    margin : 10px 0 0 0;
 }
 
 /* show */

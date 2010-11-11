@@ -8,7 +8,7 @@
 
 %div.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    = render "shared/slider", :id => 'trends_slider', :collection => @guides
+    = render "shared/slider", :id => 'guides_slider', :collection => @guides
     %hr.space
     = render :partial => "guide", :collection => @guides, :locals => {:teaser => true}, :spacer_template => 'shared/spacers/guides_index'
 

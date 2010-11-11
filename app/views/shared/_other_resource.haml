@@ -1,0 +1,8 @@
+
+%div.other_resourceC.yui3-u-1-4
+  = link_to image_tag(resource.photo.url(:small), :alt => resource.title), object_path(resource)
+  %p
+    = link_to resource.title, object_path(resource), :class => 'title'
+  %p
+    = link_to 'Share Image', email_image_reason_path(resource.title_for_url)
+    

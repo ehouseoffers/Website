@@ -50,4 +50,14 @@ module ApplicationHelper
     content_tag(:div, :class => "admin", &block) if user_signed_in? && current_user.admin?
   end
 
+  # For all it's clever little things, Rails does not have a way to
+  # get an absolute image path for image_tag which, for emails, is a
+  # necessity.
+  # Params
+  #   image   : path (from the /images directory) to the image
+  #   options : any options which image_tag will take. See:
+  #             http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#M001690
+  # def image_tag_url(image, options)
+  #   image_tag "#{root_url}images/#{image}", options
+  # end
 end
