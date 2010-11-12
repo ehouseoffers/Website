@@ -51,6 +51,7 @@ form input[type="image"] {
     font-size : .8em;
     line-height : 16px;
     margin-bottom : 8px;
+    margin-right : -10px;
 }
 .seller_signup_boxC strong {
     display : block;
