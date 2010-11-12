@@ -1,4 +1,8 @@
 :ruby
+  h1_title = 'Professional Home Buyers'
+  header(:title, h1_title)
+  # header(:description, 'Get description from Sam')
+
   extra_css('home')
 
 %div#homeC.yui3-g
@@ -7,7 +11,7 @@
     %div#welcome_message_opacity &nbsp;
     %div#welcome_message
       %h1
-        = image_tag '/images/transparent.gif', :id => 'welcome_title', :class => 'sprite', :alt => 'Welcome to eHouseOffers!'
+        = image_tag '/images/transparent.gif', :id => 'welcome_title', :class => 'sprite', :alt => h1_title
       %p
         At eHouseOffers you’ll find resources for home sellers, information on real estate trends & a community of
         professional home buyers.

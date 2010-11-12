@@ -1,20 +1,15 @@
-:ruby
-  teaser = teaser.present? ? teaser : false
-  truncate_at = truncate_at.present? ? truncate_at : 275
 
 %div.guideC.yui3-g
   %div.guide_imageC.yui3-u-11-48
-    = image_tag guide.photo.url(:small)
+    = link_to image_tag(guide.photo.url(:small), :alt => guide.title), object_path(guide)
 
   %div.guide_contentC.yui3-u-3-4  
-    %h1= raw guide.title
-    %p
-      - if teaser
-        = guide.content.strip_html.truncate(truncate_at)
-      - else
-        = raw guide.content
+    %h1
+      = link_to raw(guide.title), object_path(guide)
 
-    - if teaser
-      %p
-        = link_to image_tag('/images/transparent.gif', :class => 'read_full_article', :alt => 'Read Full Article'), guide_path(guide.title_for_url)
+    %p.teaser
+      = guide.teaser
+
+    = link_to image_tag('/images/transparent.gif', :class => 'read_full_article', :alt => 'Read Full Article'), guide_path(guide.title_for_url)
     
+

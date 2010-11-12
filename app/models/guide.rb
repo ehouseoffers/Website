@@ -1,9 +1,13 @@
 class Guide < ActiveRecord::Base
   belongs_to :user
   
+  # will_paginate : https://github.com/mislav/will_paginate
+  cattr_reader :per_page
+  @@per_page = 10
+
   # TODO -- younker [2010-11-09 10:51]
   # move photo styles, size and types into config
-  has_attached_file :photo, :styles => { :small => '130x130>', :medium => "200x200>" },
+  has_attached_file :photo, :styles => { :small => '130x130>', :medium => "200x200>", :large => '300x300>' },
                     :url  => "/assets/guides/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/guides/:id/:style/:basename.:extension"
   
@@ -11,7 +15,10 @@ class Guide < ActiveRecord::Base
   validates_attachment_size :photo, :less_than => 500.kilobytes 
   validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
 
-  before_save :title do
+  validates_presence_of :user_id, :content, :title
+  validates :title_for_url, :uniqueness => true, :presence => true
+
+  before_validation :title do
     if (self.new_record? && self.title_for_url.blank?) || self.title_for_url.blank?
       write_attribute(:title_for_url, self.title.make_url_friendly)
     end

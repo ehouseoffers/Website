@@ -1,5 +1,9 @@
 class ReasonToSell < ActiveRecord::Base
   belongs_to :user
+
+  # will_paginate : https://github.com/mislav/will_paginate
+  cattr_reader :per_page
+  @@per_page = 10
   
   # TODO -- younker [2010-11-09 10:51]
   # move photo styles, size and types into config
@@ -19,11 +23,6 @@ class ReasonToSell < ActiveRecord::Base
       write_attribute(:title_for_url, self.title.make_url_friendly)
     end
   end
-
-  # will_paginate : https://github.com/mislav/will_paginate
-  cattr_reader :per_page
-  @@per_page = 10
-
 
   # Do NOT update unless it is a new record. Once it is saved, we do not modify so that if any search engines have
   # indexed this guide using the url friendly title string, we do not hose ourself by changing the path to it

@@ -3,4 +3,4 @@
     %li.crumb{:id => "crumb_#{crumb[0].to_s.downcase.dasherize}"}
       = image_tag '/images/transparent.gif', :class => 'rArr', :alt => '*'
       
-      = link_to_unless crumb[1].nil?, crumb[0].to_s.gsub('_',' ').capitalize, crumb[1]
+      = link_to_unless crumb[1].nil?, crumb[0].to_s.gsub('_',' ').titleize, crumb[1]

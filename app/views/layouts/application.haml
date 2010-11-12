@@ -24,7 +24,7 @@
     :javascript
       var AUTH_TOKEN = encodeURIComponent(#{form_authenticity_token.inspect});
 
-%body
+%body{:class => @frame || 'full'}
   %div#headerC
     = render :partial => 'layouts/application/header'
 
@@ -33,7 +33,7 @@
     
   %div#mainC
     %div#tab_arrow &nbsp;
-    = image_tag '/images/transparent.gif', :id => 'top', :class => 'app_sprite'
+    = image_tag '/images/transparent.gif', :id => 'top', :class => 'app_sprite', :alt => yield(:banner_title)
     %div#content
       - if content_for?(:page_title)
         = yield(:page_title)

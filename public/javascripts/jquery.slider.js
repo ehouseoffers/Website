@@ -131,9 +131,10 @@ $(function() {
     }
 	
 	// Set up "Current" panel and next and prev
-    growBigger("#panel_2");
-    var curPanel = 2;
-    scroll_to(true, curPanel);
+    growBigger("#panel_1");
+    var curPanel = 1;
+    // Use if you are going to default to #panel_2 onload
+    // scroll_to(true, curPanel);
 	
 	$("#panel_"+(curPanel+1)).click(function(){ change(true); });
 	$("#panel_"+(curPanel-1)).click(function(){ change(false); });

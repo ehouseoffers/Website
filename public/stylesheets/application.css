@@ -274,6 +274,11 @@ input[type="checkbox"] {
     margin-right : 5px;
 }
 
+p.sorry_no_results {
+    padding : 0 15px;
+    color : #444444;
+}
+
 
 /* The most common, x-site content two-col setup */
 .xs_two_col .left_col  { }
@@ -324,6 +329,15 @@ li#crumb_home .rArr {
     width  : 14px;
     vertical-align : middle;
 }
+
+/* ------------------ Layout/Frame types ----------------- */
+/* Minimal -- A minimal @frame consists only of the header logo & main body */
+body.minimal #headerR,
+body.minimal #menuC,
+body.minimal #footerC {
+    display : none;
+}
+
 
 /* shared/other_resources */
 .other_resourcesC {

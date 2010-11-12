@@ -44,6 +44,17 @@
 /*  background-repeat:no-repeat;*/
 }
 
+#growlcontainer h2 {
+    color : #fff;
+    border-bottom : 1px dotted #fff;
+    margin-bottom : 5px;
+    padding-bottom : 5px;
+}
+#growlcontainer li {
+    font-size : .9em;
+    margin-bottom : 5px;
+}
+
 /****** growl icons ******* 
 --------------------------*/
 #growlicon {

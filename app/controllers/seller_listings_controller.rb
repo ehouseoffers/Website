@@ -3,6 +3,8 @@ class SellerListingsController < ApplicationController
   # ensure the user is logged in
   # before_filter :authenticate_user!, :except => [:index]
 
+  layout :minimal_layout
+
   def index
     @seller_listings = SellerListing.all
 

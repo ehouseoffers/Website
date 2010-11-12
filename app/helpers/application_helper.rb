@@ -7,7 +7,9 @@ module ApplicationHelper
   #   header(:title, "Administration Functions")
   def header(name, *content)
     case name
-    when :title  then content_for :header_title do "#{content.to_s} : eHouseOffers.com" end
+    when :title
+      content_for :header_title do "#{content.to_s} : eHouseOffers.com" end
+      content_for :banner_title do "#{content.to_s}" end
     else content_for name do content.to_s end
     end
   end

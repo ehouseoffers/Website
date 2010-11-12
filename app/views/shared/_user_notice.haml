@@ -23,7 +23,8 @@
     });
 
 - if model_obj && model_obj.errors.any?
-  %div{:style => 'display:none'}
+  - id = rand(12)
+  %div{:id => id, :style => 'display:none'}
     %h2= "#{pluralize(model_obj.errors.count, "error")} prohibited this record from being saved:"
     %ul
       - model_obj.errors.full_messages.each do |msg|

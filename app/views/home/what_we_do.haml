@@ -4,7 +4,8 @@
 %div#what_we_doC
   %div#c_header.clearfix
     = image_tag '/images/what_we_do/get-offer-on-your-house-today.png', :id => 'get_an_offer_title', :alt => 'Get an Offer on Your House Today!'
-    = image_tag '/images/what_we_do/get-cash-home-offer-button.png', :id => 'get_an_offer_button', :alt => 'Click to get a cash home offer'
+    - offer_btn = image_tag '/images/what_we_do/get-cash-home-offer-button.png', :id => 'get_an_offer_button', :alt => 'Click to get a cash home offer'
+    = link_to offer_btn, new_seller_listing_path
 
   = image_tag '/images/what_we_do/video_placeholder.png', :width => '598', :height => '398'
 

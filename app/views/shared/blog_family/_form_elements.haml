@@ -1,0 +1,48 @@
+:ruby
+  # For use by the sections of the site that have the same blog type attributes (guides, reasons for selling, etc)
+  # You need to call this inside a form_for block. For example, see app/views/guides/_form.html.haml
+
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init','jquery.ketchup','blog_family_form_init')
+  extra_css('scaffold')
+
+
+= render :partial => 'shared/user_notice', :locals => {:model_obj => model_obj}
+
+.field
+  = f.label :title, :for => 'blog_title'
+  = f.text_field :title, :id => 'blog_title'
+
+- if model_obj.new_record?
+  .field
+    %label{:for => :title_for_url}
+      URL Friendly Title
+      %span{:style => 'margin-left:5px;font-size:.85em'}
+        = link_to 'generate from title', generate_url_friendly_string_path, :id => 'generate_string'
+
+    = f.text_field :title_for_url, :id => 'title_for_url'
+- else
+  .field
+    = f.label :title_for_url
+    %div.disabled_form_field= model_obj.title_for_url
+
+.field
+  = f.label :teaser
+  = f.text_field :teaser, :maxlength => 165
+
+.field
+  = f.label :content
+  = f.text_area :content
+
+.yui3-g
+  - if model_obj.photo?
+    = image_tag model_obj.photo.url, :style => 'margin-right:10px'
+
+  .yui3-u-1-2
+    .field
+      = f.label :photo, "#{model_obj.photo? ? 'Replace Current' : 'Upload'} Photo"
+      = f.file_field :photo
+
+.actions
+  = f.submit 'Save'
+  = link_to 'Cancel', :back
+  

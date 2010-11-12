@@ -1,10 +1,12 @@
 :ruby
-  extra_js('tiny_mce/tiny_mce','tiny_mce_init')
-
   url    = @reason.new_record? ? reasons_path : object_path(@reason)
   method = @reason.new_record? ? :post : :put
 
 = form_for @reason, :html => {:multipart => true}, :url => url, :method => method do |f|
+  = render :partial => "shared/blog_family/form_elements", :locals => {:f => f, :model_obj => @reason}
+
+
+-#
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @reason}
 
   .field
@@ -24,6 +26,9 @@
       = f.label :title_for_url
       %div.disabled_form_field= @reason.title_for_url
 
+  .field
+    = f.label :teaser
+    = f.text_field :teaser, :maxlength => 165
 
   .field
     = f.label :content
