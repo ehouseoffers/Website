@@ -8,6 +8,12 @@ class ApplicationController < ActionController::Base
     request.xhr? ? false : 'application'
   end
 
+  def minimal_layout
+    @frame = :minimal
+    layout
+  end
+
+
   def active_section(section)
     @active_section = section
   end
