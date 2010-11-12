@@ -1,4 +1,7 @@
 $(document).ready(function() {
+
+    if ( $('form').length > 0 ) $('form').ketchup().default_form_values();
+
     var modals = $('.uso_modal');
     if ( modals.length > 0 ) {
         $.load_external_resource('/javascripts/jquery.modal.js');
@@ -10,7 +13,6 @@ $(document).ready(function() {
         if ( $.present(resource) ) $.load_external_resource(resource);
 
         $.get($(this).attr('href'), function(resp){
-            // $.modal(resp);
             $.modal(resp, {
                 onOpen : function (dialog) {
                     dialog.overlay.fadeIn('slow', function () {
