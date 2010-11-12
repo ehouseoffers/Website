@@ -27,10 +27,9 @@
 (function($) {
   var validate = 'validate';
   
-  
   function squeeze(form) {
     var fields = fieldsToValidate(form);
-    
+
     for(var i = 0; i < fields.length; i++) {
       bindField(fields[i]);
     }
@@ -61,6 +60,16 @@
     return fields;
   }
   
+  /* my own custom stuff, should probably be a callback or something and not right in the middle of this plugin */
+  function prepend_validation_button(field, state) {
+    var klass = state == 'invalid' ? options.invalidClass : options.validClass;
+    $(field).parent().css('position', 'relative');
+    $(field).removeClass().addClass(klass);
+
+    var fvi = $('div.form_validation_icon', $(field).parent());
+    if ( fvi.length==0 ) fvi = $(document.createElement('div'));
+    fvi.removeClass().html('&nbsp;').addClass("form_validation_icon "+ klass).insertBefore(field);
+  }
   
   function bindField(field) {
     var validations = extractValidations(field);
@@ -68,25 +77,28 @@
     var contOl = errorContainer.find('ol');
     var visibleContainer = false;
     
-    $(window).resize(function() {
-      options.initialPositionContainer(errorContainer, field);
-    }).trigger('resize');
+    // $(window).resize(function() {
+    //   options.initialPositionContainer(errorContainer, field);
+    // }).trigger('resize');
     
 
     field.blur(function() {
       var errList = buildErrorList(validations, field);
-  
+
       if(errList.length) {
+        prepend_validation_button(field, 'invalid');
         if(!visibleContainer) {
           contOl.html(errList);
           options.showContainer(errorContainer);
           visibleContainer = true;
+          setTimeout(function(){ visibleContainer = false }, options.errorTimeout);
         } else {
           contOl.html(errList);
         }
-    
+        
         options.positionContainer(errorContainer, field);
       } else {
+        prepend_validation_button(field, 'valid');
         options.hideContainer(errorContainer);
         visibleContainer = false;
       }
@@ -230,6 +242,7 @@
   
   
   var showContainer = function(errorContainer) {
+    console.log('show container');
     errorContainer.fadeIn();
   };
   
@@ -256,12 +269,16 @@
   
   $.fn.ketchup.messages = {};
   $.fn.ketchup.validations = [];
+  $.ketchup_default_error_timeout = 5000;
   var options;
 
   $.fn.ketchup.defaults = {
+    errorTimeout:             $.ketchup_default_error_timeout,
     validateOnblur:           false,
     validationAttribute:      'class',
     errorContainer:           errorContainer,
+    invalidClass:             'invalid',
+    validClass:               'valid',
     initialPositionContainer: initialPositionContainer,
     positionContainer:        positionContainer,
     showContainer:            showContainer,

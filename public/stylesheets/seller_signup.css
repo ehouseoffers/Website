@@ -70,7 +70,7 @@ form div#number.field,
 form input#seller_listing_phone_number_number,
 form div#address1.field,
 form input#seller_listing_address_address1,
-form div#zip.field,
+form div#address_zip.field,
 form input#seller_listing_address_zip {
      width : 157px;
 }

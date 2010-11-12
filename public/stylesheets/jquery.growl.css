@@ -6,6 +6,8 @@
   font-size: 1.1em;
   width: 300px;
 }
+#growlcontainer ol li { list-style : decimal inside none; }
+
 .growlstatus{
   position: relative;
   background : url(/images/opacity_60.png) repeat scroll 0px 0px transparent;

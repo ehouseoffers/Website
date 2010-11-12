@@ -2,7 +2,7 @@
   # For use by the sections of the site that have the same blog type attributes (guides, reasons for selling, etc)
   # You need to call this inside a form_for block. For example, see app/views/guides/_form.html.haml
 
-  extra_js('tiny_mce/tiny_mce','tiny_mce_init','jquery.ketchup','blog_family_form_init')
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog_family_form_init')
   extra_css('scaffold')
 
 
@@ -10,7 +10,7 @@
 
 .field
   = f.label :title, :for => 'blog_title'
-  = f.text_field :title, :id => 'blog_title'
+  = f.text_field :title, :id => 'blog_title', 'data-validation' => 'validate(required)'
 
 - if model_obj.new_record?
   .field
@@ -20,6 +20,7 @@
         = link_to 'generate from title', generate_url_friendly_string_path, :id => 'generate_string'
 
     = f.text_field :title_for_url, :id => 'title_for_url'
+
 - else
   .field
     = f.label :title_for_url
@@ -27,11 +28,11 @@
 
 .field
   = f.label :teaser
-  = f.text_field :teaser, :maxlength => 165
+  = f.text_field :teaser, :maxlength => 165, 'data-validation' => 'validate(required)'
 
 .field
   = f.label :content
-  = f.text_area :content
+  = f.text_area :content, 'data-validation' => 'validate(required)'
 
 .yui3-g
   - if model_obj.photo?

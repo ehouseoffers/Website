@@ -152,7 +152,7 @@ div#welcome_message p {
 }
 form#new_seller_listing .field {
     margin-bottom : 10px;
-    width : 330px;
+    width : 320px;
 }
 form#new_seller_listing label {
 /*    display : inline-block;*/
@@ -163,6 +163,7 @@ form#new_seller_listing input {
     width : 320px;
 }
 
+div#email, div#number, div#address1, div#address_zip { clear : both; }
 form#new_seller_listing div#first_name.field,
 form#new_seller_listing input#seller_listing_user_first_name,
 form#new_seller_listing div#last_name.field,

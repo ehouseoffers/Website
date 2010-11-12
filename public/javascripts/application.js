@@ -1,6 +1,26 @@
 $(document).ready(function() {
 
-    if ( $('form').length > 0 ) $('form').ketchup().default_form_values();
+    if ( $('form').length > 0 ) {
+      $.load_external_resource('/javascripts/jquery.ketchup.js');
+      $.load_external_resource('/javascripts/jquery.default_values.js');
+      $.load_external_resource('/stylesheets/jquery.ketchup.css');
+
+      var error_timeout = $.ketchup_default_error_timeout;
+      $('form')
+      .ketchup({
+        validationAttribute : 'data-validation',
+        errorTimeout  : error_timeout,
+        hideContainer : function(){},
+        showContainer : function(err){
+          $.Growl.show({
+            message : err.html(),
+            icon    : 'error',
+            timeout : error_timeout
+          });
+          setTimeout(function(){ $.visibleContainer = false; }, error_timeout);
+        }})
+      .default_form_values();
+    }
 
     var modals = $('.uso_modal');
     if ( modals.length > 0 ) {

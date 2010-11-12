@@ -1,6 +1,4 @@
 $(document).ready(function() {
-    // $('form').ketchup().default_form_values();
-
     $('a#generate_string').click(function(){
         var title = $('input#blog_title').val();
         if ( $.present(title) ) {
