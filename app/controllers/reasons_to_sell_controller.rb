@@ -1,15 +1,12 @@
 class ReasonsToSellController < ApplicationController
 
-  # before_filter { |app_cont| app_cont.active_section(:reasons) }
+  before_filter :redirect_unless_admin, :except => [:index, :show]
+  before_filter :authenticate_user!,    :except => [:index, :show]
+  before_filter :set_seller_listing,    :only => [:index, :show]
 
-  # Admin Only!
-  before_filter :authenticate_user!, :except => [:index, :show]
-
-  # Needed for new seller listing form
-  before_filter :set_seller_listing,  :only => [:index, :show]
+  before_filter { |app_cont| app_cont.active_section(:reasons) }
 
   def index
-    active_section(:reasons)
     @reasons = ReasonToSell.paginate :page => params[:page], :order => 'created_at desc'
     @slider_reasons = ReasonToSell.where("id not in ('?')", @reasons.collect{|r| r.id}).order('created_at desc')
   end

@@ -1,3 +1,4 @@
+
 /* forms */
 h1,h2 {
     font-size : 1.4em;
@@ -55,3 +56,16 @@ div.content {
     margin-bottom : 20px;
 }
 */
+
+/* index */
+th, td {
+    padding : 4px;
+    border-color : #999;
+}
+th {
+    font-weight : bold;
+    color : #123;
+}
+td {
+    color : #333;
+}

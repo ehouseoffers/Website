@@ -1,4 +1,7 @@
 class AddressesController < ApplicationController
+
+  before_filter :redirect_unless_admin
+
   # GET /addresses
   # GET /addresses.xml
   def index

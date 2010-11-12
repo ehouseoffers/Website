@@ -71,21 +71,4 @@
   %hr.indent
   %hr.space
   
-  %div#quotes_rowC
-    %div.yui3-u-1-2
-      = image_tag '/images/transparent.gif', :id => 'other_others_quote', :class => 'sprite', :alt => 'Unlike Other Real Estate Investors...'
-      %p
-        The experienced home buyers at eHouseOffers meet unparalleled financial and real estate qualifications. Their
-        honesty & helpfulness make informed home sales easy.
-
-      %p.author
-        Cleveland M, Seattle WA
-
-    %div.yui3-u-1-2
-      = image_tag '/images/transparent.gif', :id => 'top_pick_quote', :class => 'sprite', :alt => 'A Top Pick to Sell Your House'
-      %p
-        It was exactly what we were looking for. We got a cash offer as well as a ton of information to help us if we
-        decided not to sell. We accepted and closed 12 days later!
-
-      %p.author
-        Amy, San Jose CA
+  = render 'shared/quotes_row'

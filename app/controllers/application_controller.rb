@@ -13,13 +13,19 @@ class ApplicationController < ActionController::Base
     layout
   end
 
-
   def active_section(section)
     @active_section = section
   end
 
   def active_section?(section)
     @active_section && @active_section.to_s.eql?(section)
+  end
+
+  def redirect_unless_admin
+    unless user_signed_in? && current_user.admin?
+      flash[:error] = 'You are not permitted to view that page.'
+      redirect_to (request.env["HTTP_REFERER"].present? ? request.env["HTTP_REFERER"] : root_path)
+    end
   end
 
   # for a given object, say a Guides object, get the show path for it (i.e. guides_path())
@@ -31,7 +37,6 @@ class ApplicationController < ActionController::Base
       obj.respond_to?(:title_for_url) ? send(path, obj.title_for_url) : send(path, obj)
     end
   end
-
 
   # Because of the widespead use of the 'seller_listings/form' partial, we need a @seller_listing object on
   # probably 80% of our pages. Additionally, that object needs to have user info when possible to pre-populate

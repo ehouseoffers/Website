@@ -1,27 +1,33 @@
+:ruby
+  extra_css('scaffold')
+
 %h1 Listing seller_listings
 
 %table
   %tr
+    %th ID
     %th User
-    %th Currently listed
+    %th Selling Reason
     %th Estimated value
     %th Asking price
     %th Load amount
-    %th Payments are current
-    %th
+    %th Time Frame (months)
+    -# %th
     %th
     %th
 
   - @seller_listings.each do |seller_listing|
     %tr
-      %td= seller_listing.user_id
-      %td= seller_listing.currently_listed
+      %td= link_to seller_listing.id, seller_listing_path(seller_listing.id)
+      %td= seller_listing.user.email
+      %td= seller_listing.selling_reason
       %td= seller_listing.estimated_value
       %td= seller_listing.asking_price
       %td= seller_listing.loan_amount
-      %td= seller_listing.payments_are_current
-      %td= link_to 'Show', seller_listing
-      %td= link_to 'Edit', edit_seller_listing_path(seller_listing)
+      %td= seller_listing.time_frame
+      -# %td= link_to 'Show', seller_listing
+      -# %td= link_to 'Edit', edit_seller_listing_path(seller_listing)
+      %td= link_to 'Edit', comp_data_seller_listing_path(seller_listing)
       %td= link_to 'Destroy', seller_listing, :confirm => 'Are you sure?', :method => :delete
 
 %br

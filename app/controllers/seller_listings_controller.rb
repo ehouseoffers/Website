@@ -1,7 +1,9 @@
 class SellerListingsController < ApplicationController
 
   # ensure the user is logged in
-  # before_filter :authenticate_user!, :except => [:index]
+  before_filter :redirect_unless_admin, :only => [:index, :edit, :destroy]
+  before_filter :authenticate_user!, :only => [:index]
+  before_filter :owner_or_admin, :except => [:index, :new, :create]
 
   layout :minimal_layout
 
@@ -94,6 +96,27 @@ class SellerListingsController < ApplicationController
     respond_to do |format|
       format.html { redirect_to(seller_listings_url) }
       format.xml  { head :ok }
+    end
+  end
+
+  private
+
+  # TODO -- younker [2010-11-12 14:35]
+  # move this into app controller and allow params to be passed (so we check ownership of an object passed in)
+  def ownder_or_admin
+    listing = SellerListing.find(params[:id])
+
+    unless user_signed_in? && (current_user.id == listing.user_id || current_user.admin?)
+      if !user_signed_in?
+        Rails.logger.warn("User tried to access page without being signed in")
+      elsif current_user.id != listing.user_id
+        Rails.logger.warn("#{current_user.to_s} tried to access a page that belongs to #{listing.user.to_s}")
+      elsif !current_user.admin?
+        Rails.logger.warn("#{current_user.to_s} needs to be an admin to access this page")
+      end
+
+      flash[:error] = 'Sorry, but you are not permitted to view that page.'
+      redirect_to new_seller_listing_path
     end
   end
 end

@@ -11,7 +11,7 @@ class SellerListing < ActiveRecord::Base
   # http://railscasts.com/episodes/26-hackers-love-mass-assignment
   # http://railscasts.com/episodes/237-dynamic-attr-accessible
   attr_accessible :user_id, :phone_number_id, :address_id, :estimated_value, :asking_price, :loan_amount,
-                  :currently_listed, :payments_are_current
+                  :selling_reason, :time_frame
 
   def initialize(args={})
     super(args)

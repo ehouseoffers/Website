@@ -4,8 +4,8 @@
   %b User:
   = @seller_listing.user_id
 %p
-  %b Currently listed:
-  = @seller_listing.currently_listed
+  %b Selling Reason:
+  = @seller_listing.selling_reason
 %p
   %b Estimated value:
   = @seller_listing.estimated_value
@@ -16,8 +16,8 @@
   %b Load amount:
   = @seller_listing.loan_amount
 %p
-  %b Payments are current:
-  = @seller_listing.payments_are_current
+  %b Sell Time:
+  = @seller_listing.time_frame
 
 = link_to 'Edit', edit_seller_listing_path(@seller_listing)
 \|

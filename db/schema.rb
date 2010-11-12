@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101111005156) do
+ActiveRecord::Schema.define(:version => 20101112200905) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -63,16 +63,16 @@ ActiveRecord::Schema.define(:version => 20101111005156) do
   end
 
   create_table "seller_listings", :force => true do |t|
-    t.integer  "user_id",                                             :null => false
-    t.integer  "address_id",                                          :null => false
-    t.integer  "phone_number_id",                                     :null => false
-    t.decimal  "estimated_value",      :precision => 12, :scale => 2
-    t.decimal  "asking_price",         :precision => 12, :scale => 2
-    t.decimal  "loan_amount",          :precision => 12, :scale => 2
-    t.boolean  "currently_listed"
-    t.boolean  "payments_are_current"
+    t.integer  "user_id",                                        :null => false
+    t.integer  "address_id",                                     :null => false
+    t.integer  "phone_number_id",                                :null => false
+    t.decimal  "estimated_value", :precision => 12, :scale => 2
+    t.decimal  "asking_price",    :precision => 12, :scale => 2
+    t.decimal  "loan_amount",     :precision => 12, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
+    t.text     "selling_reason"
+    t.integer  "time_frame"
   end
 
   create_table "users", :force => true do |t|

@@ -1,3 +1,6 @@
+:ruby
+  extra_css('scaffold')
+
 %h1 Listing addresses
 
 %table
@@ -16,7 +19,7 @@
 
   - @addresses.each do |address|
     %tr
-      %td= address.user_id
+      %td= address.user.email
       %td= address.address1
       %td= address.address2
       %td= address.city

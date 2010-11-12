@@ -1,4 +1,7 @@
 class PhoneNumbersController < ApplicationController
+
+  before_filter :redirect_unless_admin
+
   # GET /phone_numbers
   # GET /phone_numbers.xml
   def index

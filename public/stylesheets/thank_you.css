@@ -1,11 +1,11 @@
 /* Start Sprites */
-.sprite { background : url(/images/sprites/seller-register-thank-you.png) no-repeat scroll 0px 500px transparent; }
+/*.sprite { background : url(/images/sprites/seller-register-thank-you.png) no-repeat scroll 0px 500px transparent; }
 #thanks_tmp  {
     background-position : 0px 0px;
     height : 125px;
     width  : 886px;
 }
-/*#blue_ribbon {
+#blue_ribbon {
     background-position : 0px 0px;
     height : 75px;
     width  : 592px;
@@ -16,6 +16,19 @@
     width  : 592px;
 }
 */
+
+#discountsC h1 {
+    padding : 20px 0 50px 0;
+    color : #F89A36;
+    font-size : 2em;
+    text-align : center;
+    font-weight : bold;
+}
+
+#discountsC h1, #discountsC a {
+    letter-spacing : 0;
+    word-spacing : 0;
+}
 
 .discount { background : url(/images/sprites/discounts.png) no-repeat scroll 0px 500px transparent; }
 #uhaul_icon {
@@ -40,7 +53,7 @@
     background-position : 0px 0px;
     height : 53px;
     width  : 224px;
-    margin-top : 20px;
+/*    margin-top : 20px;*/
 }
 
 /* END Sprites */
@@ -49,7 +62,6 @@
     height : 102px;
     background : url(/images/page_banners/seller-listing-register-thank-you.png) no-repeat scroll 0px 0px transparent;
 }
-#mainC div#content { padding : 0px; }
 .box_contentC {
     padding-left : 33px;
     padding-right : 33px;
@@ -72,9 +84,34 @@ div#discountsC p {
 }
 #buttonC {
     text-align : center;
+    height : 53px;
+    line-height : 53px;
+}
+#buttonC a {
+    vertical-align : top;
+    padding-left : 15px;
+    font-size : .9em;
 }
 
+/* shared quotes partial */
+div#discountsC #quotes_rowC { margin : 0 0 0 15px; }
+#quotes_rowC p {
+    font-size : .85em;
+    line-height : 1.05em;
+    color : #888;
+    margin-bottom : 5px;
+}
 
+#other_others_quote {
+    background : url(/images/sprites/home.png) no-repeat scroll 0px -138px transparent;
+    height : 24px;
+    width : 329px;
+}
+#top_pick_quote {
+    background : url(/images/sprites/home.png) no-repeat scroll -330px -138px transparent;
+    height : 24px;
+    width : 341px;
+}
 
 
 

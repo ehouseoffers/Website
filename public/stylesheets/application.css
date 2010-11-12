@@ -331,6 +331,17 @@ div.form_validation_icon {
 div.form_validation_icon.valid   { background-position : -376px -323px; }
 div.form_validation_icon.invalid { background-position : -359px -323px; }
 
+/* Quotes Row */
+#quotes_rowC {
+    margin : 20px 0 0 7%;
+}
+#quotes_rowC p {
+    padding-right : 20px;
+}
+#quotes_rowC p.author {
+    padding-left : 20px;
+}
+
 
 /*---------------- Breadcrumb ---------------------------*/
 ul.breadcrumbC {
@@ -361,7 +372,7 @@ li#crumb_home .rArr {
 
 /* ------------------ Layout/Frame types ----------------- */
 /* Minimal -- A minimal @frame consists only of the header logo & main body */
-body.minimal #headerR,
+body.minimal #request_offerC,
 body.minimal #menuC,
 body.minimal #footerC {
     display : none;

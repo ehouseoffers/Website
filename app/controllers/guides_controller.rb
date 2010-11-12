@@ -1,17 +1,16 @@
 class GuidesController < ApplicationController
 
-  before_filter { |app_cont| app_cont.active_section(:guides) }
+  before_filter :redirect_unless_admin, :except => [:index, :show]
+  before_filter :authenticate_user!,    :except => [:index, :show]
+  before_filter :set_seller_listing,    :only => [:index, :show]
 
-  # Admin Only!
-  before_filter :authenticate_user!, :except => [:index, :show]
+  before_filter { |app_cont| app_cont.active_section(:guides) }
 
   # InheritedResources::Base should inherit from ApplicationController, so we should be able to say
   #   class GuidesController < InheritedResources::Base
   # and get all of ApplicationController's methods. However, for some reason this was not the case so
   # we are pulling in all of the inherited resource functionality by simply calling...
   inherit_resources
-
-  before_filter :set_seller_listing,  :only => [:index, :show]
 
   def index
     @guides = Guide.paginate :page => params[:page], :order => 'created_at desc'

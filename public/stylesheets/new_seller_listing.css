@@ -50,14 +50,16 @@ form input[type="image"] {
 div#form_gutter {
     padding : 25px 0 0 91px;
 }
-form#new_seller_listing .field {
-    width : 697px;
-}
+
 form#new_seller_listing label {
     display : none;
 }
+form#new_seller_listing .field,
 form#new_seller_listing input[type="text"] {
-    width : 697px;
+    width : 450px;
+}
+div#email {
+    clear : both;
 }
 form#new_seller_listing div#first_name.field,
 form#new_seller_listing input#seller_listing_user_first_name,
@@ -65,11 +67,11 @@ form#new_seller_listing div#last_name.field,
 form#new_seller_listing input#seller_listing_user_last_name,
 form#new_seller_listing div#address_zip.field,
 form#new_seller_listing input#seller_listing_address_zip {
-    width : 336px;
+    width : 212px;
 }
 form#new_seller_listing div#first_name.field {
     float : left;
-    margin-right : 25px;
+    margin-right : 26px;
 }
 form#new_seller_listing div#last_name.field {
     float : left;

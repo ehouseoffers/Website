@@ -1,10 +1,14 @@
 :ruby
   extra_css('new_seller_listing')
 
+= admin_area do
+  = link_to "All Sellers", seller_listings_path
+
 %div#step_one_contentC
   %div.box
-    %div.gutter
+    %div.gutter.clearfix
       = image_tag '/images/transparent.gif', :id => 'step_one_register', :class => 'sprite', :alt => 'Step 1: Register'
 
       %div#form_gutter
         = render :partial => 'seller_listings/form'
+

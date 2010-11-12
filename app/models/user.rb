@@ -64,6 +64,10 @@ class User < ActiveRecord::Base
   def phone_for_form
     self.phone_numbers? ? self.phone_numbers.primary : PhoneNumber.new
   end
+
+  def to_s
+    "#{self.name} [#{self.id}: #{self.email}]"
+  end
   
   protected
 
