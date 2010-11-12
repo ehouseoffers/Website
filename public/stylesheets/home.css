@@ -110,7 +110,7 @@ p {
     position : relative;
 }
 #welcome_messageC #satisfied_sellers {
-    background : url(/images/satisfied_sellers.png) no-repeat scroll -9px 0px transparent;
+    background : url(/images/sprites/satisfied_sellers.png) no-repeat scroll -9px 0px transparent;
     height : 437px;
     width : 541px;
     position : absolute;
