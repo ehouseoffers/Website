@@ -103,7 +103,7 @@ class SellerListingsController < ApplicationController
 
   # TODO -- younker [2010-11-12 14:35]
   # move this into app controller and allow params to be passed (so we check ownership of an object passed in)
-  def ownder_or_admin
+  def owner_or_admin
     listing = SellerListing.find(params[:id])
 
     unless user_signed_in? && (current_user.id == listing.user_id || current_user.admin?)
