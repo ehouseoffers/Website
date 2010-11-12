@@ -1,8 +1,8 @@
 (function($) {
   $.fn.default_form_values = function(opt) {
       var objects = [];
-      var fields = $(this).find("input, select, textarea").not(":submit, :hidden");
-      
+      var fields = $(this).find("input[data-example], select[data-example], textarea[data-example]").not(":submit, :hidden");
+
       fields.each(function(idx, input_field){
           objects[idx] = new DefaultFormValue($(input_field));
       });
@@ -28,11 +28,13 @@ jQuery.extend(DefaultFormValue.prototype, {
         this.input   = input;
         this.example = $(input).attr('data-example');
 
-        // Update input with default value (assume it is empty onload for non-js users)
-        this._onblur();
+        if ( $.present(this.example) ) {
+          // Update input with default value (assume it is empty onload for non-js users)
+          this._onblur();
 
-        var self = this;
-        input.focus(function(){ self._onfocus(); }).blur(function(){ self._onblur(); });
+          var self = this;
+          input.focus(function(){ self._onfocus(); }).blur(function(){ self._onblur(); });
+        }
     },
     _onfocus : function(){
         if ( this._clear_input_if() ) this.input.css('color','inherit');
