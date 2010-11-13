@@ -15,10 +15,10 @@
   %div.guide_contentC.yui3-u-33-48
     = link_to image_tag(@guide.photo.url(:large), :alt => @guide.title, :id => 'main_image'), object_path(@guide)
 
-    %h1
+    %h1.green
       = raw @guide.title
 
-    %div.article_body
+    %div.article_body.grey85
       = raw @guide.content
 
     %hr.space
@@ -28,7 +28,7 @@
     %div#other_guidesC
       %div.titleC
         %div#books &nbsp;
-        %h3 Other Guides For Home Sellers
+        %h3.orange Other Guides For Home Sellers
       
       %div.box
         %div.gutter.clearfix

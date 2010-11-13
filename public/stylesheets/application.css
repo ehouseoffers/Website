@@ -197,6 +197,12 @@ div#f_right {
     width  : 145px;
 }
 
+/* ----------------- Frame -------------------- */
+div.xs_two_col {}
+div.xs_two_col div#left_col {} /* yui3-u-33-48 - 68.75% */
+div.xs_two_col div#right_col { /* yui3-u-7-24  - 29.1666% */
+    width : 260px;             /* width override so we match the mocks */
+}
 
 /* green box with cream bg. For example, see new seller registration */
 .box {
@@ -260,6 +266,26 @@ label.empty {
 }
 .field {
     margin-bottom : 10px;
+}
+
+h1 {
+    font-size : 1.3em;
+    font-weight : bold;
+    margin : -2px 0 5px 0;
+}
+h3 {
+    font-size : 1.1em;
+    font-weight : bold;
+    letter-spacing : -0.75px;
+}
+
+.green  { color : #75973e; }
+.orange { color : #F89A36; }
+
+.grey85 {
+    color : #666;
+    font-size : .85em;
+    line-height : 1.4em;
 }
 
 textarea,

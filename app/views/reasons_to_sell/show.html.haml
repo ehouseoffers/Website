@@ -16,12 +16,12 @@
 
 %div.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    %h1.article_title
+    %h1.green
       = @reason.title
 
     = render :partial => "reasons_to_sell/reason", :object => @reason, :locals => {:full_article => true}
 
-    %div.article_body.article_gutter
+    %div.article_body.article_gutter.grey85
       = raw @reason.content
 
     %hr.space

@@ -101,22 +101,23 @@ textarea.copy_image_code {
 hr#pre_full_article.space {
     margin-bottom : 3em;
 }
-h1.article_title {
-    color : #84963a;
+h1.green {
+    margin : 10px 0px 20px 0px;
+/*    color : #75973e;
     font-size : 1.3em;
     font-weight : bold;
-    margin : 10px 0px 20px 0px;
+*/
 }
 div.article_gutter {
     width  : 90%;
     margin : 1.4em auto;
 }
-div.article_body {
+/*div.article_body {
     color  : #666;
     line-height : 1.4em;
     font-size : .85em;
 }
-
+*/
 div.footnote {
     font-size : .7em;
     margin-bottom : 3px;

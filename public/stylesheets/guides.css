@@ -14,20 +14,20 @@ ul.breadcrumbC {
 .guideC .guide_contentC {
     margin-left : 3px;
 }
-.guide_contentC h1 {
-    color : #84963a;
+/*.guide_contentC h1 {
+    color : #75973e;
     font-size : 1.3em;
     font-weight : bold;
     margin : -2px 0 5px 0;
-}
-h1 a {
-    color : inherit;
-}
-.guide_contentC p {
+}*/
+h1 a { color : inherit; }
+
+/*.guide_contentC p {
     color : #666;
     font-size : .85em;
     line-height : 1.4em;
 }
+*/
 .guide_contentC p.teaser {
     min-height : 59px;
 }
@@ -83,11 +83,7 @@ div#other_guidesC .titleC {
     min-height : 45px;
     margin-bottom : 5px;
 }
-div#other_guidesC h3 {
-    color : #F89A36;
-    font-size : 1.1em;
-    font-weight : bold;
-    letter-spacing : -0.75px;
+div#other_guidesC h3.orange {
     line-height : 39px;
 }
 div#other_guidesC ul {

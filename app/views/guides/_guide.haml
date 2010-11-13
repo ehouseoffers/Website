@@ -4,10 +4,10 @@
     = link_to image_tag(guide.photo.url(:small), :alt => guide.title), object_path(guide)
 
   %div.guide_contentC.yui3-u-3-4  
-    %h1
+    %h1.green
       = link_to raw(guide.title), object_path(guide)
 
-    %p.teaser
+    %p.grey85.teaser
       = guide.teaser
 
     = link_to image_tag('/images/transparent.gif', :class => 'read_full_article', :alt => 'Read Full Article'), guide_path(guide.title_for_url)
