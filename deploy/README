@@ -1,0 +1,31 @@
+http://docs.engineyard.com/appcloud/guides/deployment/home
+Deployment takes place in several stages:
+  - Preparation
+  - Gem Bundling
+  - Default Configuration
+  - Database Migration
+    * The deploy hook deploy/before_migrate.rb runs
+    - The migration command is run
+    * The deploy hook deploy/after_migrate.rb runs
+  - Symlink
+    * The deploy hook deploy/before_symlink.rb runs
+    - The symlink /data/<appname>/current is created pointing to /data/<appname>/releases/<timestamp>
+    * The deploy hook deploy/after_symlink.rb runs
+  - Restart Application Servers
+    * The deploy hook deploy/before_restart.rb runs
+    - The application servers are restarted
+    * The deploy hook deploy/after_restart.rb runs
+  - Cleanup
+
+Note!
+In order for migrations to run, your entire environment will be loaded. So if you have any symlinks that need to be
+created in order for the application to start properly you will want to put them in before_migrate.rb instead of
+before_symlink.rb, since before_symlink.rb runs after the migration.
+
+
+http://docs.engineyard.com/appcloud/howtos/deployment/use-deploy-hooks-with-engine-yard-appcloud
+You will have some of the same variables you are used to from Capistrano:
+  - release_path : this is the full path to the current release: e.g. /data/appname/releases/12345678
+  - shared_path  : this is the path to the shared dir: e.g. /data/appname/shared
+  - current_path : this is the path to the currently symlinked release: e.g. /data/appname/current
+  - node         : node is the full hash object of all the info we know about your applications and deployments.
