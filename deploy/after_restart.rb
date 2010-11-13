@@ -1,1 +1,1 @@
-run "echo 'after_restart.rb running...'"
+# run "echo 'after_restart.rb running...'"

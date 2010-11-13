@@ -1,1 +1,1 @@
-run "echo 'before_symlink.rb is running...'"
+# run "echo 'before_symlink.rb is running...'"
