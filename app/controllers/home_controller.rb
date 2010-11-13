@@ -5,13 +5,14 @@ class HomeController < ApplicationController
 
   def home
     active_section(:home)
-    set_seller_listing()
+    set_seller_listing
   end
   
   def what_we_do
   end
 
   def about
+    set_seller_listing
   end
   
   def terms

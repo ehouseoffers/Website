@@ -1,4 +1,70 @@
 :ruby
-  # extra_css('about')
+  extra_css('about')
+
+%hr#about_page.space
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:about, nil]]
+
+%div#about_pageC.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = image_tag '/images/transparent.gif', :id => 'diagram', :class => 'about_sprite', :alt => 'Diagram of our Process'
+
+    %hr.space
+
+    %div.hpad
+      = image_tag '/images/transparent.gif', :id => 'headshot_photo', :class => 'about_sprite', :alt => 'About Us'
+
+      %h1.green Our Story
+
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum. 
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.   
+
+      %hr
+    
+      %h1.green About Our Home Buyers
+    
+      %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+      %hr
+
+      %h1.green eHouseOffers in the News
+
+      %div#in_the_newsC.yui3-u-g
+        %div.logo.yui3-u-5-24
+          - ml = image_tag '/images/transparent.gif', :id => 'mint_logo', :class => 'about_sprite', :alt => 'Mint.com'
+          = link_to ml, 'http://www.mint.com'
+        %div.url.yui3-u-7-24
+          = link_to 'http://www.mint.com', 'http://www.mint.com'
+        %div.logo.yui3-u-11-48
+          - zl = image_tag '/images/transparent.gif', :id => 'zillow_logo', :class => 'about_sprite', :alt => 'Zillow.com'
+          = link_to zl, 'http://www.zillow.com'
+        %div.url.yui3-u-11-48
+          = link_to 'http://www.zillow.com', 'http://www.zillow.com'
+
+
+      %hr
+
+      %h1.green Founders
+
+      %div.yui3-u-g
+        %div.founderC.yui3-u-11-24
+          %h3.grey
+            = image_tag '/images/transparent.gif', :id => 'green_pawn', :class => 'about_sprite pawn', :alt => 'eHouseOffers Founder'
+            Matt Thompson
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+
+        %div.founderC.last.yui3-u-11-24
+          %h3.grey
+            = image_tag '/images/transparent.gif', :id => 'green_pawn', :class => 'about_sprite pawn', :alt => 'eHouseOffers Founder'
+            Matt Thompson
+
+          %p Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+    
+        
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+    %hr.space
+    = render :partial => "shared/social_contact"

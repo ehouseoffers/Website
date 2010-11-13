@@ -1,0 +1,41 @@
+:ruby
+  extra_css('social_contact')
+
+%div.social_contactC.box
+  %div.gutter
+    %h1.green Contact Us
+    
+    %div.yui3-g
+      %div.iconC.yui3-u-1-4
+        - lin = image_tag '/images/transparent.gif', :id => 'linked_in_iconL', :class => 'social_contact_sprite', :alt => 'LinkedIn'
+        = link_to lin, ''
+
+      %div.iconC.yui3-u-1-4
+        - face = image_tag '/images/transparent.gif', :id => 'facebook_iconL', :class => 'social_contact_sprite', :alt => 'Facebook'
+        = link_to face, ''
+
+      %div.iconC.yui3-u-1-4
+        - twit = image_tag '/images/transparent.gif', :id => 'twitter_iconL', :class => 'social_contact_sprite', :alt => 'Twitter'
+        = link_to twit, ''
+
+      %div.iconC.yui3-u-1-4
+        - tube = image_tag '/images/transparent.gif', :id => 'you_tube_iconL', :class => 'social_contact_sprite', :alt => 'YouTube'
+        = link_to tube, ''
+
+    %div.yui3-g.bhalf
+      %div.yui3-u-7-24
+        %strong Phone:
+      %div.yui3-u-17-24
+        866-384-9068
+
+      %div.yui3-u-7-24
+        %strong Email:
+      %div.yui3-u-17-24
+        = mail_to 'info@ehouseoffers.com'
+    
+    %p.addr
+      1752 NW Market St. Seattle WA 98107
+
+    
+  
+    
