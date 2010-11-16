@@ -73,7 +73,7 @@ class BlogsController < ApplicationController
     params[:blog].merge!(:user_id => current_user.id)
 
     respond_to do |format|
-      if @blog.save
+      if @blog.update_attributes(params[:blog])
         format.html { redirect_to(construct_blog_path(@blog, :show), :notice => "#{@blog.title} was successfully updated.") }
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
       else
