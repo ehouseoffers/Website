@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101112200905) do
+ActiveRecord::Schema.define(:version => 20101116075755) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -21,6 +21,21 @@ ActiveRecord::Schema.define(:version => 20101112200905) do
     t.integer  "zip",                           :null => false
     t.string   "label"
     t.boolean  "primary",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "blogs", :force => true do |t|
+    t.integer  "user_id"
+    t.string   "context"
+    t.string   "title"
+    t.string   "title_for_url"
+    t.string   "teaser"
+    t.text     "content"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

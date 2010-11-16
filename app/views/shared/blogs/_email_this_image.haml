@@ -1,8 +1,9 @@
+
 %div.email_this_imageC.box
   %div.gutter
     %strong Email this Image
 
-    = form_tag email_image_reason_path(reason.title_for_url), :method => :post, :class => 'email_image_form' do
+    = form_tag email_image_blog_path(blog.title_for_url), :method => :post, :class => 'email_image_form' do
       .field
         = label_tag 'your_email', 'Your Email'
         -# Do not auto-populate. it could be confusing (email to who? Me? Why is my email address in there?)

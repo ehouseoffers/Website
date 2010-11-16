@@ -1,41 +1,17 @@
-class GuidesController < ApplicationController
+class GuidesController < BlogsController
 
-  before_filter :redirect_unless_admin, :except => [:index, :show]
-  before_filter :authenticate_user!,    :except => [:index, :show]
-  before_filter :set_seller_listing,    :only => [:index, :show]
-
-  before_filter { |app_cont| app_cont.active_section(:guides) }
-
-  # InheritedResources::Base should inherit from ApplicationController, so we should be able to say
-  #   class GuidesController < InheritedResources::Base
-  # and get all of ApplicationController's methods. However, for some reason this was not the case so
-  # we are pulling in all of the inherited resource functionality by simply calling...
-  inherit_resources
-
-  def index
-    @guides = Guide.paginate :page => params[:page], :order => 'created_at desc'
-    @other_guides = Guide.where("id not in ('?')", @guides.collect{|g| g.id}).order('created_at desc')
-  end
-
-  def show
-    @guide = Guide.find_by_title_for_url(params[:id]) || Guide.find_by_id(params[:id])
-    @other_guides = Guide.where("id != '?'", @guide.id).order('created_at desc')
-  end
-
-  def edit
-    @guide = Guide.find_by_title_for_url(params[:id]) || Guide.find_by_id(params[:id])
-    edit!
-  end
-  
-  def create
-    # No, we don't pass this in the form
-    params[:guide].merge!(:user_id => current_user.id)
-    create!(:notice => "The '#{params['guide']['title']}' article was created successfully." ) { guide_path(@guide.title_for_url) }
-  end
-
-  def update
-    @guide = Guide.find_by_title_for_url(params[:id]) || Guide.find_by_id(params[:id])
-    update!(:notice => "Changes to the '#{params['guide']['title']}' article have been saved." ) { guide_path(@guide.title_for_url) }
-  end
-
+  # A guide is basically another type of blog. Everything in /app/views/blogs displays a blog in a certain manner; see
+  # the trends or reasons to sell sections of the site for that style. The guides blog entries have a different UI
+  # presentation to them, so the question became how do we reuse all the blog controller/model stuff without any
+  # duplication? Well, my answer was to create this controller and have it inherit from BlogsController. Then, in the
+  # blogs_controller, in each actions respond_to, we use a full render :template path, i.e. /blogs/index, when
+  # we want to show exactly the same UI presentation as all the other blogs (edit, new) and a relative render :template
+  # path when we want to render the template in the ap/views directory of the controller being used (index, show)
+  def index  ; super ; end
+  def show   ; super ; end
+  def new    ; super ; end
+  def edit   ; super ; end
+  def create ; super ; end
+  def destroy; super ; end
+  def update ; super ; end
 end

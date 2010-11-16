@@ -3,7 +3,14 @@ body {
     margin : auto;
     width  : 953px;
     font-family : arial, helvetica, sans-serif;
+    font-size : 85%\0/; /* IE8 */
 }
+*+html body { font-size : 97%; } /* IE7 */
+
+/* apple webkit browsers (chrome/safari) */
+@media screen and (-webkit-min-device-pixel-ratio:0) { body { font-size : 95%; } }
+
+
 .app_sprite {
     background : url(/images/sprites/application.png) repeat-x scroll 0px 0px transparent;
 }
@@ -216,10 +223,19 @@ div.xs_two_col div#right_col { /* yui3-u-7-24  - 29.1666% */
 .box div.gutter {
     padding : 17px 15px;
 }
+.box strong {
+    display : block;
+    font-size : 0.85em;
+    font-weight : bold;
+    margin-bottom : 9px;
+}
 div#content > div.admin {
     float : right;
     font-size : .75em;
+    line-height : 2em;
+    color : #7FB86B;
 }
+
 /*------------ Stolen from Blueprint ---------------------*/
 .clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
 .clearfix, .container {display:block;}
@@ -372,9 +388,11 @@ div.form_validation_icon.invalid { background-position : -359px -323px; }
 /*---------------- Breadcrumb ---------------------------*/
 ul.breadcrumbC {
     font-size : .75em;
-    margin : 5px 0 0px 0;
-    padding : 0 0 9px 0;
+    margin : 0;
+    padding : 0;
     color : #53aa47;
+    height : 2em;
+    overflow : hidden;
 }
 ul.breadcrumbC a {
     color : #53aa47;
@@ -403,29 +421,3 @@ body.minimal #menuC,
 body.minimal #footerC {
     display : none;
 }
-
-
-/* shared/other_resources */
-.other_resourcesC {
-    color : #7A7A7A;
-}
-.other_resourcesC h3 {
-    font-weight : bold;
-    margin-bottom : 9px;
-}
-.other_resourcesC .other_resourceC {
-    text-align : center;
-}
-.other_resourceC p,
-.other_resourceC div {
-    text-align : left;
-    margin : 0 6px;
-    font-size : .85em;
-}
-.other_resourceC a.title       { color : #7A7A7A; }
-.other_resourceC a.title:hover { color : #333333; text-decoration : none; }
-
-
-
-
-

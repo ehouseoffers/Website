@@ -2,7 +2,6 @@
   return unless collection.present?
 
   extra_js('jquery.slider')
-  extra_css('jquery.slider')
 
   image_size = image_size.present? ? image_size.intern : :medium
 
@@ -13,7 +12,7 @@
       - collection.each_with_index do |object, idx|
         %div.panel{:id => "panel_#{idx+1}"}
           %div.inside
-            = image_tag object.photo.url(image_size), :alt => object.title, 'data-path' => object_path(object)
+            = image_tag object.photo.url(image_size), :alt => object.title, 'data-path' => construct_blog_path(object, :show)
 
   %h2 &nbsp;
 

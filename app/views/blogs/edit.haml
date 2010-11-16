@@ -1,0 +1,7 @@
+:ruby
+  header(:title, "Edit #{@blog.title}")
+
+%h1= "Edit #{name_for_context}: #{@blog.title}"
+
+= render 'blogs/form', :blog => @blog
+

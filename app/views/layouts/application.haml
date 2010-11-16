@@ -4,7 +4,7 @@
   %head>
     %title= content_for?(:header_title) ? yield(:header_title) : "Ehouseoffers | Welcome!"
 
-    -# %link{:rel => 'icon', :type => 'image/png', :href => '/images/favicon.png'}
+    %link{:rel => 'icon', :type => 'image/png', :href => '/images/favicon.png'}
     %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
     %meta{'name' => 'keywords',    :content => yield(:keywords) }/
     %meta{'name' => 'description', :content => yield(:description) }/

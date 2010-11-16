@@ -2,9 +2,9 @@
   # For use by the sections of the site that have the same blog type attributes (guides, reasons for selling, etc)
   # You need to call this inside a form_for block. For example, see app/views/guides/_form.html.haml
 
-  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog_family_form_init')
+  # blog.js is needed for generate_string call
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog')
   extra_css('scaffold')
-
 
 = render :partial => 'shared/user_notice', :locals => {:model_obj => model_obj}
 
@@ -32,7 +32,7 @@
 
 .field
   = f.label :content
-  = f.text_area :content, 'data-validation' => 'validate(required)'
+  = f.text_area :content
 
 .yui3-g
   - if model_obj.photo?

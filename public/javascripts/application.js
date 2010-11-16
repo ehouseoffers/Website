@@ -94,6 +94,6 @@ jQuery.extend(jQuery, {
 
     preserve_newlines : function(string) {
         return $.h(string).replace(/\n/gi, '<br />');
-    },
-
+    }
+    
 });

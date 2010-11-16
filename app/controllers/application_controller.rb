@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # make these available to the views
-  helper_method :active_section?, :object_path
+  helper_method :active_section?, :construct_blog_path
 
   def layout
     request.xhr? ? false : 'application'
@@ -28,13 +28,20 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  # for a given object, say a Guides object, get the show path for it (i.e. guides_path())
-  def object_path(obj)
-    case obj.class.name.intern
-    when :ReasonToSell then reason_path(obj.title_for_url)
+  def construct_blog_path(obj, action='index', context=nil)
+    if obj.present?
+      raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
+      context = obj.context
+    elsif context.present?
+      raise "Invalid Context -- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
     else
-      path = "#{obj.class.name.downcase}_path"
-      obj.respond_to?(:title_for_url) ? send(path, obj.title_for_url) : send(path, obj)
+      raise "Invalid"
+    end
+    
+    case action.to_s.intern
+    when :index, :create, :delete then send("#{context.pluralize}_path")
+    when :new, :edit              then send("#{action.to_s}_#{context.singularize}_path")
+    when :show, :update           then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
     end
   end
 

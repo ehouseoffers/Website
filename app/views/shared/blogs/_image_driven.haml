@@ -1,0 +1,10 @@
+
+%div.reasonC.yui3-g
+  %div.reason_imageC.yui3-u-1-2
+    = link_to_unless full_article, image_tag(blog.photo.url(:large), :alt => blog.title), construct_blog_path(blog, :show)
+    = render 'shared/blogs/share_article_on'
+
+  %div.blog_contentC.yui3-u-11-24
+    = render 'shared/blogs/email_this_image', :blog => blog
+    %br
+    = render 'shared/blogs/share_this_image', :blog => blog

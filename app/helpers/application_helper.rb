@@ -25,6 +25,10 @@ module ApplicationHelper
     end
   end
 
+  # younker [2010-11-15 14:46] -- JS/CSS Not Loading?!?
+  # If you are looking here because extra_js and extra_css are NOT loading the files you want, check first to see
+  # if your controller is using InheritedResources::Base. If so, that is the problem. See address_controller
+  # some more details.
   @@js_targets = []
   def extra_js(*targets)
     targets.each do |filename|

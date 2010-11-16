@@ -1,5 +1,8 @@
 :ruby
-  copy_code = render 'reasons_to_sell/copy_image_code_create', :reason => reason
+  # where we setup the textarea highlighting on focus
+  extra_js('blog')
+
+  copy_code = render 'shared/blogs/copy_image_code_create', :blog => blog
 
 %div.box
   %div.gutter
@@ -10,5 +13,6 @@
       click the below icon to copy the above embed code
     = render 'shared/clippy', :text => copy_code
     -#= image_tag '/images/transparent.gif', :id => 'copy_embed_code_btn', :class => 'reasons_sprite', :alt => 'Copy Embed Code'
+
 
 

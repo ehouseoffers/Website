@@ -1,0 +1,34 @@
+:ruby
+  header(:title, @blog.title)
+  header(:description, @blog.teaser)
+
+  extra_js('blog')
+  extra_css(@context)
+
+%hr#top_of_content.space
+
+= admin_area do
+  = link_to "Edit This Article", construct_blog_path(@blog, :edit)
+  \|
+  = link_to "Create New Guide", construct_blog_path(@blog, :new)
+
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [@blog.context, construct_blog_path(@blog, :index)], ["#{@blog.title}", nil]]
+
+%div#show_pageC.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    %h1.green= @blog.title
+
+    = render :partial => "shared/blogs/image_driven", :object => @blog, :as => :blog, :locals => {:full_article => false}
+
+    %div.article_body.article_gutter.grey85
+      = raw @blog.content
+
+    %hr.massive
+
+    - unless @other_blogs.empty?
+      %div.article_gutter
+        = render :partial => "shared/blogs/other_resources", :locals => {:id => 'other_blog_resourcesC', :title => 'Other Reasons to Sell Your House', :c => @other_blogs}
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+

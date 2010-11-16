@@ -1,0 +1,29 @@
+:ruby
+  header(:title, title_for_context(true))
+  # header(:description, 'Get description from Sam')
+
+  extra_css('guides')
+
+%hr#top_of_content.space
+
+= admin_area do
+  = link_to "Create New #{name_for_context}", construct_blog_path(nil, :new, @context)
+
+= render "shared/breadcrumb", :crumbs => [[:home, root_path],[:guides, nil]]
+
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = render "shared/slider", :id => 'guides_slider', :collection => @other_blogs
+
+    - if @blogs.empty?
+      %p.sorry_no_results
+        = "Sorry, but no #{title_for_context(false)} blog entries were found#{params[:page].present? ? ' for this page.' : '.'}"
+    - else
+      %hr.space
+      = render :partial => "guide", :collection => @blogs, :spacer_template => 'shared/blogs/spacer'
+
+    %hr.space
+    = will_paginate @blogs
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"

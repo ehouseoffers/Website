@@ -1,0 +1,46 @@
+:ruby
+  header(:title, @blog.title)
+  header(:description, @blog.teaser)
+
+  extra_css('guides')
+
+%hr#top_of_content.space
+
+
+= admin_area do
+  = link_to "Edit This Article", construct_blog_path(@blog, :edit)
+  \|
+  = link_to "Create New #{name_for_context}", construct_blog_path(nil, :new, @context)
+
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:guides, guides_path], ["#{@blog.title}", nil]]
+
+%div#guide_showC.xs_two_col.yui3-g
+  %div.guide_contentC.yui3-u-33-48
+    = image_tag @blog.photo.url(:large), :alt => @blog.title, :id => 'main_image'
+
+    %h1.green
+      = raw @blog.title
+
+    %div.article_body.grey85
+      = raw @blog.content
+
+    %hr.space
+    %hr
+    %hr.space
+
+    %div#other_guidesC
+      %div.titleC
+        %div#books &nbsp;
+        %h3.orange Other Guides For Home Sellers
+      
+      %div.box
+        %div.gutter.clearfix
+          %ul
+            - @other_blogs.each do |g|
+              %li
+                = link_to g.title, construct_blog_path(g, :show)
+      
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+

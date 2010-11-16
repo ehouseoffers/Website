@@ -1,6 +1,0 @@
-:ruby
-  url    = @reason.new_record? ? reasons_path : object_path(@reason)
-  method = @reason.new_record? ? :post : :put
-
-= form_for @reason, :html => {:multipart => true}, :url => url, :method => method do |f|
-  = render :partial => "shared/blog_family/form_elements", :locals => {:f => f, :model_obj => @reason}

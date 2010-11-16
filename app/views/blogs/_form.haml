@@ -1,0 +1,6 @@
+:ruby
+  url = construct_blog_path(blog, blog.new_record? ? :create : :update)
+  method = blog.new_record? ? :post : :put
+
+= form_for blog, :html => {:multipart => true}, :url => url, :method => method do |f|
+  = render :partial => "blogs/form_elements", :locals => {:f => f, :model_obj => blog}
