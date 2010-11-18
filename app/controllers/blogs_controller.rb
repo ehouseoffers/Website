@@ -11,7 +11,7 @@ class BlogsController < ApplicationController
   before_filter :setup_for_blog_context
 
   def index
-    @blogs = Blog.where("context = ?", @context).paginate :page => params[:page], :order => 'created_at desc'
+    @blogs = Blog.where("context = ?", @context).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
     @other_blogs = Blog.where("context = ? and id not in ('?')", @context, @blogs.collect{|b| b.id}).limit(10).order('created_at desc')
 
     respond_to do |format|
