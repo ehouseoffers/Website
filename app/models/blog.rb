@@ -1,10 +1,6 @@
 class Blog < ActiveRecord::Base
   belongs_to :user
 
-  # will_paginate : https://github.com/mislav/will_paginate
-  cattr_reader :per_page
-  @@per_page = 5
-  
   # Don't change the order. You can add on, but do not change the order without grepping the code for places
   # where we pluck out values assuming they will be consistent (see translate_route_to_context below)
   VALID_CONTEXTS = %w[trends reasons guides]
@@ -53,6 +49,15 @@ class Blog < ActiveRecord::Base
     when 'real-estate-trends' then VALID_CONTEXTS[0]
     when 'sell-my-house'      then VALID_CONTEXTS[1]
     when 'how-to-sell-house'  then VALID_CONTEXTS[2]
+    end
+  end
+
+  # used for will_paginate hacking (BlogPaginationListLinkRenderer)
+  def self.translate_context_to_route(context)
+    case context
+    when VALID_CONTEXTS[0] then 'real-estate-trends'
+    when VALID_CONTEXTS[1] then 'sell-my-house'
+    when VALID_CONTEXTS[2] then 'how-to-sell-house'
     end
   end
 end

@@ -23,7 +23,7 @@
       = render :partial => "shared/blogs/image_driven", :collection => @blogs, :as => :blog, :locals => {:full_article => false}, :spacer_template => 'shared/blogs/spacer'
 
     %hr.space
-    = will_paginate @blogs
+    = will_paginate @blogs, :renderer => BlogPaginationListLinkRenderer
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"
