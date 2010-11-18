@@ -2,8 +2,8 @@ $(document).ready(function() {
 
     if ( $('form').length > 0 ) {
       $.load_external_resource('/javascripts/jquery.ketchup.js');
+      // $.load_external_resource('/stylesheets/jquery.ketchup.css');
       $.load_external_resource('/javascripts/jquery.default_values.js');
-      $.load_external_resource('/stylesheets/jquery.ketchup.css');
 
       var error_timeout = $.ketchup_default_error_timeout;
       $('form')

@@ -31,9 +31,10 @@ module Ehouseoffers
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
     # config.i18n.default_locale = :de
 
-    # JavaScript files you want as :defaults (application.js is always included).
+    # CSS/JavaScript files you want as :defaults
+    config.action_view.stylesheet_expansions[:defaults] = %w(application)
     config.action_view.javascript_expansions[:defaults] = %w(application jquery rails)
-    config.action_view.stylesheet_expansions[:defaults] = %w(application flash)
+
 
     config.generators do |g|
       g.template_engine :haml

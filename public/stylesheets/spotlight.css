@@ -1,17 +1,1 @@
-/* Start Page Banner */
-#menuC { margin-bottom : 4px; }
-#mainC div#tab_arrow {
-    display : block;
-    left : 430px;
-    top  : 2px;
-}
-#mainC img#top {
-    background : url(/images/page_banners/spotlight.png) no-repeat scroll 0px 0px transparent;
-    height : 106px;
-}
-ul.breadcrumbC {
-    margin-top : 10px;
-}
-
-/* Start Sprites */
-.sprite { background : url(/images/sprites/spotlight.png) no-repeat scroll 0px 500px transparent; }
+.sprite{background:url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent}#lock_icon{background-position:-359px -56px;height:25px;width:85px;vertical-align:text-top;margin-left:5px}#truste{background-position:0px -125px;height:28px;width:101px;margin:0 0 0 20px}#mcafee{background-position:-360px -32px;height:22px;width:62px;margin:0 0 0 4px}form input[type="image"]{background-position:0px -81px;height:40px;width:119px}.seller_signup_boxC{margin-bottom:50px}.seller_signup_boxC div.gutter{padding:15px 22px 5px}.seller_signup_boxC p,.seller_signup_boxC strong{font-size:.75em;line-height:16px;margin-bottom:8px;margin-right:-25px}.seller_signup_boxC strong{display:block;font-weight:bold;margin-bottom:4px}form .field,form input[type="text"]{width:208px}form label{display:none}form div#email.field,form input#seller_listing_user_email,form div#number.field,form input#seller_listing_phone_number_number,form div#address1.field,form input#seller_listing_address_address1,form div#address_zip.field,form input#seller_listing_address_zip{width:157px}#securityC span{display:none}#security_iconsC{float:left;margin-top:17px}.submitC{padding-top:12px}.submitC #securityC{display:inline-block;font-size:.9em;color:#666;position:relative;top:-22px;left:5px}#menuC{margin-bottom:4px}#mainC div#tab_arrow{display:block;left:430px;top:2px}#mainC img#top{background:url(/images/page_banners/spotlight.png) no-repeat scroll 0px 0px transparent;height:106px}ul.breadcrumbC{margin-top:10px}

@@ -10,10 +10,7 @@
     %meta{'name' => 'description', :content => yield(:description) }/
     %meta{'http-equiv' => 'Content-Type', :content => 'text/html'}/
 
-    %link{:rel => :stylesheet, :type => "text/css", :href => "http://yui.yahooapis.com/3.2.0/build/cssgrids/grids-min.css"}
-    %link{:rel => :stylesheet, :type => "text/css", :href => "http://yui.yahooapis.com/3.2.0/build/cssbase/base-min.css"}
-    %link{:rel => :stylesheet, :type => "text/css", :href => "http://yui.yahooapis.com/3.2.0/build/cssreset/reset-min.css"}
-
+    %link{:rel => :stylesheet, :type => "text/css", :href => "/stylesheets/yui3-min.css"}
 
     = stylesheet_link_tag :defaults
     = yield(:extra_css) if content_for?(:extra_css)
