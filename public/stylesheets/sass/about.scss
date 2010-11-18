@@ -1,0 +1,92 @@
+@import "seller_signup";
+@import "social_contact";
+
+
+/* Page Banner */
+#menuC { margin-bottom : 6px; }
+#mainC div#tab_arrow { display : none; }
+
+#mainC img#top {
+    background : url(/images/page_banners/about.png) no-repeat scroll 0px 0px transparent;
+    height : 105px;
+}
+hr#about_page.space { margin-bottom : 7px; }
+
+/* Start Sprites */
+.about_sprite { background : url(/images/sprites/about.png) no-repeat scroll 0px 500px transparent; }
+
+#diagram {
+    background-position : 0px 0px;
+    height : 240px;
+    width  : 609px;
+}
+#headshot_photo {
+    background-position : -18px -340px;
+    height : 191px;
+    width  : 165px;
+    float : left;
+    padding : 0 20px 15px 0;
+}
+#mint_logo {
+    background-position : 0px -241px;
+    height : 50px;
+    width  : 115px;
+}
+#zillow_logo {
+    background-position : -116px -241px;
+    height : 50px;
+    width  : 127px;
+}
+.pawn {
+    height : 36px;
+    width  : 34px;
+    float : left;
+    margin-right : 10px;
+}
+#green_pawn { background-position : -244px -241px; }
+#blue_pawn  { background-position : -278px -241px; }
+
+/* the rest of the page */
+#about_pageC {
+    color : #666;
+    font-size : .85em;
+    line-height : 1.4em;
+}
+#about_pageC h1 {
+    font-size : 1.5em;
+    margin-bottom : 10px;
+    letter-spacing : -0.02em;
+}
+#about_pageC hr {
+    width : 104%;
+    margin : 2em 0 2em -2%;
+}
+#about_pageC .hpad {
+    margin : 0 30px;
+}
+#about_pageC p {
+    line-height : 1.55em;
+    margin-bottom : 1.45em; /* match margin-bottom for hr.space */
+}
+#in_the_newsC .url {
+    line-height : 48px;
+}
+div.url a {
+    color : #666;
+}
+#about_pageC .founderC  { margin-right : 40px; }
+#about_pageC .last      { margin-right : 0; }
+
+.founderC h3 {
+    line-height : 36px;
+}
+
+
+
+
+
+
+
+
+
+

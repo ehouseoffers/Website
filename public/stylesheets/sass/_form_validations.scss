@@ -1,0 +1,28 @@
+input.valid, textarea.valid {
+    background-color : #daefc0;
+    border-color : #588238;
+    position : relative;
+    color : #588238 !important;
+}
+input.invalid, textarea.invalid {
+    background-color : #f6b5b1;
+    border-color : #bc2b25;
+    position : relative;
+    color : #a00 !important
+}
+
+div.form_validation_icon {
+    background : url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;
+    position   : absolute;
+    right      : -17px; /* 15px wide with 8px padding (4right, 4left) + border and this about centers it. ugh */
+    top        : 20%;
+    height     : 15px;
+    width      : 15px;
+    z-index    : 9;
+}
+
+div.form_validation_icon.valid   { background-position : -376px -323px; }
+div.form_validation_icon.invalid { background-position : -359px -323px; }
+
+/* FIXME -- jquery.ketchup should not even be creating their container! */
+.ketchup-error-container { display : none; }

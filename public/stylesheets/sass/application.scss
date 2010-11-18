@@ -1,0 +1,324 @@
+/* See the very bottom for @imports */
+
+
+html { background : url(/images/bg.png) repeat-x scroll 0 0 #b4d66a; }
+body {
+    margin : auto;
+    width  : 953px;
+    font-family : arial, helvetica, sans-serif;
+    /*font-size : 85%\0/;  IE8 */
+}
+*+html body { font-size : 97%; } /* IE7 */
+
+/* apple webkit browsers (chrome/safari) */
+@media screen and (-webkit-min-device-pixel-ratio:0) { body { font-size : 95%; } }
+
+
+.app_sprite {
+    background : url(/images/sprites/application.png) repeat-x scroll 0px 0px transparent;
+}
+/* ----------------- Header -------------- */
+#headerC {
+    height   : 90px;
+    position : relative;
+}
+#headerC img#main_logo  {
+    background-position: 0px -289px;
+    height : 59px;
+    width  : 312px;
+    position : absolute;
+    left : 12px;
+    top  : 18px;
+}
+#headerC div#request_offerC  {
+    position : absolute;
+    right : 220px;
+    top   : 33px;
+    width : 333px;
+    text-align : right;
+}
+div#request_offerC p  {
+    color : #57662f;
+    font-size : .8em;
+    margin-top : 7px;
+    line-height : 1em;
+}
+div#request_offerC img#request_offer  {
+    background-position: -762px -290px;
+    height : 37px;
+    width  : 99px;
+}
+
+#headerC img#free_consult {
+    background-position : -312px -289px;
+    width  : 196px;
+    height : 34px;
+    position : absolute;
+    right : 14px;
+    top   : 35px;
+}
+/* ------------------ Menu --------------- */
+#menuC {
+    height : 53px;
+    margin-bottom : 19px;
+}
+#menuC ul {
+    margin : 0;
+    padding : 0;
+}
+#menuC li {
+    float : left;
+    list-style : none;
+}
+#menuC img {
+    height : 53px;
+}
+#menuC #home         { background-position :    0px -55px; width : 161px; }
+#menuC #reasons      { background-position : -162px -55px; width : 188px; }
+#menuC #spotlighters { background-position : -351px -55px; width : 188px; }
+#menuC #trends       { background-position : -540px -55px; width : 188px; }
+#menuC #guides       { background-position : -729px -55px; width : 225px; }
+
+#menuC #home:hover,
+#menuC #home.selected         { background-position :    0px 0px; }
+#menuC #reasons:hover,
+#menuC #reasons.selected      { background-position : -162px 0px; }
+#menuC #spotlighters:hover,
+#menuC #spotlighters.selected { background-position : -351px 0px; }
+#menuC #trends:hover,
+#menuC #trends.selected       { background-position : -540px 0px; }
+#menuC #guides:hover,
+#menuC #guides.selected       { background-position : -729px 0px; }
+
+
+/* ------------------ Main --------------- */
+#mainC {
+    margin-bottom : 19px;
+    position : relative;
+}
+#mainC div#tab_arrow {
+    background : url(/images/sprites/application.png) repeat-x scroll -316px -324px transparent;
+    width  : 25px;
+    height : 14px;
+    position : absolute;
+    top : 0;
+    left : 0;
+    display : none;
+}
+#mainC img#top {
+    background-position : -0px -235px;
+    height : 25px;
+    width  : 100%;
+}
+#mainC div#content{
+    background-color : #fff;
+    margin  : -5px 0 0 0;
+    padding : 5px 10px 0px;
+}
+html* div#content { font-size : .9em; }
+
+#mainC img#bottom {
+    background-position : -0px -261px;
+    height : 25px;
+    width  : 100%;
+}
+
+/* ----------------- Footer -------------- */
+#footerC {
+    background : url(/images/sprites/application.png) repeat-x scroll 0px -109px transparent;
+    height : 124px;
+    width  : 100%;
+    position : relative;
+    color : #666666;
+    font-size : .8em;
+    margin-bottom : 20px;
+}
+html* #footerC { font-size : .7em; }
+#footerC #footer {
+    width : 803px;
+    position : absolute;
+    left : 120px;
+    top  : 23px;
+}
+div#f_right {
+    text-align : right;
+    margin-top : -7px;
+}
+#footer h5 {
+    font-size : 1.2em;
+    font-weight : bold;
+    margin-bottom : 2px;
+    letter-spacing : -0.1px;
+}
+#footer h6 {
+    float : right;
+    font-size : 1em;
+    font-weight : bold;
+    color : #889c59;
+    line-height : 35px;
+    margin-right : 5px;
+}
+
+#footer p {
+    margin-bottom : 8px;
+    font-size : 0.85em;
+}
+#footer #copyright {
+    float : left;
+    background-position : -510px -289px;
+    height : 14px;
+    width  : 14px;
+    margin : -2px 3px 0 0;
+}
+#footer_links a { float : left; }
+#footer_links div.delimeter {
+    float : left;
+    width : 15px;
+    text-align : center;
+    color : #7FB86B;
+}
+#f_signin a {
+    float : none;
+}
+
+#footer #follow_us {
+    float : right;
+    background-color : #e3edbf;
+    padding : 6px 5px 2px 8px;
+    border-radius : 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+}
+#follow_us img {
+    height : 24px;
+    width  : 25px;
+    margin-right : 3px;
+}
+#email          { background-position : -675px -290px; }
+#twitter        { background-position : -705px -290px; }
+#facebook       { background-position : -733px -290px; }
+
+#f_right > p {
+    margin-top : 10px;
+}
+#get_home_offer {
+    background-position : -528px -290px;
+    height : 28px;
+    width  : 145px;
+}
+
+/* High-level Frame Stuff
+   errr, I'm not sure why we have an id and a class of the same name with the same parent
+*/
+div.xs_two_col {}
+div.xs_two_col div#left_col {} /* yui3-u-33-48 - 68.75% */
+div.xs_two_col div#right_col { /* yui3-u-7-24  - 29.1666% */
+    width : 260px;             /* width override so we match the mocks */
+}
+
+/* The most common, x-site content two-col setup */
+.xs_two_col .left_col  { }
+.xs_two_col .right_col { margin-left : 10px; }
+
+
+
+
+
+/*---------------- Site Wide Element Changes --------------*/
+a {
+    color : #7FB86B;
+    text-decoration : none;
+}
+a:hover {
+    text-decoration : underline;
+}
+label.empty {
+    color : #999;
+}
+.field {
+    margin-bottom : 10px;
+}
+
+h1 {
+    font-size : 1.3em;
+    font-weight : bold;
+    margin : -2px 0 5px 0;
+}
+h3 {
+    font-size : 1.1em;
+    font-weight : bold;
+    letter-spacing : -0.75px;
+}
+
+.green  { color : #75973e; }
+.orange { color : #F89A36; }
+
+.grey85 {
+    color : #666;
+    font-size : .85em;
+    line-height : 1.4em;
+}
+
+textarea,
+input[type="text"],
+input[type="password"] {
+    padding : 4px;
+    border  : 1px solid #dadada;
+    color   : #333;
+}
+input[type="checkbox"] {
+    float : left;
+    margin-right : 5px;
+}
+
+p.sorry_no_results {
+    padding : 0 15px;
+    color : #444444;
+}
+
+
+
+
+/*------------ My own custom -----------------------------*/
+.right  { float : right; }
+.left   { float : left; }
+.hidden { display : none; }
+
+.rArr { /* right arrow */
+    background : url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;
+    height : 9px;
+    width  : 9px;
+    vertical-align : middle;
+}
+
+/* /shared/spacers/<class name> */
+hr.guides_spacer {
+    background : #dadada;
+    color      : #dadada;
+    width      : 95%;
+    margin     : 36px auto 40px;
+}
+
+
+
+
+
+/* ------------------ Layout/Frame types ----------------- */
+/* Minimal -- A minimal @frame consists only of the header logo & main body */
+body.minimal #request_offerC,
+body.minimal #menuC,
+body.minimal #footerC {
+    display : none;
+}
+
+
+
+@import "yui3_additions"; /* layout                         */
+@import "breadcrumb";     /* 95% of the pages have this     */
+@import "jquery.growl";   /* how we show our flash messages */
+@import "pieces_of_blueprint";
+@import "box";            /* common box; used for side-bar seller listing form, so it's on most pages */
+
+/* imports I should place into specific files once I move them over the sass */
+
+@import "quotes_row";  /* Quotes Row -- homepage and seller listing pipeline */

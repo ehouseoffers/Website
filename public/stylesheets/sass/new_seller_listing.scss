@@ -1,0 +1,94 @@
+@import "form_validations";
+
+/* Start Sprites */
+.sprite { background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent; }
+#step_one_register  {
+    background-position : -166px -32px;
+    height : 75px;
+    width  : 190px;
+}
+#lock_icon  {
+    background-position : -359px -56px;
+    height : 25px;
+    width  : 85px;
+    vertical-align : middle;
+    margin-left : 7px;
+}
+#truste {
+    background-position : 0px -125px;
+    height : 28px;
+    width : 101px;
+    margin : 0 0 0 20px;
+}
+#verisign {
+    background-position : -103px -125px;
+    height : 26px;
+    width : 61px;
+    margin : 0 0 0 7px;
+}
+#mcafee {
+    background-position : -360px -32px;
+    height : 22px;
+    width : 62px;
+    margin : 0 0 0 4px;
+}
+form input[type="image"] {
+    background-position : -166px -108px;
+    height : 48px;
+    width  : 224px;
+}
+/* end sprites */
+
+#mainC img#top {
+    height : 96px;
+    background : url(/images/page_banners/seller-listing-register-step1.png) no-repeat scroll 0px 0px transparent;
+}
+#mainC div#content { padding : 0px; }
+
+#step_one_contentC {
+    padding : 27px 33px;
+}
+div#form_gutter {
+    padding : 25px 0 0 91px;
+}
+
+form#new_seller_listing label {
+    display : none;
+}
+form#new_seller_listing .field,
+form#new_seller_listing input[type="text"] {
+    width : 450px;
+}
+div#email {
+    clear : both;
+}
+form#new_seller_listing div#first_name.field,
+form#new_seller_listing input#seller_listing_user_first_name,
+form#new_seller_listing div#last_name.field,
+form#new_seller_listing input#seller_listing_user_last_name,
+form#new_seller_listing div#address_zip.field,
+form#new_seller_listing input#seller_listing_address_zip {
+    width : 212px;
+}
+form#new_seller_listing div#first_name.field {
+    float : left;
+    margin-right : 26px;
+}
+form#new_seller_listing div#last_name.field {
+    float : left;
+}
+#securityC span { display : none; }
+#security_iconsC {
+    margin-top : 8px;
+}
+.submitC {
+    padding-top : 12px;
+}
+.submitC #securityC {
+    display : inline-block;
+    font-size : .9em;
+    color : #666;
+    position : relative;
+    top : -22px;
+    left : 5px;
+}

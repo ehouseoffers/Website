@@ -1,0 +1,94 @@
+/* Start Sprites */
+.sprite { background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent; }
+#lock_icon  {
+    background-position : -359px -56px;
+    height : 25px;
+    width  : 85px;
+    vertical-align : text-top;
+    margin-left : 5px;
+}
+#truste {
+    background-position : 0px -125px;
+    height : 28px;
+    width : 101px;
+    margin : 0 0 0 20px;
+}
+/*#verisign {
+    background-position : -103px -125px;
+    height : 26px;
+    width : 61px;
+    margin : 0 0 0 7px;
+}*/
+#mcafee {
+    background-position : -360px -32px;
+    height : 22px;
+    width : 62px;
+    margin : 0 0 0 4px;
+}
+form input[type="image"] {
+    background-position : -0px -81px;
+    height : 40px;
+    width  : 119px;
+}
+/* end sprites */
+
+.seller_signup_boxC {
+    /*width : 260px; rm'd so right col widgets have a consistent width */
+    margin-bottom : 50px; /* to account for how we placed the #security_iconsC (see below) */
+}
+.seller_signup_boxC div.gutter {
+    padding : 15px 22px 5px;    
+}
+/*.seller_signup_boxC h2 {
+    letter-spacing : -.75px;
+    color : #f89a36;
+    font-size : 1.4em;
+    font-weight : bold;
+    margin-bottom : 5px;
+}
+*/
+.seller_signup_boxC p,
+.seller_signup_boxC strong {
+    font-size : .75em;
+    line-height : 16px;
+    margin-bottom : 8px;
+    margin-right : -25px;
+}
+.seller_signup_boxC strong {
+    display : block;
+    font-weight : bold;
+    margin-bottom : 4px;
+}
+form .field,
+form input[type="text"] {
+    width : 208px;
+}
+form label {
+    display : none;
+}
+form div#email.field,
+form input#seller_listing_user_email,
+form div#number.field,
+form input#seller_listing_phone_number_number,
+form div#address1.field,
+form input#seller_listing_address_address1,
+form div#address_zip.field,
+form input#seller_listing_address_zip {
+     width : 157px;
+}
+#securityC span { display : none; }
+#security_iconsC {
+    float      : left; /* to take it out of the flow */
+    margin-top : 17px; /* to place it below the form box */
+}
+.submitC {
+    padding-top : 12px;
+}
+.submitC #securityC {
+    display : inline-block;
+    font-size : .9em;
+    color : #666;
+    position : relative;
+    top : -22px;
+    left : 5px;
+}

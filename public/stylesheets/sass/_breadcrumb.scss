@@ -1,0 +1,27 @@
+ul.breadcrumbC {
+    font-size : .75em;
+    margin : 0;
+    padding : 0;
+    color : #53aa47;
+    height : 2em;
+    overflow : hidden;
+}
+ul.breadcrumbC a {
+    color : #53aa47;
+}
+ul.breadcrumbC li {
+    list-style : none;
+    float : left;
+    margin-left : .5em;
+    line-height : 2em;
+}
+ul.breadcrumbC li#crumb_home {
+    margin-left : 0;
+}
+/* (bigger) right arrow specifically for the home page breadcrumb. All the others use .rArr*/
+li#crumb_home .rArr { 
+    background : url(/images/sprites/application.png) repeat-x scroll -343px -324px transparent;
+    height : 14px;
+    width  : 14px;
+    vertical-align : middle;
+}

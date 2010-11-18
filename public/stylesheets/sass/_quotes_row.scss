@@ -1,0 +1,11 @@
+/* FIXME -- this is currently used in home, comp_data and thank_you and each page has their own version of this.
+             cleanup each page's own css and import this one file */
+#quotes_rowC {
+    margin : 20px 0 0 7%;
+}
+#quotes_rowC p {
+    padding-right : 20px;
+}
+#quotes_rowC p.author {
+    padding-left : 20px;
+}

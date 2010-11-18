@@ -1,0 +1,34 @@
+@mixin rts_sprite($x, $y, $h, $w) {
+    background : url(/images/sprites/reasons_to_sell.png) no-repeat scroll #{$x}px #{$y}px transparent;
+    height : #{$h}px;
+    width  : #{$w}px;
+}
+
+#r_envelope_icon { @include rts_sprite(-261,   0, 14, 15); }
+#r_twitter_icon  { @include rts_sprite(-261, -16, 14, 15); }
+#r_facebook_icon { @include rts_sprite(-279,   0, 14, 14); }
+
+.share_article_onC {
+    text-align : right;
+    margin : 12px 27px 0 0;
+    line-height : 21px;
+    color : #555;
+}
+.share_article_onC strong {
+    font-size : .85em;
+    font-weight : bold;
+}
+.share_article_onC .shareC {
+    line-height : 10px;
+    background-color : #F0F3DA;
+    border-radius : 5px;
+    -moz-border-radius: 5px;
+    -webkit-border-radius: 5px;
+    padding : 4px 8px;
+    width : 64px;
+    float : right;
+    margin-left : 10px;
+}
+.shareC img {
+    margin : 0 2px;
+}

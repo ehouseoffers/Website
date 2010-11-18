@@ -1,0 +1,23 @@
+
+#menuC { margin-bottom : 6px; }
+#mainC div#tab_arrow {
+    display : block;
+    left : 620px;
+    top  : 0px;
+}
+#mainC img#top {
+    background : url(/images/page_banners/reasons_to_sell.png) no-repeat scroll 0px 0px transparent;
+    height : 100px;
+}
+hr#top_of_content.space { margin-top : -6px; }
+
+@import "jquery.slider";
+@import "email_this_image";
+@import "share_article_on";
+@import "share_this_image";
+@import "pagination";
+@import "seller_signup";
+
+/* show page specific */
+@import "blog_show_page";
+@import "other_resources";

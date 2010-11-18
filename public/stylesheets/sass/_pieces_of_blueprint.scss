@@ -1,0 +1,10 @@
+/*------------ Stolen from Blueprint ---------------------*/
+.clearfix:after, .container:after {content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden;}
+.clearfix, .container {display:block;}
+.clear {clear:both;}
+html * .clearfix.ie_stretch{ width:100%}
+
+hr {background:#ececec;color:#ececec;clear:both;float:none;width:100%;height:.1em;margin:0 0 1.45em;border:none;}
+hr.space {background:#fff;color:#fff;visibility:hidden;}
+hr.indent{margin : 0 5%;width:90%;}
+
