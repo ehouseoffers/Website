@@ -14,7 +14,7 @@
       = render 'shared/delimeter'
       = link_to 'Site Map', '/sitemap_index.xml.gz'
       = render 'shared/delimeter'
-      = link_to 'Terms of Service', terms_path
+      = link_to 'Terms of Service', about_path(:anchor => :tos), :id => 'footer_tos_link'
       = render 'shared/delimeter'
       = link_to 'Contact Us', contacts_path
       = render 'shared/delimeter'
