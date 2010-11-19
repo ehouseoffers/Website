@@ -1,6 +1,6 @@
 @import "seller_signup";
 @import "social_contact";
-
+@import "tos";
 
 /* Page Banner */
 #menuC { margin-bottom : 6px; }
@@ -82,6 +82,17 @@ div.url a {
 }
 
 
+ul.green {
+    margin-left : 1em;
+}
+ul.green li {
+    list-style : disc inside none;
+    color : #75973E;
+    margin-bottom : .5em;
+}
+ul.green span {
+    color : #7A7A7A;
+}
 
 
 

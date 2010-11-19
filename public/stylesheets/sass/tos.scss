@@ -1,0 +1,29 @@
+#tosC {}
+
+#tosC p {
+    color : #666;
+    line-height : 1.6em;
+}
+ol#tos {
+    color : #75973e;
+}
+ol#tos li {
+    list-style : decimal inside none;
+    margin : 1em 0;
+}
+ol#tos h3 {
+    color : #75973e;
+    display : inline;
+    margin : 1em 0 .5em 0;
+}
+
+ol#tos ol {
+    margin-left : 50px;
+}
+ol#tos ol li {
+    list-style : lower-alpha outside none;
+    margin : 0;
+}
+ol#tos ol li p {
+    color : #666;
+}
