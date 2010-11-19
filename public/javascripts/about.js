@@ -17,6 +17,6 @@ $(document).ready(function() {
             trigger.html('Show Terms of Service');
             list.addClass('hidden');
         }
-        return false;
+
     });
 });
