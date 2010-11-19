@@ -40,15 +40,7 @@
       var AUTH_TOKEN = encodeURIComponent(#{form_authenticity_token.inspect});
 
 %body{:class => @frame || 'full'}
-  %div{:style => 'position:absolute;top:2px;right:2px;font-size:.85em'}
-    = admin_area do
-      - if @meta_data
-        = link_to "Edit meta data for this page", edit_admin_meta_datum_path(@meta_data)
-      - else
-        = link_to 'Add meta data for this page', new_admin_meta_datum_path(:p => request.path_info)
-
-
-
+  = render :partial => 'shared/admin_options'
 
   %div#headerC
     = render :partial => 'layouts/application/header'

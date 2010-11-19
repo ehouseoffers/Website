@@ -300,7 +300,14 @@ hr.guides_spacer {
 }
 
 
-
+/* ------------------ Upper Right Admin Options ----------------- */
+div#ur_adminC {
+    position : absolute;
+    top      : 2px;
+    right    : 2px;
+    font-size: .85em;
+}
+div#ur_adminC a { color : #123; }
 
 
 /* ------------------ Layout/Frame types ----------------- */

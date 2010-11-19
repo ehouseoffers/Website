@@ -1,0 +1,7 @@
+= admin_area do
+  %div#ur_adminC
+    - if @meta_data
+      = link_to "Edit meta data for this page", edit_admin_meta_datum_path(@meta_data)
+    - else
+      = link_to 'Add meta data for this page', new_admin_meta_datum_path(:p => request.path_info)
+
