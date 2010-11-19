@@ -1,21 +1,21 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  user_id: 1
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip: 1
-  label: MyString
-  primary: false
-
-two:
-  user_id: 1
-  address1: MyString
-  address2: MyString
-  city: MyString
-  state: MyString
-  zip: 1
-  label: MyString
-  primary: false
+# one:
+#   user_id: 1
+#   address1: MyString
+#   address2: MyString
+#   city: MyString
+#   state: MyString
+#   zip: 1
+#   label: MyString
+#   primary: false
+# 
+# two:
+#   user_id: 1
+#   address1: MyString
+#   address2: MyString
+#   city: MyString
+#   state: MyString
+#   zip: 1
+#   label: MyString
+#   primary: false

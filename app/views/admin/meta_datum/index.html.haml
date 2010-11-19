@@ -1,0 +1,30 @@
+:ruby
+  extra_css('scaffold')
+
+%h1 Site Meta Data (by url)
+
+- unless @admin_meta_data.empty?
+  %table
+    %tr
+      %th Relative Path
+      %th Title
+      %th Description
+      %th Keywords
+      %th
+
+    - @admin_meta_data.each do |admin_meta_datum|
+      %tr
+        %td= link_to admin_meta_datum.relative_path, admin_meta_datum.relative_path
+        %td= admin_meta_datum.title
+        %td= admin_meta_datum.description
+        %td= admin_meta_datum.keywords
+        %td{:style => 'white-space:nowrap'}
+          = link_to 'View', admin_meta_datum_path(admin_meta_datum)
+          &nbsp;
+          = link_to 'Edit', edit_admin_meta_datum_path(admin_meta_datum)
+          &nbsp;
+          = link_to 'X', admin_meta_datum, :confirm => 'Are you sure?', :method => :delete
+
+  %br
+
+= link_to 'New Meta data', new_admin_meta_datum_path

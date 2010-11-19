@@ -1,13 +1,13 @@
 # Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
 
-one:
-  user_id: 
-  number: 1
-  label: MyString
-  primary: false
-
-two:
-  user_id: 
-  number: 1
-  label: MyString
-  primary: false
+# one:
+#   user_id: 
+#   number: 1
+#   label: MyString
+#   primary: false
+# 
+# two:
+#   user_id: 
+#   number: 1
+#   label: MyString
+#   primary: false

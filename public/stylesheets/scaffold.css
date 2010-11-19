@@ -38,6 +38,11 @@ div.disabled_form_field {
     height : 200px;
 }
 
+div.disabled_form_field.quarter_height,
+.quarter_height.field textarea { height : 50px; }
+div.disabled_form_field.half_height,
+.half_height.field textarea    { height : 100px; }
+
 .actions {
     margin : 10px 0 0 0;
 }

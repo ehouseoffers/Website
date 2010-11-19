@@ -8,6 +8,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural 'spotlight', 'spotlighters'
   inflect.singular 'spotlighters', 'spotlight'
 
+  inflect.plural 'data', 'datum'
+
   # inflect.plural /^(ox)$/i, '\1en'
   # inflect.singular /^(ox)en/i, '\1'
   # inflect.irregular 'person', 'people'

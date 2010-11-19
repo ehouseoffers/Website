@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101116075755) do
+ActiveRecord::Schema.define(:version => 20101118194834) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -21,6 +21,15 @@ ActiveRecord::Schema.define(:version => 20101116075755) do
     t.integer  "zip",                           :null => false
     t.string   "label"
     t.boolean  "primary",    :default => false
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "admin_meta_datum", :force => true do |t|
+    t.string   "relative_path"
+    t.text     "title"
+    t.text     "description"
+    t.text     "keywords"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

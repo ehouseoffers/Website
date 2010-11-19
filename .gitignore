@@ -5,6 +5,4 @@ tmp/**/*
 scratch
 /public/assets
 /public/stylesheets/.sass-cache/
-PITCH
-YUI-cheat-sheet
-20101116-staging-db.sql
+/Docs/*

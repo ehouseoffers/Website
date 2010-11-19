@@ -1,4 +1,10 @@
 Ehouseoffers::Application.routes.draw do
+
+  match '/admin', :to => 'admin#index'
+  namespace :admin do
+    resources :meta_datum
+  end
+
   devise_for :users
 
   resources :addresses

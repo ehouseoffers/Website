@@ -1,0 +1,25 @@
+:ruby
+  url = @admin_meta_datum.new_record? ? admin_meta_datum_index_path : admin_meta_datum_path
+  method = @admin_meta_datum.new_record? ? :post : :put
+
+= form_for @admin_meta_datum, :url => url, :method => method do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @admin_meta_datum}
+
+  .field
+    = f.label :relative_path
+    = f.text_field :relative_path
+
+  .quarter_height.field
+    = f.label :title
+    = f.text_area :title
+
+  .quarter_height.field
+    = f.label :description
+    = f.text_area :description
+
+  .quarter_height.field
+    = f.label :keywords
+    = f.text_area :keywords
+
+  .actions
+    = f.submit 'Save'

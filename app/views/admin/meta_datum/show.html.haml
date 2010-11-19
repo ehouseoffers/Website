@@ -1,0 +1,26 @@
+:ruby
+  extra_js('jquery.growl')
+  extra_css('scaffold')
+
+%h1 View Meta Datum
+
+.field
+  %label Relative Path
+  %div.disabled_form_field= link_to @admin_meta_datum.relative_path, @admin_meta_datum.relative_path
+
+.quarter_height.field
+  %label Title
+  %div.disabled_form_field.quarter_height= @admin_meta_datum.title
+
+.quarter_height.field
+  %label Description
+  %div.disabled_form_field.quarter_height= @admin_meta_datum.description
+
+.quarter_height.field
+  %label Keywords
+  %div.disabled_form_field.quarter_height= @admin_meta_datum.keywords
+
+%p
+  = link_to "Edit", edit_admin_meta_datum_path(@admin_meta_datum)
+  \|
+  = link_to 'Meta Data Index', admin_meta_datum_index_path
