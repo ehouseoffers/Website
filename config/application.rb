@@ -4,6 +4,9 @@ require 'rails/all'
 
 env = !Rails.env.blank? ? Rails.env.to_s : 'test'
 
+Rails.logger.info("----------------------------- application.rb:7 - Rails.root.to_s = '#{Rails.root.to_s.inspect}'")
+Rails.logger.info("----------------------------- application.rb:8 - env = '#{env.inspect}'")
+
 raw_config = File.read(Rails.root.to_s + "config/keys.yml")
 KEYS = YAML.load(raw_config)[env]
 
