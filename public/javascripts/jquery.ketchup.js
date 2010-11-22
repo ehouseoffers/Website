@@ -242,7 +242,6 @@
   
   
   var showContainer = function(errorContainer) {
-    console.log('show container');
     errorContainer.fadeIn();
   };
   
