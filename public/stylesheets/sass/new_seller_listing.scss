@@ -59,9 +59,23 @@ form#new_seller_listing .field,
 form#new_seller_listing input[type="text"] {
     width : 450px;
 }
-div#email {
+div#email, div#address_zip {
     clear : both;
 }
+
+form#new_seller_listing div#city.field,
+form#new_seller_listing input#seller_listing_address_city {
+    float : left;
+    margin-right : 26px;
+    width : 324px;
+}
+form#new_seller_listing div#state.field,
+form#new_seller_listing input#seller_listing_address_state {
+    float : left;
+    width : 100px;
+}
+
+
 form#new_seller_listing div#first_name.field,
 form#new_seller_listing input#seller_listing_user_first_name,
 form#new_seller_listing div#last_name.field,

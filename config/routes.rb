@@ -29,6 +29,10 @@ Ehouseoffers::Application.routes.draw do
 
   match '/generate-url-friendly-string', :as => 'generate_url_friendly_string', :to => 'home#generate_url_friendly_string'
   match '/what-we-do', :as => 'what_we_do', :to => 'home#what_we_do'
+
   root :to => 'home#home'
   match '/', :to => 'home#home', :as => 'home'
+
+  # Ajax Only
+  match '/pfz', :to => 'ajax#placefinder_by_zip', :as => 'placefinder_by_zip'
 end

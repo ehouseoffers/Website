@@ -2,6 +2,11 @@ require File.expand_path('../boot', __FILE__)
 
 require 'rails/all'
 
+env = !Rails.env.blank? ? Rails.env.to_s : 'test'
+
+raw_config = File.read(Rails.root.to_s + "config/keys.yml")
+KEYS = YAML.load(raw_config)[env]
+
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
 Bundler.require(:default, Rails.env) if defined?(Bundler)
@@ -46,6 +51,17 @@ module Ehouseoffers
 
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
+
+    # config.action_mailer.default_charset = "utf-8"
+    #     config.action_mailer.delivery_method = :smtp
+    #     config.action_mailer.smtp_settings   = {
+    #       :address        => "smtp.webfaction.com",
+    #       :authentication => :login,
+    #       :domain         => "webfaction.com",
+    #       :port           => 25,
+    #       :user_name      => KEYS['email']['mailbox_username'],
+    #       :password       => KEYS['email']['mailbox_password']
+    #     }
 
   end
 end

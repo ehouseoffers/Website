@@ -28,6 +28,16 @@
       = field.label :address1, 'Address'
       = field.text_field :address1, 'data-validation' => 'validate(required)', 'data-example' => 'Address'
 
+    #city_stateC.hidden
+      .field#city
+        = field.label :city, 'City'
+        = field.text_field :city, 'data-validation' => 'validate(required)', 'data-example' => 'City'
+
+      .field#state
+        = field.label :state
+        = field.text_field :state, 'data-validation' => 'validate(required, rangelength(2,2))', 'data-example' => 'State'
+
+
   = f.fields_for @seller_listing.user.addresses.new do |field|
     .field#address_zip
       = field.label :zip, 'Zip Code'
@@ -43,4 +53,41 @@
       = image_tag '/images/transparent.gif', :id => 'truste', :class => 'sprite', :alt => 'Truste Certified Privacy'
       = image_tag '/images/transparent.gif', :id => 'verisign', :class => 'sprite last', :alt => 'Verisign'
 
+:javascript
+  $(document).ready(function() {
+    // What a mess. clean this up!
+    var city_stateC = $('div#city_stateC');
+    var city = $('input#seller_listing_address_city', city_stateC);
+    var state = $('input#seller_listing_address_state', city_stateC);
+    var zip = $('input#seller_listing_address_zip');
+
+    zip.blur(function(){
+      // No need to proceed if there is no zip code
+      if ( zip.val() == zip.attr('data-example') || $.blank(zip.val()) ) return;
+
+      //if ( $.blank(city.val()) || $.blank(state.val()) ) {
+        $.ajax({
+          url     : "#{placefinder_by_zip_path}",
+          data    : 'zip='+ zip.val(),
+          dataType: 'json',
+          type    : 'GET',
+          success: function (data, status, xhr) {
+            if ( $.blank(city.val()) ) city.val(data['city']).trigger('blur');
+            if ( $.blank(state.val()) ) state.val(data['state']).trigger('blur');
+            city_stateC.removeClass('hidden');
+          },
+          error: function (xhr, status, error) {
+            zip.val(zip.attr('data-example')).removeClass('valid').addClass('invalid');
+            $('div.form_validation_icon', $('div#address_zip')).removeClass('valid').addClass('invalid');
+
+            $.Growl.show({
+              message : xhr.responseText,
+              icon    : 'error',
+              timeout : 7500
+            });
+          }
+        });
+      //}
+    });
+  });
 

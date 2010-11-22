@@ -1,3 +1,4 @@
+@import "form_validations";
 @import "seller_signup";
 
 p {
@@ -152,6 +153,7 @@ div#welcome_message p {
 #homeC #cash_offer_formC {
     margin-left : 13px;
 }
+form#new_seller_listing div.field,
 form#new_seller_listing .field {
     margin-bottom : 10px;
     width : 320px;
@@ -166,21 +168,24 @@ form#new_seller_listing input {
 }
 
 div#email, div#number, div#address1, div#address_zip { clear : both; }
-form#new_seller_listing div#first_name.field,
-form#new_seller_listing input#seller_listing_user_first_name,
-form#new_seller_listing div#last_name.field,
-form#new_seller_listing input#seller_listing_user_last_name,
-form#new_seller_listing div#address_zip.field,
-form#new_seller_listing input#seller_listing_address_zip {
+
+form#new_seller_listing div#first_name.field,  form#new_seller_listing input#seller_listing_user_first_name,
+form#new_seller_listing div#last_name.field,   form#new_seller_listing input#seller_listing_user_last_name,
+form#new_seller_listing div#address_zip.field, form#new_seller_listing input#seller_listing_address_zip {
     width : 150px;
 }
-form#new_seller_listing div#first_name.field {
+form#new_seller_listing div#city.field,  form#new_seller_listing input#seller_listing_address_city { width : 220px; }
+form#new_seller_listing div#state.field, form#new_seller_listing input#seller_listing_address_state { width : 80px; }
+
+form#new_seller_listing div#first_name.field,
+form#new_seller_listing div#city.field {
     float : left;
     margin-right : 20px;
 }
-form#new_seller_listing div#last_name.field {
+form#new_seller_listing div#last_name.field, form#new_seller_listing div#state.field {
     float : left;
 }
+
 .submitC {
     padding-top : 12px;
 }
