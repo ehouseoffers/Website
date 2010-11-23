@@ -74,7 +74,7 @@
           success: function (data, status, xhr) {
             if ( $.blank(city.val()) ) city.val(data['city']).trigger('blur');
             if ( $.blank(state.val()) ) state.val(data['state']).trigger('blur');
-            city_stateC.removeClass('hidden');
+            city_stateC.removeClass('hidden').addClass('clearfix');
           },
           error: function (xhr, status, error) {
             zip.val(zip.attr('data-example')).removeClass('valid').addClass('invalid');
