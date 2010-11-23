@@ -29,3 +29,16 @@ development:
       shared_secret: '4d7d5ff0f2fd6285c0c94d8b59df02e4b4736723'
       app_id: 'C9syf33e'
       base: 'http://where.yahooapis.com/geocode'
+
+staging:
+    domain: localhost:3000
+    email:
+        mailbox_username: younker_test
+        mailbox_password: test
+        generic_from: ehouseoffers@28dev.com
+        contact_form_recipient: ehouseoffers@28dev.com
+    placefinder:
+      api_key: 'dj0yJmk9RklQeDNnZVhReXl6JmQ9WVdrOVF6bHplV1l6TTJVbWNHbzlNQS0tJnM9Y29uc3VtZXJzZWNyZXQmeD02Yw--'
+      shared_secret: '4d7d5ff0f2fd6285c0c94d8b59df02e4b4736723'
+      app_id: 'C9syf33e'
+      base: 'http://where.yahooapis.com/geocode'
