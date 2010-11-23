@@ -1,14 +1,11 @@
 require File.expand_path('../boot', __FILE__)
 
+require 'yaml'  
+KEYS = YAML.load(File.read(File.expand_path('../keys.yml', __FILE__)))
+
 require 'rails/all'
 
 env = !Rails.env.blank? ? Rails.env.to_s : 'test'
-
-Rails.logger.info("----------------------------- application.rb:7 - Rails.root.to_s = '#{Rails.root.to_s.inspect}'")
-Rails.logger.info("----------------------------- application.rb:8 - env = '#{env.inspect}'")
-
-raw_config = File.read(Rails.root.to_s + "config/keys.yml")
-KEYS = YAML.load(raw_config)[env]
 
 # If you have a Gemfile, require the gems listed there, including any gems
 # you've limited to :test, :development, or :production.
