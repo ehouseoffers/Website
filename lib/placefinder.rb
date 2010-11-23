@@ -9,6 +9,9 @@ class Placefinder
   attr_accessor :query_base, :query_string, :response, :error, :error_message, :city, :state, :zip
 
   def initialize(query_params={})
+
+    Rails.logger.info("----------------------------- placefinder.rb:13 - KEYS = '#{KEYS.inspect}'")
+
     self.query_base = {
       :appid => KEYS['placefinder']['app_id'],
       :flags => 'J'
