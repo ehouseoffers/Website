@@ -6,7 +6,6 @@ body {
     margin : auto;
     width  : 953px;
     font-family : arial, helvetica, sans-serif;
-    /*font-size : 85%\0/;  IE8 */
 }
 *+html body { font-size : 97%; } /* IE7 */
 
@@ -115,7 +114,7 @@ div#request_offerC img#request_offer  {
     margin  : -5px 0 0 0;
     padding : 5px 10px 0px;
 }
-html* div#content { font-size : .9em; }
+/*html* div#content { font-size : .9em; }*/
 
 #mainC img#bottom {
     background-position : -0px -261px;
@@ -211,7 +210,9 @@ div#f_right {
    errr, I'm not sure why we have an id and a class of the same name with the same parent
 */
 div.xs_two_col {}
-div.xs_two_col div#left_col {} /* yui3-u-33-48 - 68.75% */
+div.xs_two_col div#left_col { /* yui3-u-33-48 - 68.75% */
+    margin-right : 15px;
+}
 div.xs_two_col div#right_col { /* yui3-u-7-24  - 29.1666% */
     width : 260px;             /* width override so we match the mocks */
 }

@@ -15,7 +15,7 @@
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:guides, guides_path], ["#{@blog.title}", nil]]
 
 %div#guide_showC.xs_two_col.yui3-g
-  %div.guide_contentC.yui3-u-33-48
+  %div#left_col.guide_contentC.yui3-u-33-48
     = image_tag @blog.photo.url(:large), :alt => @blog.title, :id => 'main_image'
 
     %h1.green

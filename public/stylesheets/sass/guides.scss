@@ -3,24 +3,6 @@
 @import "seller_signup";
 @import "form_validations";
 
-
-/*
-#menuC { margin-bottom : 7px; }
-#mainC div#tab_arrow {
-    display : block;
-    left : 240px;
-    top  : -1px;
-}
-#mainC img#top {
-    background : url(/images/page_banners/trends.png) no-repeat scroll 0px 0px transparent;
-    height : 108px;
-}
-hr#top_of_content.space { margin-top : -15px; }
-
-*/
-
-
-
 #menuC { margin-bottom : 12px; }
 #mainC div#tab_arrow {
     display : block;
@@ -31,7 +13,7 @@ hr#top_of_content.space { margin-top : -15px; }
     background : url(/images/page_banners/guides.png) no-repeat scroll 0px 0px transparent;
     height : 110px;
 }
-hr#top_of_content.space { margin-top : -15px; }
+hr#top_of_content.space { margin-top : -22px; }
 
 
 /* guide single view */
@@ -67,9 +49,8 @@ div#left_col hr.space {
 }
 
 /*---------- guide show ---------*/
-div#guide_showC .guide_contentC {
-    margin-right : 15px;
-}
+/*div#guide_showC .guide_contentC { margin-right : 15px; }*/
+
 div#guide_showC img#main_image {
     float : left;
     padding : 0 15px 10px 0;
@@ -82,7 +63,7 @@ div.article_body p {
 }
 
 .box div.gutter {
-    padding : 17px 0 12px 15px;
+/*    padding : 17px 0 12px 15px;*/
 }
 div#other_guidesC {
     margin : 0 15px;

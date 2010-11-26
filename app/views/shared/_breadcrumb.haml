@@ -1,4 +1,4 @@
-%ul.breadcrumbC.clearfix
+%ul.breadcrumbC
   - crumbs.each do |crumb|
     %li.crumb{:id => "crumb_#{crumb[0].to_s.downcase.dasherize}"}
       = image_tag '/images/transparent.gif', :class => 'rArr', :alt => '*'
