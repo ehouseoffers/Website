@@ -1,7 +1,11 @@
 Ehouseoffers::Application.configure do
   # Settings specified here will take precedence over those in config/environment.rb
 
-  config.action_controller.asset_host = "http://localhost:3000"
+  # younker [2010-11-15 10:18]
+  # Why did I have this here? When it is 'http://localhost:3000', it totally
+  # busts IE and when I hardcode the IP, well, it busts when the ip changes.
+  # So why did I have this here for development? Can it be removed?
+  # config.action_controller.asset_host = "http://localhost:3000"
 
   # In the development environment your application's code is reloaded on
   # every request.  This slows down response time but is perfect for development
