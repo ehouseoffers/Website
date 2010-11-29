@@ -4,7 +4,10 @@
     letter-spacing : normal;       /* these are base styles for all the original yui3 units                   */
     vertical-align : top;
     word-spacing   : normal;
+    zoom : 1;
+    *display : inline;
 }
+
 .yui3-u-11-48 { width : 22.91%; }
 .yui3-u-15-48 { width : 31.25%; }
 .yui3-u-33-48 { width : 68.75%; }

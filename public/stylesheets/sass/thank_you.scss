@@ -1,0 +1,92 @@
+#discountsC h1 {
+    padding : 20px 0 50px 0;
+    font-size : 2em;
+    text-align : center;
+}
+
+#discountsC h1, #discountsC a {
+    letter-spacing : 0;
+    word-spacing : 0;
+}
+
+.discount { background : url(/images/sprites/discounts.png) no-repeat scroll 0px 500px transparent; }
+#uhaul_icon {
+    background-position : -164px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#public_storage_icon {
+    background-position : -81px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#american_finance_icon {
+    background-position : 0px -54px;
+    height : 73px;
+    width  : 76px;
+    padding-bottom : 5px;
+}
+#send_me_discounts {
+    background-position : 0px 0px;
+    height : 53px;
+    width  : 224px;
+}
+
+/* END Sprites */
+
+#mainC img#top {
+    height : 102px;
+    background : url(/images/page_banners/seller-listing-register-thank-you.png) no-repeat scroll 0px 0px transparent;
+}
+.box_contentC {
+    padding-left : 33px;
+    padding-right : 33px;
+}
+#thanksC {
+    padding-top : 21px;
+    padding-bottom : 10px;
+}
+#discountsC .gutter {
+    padding : 36px 30px 36px 50px;
+}
+div#discountsC h4 {
+    font-size : .95em;
+    font-weight : bold;
+    padding-bottom : 5px;
+}
+div#discountsC p {
+    font-size : .8em;
+    padding-right : 5px;
+}
+#buttonC {
+    text-align : center;
+    height : 53px;
+    line-height : 53px;
+}
+#buttonC a {
+    vertical-align : top;
+    padding-left : 15px;
+    font-size : .9em;
+}
+
+/* shared quotes partial */
+div#discountsC #quotes_rowC { margin : 0 0 0 15px; }
+#quotes_rowC p {
+    font-size : .85em;
+    line-height : 1.05em;
+    color : #888;
+    margin-bottom : 5px;
+}
+
+#other_others_quote {
+    background : url(/images/sprites/home.png) no-repeat scroll 0px -138px transparent;
+    height : 24px;
+    width : 329px;
+}
+#top_pick_quote {
+    background : url(/images/sprites/home.png) no-repeat scroll -330px -138px transparent;
+    height : 24px;
+    width : 341px;
+}

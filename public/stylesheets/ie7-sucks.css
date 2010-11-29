@@ -1,0 +1,28 @@
+html body { font-size : 87%; }
+input,textarea,select{font-size:90%;}
+
+hr#top_of_content { margin-bottom : 0px !important; }
+
+#footer { font-size : 12px; }
+
+/* home page new seller signup form */
+#homeC #lock_icon {
+    vertical-align :top;
+    margin-top : -5px;
+}
+#homeC #securityC {
+    margin-left : -5px;
+}
+#homeC hr.space {
+    margin-bottom : 0px;
+}
+
+/* targeting for new seller form in right col of most pages */
+.shared_seller_signup .submitC {
+    position : relative;
+}
+.shared_seller_signup #security_iconsC {
+    position : absolute;
+    top : 70px;
+    left : 0px;
+}

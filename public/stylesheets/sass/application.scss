@@ -7,7 +7,6 @@ body {
     width  : 953px;
     font-family : arial, helvetica, sans-serif;
 }
-*+html body { font-size : 97%; } /* IE7 */
 
 /* apple webkit browsers (chrome/safari) */
 @media screen and (-webkit-min-device-pixel-ratio:0) { body { font-size : 95%; } }
@@ -112,7 +111,7 @@ div#request_offerC img#request_offer  {
 #mainC div#content{
     background-color : #fff;
     margin  : -5px 0 0 0;
-    padding : 5px 10px 0px;
+    padding : 5px 0 0 20px;
 }
 /*html* div#content { font-size : .9em; }*/
 
@@ -301,7 +300,15 @@ hr.guides_spacer {
 }
 
 
-/* ------------------ Upper Right Admin Options ----------------- */
+/* ------------------ Admin Boxes Options ----------------- */
+div#content div.admin {
+    float : right;
+    font-size : .75em;
+    line-height : 2em;
+    color : #7FB86B;
+    margin-right : 18px;
+}
+/* ur_ = upper right */
 div#ur_adminC {
     position : absolute;
     top      : 2px;

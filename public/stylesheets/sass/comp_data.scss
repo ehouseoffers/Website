@@ -71,6 +71,8 @@ textarea { height : 3em; }
 .radioC span {
     width : 40px;
     display : inline-block;
+    zoom : 1;
+    *display : inline;
     text-align :center;
 }
 .radioC span, .field div.note {
@@ -88,6 +90,8 @@ textarea { height : 3em; }
 }
 .submitC #securityC {
     display : inline-block;
+    zoom : 1;
+    *display : inline;
     font-size : .9em;
     color : #666;
     position : relative;

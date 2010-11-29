@@ -81,7 +81,6 @@
     //   options.initialPositionContainer(errorContainer, field);
     // }).trigger('resize');
     
-
     field.blur(function() {
       var errList = buildErrorList(validations, field);
 
@@ -104,7 +103,6 @@
       }
     });
 
-
     if(field.attr('type') == 'checkbox') {
       field.change(function() { //chrome dont fire blur on checkboxes, but change
         $(this).blur(); //so just simulate a blur
@@ -119,9 +117,9 @@
     var validations = [];
     var tempStr = '';
     var openBrackets = 0;
-    
-    for(var i = 0; i < valStr.length; i++) {
-      switch(valStr[i]) {
+
+    $.each(valStr.split(''), function(i,char){
+      switch ( char ) {
         case ',':
           if(openBrackets) {
             tempStr += ',';
@@ -143,9 +141,10 @@
           }
           break;
         default:
-          tempStr += valStr[i];
+          // tempStr += valStr[i];
+          tempStr += char;
       }
-    }
+    });
 
     return validations;    
   }
@@ -208,7 +207,7 @@
     for(var i = 0; i < validations.length; i++) {
       var funcName = getFunctionName(validations[i]);
       var params = buildParams(validations[i]);
-      
+
       if(!eval('$.fn.ketchup.validations["'+funcName+'"](field, field.val()'+params+')')) {
         list += '<li>'+formatMessage($.fn.ketchup.messages[funcName], params)+'</li>';
       } 

@@ -77,17 +77,20 @@ form div#address_zip.field, form input#seller_listing_address_zip { width : 151p
 form div#city.field, form input#seller_listing_address_city { width : 151px; float : left; margin-right : 20px; }
 form div#state.field, form input#seller_listing_address_state { width : 35px; float : left; }
 
+.seller_signup_boxC #securityC span { display : none; }
 
-#securityC span { display : none; }
 #security_iconsC {
     float      : left; /* to take it out of the flow */
     margin-top : 17px; /* to place it below the form box */
 }
-.submitC {
+.seller_signup_boxC .submitC {
     padding-top : 12px;
+    width : 230px;
 }
-.submitC #securityC {
+.seller_signup_boxC  #securityC {
     display : inline-block;
+    zoom : 1;
+    *display : inline;
     font-size : .9em;
     color : #666;
     position : relative;

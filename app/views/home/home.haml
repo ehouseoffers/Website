@@ -25,7 +25,7 @@
   %hr.space
 
   %div#resources_rowC
-    %div.yui3-u-3-8
+    %div.yui3-u-3-8.yui3-g
       - video_img = image_tag '/images/transparent.gif', :id => 'what_we_do_video_preview', :class => 'sprite', :alt => 'Video Preview'
       = link_to video_img, what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
       %div#sv_contentC.bottom_contentC
@@ -38,6 +38,7 @@
         %p
           = link_to 'Watch Demo Video', what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'
+
       
     %div.yui3-u-15-48
       - bicon_img = image_tag '/images/transparent.gif', :id => 'our_home_buyers_icons', :class => 'sprite', :alt => 'About Our Home Buyers'

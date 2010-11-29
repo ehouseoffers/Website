@@ -15,18 +15,21 @@ p {
     height : 106px;
     width : 119px;
     margin-top : 4px;
+    float : left;
 }
 #seller_resources_icon {
     background-position : -119px -2px;
     height : 85px;
     width : 88px;
     margin : 24px 0 0 -7px;
+    float : left;
 }
 #our_home_buyers_icons {
     background-position : -214px -2px;
     height : 83px;
     width : 87px;
     margin : 13px 0 0 -9px;
+    float : left;
 }
 #get_cash_offer {
     background-position : -300px -2px;
@@ -191,6 +194,8 @@ form#new_seller_listing div#last_name.field, form#new_seller_listing div#state.f
 }
 .submitC #securityC {
     display : inline-block;
+    zoom : 1;
+    *display : inline;
     font-size : .9em;
     color : #666;
     position : relative;
