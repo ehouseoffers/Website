@@ -1,0 +1,7 @@
+photo:
+  types: ['image/jpeg', 'image/png', 'image/gif']
+  max_size: 512000
+  styles: 
+    small:  '130x130>'
+    medium: '200x200>'
+    large:  '300x300>'

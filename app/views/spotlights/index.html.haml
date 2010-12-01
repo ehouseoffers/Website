@@ -1,0 +1,26 @@
+:ruby
+  extra_css('scaffold')
+
+%h1 Listing interviews
+
+%table
+  %tr
+    %th Spotlight Page
+    %th Title
+    %th Teaser
+    %th
+    %th
+    %th
+
+  - @interviews.each do |interview|
+    %tr
+      %td= link_to 'View Spotlight Page', spotlight_path(interview.title_for_url)
+      %td= interview.title
+      %td= interview.teaser
+      %td= link_to 'Show', interview
+      %td= link_to 'Edit', edit_interview_path(interview)
+      %td= link_to 'Destroy', interview, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Interview', new_interview_path

@@ -1,25 +1,36 @@
 Ehouseoffers::Application.routes.draw do
 
+  devise_for :users
+
   match '/admin', :to => 'admin#index'
   namespace :admin do
     resources :meta_datum
   end
 
-  devise_for :users
-
   resources :addresses
-  resources :contact, :as => :contacts
-  resources :phone_numbers
-  resources :seller_listings do
-    get :comp_data, :on => :member # Registration 2nd step form display
-    get :thank_you, :on => :member # Registration confirmation/appreciation
-  end
-  resources '/real-estate-spotlight', :as => :spotlighters, :controller => :spotlight
-
   resources :blogs do
     # 'Email this Image' form on 'You Should Sell When...' pages
     post :email_image, :on => :member
   end
+  resources :bullet_points
+  resources :contact, :as => :contacts
+  resources :phone_numbers
+  resources :qas do
+    # When I am ready to edit/update all the q&a's tied to a spotlight, this is what you will want
+    # See views/spotlights/show/_interview.haml for next step
+    # collection do
+    #   get '/edit/collection/:context/:context_id', :action => :edit_collection,   :as => :edit_collection
+    #   put '/edit/collection/:context/:context_id', :action => :update_collection, :as => :update_collection
+    # end
+  end
+
+  resources :seller_listings do
+    get :comp_data, :on => :member # Registration 2nd step form display
+    get :thank_you, :on => :member # Registration confirmation/appreciation
+  end
+  resources :social_profiles
+
+  resources '/real-estate-spotlight', :as => :spotlights, :controller => :spotlights
   resources 'how-to-sell-house',  :as => :guides,  :controller => :guides
   resources 'sell-my-house',      :as => :reasons, :controller => :blogs
   resources 'real-estate-trends', :as => :trends,  :controller => :blogs

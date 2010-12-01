@@ -1,0 +1,27 @@
+:ruby
+  extra_css('scaffold')
+
+%p
+  %b Context / ID:
+  = "#{@social_profile.context}/#{@social_profile.context_id}"
+
+%p
+  %b Contextual Location:
+  - path = send("#{@social_profile.belongs_to.class.name.downcase}_path", @social_profile.belongs_to.title_for_url)
+  = link_to path, path
+
+%p
+  %b Website:
+  = @social_profile.website
+
+%p
+  %b Username:
+  = @social_profile.username
+
+%p
+  %b Url:
+  = link_to @social_profile.url, @social_profile.url, :target => :new
+
+= link_to 'Edit', edit_social_profile_path(@social_profile)
+\|
+= link_to 'Back', social_profiles_path

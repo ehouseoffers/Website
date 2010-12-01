@@ -1,12 +1,19 @@
 @mixin rts_sprite($x, $y, $h, $w) {
-    background : url(/images/sprites/reasons_to_sell.png) no-repeat scroll #{$x}px #{$y}px transparent;
+    background : url(/images/sprites/social_contact.png) no-repeat scroll #{$x}px #{$y}px transparent;
     height : #{$h}px;
     width  : #{$w}px;
 }
 
-#r_envelope_icon { @include rts_sprite(-261,   0, 14, 15); }
-#r_twitter_icon  { @include rts_sprite(-261, -16, 14, 15); }
-#r_facebook_icon { @include rts_sprite(-279,   0, 14, 14); }
+#twitterL  { @include rts_sprite(  0,   0, 44, 44); }
+#linkedinL { @include rts_sprite(-44,   0, 44, 44); }
+#youtubeL  { @include rts_sprite(  0, -45, 44, 44); }
+#facebookL { @include rts_sprite(-44, -45, 44, 44); }
+
+#envelopeS { @include rts_sprite(  0, -91, 14, 15); }
+#facebookS { @include rts_sprite(-18, -91, 14, 14); }
+#twitterS  { @include rts_sprite(-34, -91, 14, 15); }
+#youtubeS  { @include rts_sprite(-51, -91, 14, 15); }
+#linkedinS { @include rts_sprite(-68, -91, 14, 15); }
 
 .share_article_onC {
     text-align : right;
@@ -25,7 +32,7 @@
     -moz-border-radius: 5px;
     -webkit-border-radius: 5px;
     padding : 4px 8px;
-    width : 64px;
+/*    width : 64px;*/
     float : right;
     margin-left : 10px;
 }

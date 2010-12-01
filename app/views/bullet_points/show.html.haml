@@ -1,0 +1,18 @@
+:ruby
+  extra_css('scaffold')
+
+%p
+  %b Context Type / ID:
+  = "#{@bullet_point.context}/#{@bullet_point.context_id}"
+
+%p
+  %b Belongs To 
+  = link_to @bullet_point.belongs_to.title, send("#{@bullet_point.belongs_to.class.name.downcase}_path", @bullet_point.belongs_to.title_for_url)
+
+%p
+  %b Bullet Point Content:
+  = @bullet_point.content
+
+= link_to 'Edit', edit_bullet_point_path(@bullet_point)
+\|
+= link_to 'Back', bullet_points_path

@@ -1,0 +1,120 @@
+@import "form_validations";
+
+/* forms */
+h1,h2,h3 {
+    font-size : 1.4em;
+    font-weight : bold;
+    color : #57662f;
+    border-bottom : 1px solid #57662f;
+    margin-bottom : 20px;
+/*    padding-right : 20px;*/
+    width : 710px;
+    line-height : 1.2em;
+}
+h2 {
+    font-size : 1.2em;
+    margin-bottom : 15px;
+}
+h3 {
+    font-size : 1em;
+    margin-bottom : 10px;
+}
+
+
+
+.field {
+    margin-bottom : 20px;
+    width : 700px;
+}
+.field label {
+    display : block;
+    color : #333;
+    font-weight : bold;
+}
+.field label[data-type="checkbox"] {
+    display : inline;
+    margin-left : 5px;
+}
+
+div.disabled_form_field,
+.field textarea,
+.field input[type="text"],
+.field input[type="password"] {
+    padding : 4px;
+    border  : 1px solid #dadada;
+    color   : #333;
+    width   : 700px;
+}
+div.disabled_form_field {
+    background-color : #ececec;
+}
+.field textarea {
+    height : 200px;
+}
+
+.indent div.disabled_form_field,
+.indent textarea,
+.indent input[type="text"],
+.indent input[type="password"] {
+    padding : 4px;
+    border  : 1px solid #dadada;
+    color   : #333;
+    width   : 680px;
+}
+
+.indent .indent div.disabled_form_field,
+.indent .indent textarea,
+.indent .indent input[type="text"],
+.indent .indent input[type="password"] { width : 660px; }
+
+div.disabled_form_field.quarter_height,
+.quarter_height.field textarea { height : 50px; }
+div.disabled_form_field.half_height,
+.half_height.field textarea    { height : 100px; }
+
+table         { width : 700px; }
+.indent table { width : 690px; }
+table.no_border td,
+table.no_border th {
+    border : none;
+
+}
+table input   {
+    width : 100% !important;
+    padding : 4px 0 4px 1px !important;
+}
+
+.actions {
+    margin : 10px 0 0 0;
+}
+
+/* show */
+p {
+    margin-bottom : 20px;
+}
+p b {
+    display : block;
+}
+
+ul    { margin-left : 20px; }
+ul li { list-style-type: none; }
+ul div { line-height : 1em; }
+
+.create_link {
+    float : right;
+    font-size : 11px;
+    font-weight : normal;
+}
+
+/* index */
+th, td {
+    padding : 4px;
+    border-color : #999;
+}
+th {
+    font-weight : bold;
+    color : #123;
+}
+td {
+    color : #333;
+}

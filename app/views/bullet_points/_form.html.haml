@@ -1,0 +1,21 @@
+= form_for @bullet_point do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @bullet_point}
+
+  - if @bullet_point.context.present? && @bullet_point.context_id.present?
+    = f.hidden_field :context
+    = f.hidden_field :context_id
+  - else
+    .field
+      = f.label :context
+      = f.text_field :context
+
+    .field
+      = f.label :context_id, 'Context ID'
+      = f.text_field :context_id
+
+  .field.quarter_height
+    = f.label :content, "Bullet Point"
+    = f.text_area :content
+
+  .actions
+    = f.submit 'Save'

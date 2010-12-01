@@ -1,0 +1,19 @@
+:ruby
+  extra_css('scaffold')
+
+%p
+  %b Context Type/ID:
+  = "#{@qa.context}/#{@qa.context_id}"
+%p
+  %b Context:
+  = link_to @qa.belongs_to.title, send("#{@qa.belongs_to.class.name.downcase}_path", @qa.belongs_to.title_for_url)
+%p
+  %b Question:
+  = @qa.question
+%p
+  %b Answer:
+  = @qa.answer
+
+= link_to 'Edit', edit_qa_path(@qa)
+\|
+= link_to 'Back', qas_path

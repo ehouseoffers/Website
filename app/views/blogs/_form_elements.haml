@@ -3,8 +3,10 @@
   # You need to call this inside a form_for block. For example, see app/views/guides/_form.html.haml
 
   # blog.js is needed for generate_string call
-  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog')
+  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog','url_friendly_string')
   extra_css('scaffold')
+
+
 
 = render :partial => 'shared/user_notice', :locals => {:model_obj => model_obj}
 

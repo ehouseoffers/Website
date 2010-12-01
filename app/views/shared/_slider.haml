@@ -5,14 +5,16 @@
 
   image_size = image_size.present? ? image_size.intern : :medium
 
+
 %div.slider{:id => id}
   %div.slider_bg
   %div.scroll
     %div.scrollContainer.clearfix
       - collection.each_with_index do |object, idx|
+        - data_path = object.respond_to?('construct_blog_path') ? construct_blog_path(object, :show) : send("#{object.class.name.downcase.pluralize}_path")
         %div.panel{:id => "panel_#{idx+1}"}
           %div.inside
-            = image_tag object.photo.url(image_size), :alt => object.title, 'data-path' => construct_blog_path(object, :show)
+            = image_tag object.photo.url(image_size), :alt => object.title, 'data-path' => data_path
 
   %h2 &nbsp;
 

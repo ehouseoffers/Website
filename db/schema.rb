@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101118194834) do
+ActiveRecord::Schema.define(:version => 20101130200912) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -49,6 +49,14 @@ ActiveRecord::Schema.define(:version => 20101118194834) do
     t.datetime "updated_at"
   end
 
+  create_table "bullet_points", :force => true do |t|
+    t.string   "context"
+    t.integer  "context_id"
+    t.text     "content"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "guides", :force => true do |t|
     t.integer  "user_id"
     t.string   "title"
@@ -68,6 +76,15 @@ ActiveRecord::Schema.define(:version => 20101118194834) do
     t.string   "number",     :null => false
     t.string   "label"
     t.boolean  "primary"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "qas", :force => true do |t|
+    t.integer  "context_id"
+    t.string   "context"
+    t.text     "question"
+    t.text     "answer"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
@@ -97,6 +114,32 @@ ActiveRecord::Schema.define(:version => 20101118194834) do
     t.datetime "updated_at"
     t.text     "selling_reason"
     t.integer  "time_frame"
+  end
+
+  create_table "social_profiles", :force => true do |t|
+    t.string   "context"
+    t.string   "context_id"
+    t.string   "website"
+    t.string   "username"
+    t.string   "url"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "spotlights", :force => true do |t|
+    t.string   "title"
+    t.string   "title_for_url"
+    t.string   "teaser"
+    t.string   "about_title"
+    t.string   "interview_title"
+    t.string   "interview_subtitle"
+    t.string   "social_media_title"
+    t.string   "photo_file_name"
+    t.string   "photo_content_type"
+    t.integer  "photo_file_size"
+    t.datetime "photo_updated_at"
+    t.datetime "created_at"
+    t.datetime "updated_at"
   end
 
   create_table "users", :force => true do |t|

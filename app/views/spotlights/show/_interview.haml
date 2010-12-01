@@ -1,0 +1,22 @@
+:ruby
+  return if spotlight.qas.empty?
+
+%div#qaC
+  %div.clearfix
+    -# younker [2010-11-30 19:28]
+    -# See routes.rb qas :collection route comment (L19-ish)
+    -#= admin_area do
+    -#  = link_to 'edit interview', edit_qa_path(spotlight, :context => spotlight.class.name.downcase, :context_id => spotlight.id), :class => :uso_modal
+
+    %div#mic_icon &nbsp;
+    %h2.green= spotlight.interview_title
+    %h5.green= spotlight.interview_subtitle
+
+  %br
+  %ul
+    - spotlight.qas.each do |qa|
+      %li
+        %strong
+          %span.q Q:
+          = qa.question
+        %p= qa.answer

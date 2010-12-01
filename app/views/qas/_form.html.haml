@@ -1,0 +1,24 @@
+= form_for @qa do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @qa}
+
+  - if @qa.context.present? && @qa.context_id.present?
+    = f.hidden_field :context
+    = f.hidden_field :context_id
+  - else
+    .field
+      = f.label :context_id, 'Context ID'
+      = f.text_field :context_id
+    .field
+      = f.label :context, 'Context (Class)'
+      = f.text_field :context
+
+  .field.quarter_height
+    = f.label :question
+    = f.text_area :question
+
+  .field.half_height
+    = f.label :answer
+    = f.text_area :answer
+
+  .actions
+    = f.submit 'Save'

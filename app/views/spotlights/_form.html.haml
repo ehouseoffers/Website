@@ -1,0 +1,57 @@
+:ruby
+  # younker [2010-11-30 14:19]
+  # If we are going to add tiny_mce, then we need to do something about 1) huge page load times and 2) tall textareas
+  # extra_js('tiny_mce/tiny_mce','tiny_mce_init','url_friendly_string')
+  extra_js('url_friendly_string')
+
+= form_for @spotlight, :html => {:multipart => true} do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @spotlight}
+
+
+  .field.hidden
+    = f.label :id
+    = f.text_field :id
+
+  .field
+    = f.label :title, :for => 'blog_title'
+    = f.text_field :title, :id => 'blog_title', 'data-validation' => 'validate(required)'
+
+  - if @spotlight.new_record?
+    .field
+      %label{:for => :title_for_url}
+        URL Friendly Title
+        %span{:style => 'margin-left:5px;font-size:.85em'}
+          = link_to 'generate from title', generate_url_friendly_string_path, :id => 'generate_string'
+
+      = f.text_field :title_for_url, :id => 'title_for_url'
+  - else
+    .field
+      = f.label :title_for_url
+      %div.disabled_form_field= @spotlight.title_for_url
+
+  .field.half_height
+    = f.label :teaser
+    = f.text_area :teaser
+
+  .field.yui3-g
+    - if @spotlight.photo?
+      = image_tag @spotlight.photo.url(:large), :style => 'margin-right:10px'
+
+    .yui3-u-1-2
+      .field
+        = f.label :photo, "#{@spotlight.photo? ? 'Replace Current' : 'Upload'} Photo"
+        = f.file_field :photo
+
+  %hr.space
+  = render :partial => "spotlights/form/about", :locals => {:f => f}
+
+  %hr.space
+  = render :partial => "spotlights/form/qa", :locals => {:f => f}
+
+  %hr.space
+  = render :partial => "spotlights/form/social_media", :locals => {:f => f}
+
+
+  .actions
+    = f.submit 'Save'
+    = link_to 'Cancel', :back

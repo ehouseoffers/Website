@@ -1,0 +1,28 @@
+= form_for @social_profile do |f|
+  = render :partial => 'shared/user_notice', :locals => {:model_obj => @social_profile}
+
+  - if @social_profile.context.present? && @social_profile.context_id.present?
+    = f.hidden_field :context
+    = f.hidden_field :context_id
+  - else
+    .field
+      = f.label :context_id, 'Context ID'
+      = f.text_field :context_id
+    .field
+      = f.label :context, 'Context (Class)'
+      = f.text_field :context
+
+  .field
+    = f.label :website
+    = select("social_profile", "website", SocialProfile::SOCIAL_SITES, {:include_blank => true})
+
+  .field
+    = f.label :username
+    = f.text_field :username
+
+  .field
+    = f.label :url, "Full path to social site for this user"
+    = f.text_field :url
+
+  .actions
+    = f.submit 'Save'

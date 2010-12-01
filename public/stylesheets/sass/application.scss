@@ -1,5 +1,5 @@
-/* See the very bottom for @imports */
-
+/* See the very bottom for (more) @imports */
+@import "helpers";
 
 html { background : url(/images/bg.png) repeat-x scroll 0 0 #b4d66a; }
 body {
@@ -73,7 +73,7 @@ div#request_offerC img#request_offer  {
 }
 #menuC #home         { background-position :    0px -55px; width : 161px; }
 #menuC #reasons      { background-position : -162px -55px; width : 188px; }
-#menuC #spotlighters { background-position : -351px -55px; width : 188px; }
+#menuC #spotlights   { background-position : -351px -55px; width : 188px; }
 #menuC #trends       { background-position : -540px -55px; width : 188px; }
 #menuC #guides       { background-position : -729px -55px; width : 225px; }
 
@@ -81,8 +81,8 @@ div#request_offerC img#request_offer  {
 #menuC #home.selected         { background-position :    0px 0px; }
 #menuC #reasons:hover,
 #menuC #reasons.selected      { background-position : -162px 0px; }
-#menuC #spotlighters:hover,
-#menuC #spotlighters.selected { background-position : -351px 0px; }
+#menuC #spotlights:hover,
+#menuC #spotlights.selected { background-position : -351px 0px; }
 #menuC #trends:hover,
 #menuC #trends.selected       { background-position : -540px 0px; }
 #menuC #guides:hover,
@@ -181,11 +181,9 @@ div#f_right {
 
 #footer #follow_us {
     float : right;
-    background-color : #e3edbf;
+    background-color : $wheat;
     padding : 6px 5px 2px 8px;
-    border-radius : 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    @include corners(5);
 }
 #follow_us img {
     height : 24px;
@@ -244,17 +242,22 @@ h1 {
     font-weight : bold;
     margin : -2px 0 5px 0;
 }
+h2 {
+    font-size : 1.2em;
+    line-height : 1.2em;
+    font-weight : bold;
+}
 h3 {
     font-size : 1.1em;
     font-weight : bold;
     letter-spacing : -0.75px;
 }
 
-.green  { color : #75973e; }
-.orange { color : #F89A36; }
+.green  { color : $green; }
+.orange { color : $orange; }
 
 .grey85 {
-    color : #666;
+    color : $grey;
     font-size : .85em;
     line-height : 1.4em;
 }
@@ -276,14 +279,29 @@ p.sorry_no_results {
     color : #444444;
 }
 
+strong {
+    font-weight : bold;
+    color : $dark_grey;
+}
 
+ul.green {
+    margin-left : 1em;
+}
+ul.green li {
+    list-style : disc inside none;
+    color : $green;
+    margin-bottom : .5em;
+}
+ul.green span {
+    color : $grey;
+}
 
 
 /*------------ My own custom -----------------------------*/
 .right  { float : right; }
 .left   { float : left; }
 .hidden { display : none; }
-
+.indent { margin-left : 20px; }
 .rArr { /* right arrow */
     background : url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;
     height : 9px;

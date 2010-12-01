@@ -1,0 +1,29 @@
+:ruby
+  extra_css('scaffold')
+
+
+%h1 Question/Answers
+
+%table
+  %tr
+    %th Context Type / ID
+    %th Context
+    %th Question
+    %th Answer
+    %th
+    %th
+    %th
+
+  - @qas.each do |qa|
+    %tr
+      %td= "#{qa.context}/#{qa.context_id}"
+      %td= link_to qa.belongs_to.title, send("#{qa.belongs_to.class.name.downcase}_path", qa.belongs_to.title_for_url)
+      %td= qa.question
+      %td= qa.answer
+      %td= link_to 'Show', qa
+      %td= link_to 'Edit', edit_qa_path(qa)
+      %td= link_to 'Destroy', qa, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'Create QA', new_qa_path

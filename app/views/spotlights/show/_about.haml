@@ -1,0 +1,10 @@
+:ruby
+  return if spotlight.bullet_points.empty?
+
+%div#aboutC
+  %h2.green= spotlight.about_title
+
+  %ul.green
+    - spotlight.bullet_points.each do |li|
+      %li
+        %span= li.content

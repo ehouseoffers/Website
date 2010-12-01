@@ -1,3 +1,18 @@
+# +------------+--------------+------+-----+---------+----------------+
+# | Field      | Type         | Null | Key | Default | Extra          |
+# +------------+--------------+------+-----+---------+----------------+
+# | id         | int(11)      | NO   | PRI | NULL    | auto_increment | 
+# | user_id    | int(11)      | NO   |     | NULL    |                | 
+# | address1   | varchar(255) | NO   |     | NULL    |                | 
+# | address2   | varchar(255) | YES  |     | NULL    |                | 
+# | city       | varchar(255) | YES  |     | NULL    |                | 
+# | state      | varchar(255) | YES  |     | NULL    |                | 
+# | zip        | int(11)      | NO   |     | NULL    |                | 
+# | label      | varchar(255) | YES  |     | NULL    |                | 
+# | primary    | tinyint(1)   | YES  |     | 0       |                | 
+# | created_at | datetime     | YES  |     | NULL    |                | 
+# | updated_at | datetime     | YES  |     | NULL    |                | 
+# +------------+--------------+------+-----+---------+----------------+
 class Address < ActiveRecord::Base
   belongs_to :user
 

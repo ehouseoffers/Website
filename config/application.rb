@@ -2,6 +2,7 @@ require File.expand_path('../boot', __FILE__)
 
 require 'yaml'
 KEYS_TMP = YAML.load(File.read(File.expand_path('../keys.yml', __FILE__)))
+APP_CONFIG = YAML.load(File.read(File.expand_path('../app_config.yml', __FILE__)))
 
 require 'rails/all'
 
@@ -46,6 +47,9 @@ module Ehouseoffers
 
     config.generators do |g|
       g.template_engine :haml
+
+      # After installing inherited resources, this changed to Default: inherited_resources_controller
+      # g.scaffold_controller :application
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.

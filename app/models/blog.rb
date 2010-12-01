@@ -1,3 +1,21 @@
+# mysql> desc blogs;
+# +--------------------+--------------+------+-----+---------+----------------+
+# | Field              | Type         | Null | Key | Default | Extra          |
+# +--------------------+--------------+------+-----+---------+----------------+
+# | id                 | int(11)      | NO   | PRI | NULL    | auto_increment | 
+# | user_id            | int(11)      | YES  |     | NULL    |                | 
+# | context            | varchar(255) | YES  |     | NULL    |                | 
+# | title              | varchar(255) | YES  |     | NULL    |                | 
+# | title_for_url      | varchar(255) | YES  |     | NULL    |                | 
+# | teaser             | varchar(255) | YES  |     | NULL    |                | 
+# | content            | text         | YES  |     | NULL    |                | 
+# | photo_file_name    | varchar(255) | YES  |     | NULL    |                | 
+# | photo_content_type | varchar(255) | YES  |     | NULL    |                | 
+# | photo_file_size    | int(11)      | YES  |     | NULL    |                | 
+# | photo_updated_at   | datetime     | YES  |     | NULL    |                | 
+# | created_at         | datetime     | YES  |     | NULL    |                | 
+# | updated_at         | datetime     | YES  |     | NULL    |                | 
+# +--------------------+--------------+------+-----+---------+----------------+
 class Blog < ActiveRecord::Base
   belongs_to :user
 
@@ -5,17 +23,20 @@ class Blog < ActiveRecord::Base
   # where we pluck out values assuming they will be consistent (see translate_route_to_context below)
   VALID_CONTEXTS = %w[trends reasons guides]
   
-  # TODO -- younker [2010-11-09 10:51]
-  # move photo styles, size and types into config
-  has_attached_file :photo, :styles => { :small => '130x130>', :medium => "200x200>", :large => '300x300>' },
+  has_attached_file :photo,
+                    :styles => APP_CONFIG['photo']['styles'],
                     :url  => "/assets/blog/:id/:style/:basename.:extension",
                     :path => ":rails_root/public/assets/blog/:id/:style/:basename.:extension"
   
   validates_attachment_presence :photo
-  validates_attachment_size :photo, :less_than => 500.kilobytes 
-  validates_attachment_content_type :photo, :content_type => ['image/jpeg', 'image/png', 'image/gif']
+  validates_attachment_size :photo, :less_than => APP_CONFIG['photo']['max_size']
+  validates_attachment_content_type :photo, :content_type => APP_CONFIG['photo']['types']
 
   validates_presence_of :user_id, :content, :title
+
+  # TODO -- younker [2010-11-29 11:57]
+  # Take all the title_for_url stuff (validates :title_for_url, before_validation :title and def title_for_url writter)
+  # and make this into a class. There is dupication between this model and the interview model
   validates :title_for_url, :uniqueness => true
 
   validate :context do

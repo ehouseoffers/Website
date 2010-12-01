@@ -1,5 +1,8 @@
+@import "helpers";
 @import "seller_signup";
 @import "form_validations";
+@import "share_article_on";
+@import "jquery.slider";
 
 
 #menuC { margin-bottom : 4px; }
@@ -16,5 +19,82 @@ ul.breadcrumbC {
     margin-top : 10px;
 }
 
+/* Start Page Sprite Elements */
+#mic_icon {
+    @include sprite(spotlight,0,0,42,40);
+    float : left;
+    margin : 0 10px 0 0;
+}
+#spotlight_icon {
+    @include sprite(spotlight,-42,0,41,40);
+}
 
-/*.sprite { background : url(/images/sprites/spotlight.png) no-repeat scroll 0px 500px transparent; }*/
+/* Start Page Elements */
+div#spotlightC {
+    margin : 0 15px;
+    color : $grey;
+}
+div#spotlightC h2 { margin-bottom : 1em; }
+
+div#spotlightC p {
+    color : $grey;
+    font-size : .85em;
+    line-height : 1.6em;
+}
+div#spotlightC hr {
+    margin : 1.5em 0;
+}
+hr#pre_spotlight {
+    margin : 0 0 2.5em 0;
+}
+#teaserC #main_spotlight_image {
+    padding : 0 20px 20px 0;
+    float : left;
+}
+/* modify share_article_on partial css */
+#teaserC .share_article_onC { text-align : left; }
+.share_article_onC strong   { float : left; }
+#teaserC .shareC            { float : left; }
+
+
+ul.green    { font-size : .85em; }
+ul.green li { margin-bottom : .75em; }
+
+div#qaC {}
+div#qaC h2 { margin-bottom : 0em; }
+div#qaC h5 { font-size : .9em; }
+
+div#qaC li {
+    list-style : none;
+    margin-bottom : 1em;
+}
+div#qaC strong {
+    font-size : 1.1em;
+    color : $grey;
+    margin-bottom : .25em;
+    @include inline_block();
+}
+strong span.q {
+    font-size : 1.125em;
+    color : #cfd0cf;
+}
+
+div#social_profilesC {}
+div#social_profilesC #all_profilesC {
+    padding : 10px 0 10px 15px;
+    background : $wheat;
+    @include corners(5);
+    @include inline_block();
+}
+#all_profilesC li {
+    float : left;
+    list-style : none;
+}
+#all_profilesC img {
+    margin : 0 15px 0 0;
+}
+
+
+
+
+

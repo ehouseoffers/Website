@@ -1,0 +1,23 @@
+$green     : #75973e;
+$orange    : #F89A36;
+$dark_grey : #333333;
+$grey      : #676767;
+$wheat     : #f1f5d1;
+
+@mixin sprite($sprite, $x, $y, $h, $w) {
+    background : url(/images/sprites/#{$sprite}.png) no-repeat scroll #{$x}px #{$y}px transparent;
+    height : #{$h}px;
+    width  : #{$w}px;
+}
+
+@mixin corners($radius) {
+    border-radius         : #{$radius}px;
+    -moz-border-radius    : #{$radius}px;
+    -webkit-border-radius : #{$radius}px;
+}
+
+@mixin inline_block() {
+    display : inline-block; /* for css compliant browsers */
+    zoom : 1;               /* IE Hack */
+    *display : inline;      /* IE Hack */
+}

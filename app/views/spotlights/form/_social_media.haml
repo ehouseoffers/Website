@@ -1,0 +1,23 @@
+%h3
+  Social Media Section
+  %span.create_link= link_to 'Create New Social Profile', new_social_profile_path(:context => @spotlight.class, :context_id => @spotlight.id)
+
+%div.indent
+  .field
+    = f.label :social_media_title
+    = f.text_field :social_media_title
+
+
+  %table.no_border
+    %tr
+      %th Site
+      %th{:style => 'width:100px'} Username
+      %th{:style => 'width:5px'} &nbsp;
+      %th{:style => 'width:500px'} Url
+
+    - for @social_profile in @spotlight.social_profiles
+      %tr
+        %td= select("social_profile[]", "website", SocialProfile::SOCIAL_SITES, {:include_blank => false})
+        %td= text_field "social_profile[]", :username
+        %td &nbsp;
+        %td= text_field "social_profile[]", :url

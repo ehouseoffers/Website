@@ -1,0 +1,13 @@
+# Read about fixtures at http://ar.rubyonrails.org/classes/Fixtures.html
+
+one:
+  interview_id: 1
+  question: MyText
+  answer: MyText
+  order: 1
+
+two:
+  interview_id: 1
+  question: MyText
+  answer: MyText
+  order: 1

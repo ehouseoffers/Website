@@ -1,0 +1,17 @@
+%h3
+  'About' Section
+  %span.create_link= link_to 'Create New Bullet Point', new_bullet_point_path(:context => @spotlight.class, :context_id => @spotlight.id)
+
+%div.indent
+  .field
+    = f.label :about_title
+    = f.text_field :about_title
+
+
+  - i = 0
+  - for @bullet_point in @spotlight.bullet_points
+    - i += 1
+    .field
+      %label= "Bullet Point ##{i}"
+      = text_field "bullet_point[]", :content
+

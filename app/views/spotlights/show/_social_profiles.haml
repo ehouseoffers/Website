@@ -1,0 +1,11 @@
+:ruby
+  return if spotlight.social_profiles.empty?
+
+%div#social_profilesC
+  %h2.green= spotlight.social_media_title
+
+  %div#all_profilesC
+    %ul.clearfix
+      - spotlight.social_profiles.each do |social_profile|
+        - img = image_tag '/images/transparent.gif', :id => "#{social_profile.website}L", :alt => social_profile.website.capitalize
+        %li= link_to img, social_profile.url

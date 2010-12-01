@@ -8,13 +8,13 @@
       });
 
       $(this).submit(function(){
-          $.each(objects, function() {
-              var s = this;
-              if ( this._input_requires_example() ) {
-                  var v = this.input.val('');
-                  setTimeout(function(){s._insert_examples_callback(s)}, 2500);
-              }
-          });
+          // $.each(objects, function() {
+          //     var s = this;
+          //     if ( this._input_requires_example() ) {
+          //         var v = this.input.val('');
+          //         setTimeout(function(){s._insert_examples_callback(s)}, 2500);
+          //     }
+          // });
       });
 
       return objects;

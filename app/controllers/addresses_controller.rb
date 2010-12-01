@@ -2,13 +2,6 @@ class AddressesController < ApplicationController
 
   before_filter :redirect_unless_admin
 
-  # InheritedResources::Base should inherit from ApplicationController, so we should be able to say
-  #   class GuidesController < InheritedResources::Base
-  # and get all of ApplicationController's methods. However, for some reason this was not the case so
-  # we are pulling in all of the inherited resource functionality by simply calling...
-  # inherit_resources
-
-
   # GET /addresses
   # GET /addresses.xml
   def index

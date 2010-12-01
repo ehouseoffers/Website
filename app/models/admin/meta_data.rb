@@ -1,3 +1,15 @@
+# mysql> desc admin_meta_datum;
+# +---------------+--------------+------+-----+---------+----------------+
+# | Field         | Type         | Null | Key | Default | Extra          |
+# +---------------+--------------+------+-----+---------+----------------+
+# | id            | int(11)      | NO   | PRI | NULL    | auto_increment | 
+# | relative_path | varchar(255) | YES  |     | NULL    |                | 
+# | title         | text         | YES  |     | NULL    |                | 
+# | description   | text         | YES  |     | NULL    |                | 
+# | keywords      | text         | YES  |     | NULL    |                | 
+# | created_at    | datetime     | YES  |     | NULL    |                | 
+# | updated_at    | datetime     | YES  |     | NULL    |                | 
+# +---------------+--------------+------+-----+---------+----------------+
 class Admin::MetaData < ActiveRecord::Base
   
   validate :relative_path, :unique => true do

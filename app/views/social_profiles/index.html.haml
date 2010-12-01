@@ -1,0 +1,28 @@
+:ruby
+  extra_css('scaffold')
+
+%h1 Listing social_profiles
+
+%table
+  %tr
+    %th Id
+    %th Type
+    %th Username
+    %th Url
+    %th
+    %th
+    %th
+
+  - @social_profiles.each do |social_profile|
+    %tr
+      %td= social_profile.id
+      %td= social_profile.type
+      %td= social_profile.username
+      %td= social_profile.url
+      %td= link_to 'Show', social_profile
+      %td= link_to 'Edit', edit_social_profile_path(social_profile)
+      %td= link_to 'Destroy', social_profile, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Social profile', new_social_profile_path

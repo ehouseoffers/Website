@@ -1,0 +1,2 @@
+module SocialProfilesHelper
+end

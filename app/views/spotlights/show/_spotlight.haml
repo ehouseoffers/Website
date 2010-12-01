@@ -1,0 +1,21 @@
+
+%div#spotlightC
+  = render :partial => "spotlights/show/teaser", :locals => {:spotlight => spotlight}
+
+  - if spotlight.qas.present?
+    %hr
+    = render :partial => "spotlights/show/interview", :locals => {:spotlight => spotlight}
+
+  - if spotlight.bullet_points.present?
+    %hr
+    = render :partial => "spotlights/show/about", :locals => {:spotlight => spotlight}
+
+  - if spotlight.social_profiles.present?
+    %hr
+    = render :partial => "spotlights/show/social_profiles", :locals => {:spotlight => spotlight}
+
+
+
+
+
+

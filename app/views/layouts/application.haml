@@ -14,6 +14,10 @@
   descr    ||= yield(:description) if content_for?(:description)
   keywords ||= yield(:keywords) if content_for?(:keywords)
 
+  unless flash.empty?
+    extra_js('jquery.growl')
+    extra_css('jquery.growl')
+  end
 
 :plain
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">

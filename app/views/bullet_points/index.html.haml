@@ -1,0 +1,26 @@
+:ruby
+  extra_css('scaffold')
+
+%h1 All Bullet Points
+
+%table
+  %tr
+    %th Context
+    %th Context ID
+    %th Content
+    %th
+    %th
+    %th
+
+  - @bullet_points.each do |bullet_point|
+    %tr
+      %td= bullet_point.context
+      %td= bullet_point.context_id
+      %td= bullet_point.content
+      %td= link_to 'Show', bullet_point
+      %td= link_to 'Edit', edit_bullet_point_path(bullet_point)
+      %td= link_to 'Destroy', bullet_point, :confirm => 'Are you sure?', :method => :delete
+
+%br
+
+= link_to 'New Bullet point', new_bullet_point_path

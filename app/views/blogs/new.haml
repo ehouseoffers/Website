@@ -1,6 +1,8 @@
 :ruby
   header(:title, "Create new #{name_for_context}")
 
+  extra_css('scaffold')
+
 %h1= "Create New #{name_for_context}"
 
 = render 'blogs/form', :blog => @blog

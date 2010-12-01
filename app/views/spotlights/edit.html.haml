@@ -1,0 +1,9 @@
+:ruby
+  extra_css('scaffold')
+
+%h1
+  = "Edit #{@spotlight.title}"
+  %span.create_link= link_to 'Go To Spotlight Page', spotlight_path(@spotlight.title_for_url)
+
+
+= render 'form'

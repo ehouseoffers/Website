@@ -11,8 +11,12 @@
   # jquery.growl defaults true into something like 2 seconds.
   timeout = timeout.nil? ? false : timeout
 
-  extra_js('jquery.growl')
-  extra_css('jquery.growl')
+  # younker [2010-11-29 23:36]
+  # Weird F'in issue here. These would not load for the QA show page but would for a bunch of others. I do
+  # not believe it is a result of the inherited_resources issue. Anyway, I just add these in app.haml if
+  # flash has something in it
+  # extra_js('jquery.growl')
+  # extra_css('jquery.growl')
 
 - unless msg.empty?
   :javascript

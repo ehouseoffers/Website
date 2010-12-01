@@ -5,8 +5,8 @@ ActiveSupport::Inflector.inflections do |inflect|
   inflect.plural   'reason_to_sell', 'reasons_to_sell'
   inflect.singular 'reasons_to_sell', 'reason_to_sell'
 
-  inflect.plural 'spotlight', 'spotlighters'
-  inflect.singular 'spotlighters', 'spotlight'
+  # inflect.plural 'spotlight', 'spotlighters'
+  # inflect.singular 'spotlighters', 'spotlight'
 
   inflect.plural 'data', 'datum'
 
