@@ -47,9 +47,6 @@ module Ehouseoffers
 
     config.generators do |g|
       g.template_engine :haml
-
-      # After installing inherited resources, this changed to Default: inherited_resources_controller
-      # g.scaffold_controller :application
     end
 
     # Configure the default encoding used in templates for Ruby 1.9.

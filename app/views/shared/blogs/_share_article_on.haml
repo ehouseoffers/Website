@@ -1,6 +1,5 @@
 %div.share_article_onC
   %strong share article on:
   %div.shareC
-    - object.social_profiles.each do |social_profile|
-      - img = image_tag '/images/transparent.gif', :id => "#{social_profile.website}S", :alt => social_profile.website.capitalize
-      = link_to img, social_profile.url
+    - SocialProfile::SOCIAL_SITES.each do |social_profile|
+      = image_tag '/images/transparent.gif', :id => "#{social_profile.to_s}S", :alt => social_profile.to_s.capitalize

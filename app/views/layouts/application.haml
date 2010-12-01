@@ -14,11 +14,6 @@
   descr    ||= yield(:description) if content_for?(:description)
   keywords ||= yield(:keywords) if content_for?(:keywords)
 
-  unless flash.empty?
-    extra_js('jquery.growl')
-    extra_css('jquery.growl')
-  end
-
 :plain
   <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01//EN" "http://www.w3.org/TR/html4/strict.dtd">
 %html
@@ -35,7 +30,7 @@
 
     = stylesheet_link_tag :defaults
     = yield(:extra_css) if content_for?(:extra_css)
-    = javascript_include_tag :defaults
+    = javascript_include_tag :defaults, 'jquery.growl'
     = yield(:extra_js) if content_for?(:extra_js)
 
     :plain

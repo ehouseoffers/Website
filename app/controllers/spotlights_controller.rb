@@ -8,7 +8,7 @@ class SpotlightsController < ApplicationController
 
   def index
     @spotlight = Spotlight.first
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).limit(10).order('created_at desc') unless @spotlight.nil?
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
 
     respond_to do |format|
       format.html { render :template => 'spotlights/show' }
@@ -25,7 +25,7 @@ class SpotlightsController < ApplicationController
       format.xml  { render :xml => @spotlight }
     end
   end
-  
+
   def update
     begin
       # Update additional pieces: Q&A, bullet points and social contacts
