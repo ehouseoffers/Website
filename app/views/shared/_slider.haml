@@ -11,7 +11,7 @@
   %div.scroll
     %div.scrollContainer.clearfix
       - collection.each_with_index do |object, idx|
-        - data_path = object.class.eql?(Blog) ? construct_blog_path(object, :show) : send("#{object.class.name.downcase.pluralize}_path")
+        - data_path = object.class.eql?(Blog) ? construct_blog_path(object, :show) : send("#{object.class.name.downcase}_path", object.title_for_url)
         %div.panel{:id => "panel_#{idx+1}"}
           %div.inside
             = image_tag object.photo.url(image_size), :alt => object.title, 'data-path' => data_path
