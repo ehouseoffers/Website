@@ -476,8 +476,8 @@
 				input.length > 0 ? input.focus() : s.d.wrap.focus();
 			}, 10);
 		},
-		getDimensions: function () {
-			var el = $(window);
+		getDimensions: function (el) {
+            el = !el ? $(window) : el;
 
 			// fix a jQuery/Opera bug with determining the window height
 			var h = $.browser.opera && $.browser.version > '9.5' && $.fn.jquery < '1.3'
@@ -694,6 +694,18 @@
 					s.d = {};
 				}, 10);
 			}
-		}
+		},
+
+        // younker [2010-12-02 12:50]
+        // after we append, we need to resize the container taking into consideration the new el(ement)'s height
+        updateDimensionsAfterAppend : function(el) {
+            var s = this;
+            var newH = parseInt(s.getDimensions(s.d.container)[0]) + parseInt(s.getDimensions(el)[0]) + 10;
+			var maxH = s.o.maxHeight ? s.getVal(s.o.maxHeight, 'h') : newH;
+            s.d.container.css('height', (newH>maxH ? maxH : newH));
+            s.d.wrap.css({overflow: (newH>maxH) ? 'auto' : 'visible'});
+            s.setPosition();
+        }
+
 	};
 })(jQuery);
