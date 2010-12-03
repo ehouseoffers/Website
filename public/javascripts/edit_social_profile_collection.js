@@ -55,6 +55,7 @@ $(document).ready(function() {
                     type    : $(this).attr('data-method'),
                     success: function (data, status, xhr) {
                         $('tr#sp_'+ id).fadeOut();
+                        $('li#sp_'+ id).fadeOut();
                     },
                     error: function (xhr, status, error) {
                         $.Growl.show({

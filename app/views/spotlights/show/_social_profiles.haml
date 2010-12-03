@@ -11,4 +11,4 @@
     %ul.clearfix
       - spotlight.social_profiles.each do |social_profile|
         - img = image_tag '/images/transparent.gif', :id => "#{social_profile.website}L", :alt => social_profile.website.capitalize
-        %li= link_to img, social_profile.url
+        %li{:id => "sp_#{social_profile.id}"}= link_to img, social_profile.url
