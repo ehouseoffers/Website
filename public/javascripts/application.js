@@ -23,19 +23,24 @@ $(document).ready(function() {
     }
 
     var modals = $('.uso_modal');
-    if ( modals.length > 0 )
-        $.load_external_resource('jquery.modal.js,jquery.modal.css');
-
-
+    if ( modals.length > 0 ) $.load_external_resource('jquery.modal.js,jquery.modal.css');
+        
     $('.uso_modal').click(function(){
         var resource = $(this).attr('data-resource');
+
+        // Defaults in case we do not pass in arguments to $.modal() in an element like so:
+        //   data-modal-args='{"minHeight":470,"minWidth":600}'
+		var mo = $.extend({}, $.modal.defaults, $.parseJSON($(this).attr('data-modal-args')));
 
         $.get($(this).attr('href'), function(resp){
             $.load_external_resource(resource,{skip:'js'});
 
+            // 730, /* for collection edit form */
             $.modal(resp, {
-                minWidth : 730, /* for collection edit form */
-                maxHeight: 500,
+                minWidth : mo.minWidth,
+                maxWidth : mo.maxWidth,
+                maxHeight: mo.maxHeight,
+                minHeight: mo.minHeight,
                 onOpen : function (dialog) {
                     $.load_external_resource(resource,{skip:'css'});
                     dialog.overlay.fadeIn('slow', function () {
@@ -82,7 +87,7 @@ jQuery.extend(jQuery, {
     call_fn : function(fn, args) {
         if ( jQuery.isFunction(fn) ) return fn(args);
     }
-    
+
 });
 
 
@@ -164,6 +169,6 @@ jQuery.extend(jQuery, {
         } else if ( $.css_resource(r) ) {
             return r.match(/\//) ? r : '/stylesheets/'+ r;
         }
-    },
+    }
 
 });

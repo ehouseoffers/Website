@@ -1,11 +1,11 @@
+@import "helpers";
+
 /*------------ My own custom yui3 units ------------------*/
 .yui3-u-11-48, .yui3-u-15-48, .yui3-u-33-48, .yui3-u-35-48 { 
-    display        : inline-block; /* copied from http://yui.yahooapis.com/3.2.0/build/cssgrids/grids-min.css */
-    letter-spacing : normal;       /* these are base styles for all the original yui3 units                   */
-    vertical-align : top;
+    @include inline_block();
+    letter-spacing : normal;    /* copied from http://yui.yahooapis.com/3.2.0/build/cssgrids/grids-min.css */
+    vertical-align : top;       /* these are base styles for all the original yui3 units                   */
     word-spacing   : normal;
-    zoom : 1;
-    *display : inline;
 }
 
 .yui3-u-11-48 { width : 22.91%; }

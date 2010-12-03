@@ -3,7 +3,7 @@
 
 %div#aboutC
   = admin_area do
-    = link_to 'edit bullet points', edit_collection_bullet_points_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_bullet_point_collection.css,edit_bullet_point_collection.js'
+    = link_to_edit_collection_for(:bullet_points, spotlight)
 
   %h2.green= spotlight.about_title
 

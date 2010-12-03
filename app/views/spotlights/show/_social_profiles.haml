@@ -3,7 +3,7 @@
 
 %div#social_profilesC
   = admin_area do
-    = link_to 'edit social profiles', edit_collection_social_profiles_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_social_profile_collection.css,edit_social_profile_collection.js'
+    = link_to_edit_collection_for(:social_profiles, spotlight)
 
   %h2.green= spotlight.social_profile_title
 

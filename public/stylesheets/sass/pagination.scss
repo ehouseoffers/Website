@@ -1,3 +1,5 @@
+@import "helpers";
+
 div.pagination {
     text-align : center;
     line-height : 34px;
@@ -7,15 +9,13 @@ div.pagination a {
     padding : 0 4px;
     margin : 0 5px;
 }
-div.pagination a       { color : #888; }
+div.pagination a       { color : $grey; }
 div.pagination a:hover { color : #000; text-decoration : none !important; }
 
 div.pagination em {
-    background-color : #87a84a;
+    background-color : $green;
     color : #fff;
-    border-radius : 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    @include corners(5);
 }
 div.pagination a.previous_page,
 div.pagination a.previous_page:hover,
@@ -26,9 +26,7 @@ div.pagination span.next_page.disabled {
     background : url(/images/sprites/pagination.png) no-repeat scroll 0px 0px transparent;
     width : 77px;
     height : 34px;
-    display : inline-block;
-    zoom : 1;
-    *display : inline;
+    @include inline_block();
     margin : 0 10px;
     padding : 0;
 }

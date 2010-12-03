@@ -1,7 +1,6 @@
 :ruby
   h1_title = 'Professional Home Buyers'
   header(:title, h1_title)
-  # header(:description, 'Get description from Sam')
 
   extra_css('home')
 
@@ -27,16 +26,17 @@
   %div#resources_rowC
     %div.yui3-u-3-8.yui3-g
       - video_img = image_tag '/images/transparent.gif', :id => 'what_we_do_video_preview', :class => 'sprite', :alt => 'Video Preview'
-      = link_to video_img, what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
+      = what_we_do_modal(video_img)
       %div#sv_contentC.bottom_contentC
         %h1
           - seller_vid = image_tag '/images/transparent.gif', :id => 'what_we_do_title', :class => 'sprite', :alt => 'Sellers Video'
-          = link_to seller_vid, what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
+          = what_we_do_modal(seller_vid)
+
         %p
           Click on the above video above to learn who we are and find out how we can help you sell your house.
 
         %p
-          = link_to 'Watch Demo Video', what_we_do_path(), :class => 'uso_modal', 'data-resource' => '/stylesheets/what_we_do.css'
+          = what_we_do_modal('Watch Demo Video')
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'
 
       

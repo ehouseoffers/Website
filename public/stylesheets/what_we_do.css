@@ -1,11 +1,1 @@
-div#what_we_doC {
-    width : 598px;
-    height : 465px;
-}
-div#what_we_doC div#c_header {
-    padding-bottom : 20px;
-}
-img#get_an_offer_title{}
-img#get_an_offer_button {
-    float : right;
-}
+div#what_we_doC{height:458px;width:598px}div#what_we_doC div#title_row{height:tr_hpx;line-height:50px;margin-bottom:10px}div#title_row img{vertical-align:middle}div#title_row #trL{width:370px}div#title_row #trR{width:228px}div#what_we_doC div#videoC{height:398px;width:598px}

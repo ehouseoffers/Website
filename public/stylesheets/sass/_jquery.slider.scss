@@ -1,10 +1,10 @@
+@import "helpers";
+
 .slider {
     width : 630px;
     position: relative;
-    border : 1px solid #D4E3A9;
-    border-radius : 5px;
-    -moz-border-radius: 5px;
-    -webkit-border-radius: 5px;
+    border : 1px solid $light_green;
+    @include corners(5);
 }
 .slider_bg {
     background : url(/images/sprites/slider.png) repeat-x scroll 0px 0px transparent;
@@ -47,11 +47,11 @@
 }
 .slider h2 a {
 	font-weight: bold;
-	color: #888;
+	color: $grey;
 }
 .inside p {
 	font-size: 11px;
-	color: #ccc;
+	color: $light_grey;
 }
 .scroll_actionsC {
     height : 20px;
@@ -62,17 +62,13 @@
     overflow : hidden;
 }
 .scroll_actionsC .scroll_left {
-    background : url(/images/sprites/slider.png) no-repeat scroll 0px -56px transparent;
-    height : 20px;
-    width : 28px;
+    @include sprite('slider', 0, -56, 20, 28);
     position : absolute;
     top : 0;
     left : 0;
 }
 .scroll_actionsC .scrollbarC {
-    background : url(/images/sprites/slider.png) no-repeat scroll -34px -56px transparent;
-    width : 553px;
-    height : 20px;
+    @include sprite('slider', -34, -56, 20, 553);
     position : absolute;
     top : 0;
     left : 28px;
@@ -80,15 +76,13 @@
 .scrollbarC .scrollbar {
     width : 150px;
     height : 8px;
-    background : #d5e6a9;
+    background : $light_green;
     position : absolute;
     top : 6px;
     left : 6px;
 }
 .scroll_actionsC .scroll_right {
-    background : url(/images/sprites/slider.png) no-repeat scroll -590px -56px transparent;
-    height : 20px;
-    width : 29px;
+    @include sprite('slider', -590, -56, 20, 29);
     position : absolute;
     top : 0;
     right : 0;

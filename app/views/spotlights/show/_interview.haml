@@ -4,7 +4,7 @@
 %div#qaC
   %div.clearfix
     = admin_area do
-      = link_to 'edit q&a', edit_collection_qas_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_qa_collection.css,edit_qa_collection.js'
+      = link_to_edit_collection_for(:qa, spotlight)
 
     %div#mic_icon &nbsp;
     %h2.green= spotlight.interview_title

@@ -1,3 +1,5 @@
+@import "helpers";
+
 #growlcontainer{
   position: fixed;
   right: 20px;
@@ -15,9 +17,7 @@
   padding: 15px;
   color: #fff;
   margin-bottom: 5px;
-  border-radius : 10px;
-  -moz-border-radius:10px;
-  -webkit-border-radius:10px;
+  @include corners(10);
 }
 .growlstatus .growltitle{
   font-weight: bold;

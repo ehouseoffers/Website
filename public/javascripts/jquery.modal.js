@@ -176,7 +176,7 @@
 		dataCss: {},
 		minHeight: null,
 		minWidth: null,
-		maxHeight: null,
+		maxHeight: 500,
 		maxWidth: null,
 		autoResize: false,
 		autoPosition: true,

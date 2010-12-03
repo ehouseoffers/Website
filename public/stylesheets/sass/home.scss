@@ -1,3 +1,4 @@
+@import "helpers";
 @import "form_validations";
 @import "seller_signup";
 
@@ -162,8 +163,6 @@ form#new_seller_listing .field {
     width : 320px;
 }
 form#new_seller_listing label {
-/*    display : inline-block;*/
-/*    width : 100px;*/
     display : none;
 }
 form#new_seller_listing input {
@@ -193,9 +192,7 @@ form#new_seller_listing div#last_name.field, form#new_seller_listing div#state.f
     padding-top : 12px;
 }
 .submitC #securityC {
-    display : inline-block;
-    zoom : 1;
-    *display : inline;
+    @include inline_block();
     font-size : .9em;
     color : #666;
     position : relative;

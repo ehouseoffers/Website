@@ -1,0 +1,30 @@
+$tr_h      : 50;
+$tr_margin : 10;
+$video_h   : 398;
+$total_h   : $tr_h + $tr_margin + $video_h;
+
+$video_w     : 598;
+$tr_button_w : 228;
+
+div#what_we_doC {
+    height : #{$total_h}px;
+    width  : #{$video_w}px;
+}
+div#what_we_doC div#title_row {
+    height        : #{tr_h}px;
+    line-height   : #{$tr_h}px;
+    margin-bottom : #{$tr_margin}px;
+}
+div#title_row img {
+    vertical-align : middle;
+}
+div#title_row #trL {
+    width  : #{$video_w - $tr_button_w}px;
+}
+div#title_row #trR {
+    width  : #{$tr_button_w}px;
+}
+div#what_we_doC div#videoC {
+    height : #{$video_h}px;
+    width  : #{$video_w}px;
+}

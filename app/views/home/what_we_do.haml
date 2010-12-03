@@ -2,12 +2,15 @@
   extra_css('what_we_do')
 
 %div#what_we_doC
-  %div#c_header.clearfix
-    = image_tag '/images/what_we_do/get-offer-on-your-house-today.png', :id => 'get_an_offer_title', :alt => 'Get an Offer on Your House Today!'
-    - offer_btn = image_tag '/images/what_we_do/get-cash-home-offer-button.png', :id => 'get_an_offer_button', :alt => 'Click to get a cash home offer'
-    = link_to offer_btn, new_seller_listing_path
-
-  = image_tag '/images/what_we_do/video_placeholder.png', :width => '598', :height => '398'
+  %div#title_row.yui3-g
+    %div#trL.yui3-u-2-3
+      = image_tag '/images/what_we_do/get-offer-on-your-house-today.png', :id => 'get_an_offer_title', :alt => 'Get an Offer on Your House Today!'
+      - offer_btn = image_tag '/images/what_we_do/get-cash-home-offer-button.png', :id => 'get_an_offer_button', :alt => 'Click to get a cash home offer'
+    %div#trR.yui3-u-1-3
+      = link_to offer_btn, new_seller_listing_path
+    
+  %div#videoC
+    = image_tag '/images/what_we_do/video_placeholder.png'
 
     
   

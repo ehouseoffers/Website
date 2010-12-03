@@ -1,10 +1,14 @@
-$green     : #75973e;
-$orange    : #F89A36;
-$dark_grey : #333333;
-$grey      : #676767;
-$light_grey: #dadada;
-$white_grey: #ececec;
-$wheat     : #f1f5d1;
+$green       : #75973e;
+$light_green : #d4e3a9;
+
+$orange      : #F89A36;
+
+$dark_grey   : #333333;
+$grey        : #676767;
+$light_grey  : #dadada;
+$white_grey  : #ececec;
+
+$wheat       : #f0f3da;
 
 @mixin sprite($sprite, $x, $y, $h, $w) {
     background : url(/images/sprites/#{$sprite}.png) no-repeat scroll #{$x}px #{$y}px transparent;

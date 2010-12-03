@@ -1,11 +1,11 @@
+@import "helpers";
+
 /* green box with cream bg. For example, see new seller registration */
 .box {
-    border : 1px solid #d4e3a9;
-    color : #7a7a7a;
-    background-color : #f0f3da;
-    border-radius : 10px;
-    -moz-border-radius: 10px;
-    -webkit-border-radius: 10px;
+    border : 1px solid $light_green;
+    color : $grey;
+    background-color : $wheat;
+    @include corners(10);
 }
 .box div.gutter {
     padding : 17px 15px;

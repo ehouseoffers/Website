@@ -1,44 +1,33 @@
+@import "helpers";
 @import "form_validations";
 
 
 /* Start Sprites */
-.sprite { background : url(/images/sprites/seller-register-step2.png) no-repeat scroll 0px 500px transparent; }
 #step_two_comps {
-    background-position : 0px 0px;
-    height : 75px;
-    width  : 592px;
+    @include sprite('seller-register-step2', 0, 0, 75, 592);
 }
 input[type="image"] {
-    background-position : -595px 0px;
-    height : 47px;
-    width  : 223px;
+    @include sprite('seller-register-step2', -595, 0, 47, 223);
     margin : 16px 0 0 0px;
 }
 
+
 /* sprites needed from step 1 sprite */
 #lock_icon  {
-    background : url(/images/sprites/seller-register-step1.png) no-repeat scroll -359px -56px transparent;
-    height : 25px;
-    width  : 85px;
+    @include sprite('seller-register-step1', -359, -56, 25, 85);
     vertical-align : middle;
     margin-left : 7px;
 }
 #truste {
-    background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px -125px transparent;
-    height : 28px;
-    width : 101px;
+    @include sprite('seller-register-step1', 0, -125, 28, 101);
     margin : 0 0 0 20px;
 }
 #verisign {
-    background : url(/images/sprites/seller-register-step1.png) no-repeat scroll -103px -125px transparent;
-    height : 26px;
-    width : 61px;
+    @include sprite('seller-register-step1', -103, -125, 26, 61);
     margin : 0 0 0 7px;
 }
 #mcafee {
-    background : url(/images/sprites/seller-register-step1.png) no-repeat scroll -360px -32px transparent;
-    height : 22px;
-    width : 62px;
+    @include sprite('seller-register-step1', -360, -32, 22, 62);
     margin : 0 0 0 4px;
 }
 
@@ -63,16 +52,14 @@ input[type="text"] {
 textarea { height : 3em; }
 .field {
     font-size : .95em;
-    color : #7a7a7a;
+    color : $grey;
 }
 .field .left_col  { text-align : right; vertical-align : middle; }
 .field .right_col { padding-left : 20px; }
 
 .radioC span {
+    @include inline_block();
     width : 40px;
-    display : inline-block;
-    zoom : 1;
-    *display : inline;
     text-align :center;
 }
 .radioC span, .field div.note {
@@ -89,11 +76,9 @@ textarea { height : 3em; }
     margin-left : 58px;
 }
 .submitC #securityC {
-    display : inline-block;
-    zoom : 1;
-    *display : inline;
+    @include inline_block();
     font-size : .9em;
-    color : #666;
+    color : $grey;
     position : relative;
     top : -22px;
     left : 5px;
@@ -105,17 +90,9 @@ div#step_one_contentC #quotes_rowC { margin : 0 0 0 15px; }
 #quotes_rowC p {
     font-size : .85em;
     line-height : 1.05em;
-    color : #888;
+    color : $grey;
     margin-bottom : 5px;
 }
 
-#other_others_quote {
-    background : url(/images/sprites/home.png) no-repeat scroll 0px -138px transparent;
-    height : 24px;
-    width : 329px;
-}
-#top_pick_quote {
-    background : url(/images/sprites/home.png) no-repeat scroll -330px -138px transparent;
-    height : 24px;
-    width : 341px;
-}
+#other_others_quote { @include sprite('home', 0, -138, 24, 329); }
+#top_pick_quote     { @include sprite('home', -330, -138, 24, 3341); }

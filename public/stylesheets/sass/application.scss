@@ -112,8 +112,9 @@ div#request_offerC img#request_offer  {
     background-color : #fff;
     margin  : -5px 0 0 0;
     padding : 5px 0 0 20px;
+/*    padding : 5px 20px;*/
 }
-/*html* div#content { font-size : .9em; }*/
+
 
 #mainC img#bottom {
     background-position : -0px -261px;
@@ -168,9 +169,8 @@ div#f_right {
     width  : 14px;
     margin : -2px 3px 0 0;
 }
-#footer_links a { float : left; }
 #footer_links div.delimeter {
-    float : left;
+    @include inline_block();
     width : 15px;
     text-align : center;
     color : #7FB86B;
