@@ -1,6 +1,8 @@
 @import "helpers";
 @import "edit_bullet_point_collection";
 
+#aboutC a, #add_new_bpC a { font-size : 12px; }
+
 #form#new_seller_listing textarea,
 #form#new_seller_listing input[type="text"] {
     border  : 1px solid $light_grey;

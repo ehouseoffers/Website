@@ -2,7 +2,10 @@
   return if spotlight.social_profiles.empty?
 
 %div#social_profilesC
-  %h2.green= spotlight.social_media_title
+  = admin_area do
+    = link_to 'edit social profiles', edit_collection_social_profiles_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_social_profile_collection.css,edit_social_profile_collection.js'
+
+  %h2.green= spotlight.social_profile_title
 
   %div#all_profilesC
     %ul.clearfix

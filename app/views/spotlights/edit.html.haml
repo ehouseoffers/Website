@@ -1,11 +1,10 @@
 :ruby
   extra_css('spotlight_forms')
-  extra_js('edit_bullet_point_collection','edit_qa_collection')
+  extra_js('edit_bullet_point_collection','edit_qa_collection','edit_social_profile_collection')
 
 %div#edit_qa_collectionC.formC_700
   %h1
     = "Edit #{@spotlight.title}"
     %span.create_link= link_to 'Go To Spotlight Page', spotlight_path(@spotlight.title_for_url)
-
 
   = render 'form'

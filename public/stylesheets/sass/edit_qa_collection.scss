@@ -1,21 +1,21 @@
 @import "helpers";
 @import "form_basics";
 
-
-#edit_qa_collectionC a { font-size : 12px; }
-
-#edit_qa_collectionC textarea,
-#edit_qa_collectionC input[type="text"] {
+#qaC textarea,
+#qaC input[type="text"] {
     border  : 1px solid $light_grey;
     color   : $dark_grey;
     width   : 97%;
 }
-#edit_qa_collectionC textarea {
+#qaC textarea {
     height : 5em;
     overflow : hidden;
 }
-#edit_qa_collectionC div#add_new_qaC,
-#edit_qa_collectionC div.qa_deleteC {
+div#add_new_qaC a,
+#qaC a { font-size : 12px; }
+
+div#add_new_qaC,
+#qaC div.qa_deleteC {
     padding : 5px 10px;
     float : right;
 }

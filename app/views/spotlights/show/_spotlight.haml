@@ -12,12 +12,14 @@
     %hr
     = render :partial => "spotlights/show/about", :locals => {:spotlight => spotlight}
   - elsif admin?
-    = link_to 'Add about bullet points', edit_collection_bullet_points_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_bullet_point_collection.css,edit_bullet_point_collection.js'
+    = link_to 'add about bullet points', edit_collection_bullet_points_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_bullet_point_collection.css,edit_bullet_point_collection.js'
 
 
   - if spotlight.social_profiles.present?
     %hr
     = render :partial => "spotlights/show/social_profiles", :locals => {:spotlight => spotlight}
+  - elsif admin?
+    = link_to 'add social profile', edit_collection_social_profile_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_social_profile_collection.css,edit_social_profile_collection.js'
 
 
 

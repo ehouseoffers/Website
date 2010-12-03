@@ -8,7 +8,7 @@ class SpotlightsController < ApplicationController
 
   def index
     @spotlight = Spotlight.first
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 50
 
     respond_to do |format|
       format.html { render :template => 'spotlights/show' }
@@ -18,7 +18,7 @@ class SpotlightsController < ApplicationController
 
   def show
     @spotlight = Spotlight.find_by_title_for_url(params[:id]) || Spotlight.find_by_id(params[:id])
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 50
   
     respond_to do |format|
       format.html
@@ -33,9 +33,10 @@ class SpotlightsController < ApplicationController
 
       create_new_qas
       create_new_bullet_points
+      create_new_social_profiles
 
       respond_to do |format|
-        format.html { redirect_to(@spotlight, :notice => 'Phone number was successfully created.') }
+        format.html { redirect_to(@spotlight, :notice => 'Spotlight was successfully created.') }
         format.xml  { render :xml => @spotlight, :status => :created, :location => @spotlight }
       end
     rescue Exception => e
@@ -64,6 +65,7 @@ class SpotlightsController < ApplicationController
       create_new_bullet_points
 
       SocialProfile.update(params[:social_profile].keys, params[:social_profile].values) if params[:social_profile].present?
+      create_new_social_profiles
 
       respond_to do |format|
         format.html { redirect_to(spotlight_path(@spotlight.title_for_url), :notice => "#{@spotlight.title} was successfully updated.") }
@@ -109,6 +111,20 @@ class SpotlightsController < ApplicationController
       params[:new_bp].each_pair do |index, bp|
         if bp['content'].present?
           BulletPoint.new(:context => context, :context_id => context_id, :content => bp['content']).save!
+        end
+      end
+    end
+  end
+
+  def create_new_social_profiles
+    context = @spotlight.class.name
+    context_id = @spotlight.id
+
+    if params[:new_sp].present?
+      params[:new_sp].each_pair do |index, sp|
+        if sp['website'].present? && sp['username'].present? && sp['url'].present?
+          SocialProfile.new(:context => context, :context_id => context_id, :website => sp['website'],
+                            :username => sp['username'], :url => sp['url']).save!
         end
       end
     end

@@ -58,9 +58,10 @@ div.disabled_form_field.quarter_height,
 }
 
 /* Table Stuff */
-table.no_border td { border : none; }
-table.no_border th { border : none; }
 table th {
     font-weight : bold;
     color : $dark_grey;
 }
+
+/* misc */
+a[data-method='delete']:hover { color : #a00; text-decoration : none; }

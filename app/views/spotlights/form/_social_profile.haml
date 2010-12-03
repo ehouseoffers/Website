@@ -1,0 +1,7 @@
+%div#social_profileC
+  .field
+    = f.label :social_profile_title, 'Section Title'
+    = f.text_field :social_profile_title
+
+  = render :partial => 'shared/form/edit_social_profile_collection', :locals => {:context => context}
+

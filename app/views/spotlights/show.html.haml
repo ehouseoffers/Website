@@ -21,8 +21,9 @@
         = "Sorry, but no spotlights are available right now#{params[:page].present? ? ' for this page.' : '.'}"
 
 
-    %hr.space
-    = will_paginate @other_spotlights
+    -# B/c our index is our show, this does not make sense
+      %hr.space
+      = will_paginate @other_spotlights
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"

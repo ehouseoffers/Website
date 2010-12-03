@@ -8,17 +8,20 @@ Ehouseoffers::Application.routes.draw do
   end
 
   resources :addresses
+  resources :contact, :as => :contacts
+  resources :phone_numbers
+
   resources :blogs do
     # 'Email this Image' form on 'You Should Sell When...' pages
     post :email_image, :on => :member
   end
+
   resources :bullet_points do
     collection do
       get '/edit/collection/:context/:context_id', :action => :edit_collection, :as => :edit_collection
     end
   end
-  resources :contact, :as => :contacts
-  resources :phone_numbers
+
   resources :qas do
     collection do
       get '/edit/collection/:context/:context_id', :action => :edit_collection, :as => :edit_collection
@@ -29,7 +32,12 @@ Ehouseoffers::Application.routes.draw do
     get :comp_data, :on => :member # Registration 2nd step form display
     get :thank_you, :on => :member # Registration confirmation/appreciation
   end
-  resources :social_profiles
+
+  resources :social_profiles do
+    collection do
+      get '/edit/collection/:context/:context_id', :action => :edit_collection, :as => :edit_collection
+    end
+  end
 
   resources '/real-estate-spotlight', :as => :spotlights, :controller => :spotlights
   resources 'how-to-sell-house',  :as => :guides,  :controller => :guides

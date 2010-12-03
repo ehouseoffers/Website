@@ -1,0 +1,24 @@
+%table#edit_sp_collection
+  %tr
+    %th.site Site
+    %th.username Username
+    %th.url Url
+    - unless context.qas.empty?
+      %th.delete &nbsp;
+
+  - if context.qas.empty?
+    %tr.scC
+      %td
+        = select("new_sp[0]", "website", SocialProfile::SOCIAL_SITES, {:include_blank => false}, :class => :website)
+      %td
+        %input{:type => :text, :value => '', :name => 'new_sp[0][username]', :id => 'new_sp_0_username', :class => :username}
+      %td
+        %input{:type => :text, :value => '', :name => 'new_sp[0][url]', :id => 'new_sp_0_url', :class => :url}
+
+  - else
+    - for @social_profile in context.social_profiles
+      %tr.scC{:id => "sp_#{@social_profile.id}"}
+        %td= select("social_profile[]", "website", SocialProfile::SOCIAL_SITES, {:include_blank => true}, :class => :website)
+        %td= text_field "social_profile[]", :username, :class => :username
+        %td= text_field "social_profile[]", :url, :class => :url
+        %td= link_to '[X]', @social_profile, :confirm => 'Are you sure?', :method => :delete, 'data-id' => @social_profile.id, :class => 'sp_delete hidden'

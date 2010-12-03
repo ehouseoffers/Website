@@ -1,0 +1,20 @@
+:ruby
+  extra_css('edit_social_profile_collection')
+  extra_js('edit_social_profile_collection')
+
+
+%div#edit_sp_collectionC.formC_700
+  %h1= "Edit Social Profiles for #{@context.class.name.capitalize}"
+
+  = form_for @context, :url => send("#{@context.class.name.downcase}_path", @context.id), :method => :put do |f|
+    = render :partial => 'shared/user_notice', :locals => {:model_obj => @context}
+
+    = render :partial => "spotlights/form/social_profile", :locals => {:f => f, :context => @context}
+
+    %div#add_new_spC.hidden
+      = link_to 'new bullet point', new_bullet_point_path(:context => @context.class, :context_id => @context.id), :id => :add_new_sp
+
+    .actions
+      = f.submit 'Save'
+
+%div{:style => 'height:2em'} &nbsp;

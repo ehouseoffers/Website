@@ -55,11 +55,14 @@
     = link_to 'new q&a', new_qa_path(:context => @spotlight.class), :id => :add_new_qa
 
 
-
   %hr.space
-  = render :partial => "spotlights/form/social_media", :locals => {:f => f}
+  %h3 Social Profile Section
+  = render :partial => "spotlights/form/social_profile", :locals => {:f => f, :context => @spotlight}
 
+  %div#add_new_spC.hidden
+    = link_to 'new social profile', new_social_profile_path(:context => @spotlight.class), :id => :add_new_sp
 
+  %br
   .actions
     = f.submit 'Save'
     = link_to 'Cancel', :back

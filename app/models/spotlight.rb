@@ -1,26 +1,26 @@
 # mysql> desc spotlights;
-# +--------------------+--------------+------+-----+---------+----------------+
-# | Field              | Type         | Null | Key | Default | Extra          |
-# +--------------------+--------------+------+-----+---------+----------------+
-# | id                 | int(11)      | NO   | PRI | NULL    | auto_increment | 
-# | title              | varchar(255) | YES  |     | NULL    |                | 
-# | title_for_url      | varchar(255) | YES  |     | NULL    |                | 
-# | teaser             | varchar(255) | YES  |     | NULL    |                | 
-# | about_title        | varchar(255) | YES  |     | NULL    |                | 
-# | interview_title    | varchar(255) | YES  |     | NULL    |                | 
-# | interview_subtitle | varchar(255) | YES  |     | NULL    |                | 
-# | social_media_title | varchar(255) | YES  |     | NULL    |                | 
-# | photo_file_name    | varchar(255) | YES  |     | NULL    |                | 
-# | photo_content_type | varchar(255) | YES  |     | NULL    |                | 
-# | photo_file_size    | int(11)      | YES  |     | NULL    |                | 
-# | photo_updated_at   | datetime     | YES  |     | NULL    |                | 
-# | created_at         | datetime     | YES  |     | NULL    |                | 
-# | updated_at         | datetime     | YES  |     | NULL    |                | 
-# +--------------------+--------------+------+-----+---------+----------------+
+# +----------------------+--------------+------+-----+---------+----------------+
+# | Field                | Type         | Null | Key | Default | Extra          |
+# +----------------------+--------------+------+-----+---------+----------------+
+# | id                   | int(11)      | NO   | PRI | NULL    | auto_increment | 
+# | title                | varchar(255) | YES  |     | NULL    |                | 
+# | title_for_url        | varchar(255) | YES  |     | NULL    |                | 
+# | teaser               | text         | YES  |     | NULL    |                | 
+# | about_title          | varchar(255) | YES  |     | NULL    |                | 
+# | interview_title      | varchar(255) | YES  |     | NULL    |                | 
+# | interview_subtitle   | varchar(255) | YES  |     | NULL    |                | 
+# | social_profile_title | varchar(255) | YES  |     | NULL    |                | 
+# | photo_file_name      | varchar(255) | YES  |     | NULL    |                | 
+# | photo_content_type   | varchar(255) | YES  |     | NULL    |                | 
+# | photo_file_size      | int(11)      | YES  |     | NULL    |                | 
+# | photo_updated_at     | datetime     | YES  |     | NULL    |                | 
+# | created_at           | datetime     | YES  |     | NULL    |                | 
+# | updated_at           | datetime     | YES  |     | NULL    |                | 
+# +----------------------+--------------+------+-----+---------+----------------+
 class Spotlight < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
   attr_accessible :id, :title, :title_for_url, :teaser, :about_title, :interview_title, :interview_subtitle,
-                  :social_media_title, :photo
+                  :social_profile_title, :photo
 
   has_many :qas,             :foreign_key => "context_id", :conditions => "context='Spotlight'", :order => 'created_at asc'
   has_many :bullet_points,   :foreign_key => "context_id", :conditions => "context='Spotlight'", :order => 'created_at asc'
