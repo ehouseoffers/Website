@@ -2,9 +2,12 @@
   return if spotlight.bullet_points.empty?
 
 %div#aboutC
+  = admin_area do
+    = link_to 'edit bullet points', edit_collection_bullet_points_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_bullet_point_collection.css,edit_bullet_point_collection.js'
+
   %h2.green= spotlight.about_title
 
   %ul.green
     - spotlight.bullet_points.each do |li|
-      %li
+      %li{:id => "about_#{li.id}"}
         %span= li.content

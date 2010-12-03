@@ -59,29 +59,29 @@ form input[type="image"] {
     font-weight : bold;
     margin-bottom : 4px;
 }
-form .field,
-form input[type="text"] {
+form#new_seller_listing .field,
+form#new_seller_listing input[type="text"] {
     width : 208px;
 }
-form label {
+form#new_seller_listing label {
     display : none;
 }
-form div#email.field, form input#seller_listing_user_email,
-form div#number.field, form input#seller_listing_phone_number_number,
-form div#address1.field, form input#seller_listing_address_address1 {
+form#new_seller_listing div#email.field, form#new_seller_listing input#seller_listing_user_email,
+form#new_seller_listing div#number.field, form#new_seller_listing input#seller_listing_phone_number_number,
+form#new_seller_listing div#address1.field, form#new_seller_listing input#seller_listing_address_address1 {
 /*     width : 157px;*/
     width : 208px;
 }
-form div#address_zip.field, form input#seller_listing_address_zip { width : 151px; }
+form#new_seller_listing div#address_zip.field, form#new_seller_listing input#seller_listing_address_zip { width : 151px; }
 
-form div#city.field, form input#seller_listing_address_city { width : 151px; float : left; margin-right : 20px; }
-form div#state.field, form input#seller_listing_address_state { width : 35px; float : left; }
+form#new_seller_listing div#city.field, form#new_seller_listing input#seller_listing_address_city { width : 151px; float : left; margin-right : 20px; }
+form#new_seller_listing div#state.field, form#new_seller_listing input#seller_listing_address_state { width : 35px; float : left; }
 
 .seller_signup_boxC #securityC span { display : none; }
 
 #security_iconsC {
     float      : left; /* to take it out of the flow */
-    margin-top : 17px; /* to place it below the form box */
+    margin-top : 17px; /* to place it below the form#new_seller_listing box */
 }
 .seller_signup_boxC .submitC {
     padding-top : 12px;

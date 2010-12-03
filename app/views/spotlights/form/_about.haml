@@ -1,17 +1,12 @@
-%h3
-  'About' Section
-  %span.create_link= link_to 'Create New Bullet Point', new_bullet_point_path(:context => @spotlight.class, :context_id => @spotlight.id)
 
-%div.indent
+%div#aboutC
   .field
-    = f.label :about_title
+    -# The label has some css attached to it that botches jquery.model's understanding of the *real* height of the
+    -# modal content, but only on the first load. if you reload the model a second time, it shows just fine. Anyway,
+    -# just don't use a label here and we are fine.
+    -# = f.label :about_title, "'About' Title"
+    %strong About Title
     = f.text_field :about_title
 
-
-  - i = 0
-  - for @bullet_point in @spotlight.bullet_points
-    - i += 1
-    .field
-      %label= "Bullet Point ##{i}"
-      = text_field "bullet_point[]", :content
-
+  %strong Bullet Points
+  = render :partial => 'shared/form/edit_bullet_point_collection', :locals => {:context => context}

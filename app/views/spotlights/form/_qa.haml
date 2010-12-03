@@ -1,22 +1,12 @@
-%h3
-  Q&amp;A/Interview Section
-  %span.create_link= link_to 'Create New Q&A', new_qa_path(:context => @spotlight.class, :context_id => @spotlight.id)
 
-%div.indent
+%div#qaC
   .field
-    = f.label :interview_title
+    = f.label :interview_title, 'Section Title'
     = f.text_field :interview_title
 
   .field
-    = f.label :interview_subtitle
+    = f.label :interview_subtitle, 'Section Subtitle'
     = f.text_field :interview_subtitle
 
-  - i = 0
-  - for @qa in @spotlight.qas
-    - i += 1
-    .field
-      %label= "Question ##{i}"
-      = text_field "qa[]", :question
-    .field.quarter_height
-      %label= "Answer ##{i}"
-      = text_area "qa[]", :answer
+  = render :partial => 'shared/form/edit_qa_collection', :locals => {:context => context}
+

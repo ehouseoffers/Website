@@ -5,10 +5,15 @@
   - if spotlight.qas.present?
     %hr
     = render :partial => "spotlights/show/interview", :locals => {:spotlight => spotlight}
-
+  - elsif admin?
+    = link_to 'edit q&a', edit_collection_qas_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_qa_collection.css,edit_qa_collection.js'
+  
   - if spotlight.bullet_points.present?
     %hr
     = render :partial => "spotlights/show/about", :locals => {:spotlight => spotlight}
+  - elsif admin?
+    = link_to 'Add about bullet points', edit_collection_bullet_points_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_bullet_point_collection.css,edit_bullet_point_collection.js'
+
 
   - if spotlight.social_profiles.present?
     %hr

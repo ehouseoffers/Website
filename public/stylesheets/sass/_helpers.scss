@@ -2,6 +2,8 @@ $green     : #75973e;
 $orange    : #F89A36;
 $dark_grey : #333333;
 $grey      : #676767;
+$light_grey: #dadada;
+$white_grey: #ececec;
 $wheat     : #f1f5d1;
 
 @mixin sprite($sprite, $x, $y, $h, $w) {

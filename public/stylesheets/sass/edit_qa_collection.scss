@@ -1,0 +1,37 @@
+@import "helpers";
+@import "form_basics";
+
+
+#edit_qa_collectionC a { font-size : 12px; }
+
+#edit_qa_collectionC textarea,
+#edit_qa_collectionC input[type="text"] {
+    border  : 1px solid $light_grey;
+    color   : $dark_grey;
+    width   : 97%;
+}
+#edit_qa_collectionC textarea {
+    height : 5em;
+    overflow : hidden;
+}
+#edit_qa_collectionC div#add_new_qaC,
+#edit_qa_collectionC div.qa_deleteC {
+    padding : 5px 10px;
+    float : right;
+}
+
+
+table.edit_qa_collection { width : 100%; margin-bottom : 0px; }
+table.edit_qa_collection td, table.edit_qa_collection th { border : none; }
+table.edit_qa_collection tr.spacer { height : 20px; }
+table.edit_qa_collection tr.grey_bg { background-color : #ececec; }
+table.edit_qa_collection td.label {
+    color : $dark_grey;
+    font-weight : bold;
+    vertical-align : top;
+    line-height : 2em;
+    text-align : right;
+    padding : 0 8px;
+}
+table.edit_qa_collection td.input { width : 97%; }
+

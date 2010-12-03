@@ -3,10 +3,8 @@
 
 %div#qaC
   %div.clearfix
-    -# younker [2010-11-30 19:28]
-    -# See routes.rb qas :collection route comment (L19-ish)
-    -#= admin_area do
-    -#  = link_to 'edit interview', edit_qa_path(spotlight, :context => spotlight.class.name.downcase, :context_id => spotlight.id), :class => :uso_modal
+    = admin_area do
+      = link_to 'edit q&a', edit_collection_qas_path(spotlight.class.name.downcase, spotlight.id), :class => :uso_modal, 'data-resource' => 'edit_qa_collection.css,edit_qa_collection.js'
 
     %div#mic_icon &nbsp;
     %h2.green= spotlight.interview_title
@@ -15,7 +13,7 @@
   %br
   %ul
     - spotlight.qas.each do |qa|
-      %li
+      %li{:id => "qa_#{qa.id}"}
         %strong
           %span.q Q:
           = qa.question

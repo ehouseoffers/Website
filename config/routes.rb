@@ -12,16 +12,17 @@ Ehouseoffers::Application.routes.draw do
     # 'Email this Image' form on 'You Should Sell When...' pages
     post :email_image, :on => :member
   end
-  resources :bullet_points
+  resources :bullet_points do
+    collection do
+      get '/edit/collection/:context/:context_id', :action => :edit_collection, :as => :edit_collection
+    end
+  end
   resources :contact, :as => :contacts
   resources :phone_numbers
   resources :qas do
-    # When I am ready to edit/update all the q&a's tied to a spotlight, this is what you will want
-    # See views/spotlights/show/_interview.haml for next step
-    # collection do
-    #   get '/edit/collection/:context/:context_id', :action => :edit_collection,   :as => :edit_collection
-    #   put '/edit/collection/:context/:context_id', :action => :update_collection, :as => :update_collection
-    # end
+    collection do
+      get '/edit/collection/:context/:context_id', :action => :edit_collection, :as => :edit_collection
+    end
   end
 
   resources :seller_listings do

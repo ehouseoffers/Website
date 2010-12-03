@@ -46,7 +46,7 @@
   padding : 4px 6px 6px;
 }
 #simplemodal-container a {
-  color : #ddd;
+/*  color : #ddd;*/
 }
 #simplemodal-container a.modalCloseImg {
   background : url(/images/close_button.png) no-repeat scroll 0px 0px transparent;

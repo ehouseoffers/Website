@@ -7,10 +7,7 @@
 = form_for @spotlight, :html => {:multipart => true} do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @spotlight}
 
-
-  .field.hidden
-    = f.label :id
-    = f.text_field :id
+  = f.hidden_field :id
 
   .field
     = f.label :title, :for => 'blog_title'
@@ -43,10 +40,21 @@
         = f.file_field :photo
 
   %hr.space
-  = render :partial => "spotlights/form/about", :locals => {:f => f}
+  %h3 About Section
+  = render :partial => "spotlights/form/about", :locals => {:f => f, :context => @spotlight}
+
+  %div#add_new_bpC.hidden
+    = link_to 'new bullet point', new_bullet_point_path(:context => @spotlight.class), :id => :add_new_bp
+
 
   %hr.space
-  = render :partial => "spotlights/form/qa", :locals => {:f => f}
+  %h3 Q&amp;A Section
+  = render :partial => "spotlights/form/qa", :locals => {:f => f, :context => @spotlight}
+
+  %div#add_new_qaC.hidden
+    = link_to 'new q&a', new_qa_path(:context => @spotlight.class), :id => :add_new_qa
+
+
 
   %hr.space
   = render :partial => "spotlights/form/social_media", :locals => {:f => f}

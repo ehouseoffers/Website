@@ -1,0 +1,34 @@
+%table.edit_qa_collection
+  - if context.qas.empty?
+    %tr.question{:id => "new_q"}
+      %td.label Question
+      %td.input
+        %input{:type => :text, :value => '', :name => 'new_qa[0][question]', :id => 'new_qa_0_question'}
+
+    %tr.answer{:id => "new_a"}
+      %td.label Answer
+      %td.input
+        %input{:type => :text, :value => '', :name => 'new_qa[0][answer]', :id => 'new_qa_0_answer'}
+
+    %tr.spacer{:id => "new_s"}
+      %td{:colspan=>2} &nbsp;
+
+
+  - else
+    - i = 0
+    - for @qa in context.qas
+      - i = i + 1
+      - klass = i%2==0 ? 'white_bg' : 'grey_bg'
+      %tr.question{:id => "q_#{@qa.id}", :class => klass}
+        %td.label Question
+        %td.input= text_field "qa[]", :question
+      %tr.answer{:id => "a_#{@qa.id}", :class => klass}
+        %td.label Answer
+        %td.input
+          = text_area "qa[]", :answer
+
+          %div.qa_deleteC
+            = link_to 'delete', @qa, :confirm => 'Are you sure?', :method => :delete, :class => 'qa_delete', 'data-id' => @qa.id
+
+      %tr.spacer{:id => "s_#{@qa.id}"}
+        %td{:colspan=>2} &nbsp;

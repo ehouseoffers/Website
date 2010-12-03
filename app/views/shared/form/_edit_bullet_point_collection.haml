@@ -1,0 +1,16 @@
+#bullet_pointsC
+  - if context.bullet_points.empty?
+    .field.bpC
+      %input{:type => :text, :value => '', :name => 'new_bp[0][content]', :id => 'new_bp_0_content'}
+
+  - else
+    - i = 0
+    - for @bullet_point in context.bullet_points
+      - i += 1
+      .field.bpC
+        %div.deleteC.hidden
+          = link_to '[X]', @bullet_point, :confirm => 'Are you sure?', :method => :delete, :class => 'bp_delete', 'data-id' => @bullet_point.id
+        = text_field "bullet_point[]", :content
+
+
+

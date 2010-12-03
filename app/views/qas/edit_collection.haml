@@ -1,0 +1,17 @@
+:ruby
+  extra_css('edit_qa_collection')
+  extra_js('edit_qa_collection')
+
+%div#edit_qa_collectionC.formC_700
+  %h1= "Edit Q&As for #{@context.class.name.capitalize}"
+
+  = form_for @context, :url => send("#{@context.class.name.downcase}_path", @context.id), :method => :put do |f|
+    = render :partial => 'shared/user_notice', :locals => {:model_obj => @context}
+
+    = render :partial => "spotlights/form/qa", :locals => {:f => f, :context => @context}
+
+    %div.right.hidden
+      = link_to 'add new QA', 'javascript.void()', :id => :add_new_qa
+
+    .actions
+      = f.submit 'Save'

@@ -698,14 +698,30 @@
 
         // younker [2010-12-02 12:50]
         // after we append, we need to resize the container taking into consideration the new el(ement)'s height
-        updateDimensionsAfterAppend : function(el) {
+        updateDimensionsAfterAppend  : function(cs) { this.updateDimensionsAfterAction(cs,'append'); },
+        updateDimensionsAfterRemoval : function(cs) { this.updateDimensionsAfterAction(cs,'rm'); },
+        updateDimensionsAfterAction  : function(class_selection, action) {
+            try {
             var s = this;
-            var newH = parseInt(s.getDimensions(s.d.container)[0]) + parseInt(s.getDimensions(el)[0]) + 10;
+
+            // Tally up the height for all elements found using our class_selection
+            var elH = 0;
+            $(class_selection).each(function(){ elH += parseInt(s.getDimensions($(this))[0]); });
+
+            var newH;
+            if ( action=='rm' ) {
+                newH = parseInt(s.getDimensions(s.d.container)[0]) - elH;
+            } else {
+                newH = parseInt(s.getDimensions(s.d.container)[0]) + elH + 10;
+            }
 			var maxH = s.o.maxHeight ? s.getVal(s.o.maxHeight, 'h') : newH;
             s.d.container.css('height', (newH>maxH ? maxH : newH));
             s.d.wrap.css({overflow: (newH>maxH) ? 'auto' : 'visible'});
             s.setPosition();
+        } catch(e) {
+            console.log(e);
+            return false;
         }
-
+        }
 	};
 })(jQuery);

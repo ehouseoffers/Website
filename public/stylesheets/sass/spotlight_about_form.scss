@@ -1,0 +1,10 @@
+@import "helpers";
+@import "edit_bullet_point_collection";
+
+#form#new_seller_listing textarea,
+#form#new_seller_listing input[type="text"] {
+    border  : 1px solid $light_grey;
+    color   : $dark_grey;
+    width   : 97%;
+}
+

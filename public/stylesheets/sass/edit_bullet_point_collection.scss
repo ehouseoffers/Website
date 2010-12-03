@@ -1,0 +1,15 @@
+@import "form_basics";
+
+#edit_bp_collectionC .field { margin-bottom : 10px; }
+#edit_bp_collectionC a { font-size : 12px; }
+
+#add_new_bpC {
+    float : right;
+    padding : 5px 10px;
+}
+
+div#bullet_pointsC input { width : 650px !important; }
+div#bullet_pointsC .deleteC {
+    float : right;
+    padding : 3px 14px 0 0;
+}

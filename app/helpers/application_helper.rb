@@ -56,6 +56,15 @@ module ApplicationHelper
     content_tag(:div, :class => "admin", &block) if user_signed_in? && current_user.admin?
   end
 
+  def admin?
+    user_signed_in? && current_user.admin?
+  end
+  
+  def standard_oops_message(type='data')
+    "We're sorry, but there was a problem removing this #{type}. Please reload the page and try again. If the problem persists, please email contact@ehouseoffer.com."
+  end
+
+
   # For all it's clever little things, Rails does not have a way to
   # get an absolute image path for image_tag which, for emails, is a
   # necessity.
