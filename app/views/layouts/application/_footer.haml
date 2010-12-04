@@ -20,11 +20,13 @@
       = render 'shared/delimeter'
 
       - if user_signed_in?
-        = link_to "Account", edit_user_registration_path
+        = link_to "Your Account", edit_user_registration_path
         = render 'shared/delimeter'
         = link_to "Sign out", destroy_user_session_path
       - else
-        = raw "#{link_to "Sign up", new_user_registration_path} or #{link_to "sign in", new_user_session_path}"
+        = link_to "Create Account", new_user_registration_path
+        = render 'shared/delimeter'
+        = link_to "Sign in", new_user_session_path
 
 
   %div#f_right.yui3-u-3-8
