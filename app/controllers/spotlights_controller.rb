@@ -8,7 +8,7 @@ class SpotlightsController < ApplicationController
 
   def index
     @spotlight = Spotlight.first
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 50
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).order('created_at desc').limit(12)
 
     respond_to do |format|
       format.html { render :template => 'spotlights/show' }
@@ -18,7 +18,7 @@ class SpotlightsController < ApplicationController
 
   def show
     @spotlight = Spotlight.find_by_title_for_url(params[:id]) || Spotlight.find_by_id(params[:id])
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).paginate :page => params[:page], :order => 'created_at desc', :per_page => 50
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).order('created_at desc').limit(12)
   
     respond_to do |format|
       format.html

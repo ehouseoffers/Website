@@ -1,0 +1,17 @@
+:ruby
+  return if collection.empty?
+
+%div#boxed_resource_listC{:class => collection.first.class.name.downcase}
+  %div.titleC
+    %div#icon &nbsp;
+    %h3= title
+
+  %div.box
+    %div.gutter.clearfix
+      %ul
+        - collection.each do |item|
+          %li
+            - if item.class.eql?(Blog)
+              = link_to item.title, construct_blog_path(item, :show)
+            - else
+              = link_to item.title, send("#{item.class.name.downcase}_path", item.title_for_url)

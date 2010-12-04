@@ -9,22 +9,20 @@
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, nil], [@spotlight.title, nil]]
 
-%div.xs_two_col.yui3-g
+%div#spotlight_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    = render "shared/slider", :id => 'trends_slider', :collection => @other_spotlights
-
-    - if @spotlight.present?
-      %hr#pre_spotlight.space
-      = render :partial => "spotlights/show/spotlight", :object => @spotlight
-    - else
+    - if !@spotlight.present?
       %p.sorry_no_results
         = "Sorry, but no spotlights are available right now#{params[:page].present? ? ' for this page.' : '.'}"
+    - else
+      = render :partial => "spotlights/show/spotlight", :object => @spotlight
+      %hr
+      = render :partial => 'shared/boxed_resource_list', :locals => {:title => 'Other Spotlights', :collection => @other_spotlights}
 
 
-    -# B/c our index is our show, this does not make sense
-      %hr.space
-      = will_paginate @other_spotlights
+
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"
+
 

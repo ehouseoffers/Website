@@ -28,17 +28,7 @@
     %hr
     %hr.space
 
-    %div#other_guidesC
-      %div.titleC
-        %div#books &nbsp;
-        %h3.orange Other Guides For Home Sellers
-      
-      %div.box
-        %div.gutter.clearfix
-          %ul
-            - @other_blogs.each do |g|
-              %li
-                = link_to g.title, construct_blog_path(g, :show)
+    = render :partial => 'shared/boxed_resource_list', :locals => {:title => 'Other Guides For Home Sellers', :collection => @other_blogs}
       
 
   %div#right_col.yui3-u-7-24

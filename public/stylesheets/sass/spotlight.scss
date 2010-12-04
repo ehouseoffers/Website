@@ -4,7 +4,7 @@
 @import "share_article_on";
 @import "jquery.slider";
 @import "pagination";
-
+@import "boxed_resource_list";
 
 #menuC { margin-bottom : 4px; }
 #mainC div#tab_arrow {
@@ -31,6 +31,10 @@ ul.breadcrumbC {
 }
 
 /* Start Page Elements */
+div#spotlight_pageC hr {
+    margin : 1.5em 0;
+}
+
 div#spotlightC {
     margin : 0 15px;
     color : $grey;
@@ -41,12 +45,6 @@ div#spotlightC p {
     color : $grey;
     font-size : .85em;
     line-height : 1.6em;
-}
-div#spotlightC hr {
-    margin : 1.5em 0;
-}
-hr#pre_spotlight {
-    margin : 0 0 2.5em 0;
 }
 #teaserC #main_spotlight_image {
     padding : 0 20px 20px 0;
