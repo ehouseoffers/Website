@@ -1,10 +1,13 @@
 Ehouseoffers::Application.routes.draw do
 
   devise_for :users
+  # match '/users', :to => 'users#index'
 
   match '/admin', :to => 'admin#index'
   namespace :admin do
     resources :meta_datum
+    resources :user_accounts
+    match '/become/:id', :to => 'admin#become', :as => :become_user
   end
 
   resources :addresses

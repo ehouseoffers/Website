@@ -302,6 +302,8 @@ ul.green span {
 .left   { float : left; }
 .hidden { display : none; }
 .indent { margin-left : 20px; }
+.inline { display : inline !important; }
+
 .rArr { /* right arrow */
     background : url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;
     height : 9px;

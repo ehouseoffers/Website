@@ -1,0 +1,36 @@
+:ruby
+  extra_css('scaffold')
+
+%h1 All Users
+
+%table
+  %tr
+    %th ID
+    %th First Name
+    %th Last Name
+    %th Email
+    %th Sign In Count
+    %th.center Admin?
+    %th Become User
+
+  - @users.each do |u|
+    %tr
+      %td= u.id
+      %td= u.first_name
+      %td= u.last_name
+      %td= u.email
+      %td= u.sign_in_count
+      %td
+        = form_for u, :url => admin_user_account_path(u), :method => :put do |f|
+          = f.check_box :admin, :class => 'admin_checkbox'
+      %td.center
+        - if current_user != u
+          = link_to 'login as', admin_become_user_path(u.id)
+      
+
+:javascript
+  $(document).ready(function() {
+    $('input.admin_checkbox').click(function(){
+      $(this).parents('form').submit();
+    });
+  });
