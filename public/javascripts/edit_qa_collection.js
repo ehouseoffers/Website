@@ -1,5 +1,5 @@
 $(document).ready(function() {
-    $.clone_qa_count = 0;
+    $.clone_qa_count = 1;
     init_clone_qa_form();
     init_qa_removal();
 

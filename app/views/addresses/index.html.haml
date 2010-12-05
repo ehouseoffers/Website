@@ -1,9 +1,9 @@
 :ruby
   extra_css('scaffold')
 
-%h1 Listing addresses
+%h1 Addresses
 
-%table
+%table.fullw
   %tr
     %th User
     %th Address1
@@ -34,3 +34,5 @@
 %br
 
 = link_to 'New Address', new_address_path
+\|
+= link_to "Admin Panel", admin_path

@@ -1,9 +1,9 @@
 :ruby
   extra_css('scaffold')
 
-%h1 Listing seller_listings
+%h1 Listing Seller Listings
 
-%table
+%table.fullw
   %tr
     %th ID
     %th User
@@ -33,3 +33,5 @@
 %br
 
 = link_to 'New Seller listing', new_seller_listing_path
+\|
+= link_to "Admin Panel", admin_path

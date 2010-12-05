@@ -6,12 +6,24 @@
 %table
   %tr
     %th Resource
-    %th What This Be?
+    %th Explanation... if needed.
 
   %tr
-    %td Users
-    %td= link_to "User Accounts", admin_user_accounts_path
-
-  %tr
-    %td Meta Data
+    %td Site Meta Data
     %td= link_to "Manage Site Title's and Description by URL", admin_meta_datum_index_path
+
+  %tr
+    %td User Accounts
+    %td= link_to "View", admin_user_accounts_path
+
+  %tr
+    %td Seller Listings
+    %td= link_to "View", seller_listings_path
+
+  %tr
+    %td User Addresses
+    %td= link_to "View", addresses_path
+
+  %tr
+    %td User Phone Numbers
+    %td= link_to "View", phone_numbers_path

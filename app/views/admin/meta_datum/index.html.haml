@@ -4,7 +4,7 @@
 %h1 Site Meta Data (by url)
 
 - unless @admin_meta_data.empty?
-  %table
+  %table.fullw
     %tr
       %th Relative Path
       %th Title
@@ -28,3 +28,5 @@
   %br
 
 = link_to 'New Meta data', new_admin_meta_datum_path
+\|
+= link_to "Admin Panel", admin_path

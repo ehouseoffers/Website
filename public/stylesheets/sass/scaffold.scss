@@ -6,13 +6,16 @@
 
 
 /* weak attempt -- for spotlight edit */
+table.fullw   { width : 97%; }
 table         { width : 700px; }
 .indent table { width : 690px; }
-table.no_border td, table.no_border th { border : none; }
 table input   {
     width : 100% !important;
     padding : 4px 0 4px 1px !important;
 }
 
+table th, table td { vertical-align : top; }
+table.no_border td, table.no_border th { border : none; }
 table th.center, table td.center { text-align : center; }
+
 

@@ -6,17 +6,17 @@
     %hr
     = render :partial => "spotlights/show/interview", :locals => {:spotlight => spotlight}
   - elsif admin?
-    = link_to_edit_collection_for(:qa, spotlight)
+    %div= link_to_edit_collection_for(:qa, spotlight)
   
   - if spotlight.bullet_points.present?
     %hr
     = render :partial => "spotlights/show/about", :locals => {:spotlight => spotlight}
   - elsif admin?
-    = link_to_edit_collection_for(:bullet_points, spotlight)
+    %div= link_to_edit_collection_for(:bullet_points, spotlight)
 
 
   - if spotlight.social_profiles.present?
     %hr
     = render :partial => "spotlights/show/social_profiles", :locals => {:spotlight => spotlight}
   - elsif admin?
-    = link_to_edit_collection_for(:social_profiles, spotlight)
+    %div= link_to_edit_collection_for(:social_profiles, spotlight)

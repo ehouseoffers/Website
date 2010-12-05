@@ -3,7 +3,7 @@
 
 %h1 All Users
 
-%table
+%table.fullw
   %tr
     %th ID
     %th First Name
@@ -27,6 +27,8 @@
         - if current_user != u
           = link_to 'login as', admin_become_user_path(u.id)
       
+= link_to "Admin Panel", admin_path
+
 
 :javascript
   $(document).ready(function() {
