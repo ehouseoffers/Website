@@ -9,12 +9,10 @@ class Placefinder
   attr_accessor :query_base, :query_string, :response, :error, :error_message, :city, :state, :zip
 
   def initialize(query_params={})
-
-    Rails.logger.info("----------------------------- placefinder.rb:13 - KEYS = '#{KEYS.inspect}'")
-
     self.query_base = {
-      :appid => KEYS['placefinder']['app_id'],
-      :flags => 'J'
+      :appid   => KEYS['placefinder']['app_id'],
+      :flags   => 'J',
+      :country => 'USA'
     }
     self.query_string = self.query_base.merge(query_params).to_query
   end
