@@ -1,39 +1,22 @@
 @import "helpers";
 
 /* Start Sprites */
-.sprite { background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent; }
 #lock_icon  {
-    background-position : -359px -56px;
-    height : 25px;
-    width  : 85px;
-    vertical-align : text-top;
-    margin-left : 5px;
+    @include sprite('seller-register-step1', -360, -57, 25, 85);
+    vertical-align : middle;
+    margin-left : 7px;
 }
 #truste {
-    background-position : 0px -125px;
-    height : 28px;
-    width : 101px;
+    @include sprite('seller-register-step1', 0, -125, 28, 101);
     margin : 0 0 0 20px;
 }
-/*#verisign {
-    background-position : -103px -125px;
-    height : 26px;
-    width : 61px;
-    margin : 0 0 0 7px;
-}*/
 #mcafee {
-    background-position : -360px -32px;
-    height : 22px;
-    width : 62px;
+    @include sprite('seller-register-step1', -360, -32, 22, 62);
     margin : 0 0 0 4px;
 }
 form input[type="image"] {
-    background-position : -0px -81px;
-    height : 40px;
-    width  : 119px;
+    @include sprite('seller-register-step1', 0, -81, 40, 119);
 }
-/* end sprites */
-
 .seller_signup_boxC {
     /*width : 260px; rm'd so right col widgets have a consistent width */
     margin-bottom : 50px; /* to account for how we placed the #security_iconsC (see below) */
@@ -41,14 +24,6 @@ form input[type="image"] {
 .seller_signup_boxC div.gutter {
     padding : 15px 22px 5px;    
 }
-/*.seller_signup_boxC h2 {
-    letter-spacing : -.75px;
-    color : #f89a36;
-    font-size : 1.4em;
-    font-weight : bold;
-    margin-bottom : 5px;
-}
-*/
 .seller_signup_boxC p,
 .seller_signup_boxC strong {
     font-size : .75em;
@@ -61,24 +36,39 @@ form input[type="image"] {
     font-weight : bold;
     margin-bottom : 4px;
 }
-form#new_seller_listing .field,
-form#new_seller_listing input[type="text"] {
-    width : 208px;
-}
+
+
 form#new_seller_listing label {
     display : none;
 }
+/* main page form: sum of first + last name fields + padding */
 form#new_seller_listing div#email.field, form#new_seller_listing input#seller_listing_user_email,
 form#new_seller_listing div#number.field, form#new_seller_listing input#seller_listing_phone_number_number,
 form#new_seller_listing div#address1.field, form#new_seller_listing input#seller_listing_address_address1 {
-/*     width : 157px;*/
-/*    width : 208px;  What was this width for? */
-    width : 320px; /* main page form: width of first/last name fields and padding */
+   /*width : 157px; what was this from?! */
+    width : 320px; 
 }
-form#new_seller_listing div#address_zip.field, form#new_seller_listing input#seller_listing_address_zip { width : 151px; }
+form#new_seller_listing div#address_zip.field, form#new_seller_listing input#seller_listing_address_zip {
+    width : 151px;
+}
+form#new_seller_listing div#city.field, form#new_seller_listing input#seller_listing_address_city {
+    width : 151px;
+    float : left;
+    margin-right : 20px;
+}
+form#new_seller_listing div#state.field, form#new_seller_listing input#seller_listing_address_state {
+    width : 35px;
+    float : left;
+}
+/* right col version of new seller signup -- we need more narrow input fields */
+span.shared_seller_signup div#first_name.field, span.shared_seller_signup input#seller_listing_user_first_name,
+span.shared_seller_signup div#last_name.field, span.shared_seller_signup input#seller_listing_user_last_name,
+span.shared_seller_signup div#email.field, span.shared_seller_signup input#seller_listing_user_email,
+span.shared_seller_signup div#number.field, span.shared_seller_signup input#seller_listing_phone_number_number,
+span.shared_seller_signup div#address1.field, span.shared_seller_signup input#seller_listing_address_address1 {
+    width : 208px !important;
+}
 
-form#new_seller_listing div#city.field, form#new_seller_listing input#seller_listing_address_city { width : 151px; float : left; margin-right : 20px; }
-form#new_seller_listing div#state.field, form#new_seller_listing input#seller_listing_address_state { width : 35px; float : left; }
 
 .seller_signup_boxC #securityC span { display : none; }
 

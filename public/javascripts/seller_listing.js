@@ -32,7 +32,7 @@ $(document).ready(function() {
           } else {
             // trigger blur on each element so we get the validations
             city.trigger('blur');
-            state.trigger('blur')
+            state.trigger('blur');
           }
         },
         error: function (xhr, status, error) {

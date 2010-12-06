@@ -9,103 +9,69 @@ p {
     margin-bottom : 5px;
 }
 
-.sprite { background : url(/images/sprites/home.png) no-repeat scroll 0px 500px transparent; }
-
 #what_we_do_video_preview  {
-    background-position : 0px -2px;
-    height : 106px;
-    width : 119px;
+    @include sprite('home',0,-2,106,119);
     margin-top : 4px;
     float : left;
 }
 #seller_resources_icon {
-    background-position : -119px -2px;
-    height : 85px;
-    width : 88px;
+    @include sprite('home',-119,-2,85,88);
     margin : 24px 0 0 -7px;
     float : left;
 }
 #our_home_buyers_icons {
-    background-position : -214px -2px;
-    height : 83px;
-    width : 87px;
+    @include sprite('home',-214,-2,83,87);
     margin : 13px 0 0 -9px;
     float : left;
 }
 #get_cash_offer {
-    background-position : -300px -2px;
-    height : 77px;
-    width : 288px;
+    @include sprite('home',-300,-2,77,288);
     margin : 1px 0 11px -2px;
 }
 #lock_icon {
-    background-position : 0px -110px;
-    height : 22px;
-    width  : 15px;
+    @include sprite('home',0,-110,22,15);
     vertical-align : sub;
 }
 #stars {
-    background-position : -589px -28px;
-    height : 14px;
-    width : 64px;
+    @include sprite('home',-589,-28,14,64);
 }
 #truste {
-    background-position : -350px -80px;
-    height : 28px;
-    width : 101px;
+    @include sprite('home',-350,-80,28,101);
     margin : -2px 0 0 20px;
 }
 #verisign {
-    background-position : -456px -81px;
-    height : 26px;
-    width : 61px;
+    @include sprite('home',-456,-81,26,61);
     margin : -2px 0 0 13px;
 }
 #mcafee {
-    background-position : -523px -84px;
-    height : 22px;
-    width : 62px;
+    @include sprite('home',-523,-84,22,62);
     margin : 1px 0 0 12px;
 }
 #get_cash_offer_btn {
-    background-position : -121px -89px;
-    border : none !important;
+    @include sprite('home',-121,-89,48,222);
     width  : 222px !important;
-    height : 48px;
+    border : none !important;
 }
 #welcome_title {
-    background-position : 0px -164px;
-    height : 17px;
-    width  : 256px;
+    @include sprite('home',0,-164,17,256);
 }
 #what_we_do_title {
-    background-position : -509px -113px;
-    height : 15px;
-    width  : 117px;
+    @include sprite('home',-509,-113,15,117);
 }
 #our_home_buyers_title {
-    background-position : -258px -164px;
-    height : 21px;
-    width  : 157px;
+    @include sprite('home',-258,-164,21,157);
     margin-top : 2px;
 }
 #seller_resources_title {
-    background-position : -345px -111px;
-    height : 17px;
-    width  : 160px;
+    @include sprite('home',-345,-111,17,160);
 }
 #other_others_quote {
-    background-position : 0px -138px;
-    height : 24px;
-    width : 329px;
+    @include sprite('home',0,-138,24,329);
 }
 #top_pick_quote {
-    background-position : -330px -138px;
-    height : 24px;
-    width : 341px;
+    @include sprite('home',-330,-138,24,341);
 }
 
-/* end sprites */
 
 
 #homeC {
@@ -117,9 +83,7 @@ p {
     position : relative;
 }
 #welcome_messageC #satisfied_sellers {
-    background : url(/images/sprites/satisfied_sellers.png) no-repeat scroll -9px 0px transparent;
-    height : 437px;
-    width : 541px;
+    @include sprite('satisfied_sellers',-9,0,437,541);
     position : absolute;
     top : 0;
     left : 0;
