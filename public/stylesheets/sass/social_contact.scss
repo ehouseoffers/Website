@@ -1,3 +1,5 @@
+@import "helpers";
+
 /* Start Sprites */
 .social_contact_sprite { background : url(/images/sprites/social_contact.png) no-repeat scroll 0px 500px transparent; }
 
@@ -10,13 +12,14 @@
 #you_tube_iconL  { background-position :   0px -45px; }
 #facebook_iconL  { background-position : -44px -45px; }
 
-
 .social_contactC {
-    color : #666;
+    color : $grey;
     font-size : .95em;
     line-height : 1.4em;
 }
 .social_contactC h1 {
+    color : $green;
+    border : none;
     font-size : 1.5em;
     letter-spacing : -0.01em;
     margin : -1px 0 12px 6px;

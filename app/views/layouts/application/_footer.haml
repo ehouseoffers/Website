@@ -44,7 +44,8 @@
       %div#follow_us
         = image_tag '/images/transparent.gif', :id => 'facebook', :class => 'app_sprite', :alt => 'Facebook'
         = image_tag '/images/transparent.gif', :id => 'twitter', :class => 'app_sprite', :alt => 'Twitter'
-        = image_tag '/images/transparent.gif', :id => 'email', :class => 'app_sprite', :alt => 'Email'
+        - env = image_tag '/images/transparent.gif', :id => 'email', :class => 'app_sprite', :alt => 'Contact Us'
+        = link_to env, contacts_path
 
       %h6 Follow us on
 

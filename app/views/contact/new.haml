@@ -3,31 +3,12 @@
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:contact_us, nil]]
 
-= form_for @message, :url => contacts_path, :method => :post do |f|
-  = render :partial => 'shared/user_notice', :locals => {:model_obj => @message}
+%div.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = render :partial => "form", :locals => {:message => @message}
 
-  - unless user_signed_in?
-    = f.label :name
-    %br
-    = f.text_field :name
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+    %hr.space
+    = render :partial => "shared/social_contact"
 
-    %br
-    = f.label :email, :as => 'Email Address'
-    %br
-    = f.text_field :email
-    %br
-
-  = f.label :subject
-  %br
-  = f.text_field :subject
-
-  %br
-  = f.label :body
-  %br
-  = f.text_area :body, :rows => 2
-
-  %br
-  = f.submit 'Send Email'
-
-  
-  

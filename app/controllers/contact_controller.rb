@@ -1,4 +1,7 @@
 class ContactController < ApplicationController
+
+  before_filter :set_seller_listing, :only => [:index, :new, :show]
+
   # Show the contact form
   def index
     @message = Message.new
@@ -26,11 +29,14 @@ class ContactController < ApplicationController
       # 3. Send the user an email letting them know we received their contact
       ContactMailer.user_contact_confirmation(@message).deliver    
 
-      flash[:notice] = "Message sent! Thank you for conacting us."
-      redirect_to contacts_path
+      redirect_to contact_path(:thank_you)
     else
+      set_seller_listing()
       render :action => 'new'
     end
+  end
 
+
+  def show
   end
 end

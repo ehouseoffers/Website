@@ -1,12 +1,12 @@
 input.valid, textarea.valid {
     background-color : #daefc0;
-    border-color : #588238;
+    border-color : #588238 !important;
     position : relative;
     color : #588238 !important;
 }
 input.invalid, textarea.invalid {
     background-color : #f6b5b1;
-    border-color : #bc2b25;
+    border-color : #bc2b25 !important;
     position : relative;
     color : #a00 !important
 }

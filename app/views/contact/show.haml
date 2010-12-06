@@ -1,0 +1,15 @@
+:ruby
+  extra_css('contact_show')
+
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:contact_us, new_contact_path], [:message_send, nil]]
+
+%div#contact_showC.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    %h1 Thank You!
+    %p Your message has been sent.
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+    %hr.space
+    = render :partial => "shared/social_contact"
+
