@@ -72,7 +72,8 @@ form#new_seller_listing div#email.field, form#new_seller_listing input#seller_li
 form#new_seller_listing div#number.field, form#new_seller_listing input#seller_listing_phone_number_number,
 form#new_seller_listing div#address1.field, form#new_seller_listing input#seller_listing_address_address1 {
 /*     width : 157px;*/
-    width : 208px;
+/*    width : 208px;  What was this width for? */
+    width : 320px; /* main page form: width of first/last name fields and padding */
 }
 form#new_seller_listing div#address_zip.field, form#new_seller_listing input#seller_listing_address_zip { width : 151px; }
 

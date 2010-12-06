@@ -20,6 +20,12 @@
       return objects;
   }
 
+  // right now is pretty much only for input fields. textareas will bomb!
+  $.fn.valid = function() {
+      var el = $(this);
+      return (el.val() && $.trim(el.val())!='' && el.val() != $(el).attr('data-example'))==true;
+  }
+
 })(jQuery);
 
 var DefaultFormValue = function(input) { this.init(input); };
@@ -57,7 +63,7 @@ jQuery.extend(DefaultFormValue.prototype, {
         return false;
     },
     _input_requires_example : function() {
-        return !this.input.val() || $.trim(this.input.val())=='' || this.input.val() == this.example;
+        return !this.input.valid();
     },
     _insert_examples_callback : function(default_form_value_object) {
         default_form_value_object._insert_example_if();

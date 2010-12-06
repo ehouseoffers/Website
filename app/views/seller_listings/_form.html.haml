@@ -1,6 +1,9 @@
 :ruby
+  extra_js('seller_listing')
+
   # We have a bunch of css which hinges on this, so regardless of create or edit, make the form_id constant
   form_id = 'new_seller_listing'
+
   
 = form_for @seller_listing, :html => {:id => form_id} do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @seller_listing}
@@ -8,7 +11,7 @@
   = f.fields_for @seller_listing.user do |field|
     .field#first_name
       = field.label :first_name, 'First Name'
-      = field.text_field :first_name, 'data-validation' => 'validate(required)', 'data-example' => 'First Name'
+      = field.text_field :first_name, 'data-validation' => 'validate(required, minlength(3))', 'data-example' => 'First Name'
 
     .field#last_name
       = field.label :last_name, 'Last Name'
@@ -54,40 +57,6 @@
       = image_tag '/images/transparent.gif', :id => 'verisign', :class => 'sprite last', :alt => 'Verisign'
 
 :javascript
-  $(document).ready(function() {
-    // What a mess. clean this up!
-    var city_stateC = $('div#city_stateC');
-    var city = $('input#seller_listing_address_city', city_stateC);
-    var state = $('input#seller_listing_address_state', city_stateC);
-    var zip = $('input#seller_listing_address_zip');
+  jQuery.placefinder_by_zip_path = "#{placefinder_by_zip_path}";
 
-    zip.blur(function(){
-      // No need to proceed if there is no zip code
-      if ( zip.val() == zip.attr('data-example') || $.blank(zip.val()) ) return;
-
-      //if ( $.blank(city.val()) || $.blank(state.val()) ) {
-        $.ajax({
-          url     : "#{placefinder_by_zip_path}",
-          data    : 'zip='+ zip.val(),
-          dataType: 'json',
-          type    : 'GET',
-          success: function (data, status, xhr) {
-            if ( $.blank(city.val()) ) city.val(data['city']).trigger('blur');
-            if ( $.blank(state.val()) ) state.val(data['state']).trigger('blur');
-            city_stateC.removeClass('hidden').addClass('clearfix');
-          },
-          error: function (xhr, status, error) {
-            zip.val(zip.attr('data-example')).removeClass('valid').addClass('invalid');
-            $('div.form_validation_icon', $('div#address_zip')).removeClass('valid').addClass('invalid');
-
-            $.Growl.show({
-              message : xhr.responseText,
-              icon    : 'error',
-              timeout : 7500
-            });
-          }
-        });
-      //}
-    });
-  });
 

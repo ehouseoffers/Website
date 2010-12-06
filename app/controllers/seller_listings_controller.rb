@@ -39,18 +39,25 @@ class SellerListingsController < ApplicationController
 
   # Step 1b: Form Processing (post), send to step 2
   def create
-    seller_listing = SellerListing.wizard_step1(params['seller_listing'])
+    begin
+      seller_listing = SellerListing.wizard_step1(params['seller_listing'])
 
-    sign_in :user, seller_listing.user if !user_signed_in?
+      sign_in :user, seller_listing.user if !user_signed_in?
 
-    # TODO -- younker [2010-10-28 23:35]
-    # if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
-    #   flash[:error] = "this is not for the ucrrently logged in user! Why not?"
-    #   redirect_to :back and return
-    # end
+      # TODO -- younker [2010-10-28 23:35]
+      # if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
+      #   flash[:error] = "this is not for the ucrrently logged in user! Why not?"
+      #   redirect_to :back and return
+      # end
 
-    # Send to second step
-    redirect_to [:comp_data, seller_listing]
+      # Send to second step
+      redirect_to [:comp_data, seller_listing]
+    rescue Exception => e
+      # FIXME -- younker [2010-12-06 13:52]
+      # We need to attach params['seller_listing']['address'] data to @seller_listing so we don't lose the form data
+      set_seller_listing
+      render :action => :new
+    end
   end
 
   # Step 2a: Comparables Form Display (get)

@@ -55,13 +55,13 @@ class SellerListing < ActiveRecord::Base
     # User
     if user = User.find_by_email(args['user']['email'])
       user.update_attributes(:first_name => args['user']['first_name'],
-                              :last_name  => args['user']['last_name'])
+                             :last_name  => args['user']['last_name'])
     else
       new_password = User.generate_new_password
       user = User.create(:password   => new_password, :confirmation_password => new_password,
-                          :email      => args['user']['email'],
-                          :first_name => args['user']['first_name'],
-                          :last_name  => args['user']['last_name'])
+                         :email      => args['user']['email'],
+                         :first_name => args['user']['first_name'],
+                         :last_name  => args['user']['last_name'])
     end
 
     # Address
