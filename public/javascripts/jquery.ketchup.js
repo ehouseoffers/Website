@@ -35,13 +35,16 @@
     }
 
     
-    form.submit(function() {
+    form.submit(function(action) {
       var tasty = true;
       
       for(var i = 0; i < fields.length; i++) {
         if(buildErrorList(extractValidations(fields[i].blur()), fields[i]).length) tasty = false;
       }
       
+      // So that other things which hook into the action (form submit) are aware of what our validations found
+      action.passed_validations = tasty;
+
       if(!tasty) return false;
     });
   }
@@ -203,14 +206,15 @@
   
   function buildErrorList(validations, field) {
     var list = '';
-    
+    var label = field.siblings('label').html();
     for(var i = 0; i < validations.length; i++) {
       var funcName = getFunctionName(validations[i]);
       var params = buildParams(validations[i]);
 
       if(!eval('$.fn.ketchup.validations["'+funcName+'"](field, field.val()'+params+')')) {
-        list += '<li>'+formatMessage($.fn.ketchup.messages[funcName], params)+'</li>';
-      } 
+          var final_params = ','+ ($.present(label) ? label : 'This field') + params;
+          list += '<li>'+formatMessage($.fn.ketchup.messages[funcName], final_params)+'</li>';
+      }
     }
     
     return list;
@@ -428,23 +432,23 @@ $.fn.ketchup.validation('rangeselect', function(element, value, min, max) {
 // jquery.ketchup.messages.js
 //
 $.fn.ketchup.messages = {
-  'required':     'This field is required.',
-  'minlength':    'This field must have a minimal length of $arg1.',
-  'maxlength':    'This field must have a maximal length of $arg1.',
-  'rangelength':  'This field must have a length between $arg1 and $arg2.',
-  'min':          'Must be at least $arg1.',
-  'max':          'Can not be greater than $arg1.',
-  'range':        'Must be between $arg1 and $arg2.',
-  'number':       'Must be a number.',
-  'digits':       'Must be digits.',
-  'email':        'Must be a valid E-Mail.',
-  'url':          'Must be a valid URL.',
-  'username':     'Must be a valid username.',
-  'match':        'Must match the field above.',
-  'date':         'Must be a valid date.',
-  'minselect':    'Select at least $arg1 checkboxes.',
-  'maxselect':    'Select not more than $arg1 checkboxes.',
-  'rangeselect':  'Select between $arg1 and $arg2 checkboxes.',
-  'notExample':   'This field\'s value cannot match the example',
-  'suggest':      'Please enter a value for this field'
+  'required':     '$arg1 is required.',
+  'minlength':    '$arg1 must have a minimal length of $arg2.',
+  'maxlength':    '$arg1 must have a maximal length of $arg2.',
+  'rangelength':  '$arg1 must have a length between $arg2 and $arg3.',
+  'min':          '$arg1 must be at least $arg2.',
+  'max':          '$arg1 can not be greater than $arg2.',
+  'range':        '$arg1 must be between $arg2 and $arg3.',
+  'number':       '$arg1 must be a number.',
+  'digits':       '$arg1 must be digits.',
+  'email':        '$arg1 must be a valid E-Mail address.',
+  'url':          '$arg1 must be a valid URL.',
+  'username':     '$arg1 must be a valid username.',
+  'match':        '$arg1 must match the field above.',
+  'date':         '$arg1 must be a valid date.',
+  'minselect':    'For $arg1, you must select at least $arg2 checkboxes.',
+  'maxselect':    'For $arg1, you must select not more than $arg2 checkboxes.',
+  'rangeselect':  'For $arg1, you must select between $arg2 and $arg3 checkboxes.',
+  'notExample':   '$arg1\'s value cannot match the example',
+  'suggest':      'Please enter a value for $arg1'
 };
