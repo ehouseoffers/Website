@@ -1,5 +1,30 @@
+:ruby
+  extra_css('jquery.modal')
+  extra_js('jquery.modal','//connect.facebook.net/en_US/all.js')
+
+:javascript
+  $(document).ready(function() {
+    // http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse
+    FB.init({appId: "#{KEYS['facebook']['app_id']}", status: true, cookie: true, xfbml: true});
+  });
+
+
+:plain
+
+
+
 %div.share_article_onC
   %strong share article on:
   %div.shareC
     - SocialProfile::SOCIAL_SITES.each do |social_profile|
-      = image_tag '/images/transparent.gif', :id => "#{social_profile.to_s}S", :alt => social_profile.to_s.capitalize
+      - img = image_tag '/images/transparent.gif', :id => "#{social_profile.to_s}S", :alt => social_profile.to_s.capitalize
+      - if share = share_on_for_site(social_profile, object)
+        - if share.social_site.eql?('facebook')
+          %div#facebook_likeC
+            %div#flike
+              %div{:id => 'fb-root'}
+                :plain
+                  <fb:like href="#{object.title_for_url}" layout="button_count" show_faces="false" width="120"></fb:like>
+        - else
+          = link_to img, share.url.to_s, :target => '_new'
+

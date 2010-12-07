@@ -12,25 +12,27 @@
 #linkedinS { @include sprite('social_contact', -68, -91, 14, 15); }
 
 .share_article_onC {
-    text-align : right;
-    margin : 12px 27px 0 0;
-    line-height : 21px;
-    color : #555;
+    margin : 12px 27px 0 20px;
 }
 .share_article_onC strong {
+    margin-bottom : 7px;
     font-size : .85em;
     font-weight : bold;
+    @include inline_block();
 }
 .share_article_onC .shareC {
     @include corners(5);
-    line-height : 10px;
+    line-height : 24px;
     background-color : $wheat;
-/*    border : 1px solid $light_green;*/
-    padding : 4px 8px;
-/*    width : 64px;*/
-    float : right;
+    padding : 4px 8px 0 20px;
     margin-left : 10px;
+    @include inline_block();
+    border : 1px solid $light_green;
 }
 .shareC img {
     margin : 0 2px;
+}
+.share_article_onC #facebook_likeC {
+    float : right;
+    margin : 0 -49px 0 5px;
 }

@@ -1,3 +1,4 @@
+site_name: 'eHouseOffers.com'
 photo:
   types: ['image/jpeg', 'image/png', 'image/gif']
   max_size: 512000
