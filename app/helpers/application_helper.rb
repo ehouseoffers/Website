@@ -34,7 +34,10 @@ module ApplicationHelper
     targets.each do |filename|
       unless extra_js?(filename)
         @@js_targets.push(filename)
-        content_for :extra_js do "<script src='/javascripts/#{filename}.js' type='text/javascript'></script>\n" end
+        
+        # allow 'http://path' or '//path'
+        path = filename.match(/^(http(s)?:)?\/\//).present? ? filename : "/javascripts/#{filename}.js"
+        content_for :extra_js do "<script src='#{path}' type='text/javascript'></script>\n" end
       end
     end
   end
