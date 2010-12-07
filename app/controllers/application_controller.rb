@@ -2,7 +2,7 @@ class ApplicationController < ActionController::Base
   protect_from_forgery
 
   # make these available to the views
-  helper_method :active_section?, :construct_blog_path
+  helper_method :active_section?, :construct_blog_path, :encrypt, :decrypt
 
   def layout
     request.xhr? ? false : 'application'
@@ -57,5 +57,12 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  def encrypt(*args)
+    YAML::dump(args).encrypt(:symmetric, :password => KEYS['encryption']['password'])
+  end
+  
+  def decrypt(str)
+    YAML::load(str.decrypt(:symmetric, :password => KEYS['encryption']['password']))
+  end
 end
 

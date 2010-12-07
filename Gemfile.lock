@@ -41,6 +41,7 @@ GEM
     devise (1.1.3)
       bcrypt-ruby (~> 2.1.2)
       warden (~> 0.10.7)
+    encrypted_strings (0.3.3)
     erubis (2.6.6)
       abstract (>= 1.0.0)
     haml (3.0.24)
@@ -111,6 +112,7 @@ PLATFORMS
 DEPENDENCIES
   capistrano
   devise
+  encrypted_strings
   haml
   haml-rails
   has_scope

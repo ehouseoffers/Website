@@ -6,6 +6,7 @@ gem 'haml'
 gem 'mysql', ">= 2.8.1"
 gem 'mysql2'
 gem 'json'
+gem 'encrypted_strings'
 gem 'sitemap_generator'  # http://github.com/kjvarga/sitemap_generator
 gem 'inherited_resources' # http://railscasts.com/episodes/230-inherited-resources
                           # https://github.com/josevalim/inherited_resources
