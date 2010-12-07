@@ -1,17 +1,11 @@
 :ruby
-  extra_css('jquery.modal')
-  extra_js('jquery.modal','//connect.facebook.net/en_US/all.js')
+  extra_js('//connect.facebook.net/en_US/all.js')
 
 :javascript
   $(document).ready(function() {
     // http://developers.facebook.com/docs/reference/javascript/FB.XFBML.parse
     FB.init({appId: "#{KEYS['facebook']['app_id']}", status: true, cookie: true, xfbml: true});
   });
-
-
-:plain
-
-
 
 %div.share_article_onC
   %strong share article on:
@@ -24,7 +18,7 @@
             %div#flike
               %div{:id => 'fb-root'}
                 :plain
-                  <fb:like href="#{object.title_for_url}" layout="button_count" show_faces="false" width="120"></fb:like>
+                  <fb:like href="#{share.url.to_s}" layout="button_count" show_faces="false" width="120"></fb:like>
         - else
           = link_to img, share.url.to_s, :target => '_new'
 

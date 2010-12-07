@@ -13,21 +13,18 @@ module BlogsHelper
     pluralize ? @context.pluralize.titlelize : @context.singularize.titleize
   end
 
-  def share_on_for_site(social_site, object=nil)
+  def share_on_for_site(social_site, object)
+    resource = object.class.eql?(Blog) ? construct_blog_path(object, :show) : send("#{object.class.name.downcase}_path", object.title_for_url)
+    resource = "#{root_url}#{resource.gsub(/^\//,'')}"
+
     case social_site.to_s.intern
     when :twitter
-      ShareOn::Twitter.new(:resource => construct_url(object.title_for_url), :title => object.title)
+      ShareOn::Twitter.new(:resource => resource, :title => object.title)
     when :linkedin
-      ShareOn::LinkedIn.new(:resource => construct_url(object.title_for_url), :title => object.title, :summary => object.teaser)
+      ShareOn::LinkedIn.new(:resource => resource, :title => object.title, :summary => object.teaser)
     when :facebook
-      ShareOn::Facebook.new(:resource => construct_url(object.title_for_url))
+      ShareOn::Facebook.new(:resource => resource)
     end
-  end
-
-
-  protected
-  def construct_url(relative_path)
-    "#{root_url}#{relative_path}"
   end
 
 end

@@ -67,16 +67,13 @@ class ShareOn::Facebook < ShareOn
     self.social_site = 'facebook'
     self.base = BASE
     self.resource = args[:resource] || raise('No resource passed to constructor') # URL of the page to share
-
-    self.api_args = {
-      :href    => self.resource,
-      :height  => 21,
-      :action  => 'like',
-      :layout  => 'button_count',
-      :show_faces => true,
-      :colorscheme => 'light',
-    }
+    self.api_args = {}
     super()
+  end
+  
+  # There is no api url for facebook, we use the js api
+  def url
+    self.resource
   end
 end
 

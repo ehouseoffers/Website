@@ -51,9 +51,7 @@ div#spotlightC p {
     float : left;
 }
 /* modify share_article_on partial css */
-#teaserC .share_article_onC { text-align : left; }
-.share_article_onC strong   { float : left; }
-#teaserC .shareC            { float : left; }
+.share_article_onC strong { display : none; }
 
 
 ul.green    { font-size : .85em; }
