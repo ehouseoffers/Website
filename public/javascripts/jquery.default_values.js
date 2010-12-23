@@ -17,7 +17,9 @@
           // });
       });
 
-      return objects;
+      // Chainability
+      // return objects;
+      return this;
   }
 
   // right now is pretty much only for input fields. textareas will bomb!

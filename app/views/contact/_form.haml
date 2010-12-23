@@ -1,26 +1,25 @@
 :ruby
-  # foobar == validate
+  extra_js('jquery.tooltip')
 
 = form_for message, :url => contacts_path, :method => :post do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => message}
 
   - unless user_signed_in?
     .field
-      = f.label :name
-      = f.text_field :name, 'data-validation' => 'validate(required)'
-
+      = f.label :name, :class => :tooltip, 'data-tt' => 'label tooltip for name field'
+      = f.text_field :name, :class => :tooltip, 'data-example' => 'Name'
 
     .field
       = f.label :email, :as => 'Email Address'
-      = f.text_field :email, 'data-validation' => 'validate(required, email)'
+      = f.text_field :email, 'data-validation' => 'validate(required, email)',  'data-example' => 'Email Address'
 
   .field
     = f.label :subject
-    = f.text_field :subject, 'data-validation' => 'validate(required)'
+    = f.text_field :subject, 'data-validation' => 'validate(required)', 'data-example' => 'Subject'
 
   .field
     = f.label :body
-    = f.text_area :body, :rows => 2, 'data-validation' => 'validate(required)'
+    = f.text_area :body, :rows => 2, 'data-validation' => 'validate(required)', 'data-example' => 'Message'
 
   .actions
     = f.submit 'Send Email'

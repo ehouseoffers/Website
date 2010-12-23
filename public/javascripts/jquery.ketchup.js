@@ -76,9 +76,13 @@
   
   function bindField(field) {
     var validations = extractValidations(field);
-    var errorContainer = field.after(options.errorContainer.clone()).next();
-    var contOl = errorContainer.find('ol');
-    var visibleContainer = false;
+
+    var errorContainer, contOl, visibleContainer;
+    if ( options.show_error_list ) {
+        errorContainer = field.after(options.errorContainer.clone()).next();
+        contOl = errorContainer.find('ol');
+        visibleContainer = false;
+    }
     
     // $(window).resize(function() {
     //   options.initialPositionContainer(errorContainer, field);
@@ -89,20 +93,25 @@
 
       if(errList.length) {
         prepend_validation_button(field, 'invalid');
-        if(!visibleContainer) {
-          contOl.html(errList);
-          options.showContainer(errorContainer);
-          visibleContainer = true;
-          setTimeout(function(){ visibleContainer = false }, options.errorTimeout);
-        } else {
-          contOl.html(errList);
-        }
         
-        options.positionContainer(errorContainer, field);
+        if ( options.show_error_list ) {
+            if(!visibleContainer) {
+              contOl.html(errList);
+              options.showContainer(errorContainer);
+              visibleContainer = true;
+              setTimeout(function(){ visibleContainer = false }, options.errorTimeout);
+            } else {
+              contOl.html(errList);
+            }
+        
+            options.positionContainer(errorContainer, field);
+        }
       } else {
         prepend_validation_button(field, 'valid');
-        options.hideContainer(errorContainer);
-        visibleContainer = false;
+        if ( options.show_error_list ) {
+            options.hideContainer(errorContainer);
+            visibleContainer = false;
+        }
       }
     });
 
@@ -113,7 +122,7 @@
     }
   }
   
-  
+  // Returns array of validations for this field: ["required", "minlength(3)"]
   function extractValidations(field) {
     var valStr = field.attr(options.validationAttribute);
         valStr = valStr.substr(valStr.indexOf(validate) + validate.length + 1);
@@ -148,7 +157,6 @@
           tempStr += char;
       }
     });
-
     return validations;    
   }
   
@@ -275,6 +283,7 @@
   var options;
 
   $.fn.ketchup.defaults = {
+    show_error_list:          false,
     errorTimeout:             $.ketchup_default_error_timeout,
     validateOnblur:           false,
     validationAttribute:      'class',

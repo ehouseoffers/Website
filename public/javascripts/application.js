@@ -1,25 +1,14 @@
 $(document).ready(function() {
     if ( $('form').length > 0 ) {
-      // B/c it can take some time to load an external file so you can’t always run functions from within that file
-      // straight away
-      $.ajaxSetup({async: false});
-      $.load_external_resource('jquery.ketchup.js,jquery.default_values.js');
-      $.ajaxSetup({async: true});
+        // B/c it can take some time to load an external file so you can’t always run functions from within that file
+        // straight away
+        $.ajaxSetup({async: false});
+        $.load_external_resource('jquery.ketchup.js,jquery.default_values.js,jquery.tooltip.js');
+        $.ajaxSetup({async: true});
 
-      var error_timeout = $.ketchup_default_error_timeout;
-      $('form').ketchup({
-        validationAttribute : 'data-validation',
-        errorTimeout  : error_timeout,
-        hideContainer : function(){},
-        showContainer : function(err){
-          $.Growl.show({
-            message : err.html(),
-            icon    : 'error',
-            timeout : error_timeout
-          });
-          setTimeout(function(){ $.visibleContainer = false; }, error_timeout);
-        }})
-      .default_form_values();
+        $('form')
+        .ketchup({ validationAttribute : 'data-validation' })
+        .default_form_values();
     }
 
     var modals = $('.uso_modal');
@@ -133,7 +122,7 @@ jQuery.extend(jQuery, {
             }
 
         } catch(e) {
-            console.log(e);
+            console.warn(e);
         }
     },
 

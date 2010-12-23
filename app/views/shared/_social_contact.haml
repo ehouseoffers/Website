@@ -1,22 +1,25 @@
+:ruby
+  extra_js('jquery.smart_toggle')
+
 %div.social_contactC.box
   %div.gutter
     %h1 Contact Us
     
     %div.yui3-g
       %div.iconC.yui3-u-1-4
-        - lin = image_tag '/images/transparent.gif', :id => 'linked_in_iconL', :class => 'social_contact_sprite', :alt => 'LinkedIn'
+        - lin = image_tag '/images/transparent.gif', :id => 'linked_in_iconL', :alt => 'LinkedIn'
         = link_to lin, ''
 
       %div.iconC.yui3-u-1-4
-        - face = image_tag '/images/transparent.gif', :id => 'facebook_iconL', :class => 'social_contact_sprite', :alt => 'Facebook'
+        - face = image_tag '/images/transparent.gif', :id => 'facebook_iconL', :alt => 'Facebook'
         = link_to face, ''
 
       %div.iconC.yui3-u-1-4
-        - twit = image_tag '/images/transparent.gif', :id => 'twitter_iconL', :class => 'social_contact_sprite', :alt => 'Twitter'
+        - twit = image_tag '/images/transparent.gif', :id => 'twitter_iconL', :alt => 'Twitter'
         = link_to twit, ''
 
       %div.iconC.yui3-u-1-4
-        - tube = image_tag '/images/transparent.gif', :id => 'you_tube_iconL', :class => 'social_contact_sprite', :alt => 'YouTube'
+        - tube = image_tag '/images/transparent.gif', :id => 'you_tube_iconL', :alt => 'YouTube'
         = link_to tube, ''
 
     %div.yui3-g.bhalf
@@ -28,11 +31,48 @@
       %div.yui3-u-7-24
         %strong Email:
       %div.yui3-u-17-24
-        = mail_to 'info@ehouseoffers.com'
+        = mail_to 'info@ehouseoffers.com', 'info@ehouseoffers.com', :class => 'show_cform_trigger', 'data-target' => '#contact_formC'
     
     %p.addr
       1752 NW Market St. Seattle WA 98107
 
-    
-  
-    
+    %div#social_contact_formC
+      %strong
+        Email Us
+        %div.right= link_to '[X]', 'javascript:void(0)', :class => 'x_cform_trigger', 'data-target' => '#contact_formC'
+
+      = render :partial => "contact/form", :locals => {:message => Message.new}
+
+
+:javascript
+  $(document).ready(function() {
+    $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
+
+    // if we hide #contact_formC, then it will not be selected and thus won't get the default_form_values functionality.
+    // so add it then hide.
+    $('#contact_formC')
+    .default_form_values()
+    .css('display','none')
+    .submit(function(){
+      var rc = $('div#form_reportC');
+      if ( !rc.size() ) rc = $('<div id="form_reportC" style="margin-top:1em"></div>').insertAfter(this);
+      rc.html('submitting...');
+
+      var f = $('form', this);
+      $.ajax({
+        url     : f.attr('action'),
+        type    : f.attr('method'),
+        data    : f.serialize(),
+        dataType: 'json',
+        success : function (data, status, xhr) {
+          $('.x_cform_trigger').trigger('click');
+          $('div#form_reportC').html('<strong>Thank you</strong>. Your email has been sent.');
+        },
+        error: function (xhr, status, error) {
+          $('div#form_reportC').html('An error occurred. Please try again later or email us directly at <a href="mailto:info@ehouseoffers.com">info@ehouseoffers.com</a>');
+        }
+      });
+      
+      return false;
+    });
+  });

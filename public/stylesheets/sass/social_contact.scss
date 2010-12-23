@@ -1,11 +1,9 @@
 @import "helpers";
+@import "form_basics";
 
 /* Start Sprites */
-.social_contact_sprite { background : url(/images/sprites/social_contact.png) no-repeat scroll 0px 500px transparent; }
-
 #linked_in_iconL, #facebook_iconL, #twitter_iconL, #you_tube_iconL {
-    height : 44px;
-    width  : 43px;
+    @include sprite('social_contact', 0, 0, 44, 43);
 }
 #twitter_iconL   { background-position :   0px  0px; }
 #linked_in_iconL { background-position : -44px  0px; }
@@ -36,4 +34,24 @@
 .social_contactC .bhalf {
     margin : 3px 5px;
     line-height : 1.2em;
+}
+
+.social_contactC #contact_formC {
+    margin-top : 1.5em;
+}
+
+/* contact form found in the social_contact partial */
+#social_contact_formC label { display : none; }
+#social_contact_formC div.field { margin-bottom : 5px; }
+#social_contact_formC textarea { height : 75px; }
+
+#social_contact_formC div.form_validation_icon {
+    right: -10px;
+    top  : 0.3em;
+}
+
+/* contact form in the left col (main body) */
+#left_col div.form_validation_icon {
+    right: 2px;
+    top  : 20px;
 }

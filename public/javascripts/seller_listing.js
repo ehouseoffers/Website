@@ -1,4 +1,10 @@
 $(document).ready(function() {
+    $('input[data-example]').tooltip({
+      eventTrigger : 'focus',
+      content      : 'data-example'
+    });
+
+
     // What a mess. clean this up!
     var city_stateC = $('div#city_stateC');
     var city = $('input#seller_listing_address_city', city_stateC);
