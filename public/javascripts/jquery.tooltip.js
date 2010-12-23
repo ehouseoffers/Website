@@ -146,7 +146,7 @@ $.fn.tooltip.opts = {
     tracking     : true,       // available only on mouseover
     css : {
         borderRadius : '5px',
-        background   : '#af526a',
+        background   : '#75973e',
         color        : '#ffffff',
         fontSize     : '12px',
         lineHeight   : '16px',
