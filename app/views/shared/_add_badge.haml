@@ -1,7 +1,7 @@
 :ruby
   extra_js('add_badge')
 
-  copy_code = render 'shared/copy_featured_icon_code_create'
+  copy_code = render :partial => 'shared/copy_featured_icon_code_create', :locals => {:spotlight => spotlight}
 
 %div.add_badgeC.box
   %div.gutter
