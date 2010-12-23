@@ -17,8 +17,7 @@
           // });
       });
 
-      // Chainability
-      // return objects;
+      // For chainability sake, return this rather than the objects
       return this;
   }
 
