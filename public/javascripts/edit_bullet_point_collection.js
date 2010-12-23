@@ -26,7 +26,7 @@ $(document).ready(function() {
                 $.clone_bp_count++;
 
                 return false;
-            } catch(e) { console.log(e);return false; } // go to the normal add bp form page
+            } catch(e) { return true; } // go to the normal add bp form page
         });
     }
     
