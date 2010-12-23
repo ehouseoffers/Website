@@ -701,7 +701,6 @@
         updateDimensionsAfterAppend  : function(cs) { this.updateDimensionsAfterAction(cs,'append'); },
         updateDimensionsAfterRemoval : function(cs) { this.updateDimensionsAfterAction(cs,'rm'); },
         updateDimensionsAfterAction  : function(class_selection, action) {
-            try {
             var s = this;
 
             // Tally up the height for all elements found using our class_selection
@@ -718,10 +717,6 @@
             s.d.container.css('height', (newH>maxH ? maxH : newH));
             s.d.wrap.css({overflow: (newH>maxH) ? 'auto' : 'visible'});
             s.setPosition();
-        } catch(e) {
-            console.log(e);
-            return false;
-        }
         }
 	};
 })(jQuery);
