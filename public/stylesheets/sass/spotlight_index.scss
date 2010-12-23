@@ -1,0 +1,12 @@
+@import "helpers";
+@import "seller_signup";
+@import "form_validations";
+@import "jquery.slider";
+@import "pagination";
+@import "add_badge";
+@import "spotlight_header";
+
+.read_full_article {
+    @include sprite(spotlight,-79,0,33,110);
+    margin : 10px 0 0 0;
+}

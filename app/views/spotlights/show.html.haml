@@ -7,7 +7,7 @@
     \| 
     = link_to "Edit Spotlight", edit_spotlight_path(@spotlight) 
 
-= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, nil], [@spotlight.title, nil]]
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlights, spotlights_path], [@spotlight.title, nil]]
 
 %div#spotlight_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
@@ -19,9 +19,7 @@
       %hr
       = render :partial => 'shared/boxed_resource_list', :locals => {:title => 'Other Spotlights', :collection => @other_spotlights}
 
-
-
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"
-
-
+    %hr.space
+    = render :partial => "shared/add_badge"

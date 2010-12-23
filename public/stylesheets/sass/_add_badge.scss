@@ -1,0 +1,30 @@
+@import "helpers";
+
+.add_badgeC {
+    text-align : center;
+}
+.add_badgeC .gutter {
+    padding : 10px;
+}
+.add_badgeC h4 {
+    font-weight : bold;
+    margin-bottom : -3px;
+}
+.add_badgeC small {
+    font-size : .7em;
+}
+.add_badgeC .featured {
+    @include sprite('add_badge',0,0,89,111);
+    margin : 4px 0 12px;
+}
+.add_badgeC .copy_embed_code {
+    @include sprite('add_badge',0,-89,35,128);
+}
+.add_badgeC textarea.copyC {
+    width : 90%;
+    height : 2.2em;
+    font-size : .8em;
+    overflow : hidden;
+    color : $grey;
+}
+

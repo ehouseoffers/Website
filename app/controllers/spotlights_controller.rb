@@ -7,12 +7,12 @@ class SpotlightsController < ApplicationController
   inherit_resources
 
   def index
-    @spotlight = Spotlight.first
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).order('created_at desc').limit(12)
+    @spotlights = Spotlight.paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
+    @other_spotlights = Spotlight.where("id not in ('?')", @spotlights.collect{|s| s.id}).limit(10).order('created_at desc')
 
     respond_to do |format|
-      format.html { render :template => 'spotlights/show' }
-      format.xml  { render :xml => @spotlight }
+      format.html # index.haml
+      format.xml  { render :xml => @spotlights }
     end
   end
 

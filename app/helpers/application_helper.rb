@@ -75,7 +75,7 @@ module ApplicationHelper
   #   image   : path (from the /images directory) to the image
   #   options : any options which image_tag will take. See:
   #             http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#M001690
-  # def image_tag_url(image, options)
-  #   image_tag "#{root_url}images/#{image}", options
-  # end
+  def image_tag_url(image, options)
+    image_tag "#{root_url}images/#{image}", options
+  end
 end

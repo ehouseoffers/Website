@@ -1,0 +1,15 @@
+:ruby
+  extra_js('add_badge')
+
+  copy_code = render 'shared/copy_featured_icon_code_create'
+
+%div.add_badgeC.box
+  %div.gutter
+    %h4 Add Badge to your Website
+    %small by copying and pasting the below text
+    
+    = image_tag '/images/transparent.gif', :class => 'featured', :alt => 'Featured: Home Buyer Resource'
+    
+    %textarea.copyC= copy_code
+
+    

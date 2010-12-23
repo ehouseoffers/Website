@@ -1,26 +1,25 @@
 :ruby
-  extra_css('scaffold')
+  extra_css('spotlight_index')
+  
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlights, nil]]
 
-%h1 Listing interviews
+%div#spotlight_pageC.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = render "shared/slider", :id => 'guides_slider', :collection => @other_spotlights
 
-%table
-  %tr
-    %th Spotlight Page
-    %th Title
-    %th Teaser
-    %th
-    %th
-    %th
+    - if @spotlights.empty?
+      %p.sorry_no_results
+        = "Sorry, but no spotlights are available right now#{params[:page].present? ? ' for this page.' : '.'}"
+    - else
+      %hr.space
+      = render :partial => "spotlights/index/spotlight", :collection => @spotlights, :spacer_template => 'shared/blogs/spacer'
 
-  - @interviews.each do |interview|
-    %tr
-      %td= link_to 'View Spotlight Page', spotlight_path(interview.title_for_url)
-      %td= interview.title
-      %td= interview.teaser
-      %td= link_to 'Show', interview
-      %td= link_to 'Edit', edit_interview_path(interview)
-      %td= link_to 'Destroy', interview, :confirm => 'Are you sure?', :method => :delete
+    %hr.space
+    = will_paginate @spotlights
 
-%br
 
-= link_to 'New Interview', new_interview_path
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/seller_signup"
+    %hr.space
+    = render :partial => "shared/add_badge"
+
