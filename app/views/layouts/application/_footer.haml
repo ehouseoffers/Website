@@ -3,7 +3,7 @@
     %h5 Call eHouseOffers.com today for a Free Cash Home Offer 866.384.9068
 
     %p
-      = raw "or, #{link_to 'contact us directly', contacts_path} &amp; learn more about becoming a Certified Home Buyer with eHouseOffers.com"
+      = raw "or, #{link_to 'contact us directly', about_path(:anchor => :contact_us)} &amp; learn more about becoming a Certified Home Buyer with eHouseOffers.com"
 
     %p
       = image_tag '/images/transparent.gif', :id => 'copyright', :class => 'app_sprite', :alt => '&copy;'
@@ -16,7 +16,7 @@
       = render 'shared/delimeter'
       = link_to 'Terms of Service', about_path(:anchor => :tos), :id => 'footer_tos_link'
       = render 'shared/delimeter'
-      = link_to 'Contact Us', contacts_path
+      = link_to 'Contact Us', about_path(:anchor => :contact_us)
       = render 'shared/delimeter'
 
       - if user_signed_in?
@@ -45,7 +45,7 @@
         = image_tag '/images/transparent.gif', :id => 'facebook', :class => 'app_sprite', :alt => 'Facebook'
         = image_tag '/images/transparent.gif', :id => 'twitter', :class => 'app_sprite', :alt => 'Twitter'
         - env = image_tag '/images/transparent.gif', :id => 'email', :class => 'app_sprite', :alt => 'Contact Us'
-        = link_to env, contacts_path
+        = link_to env, about_path(:anchor => :contact_us)
 
       %h6 Follow us on
 

@@ -1,3 +1,4 @@
+@import "helpers";
 @import "seller_signup";
 @import "form_validations";
 @import "social_contact";
@@ -15,38 +16,37 @@
 hr#about_page.space { margin-bottom : 7px; }
 
 /* Start Sprites */
-.about_sprite { background : url(/images/sprites/about.png) no-repeat scroll 0px 500px transparent; }
-
 #diagram {
-    background-position : 0px 0px;
-    height : 240px;
-    width  : 609px;
+    @include sprite('about',0,0,240,609);
 }
 #headshot_photo {
-    background-position : -18px -340px;
-    height : 191px;
-    width  : 165px;
+    @include sprite('about',-365,-242,208,243);
+    background-color : #fff;
     float : left;
-    padding : 0 20px 15px 0;
+    padding : 0 20px 20px 0;
 }
 #mint_logo {
-    background-position : 0px -241px;
-    height : 50px;
-    width  : 115px;
+    @include sprite('about',0,-241,50,115);
 }
 #zillow_logo {
-    background-position : -116px -241px;
-    height : 50px;
-    width  : 127px;
+    @include sprite('about',-116,-241,50,127);
 }
 .pawn {
-    height : 36px;
-    width  : 34px;
     float : left;
     margin-right : 10px;
 }
-#green_pawn { background-position : -244px -241px; }
-#blue_pawn  { background-position : -278px -241px; }
+#green_pawn { @include sprite('about',-244,-241,36,34); }
+#blue_pawn  { @include sprite('about',-278,-241,36,34); }
+
+
+#ec_button {
+    float : left;
+    margin : 2px 5px 0 0;
+}
+.expand   { @include sprite('about',-316,-242,17,17); }
+.contract { @include sprite('about',-316,-260,17,17); }
+
+
 
 /* the rest of the page */
 #about_pageC {

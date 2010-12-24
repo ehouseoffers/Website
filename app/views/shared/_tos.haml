@@ -1,8 +1,11 @@
-%span#tos
-  %div{:style => 'float:right'}
-    = link_to 'View Terms of Service', '#tos', :id => 'tos_view_trigger'
+:ruby
+  # NOTE!
+  # The expand/contract images are found in the about sprite. you may need to mvoe those images into the
+  # application sprite if this is needed elsewhere on the site
 
+%span#tos
   %h1.green
+    %div#ec_button.expand{'data-target' => '#tos_veil'} &nbsp;
     Privacy Terms & Conditions
 
   %div#tos_veil.hidden

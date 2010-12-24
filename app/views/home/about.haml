@@ -8,12 +8,12 @@
 
 %div#about_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    = image_tag '/images/transparent.gif', :id => 'diagram', :class => 'about_sprite', :alt => 'Diagram of our Process'
+    = image_tag '/images/transparent.gif', :id => 'diagram', :alt => 'Diagram of our Process'
 
     %hr.space
 
     %div.hpad
-      = image_tag '/images/transparent.gif', :id => 'headshot_photo', :class => 'about_sprite', :alt => 'About Us'
+      = image_tag '/images/transparent.gif', :id => 'headshot_photo', :alt => 'About Us'
 
       = render :partial => 'our_story'
 
@@ -33,9 +33,6 @@
 
       %hr
       = render :partial => 'shared/tos'
-
-
-        
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"

@@ -23,8 +23,6 @@ $(document).ready(function() {
 
         $.get($(this).attr('href'), function(resp){
             $.load_external_resource(resource,{skip:'js'});
-
-            // 730, /* for collection edit form */
             $.modal(resp, {
                 minWidth : mo.minWidth,
                 maxWidth : mo.maxWidth,
@@ -53,6 +51,14 @@ $(document).ready(function() {
         });
         return false;
     });
+    
+    // attach tooltips to anything with a data-example
+    $('input[data-example], textarea[data-example]').tooltip({
+      eventTrigger : 'focus',
+      content      : 'data-example'
+    });
+
+
 });
 
 //

@@ -212,6 +212,7 @@ div.xs_two_col div#left_col { /* yui3-u-33-48 - 68.75% */
 }
 div.xs_two_col div#right_col { /* yui3-u-7-24  - 29.1666% */
     width : 260px;             /* width override so we match the mocks */
+    margin-top : -30px;        /* reduce white-space */
 }
 
 /* The most common, x-site content two-col setup */

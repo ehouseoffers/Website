@@ -31,15 +31,19 @@
       %div.yui3-u-7-24
         %strong Email:
       %div.yui3-u-17-24
-        = mail_to 'info@ehouseoffers.com', 'info@ehouseoffers.com', :class => 'show_cform_trigger', 'data-target' => '#contact_formC'
+        = mail_to 'info@ehouseoffers.com', 'info@ehouseoffers.com', :class => 'show_cform_trigger', 'data-target' => '#contact_us'
     
     %p.addr
       1752 NW Market St. Seattle WA 98107
 
-    %div#social_contact_formC
-      %strong
+    -# Do not hide this
+    -# If we hide the #contact_us container, then jquery cannot select it and thus won't get the default_form_values
+    -# functionality. So hide via js when applicable
+    %div#contact_us
+      %h1
         Email Us
-        %div.right= link_to '[X]', 'javascript:void(0)', :class => 'x_cform_trigger', 'data-target' => '#contact_formC'
+        %div.right= link_to '[X]', 'javascript:void(0)', :class => 'x_cform_trigger', 'data-target' => '#contact_us'
+
 
       = render :partial => "contact/form", :locals => {:message => Message.new}
 
@@ -48,11 +52,10 @@
   $(document).ready(function() {
     $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
 
-    // if we hide #contact_formC, then it will not be selected and thus won't get the default_form_values functionality.
-    // so add it then hide.
-    $('#contact_formC')
-    .default_form_values()
-    .css('display','none')
+    var form_container = $('#contact_us');
+    if ( window.location.hash != '#contact_us' ) form_container.css('display','none');
+
+    form_container.default_form_values()
     .submit(function(){
       var rc = $('div#form_reportC');
       if ( !rc.size() ) rc = $('<div id="form_reportC" style="margin-top:1em"></div>').insertAfter(this);
@@ -72,7 +75,8 @@
           $('div#form_reportC').html('An error occurred. Please try again later or email us directly at <a href="mailto:info@ehouseoffers.com">info@ehouseoffers.com</a>');
         }
       });
-      
+
       return false;
     });
+
   });

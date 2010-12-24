@@ -13,6 +13,7 @@ class HomeController < ApplicationController
 
   def about
     set_seller_listing
+    @message = Message.new
   end
   
   def terms

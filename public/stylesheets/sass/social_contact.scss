@@ -41,11 +41,13 @@
 }
 
 /* contact form found in the social_contact partial */
-#social_contact_formC label { display : none; }
-#social_contact_formC div.field { margin-bottom : 5px; }
-#social_contact_formC textarea { height : 75px; }
+#contact_us h1 { margin : 2em 0 0 0; }
+#contact_us .x_cform_trigger { font-size : 10px; }
+#contact_us label { display : none; }
+#contact_us div.field { margin-bottom : 5px; }
+#contact_us textarea { height : 75px; }
 
-#social_contact_formC div.form_validation_icon {
+#contact_us div.form_validation_icon {
     right: -10px;
     top  : 0.3em;
 }
