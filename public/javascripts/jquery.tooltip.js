@@ -123,7 +123,7 @@ jQuery.extend(ToolTip.prototype, {
             'padding'           : this.opts.css.padding,
             'borderRadius'      : this.opts.css.borderRadius,
             'MozBorderRadius'   : this.opts.css.borderRadius,
-            'WebkitBorderRadius': this.opts.css.borderRadius,
+            'WebkitBorderRadius': this.opts.css.borderRadius
         }).html(this.tt.content);
 
         this.tooltip = $(document.createElement('div'))
