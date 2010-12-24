@@ -28,6 +28,9 @@
 
     %link{:rel => :stylesheet, :type => "text/css", :href => "/stylesheets/yui3-min.css"}
 
+    - if @noindex
+      %meta{:name => 'robots', :content => 'noindex,follow'}
+
     = stylesheet_link_tag :defaults
     = yield(:extra_css) if content_for?(:extra_css)
     = javascript_include_tag :defaults, 'jquery.growl'

@@ -1,7 +1,8 @@
 class SpotlightsController < ApplicationController
 
   before_filter :redirect_unless_admin, :except => [:index, :show]
-  before_filter :set_seller_listing,    :only => [:index, :show]
+  before_filter :set_seller_listing,    :only   => [:index, :show]
+  before_filter :set_noindex,           :only   => [:index]
   before_filter { |app_cont| app_cont.active_section(:spotlights) }
 
   inherit_resources

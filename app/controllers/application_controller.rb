@@ -57,6 +57,11 @@ class ApplicationController < ActionController::Base
     end
   end
 
+  # See check for @noindex in application.haml for relevance
+  def set_noindex
+    @noindex = params[:page].to_i>1
+  end
+
   def encrypt(*args)
     YAML::dump(args).encrypt(:symmetric, :password => KEYS['encryption']['password'])
   end
