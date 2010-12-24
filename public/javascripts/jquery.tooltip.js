@@ -121,6 +121,7 @@ jQuery.extend(ToolTip.prototype, {
             'lineHeight'        : this.opts.css.lineHeight,
             'margin'            : this.opts.css.margin,
             'padding'           : this.opts.css.padding,
+            'whiteSpace'        : this.opts.css.whiteSpace,
             'borderRadius'      : this.opts.css.borderRadius,
             'MozBorderRadius'   : this.opts.css.borderRadius,
             'WebkitBorderRadius': this.opts.css.borderRadius
@@ -145,6 +146,7 @@ $.fn.tooltip.opts = {
     eventTrigger : 'mouseover',// this equates to hover, but hover is just syntactic sugar for mouseover/mouseout
     tracking     : true,       // available only on mouseover
     css : {
+        whiteSpace   : 'nowrap',
         borderRadius : '5px',
         background   : '#75973e',
         color        : '#ffffff',
