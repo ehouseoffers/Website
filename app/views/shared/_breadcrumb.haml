@@ -1,3 +1,8 @@
+:ruby
+  # We are not doing breadcrumbs any longer
+  # https://ehouseoffers.fogbugz.com/default.asp?12#30
+  return;
+
 %ul.breadcrumbC
   - crumbs.each do |crumb|
     %li.crumb{:id => "crumb_#{crumb[0].to_s.downcase.dasherize}"}
