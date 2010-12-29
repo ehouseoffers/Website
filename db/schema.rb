@@ -10,7 +10,7 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20101203081432) do
+ActiveRecord::Schema.define(:version => 20101229012833) do
 
   create_table "addresses", :force => true do |t|
     t.integer  "user_id",                       :null => false
@@ -56,6 +56,22 @@ ActiveRecord::Schema.define(:version => 20101203081432) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "delayed_jobs", :force => true do |t|
+    t.integer  "priority",   :default => 0
+    t.integer  "attempts",   :default => 0
+    t.text     "handler"
+    t.text     "last_error"
+    t.datetime "run_at"
+    t.datetime "locked_at"
+    t.datetime "failed_at"
+    t.string   "locked_by"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "delayed_jobs", ["locked_by"], :name => "delayed_jobs_locked_by"
+  add_index "delayed_jobs", ["priority", "run_at"], :name => "delayed_jobs_priority"
 
   create_table "guides", :force => true do |t|
     t.integer  "user_id"
@@ -103,17 +119,24 @@ ActiveRecord::Schema.define(:version => 20101203081432) do
     t.string   "teaser"
   end
 
+  create_table "salesforce_contacts", :force => true do |t|
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
   create_table "seller_listings", :force => true do |t|
-    t.integer  "user_id",                                        :null => false
-    t.integer  "address_id",                                     :null => false
-    t.integer  "phone_number_id",                                :null => false
-    t.decimal  "estimated_value", :precision => 12, :scale => 2
-    t.decimal  "asking_price",    :precision => 12, :scale => 2
-    t.decimal  "loan_amount",     :precision => 12, :scale => 2
+    t.integer  "user_id",                                                 :null => false
+    t.integer  "address_id",                                              :null => false
+    t.integer  "phone_number_id",                                         :null => false
+    t.decimal  "estimated_value",          :precision => 12, :scale => 2
+    t.decimal  "asking_price",             :precision => 12, :scale => 2
+    t.decimal  "loan_amount",              :precision => 12, :scale => 2
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "selling_reason"
     t.integer  "time_frame"
+    t.string   "salesforce_lead_id"
+    t.string   "salesforce_lead_owner_id"
   end
 
   create_table "social_profiles", :force => true do |t|
