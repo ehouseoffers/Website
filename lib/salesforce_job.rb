@@ -10,7 +10,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   def perform
     Rails.logger.info("+ Begin delayed job")
     binding = RForce::Binding.new KEYS['salesforce']['base']
-    binding.login KEYS['salesforce']['username'], KEYS['salesforce']['password']
+    binding.login KEYS['salesforce']['username'], KEYS['salesforce']['password'] + KEYS['salesforce']['token']
 
     sl = SellerListing.find(seller_listing_id)
 
