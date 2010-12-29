@@ -40,21 +40,27 @@ class SellerListingsController < ApplicationController
   # Step 1b: Form Processing (post), send to step 2
   def create
     begin
+      # Creates user, address and phone objects needed for seller listing
       seller_listing = SellerListing.wizard_step1(params['seller_listing'])
+
+      # Everybody who becomes owns a seller listing completes the first step (here). However, not everybody will
+      # complete the second step. There is valuable data in the second step so we want it if possible, but we also
+      # want to create the salesforce data as soon as possible so we can open communication. So, we delay the
+      # salesforce creation by an arbitrary period of time (10 minutes) assuming that if the person is going to
+      # finish the process, they will do so in the next 10 minutes
+      Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 10.minutes.from_now})
+
+      sign_out(current_user) if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
 
       sign_in :user, seller_listing.user if !user_signed_in?
 
-      # TODO -- younker [2010-10-28 23:35]
-      # if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
-      #   flash[:error] = "this is not for the ucrrently logged in user! Why not?"
-      #   redirect_to :back and return
-      # end
-
       # Send to second step
       redirect_to [:comp_data, seller_listing]
+
     rescue Exception => e
       # FIXME -- younker [2010-12-06 13:52]
       # We need to attach params['seller_listing']['address'] data to @seller_listing so we don't lose the form data
+      Rails.logger.warn(":: WARN :: seller_listings_controller.create :: #{e.inspect}")
       set_seller_listing
       render :action => :new
     end

@@ -11,7 +11,7 @@ class SellerListing < ActiveRecord::Base
   # http://railscasts.com/episodes/26-hackers-love-mass-assignment
   # http://railscasts.com/episodes/237-dynamic-attr-accessible
   attr_accessible :user_id, :phone_number_id, :address_id, :estimated_value, :asking_price, :loan_amount,
-                  :selling_reason, :time_frame
+                  :selling_reason, :time_frame, :salesforce_lead_id, :salesforce_lead_owner_id
 
   def initialize(args={})
     super(args)
@@ -22,21 +22,21 @@ class SellerListing < ActiveRecord::Base
     write_attribute(:asking_price, sanitize_price(string))
   end
   def asking_price(raw=false)
-    raw ? read_attribute(:asking_price) : number_to_currency(read_attribute(:asking_price))
+    raw ? read_attribute(:asking_price).to_i : number_to_currency(read_attribute(:asking_price))
   end
 
   def estimated_value=(string)
     write_attribute(:estimated_value, sanitize_price(string))
   end
   def estimated_value(raw=false)
-    raw ? read_attribute(:estimated_value) : number_to_currency(read_attribute(:estimated_value))
+    raw ? read_attribute(:estimated_value).to_i : number_to_currency(read_attribute(:estimated_value))
   end
 
   def loan_amount=(string)
     write_attribute(:loan_amount, sanitize_price(string))
   end
   def loan_amount(raw=false)
-    raw ? read_attribute(:loan_amount) : number_to_currency(read_attribute(:loan_amount))
+    raw ? read_attribute(:loan_amount).to_i : number_to_currency(read_attribute(:loan_amount))
   end
 
   # payments_are_current was set up as a boolean. However, there are 3 possible states. nil = n/a
@@ -74,13 +74,20 @@ class SellerListing < ActiveRecord::Base
 
     user.save!
 
-    SellerListing.create!(:user_id => user.id, :address_id => addr, :phone_number_id => phone)
+    SellerListing.create!(:user_id => user.id, :address_id => addr.id, :phone_number_id => phone.id)
+  end
+
+  # After we create a new seller listing, we should always then send that info on up to salesforce. It is not part
+  # of the wizard_step1 process since it is a distinct action independant of the seller listing creation...kinda
+  def create_in_salesforce
+    dj = Sforce_DJ.new
+    dj.upload_new_seller_listing_data(self)
   end
 
   private
   
   def sanitize_price(string)
-    string.gsub(/[^\.\d]+/,'')
+    string ? string.to_s.gsub(/[^\.\d]+/,'') : 0
   end
     
 end

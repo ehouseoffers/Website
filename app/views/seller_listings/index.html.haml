@@ -6,29 +6,55 @@
 %table.fullw
   %tr
     %th ID
-    %th User
-    %th Selling Reason
+    %th User Email
     %th Estimated value
     %th Asking price
     %th Load amount
     %th Time Frame (months)
-    -# %th
-    %th
     %th
 
   - @seller_listings.each do |seller_listing|
     %tr
       %td= link_to seller_listing.id, seller_listing_path(seller_listing.id)
       %td= seller_listing.user.email
-      %td= seller_listing.selling_reason
       %td= seller_listing.estimated_value
       %td= seller_listing.asking_price
       %td= seller_listing.loan_amount
       %td= seller_listing.time_frame
+
       -# %td= link_to 'Show', seller_listing
       -# %td= link_to 'Edit', edit_seller_listing_path(seller_listing)
-      %td= link_to 'Edit', comp_data_seller_listing_path(seller_listing)
-      %td= link_to 'Destroy', seller_listing, :confirm => 'Are you sure?', :method => :delete
+      %td{:style => 'white-space:nowrap'}
+        = link_to 'Edit', comp_data_seller_listing_path(seller_listing)
+        &nbsp;&nbsp;
+        = link_to 'X', seller_listing, :confirm => 'Are you sure?', :method => :delete
+
+    - if seller_listing.selling_reason.present?
+      %tr
+        %td{:colspan => 2} &nbsp
+        %td{:colspan => 7}= raw "<b>Selling Reason:</b> #{seller_listing.selling_reason}"
+
+    - if seller_listing.salesforce_lead_id.present? || seller_listing.salesforce_lead_owner_id.present?
+      %tr
+        %td{:colspan => 2} &nbsp
+        %td{:colspan => 2}
+          %strong Salesforce Lead:
+        %td{:colspan => 5}
+          - if id = seller_listing.salesforce_lead_id
+            = link_to id, "http://na8.salesforce.com/#{id}"
+          - else
+            N/A
+    - if seller_listing.salesforce_lead_owner_id.present?
+      %tr
+        %td{:colspan => 2} &nbsp
+        %td{:colspan => 2}
+          %strong Salesforce Lead Owner:
+        %td{:colspan => 5}
+          - if id = seller_listing.salesforce_lead_owner_id
+            = link_to id, "http://na8.salesforce.com/#{id}"
+          - else
+            N/A
+
 
 %br
 

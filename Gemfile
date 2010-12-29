@@ -18,7 +18,10 @@ gem 'devise' # http://github.com/plataformatec/devise
              # http://media.railscasts.com/videos/209_introducing_devise.mov
              # http://media.railscasts.com/videos/210_customizing_devise.mov
 
-# gem 'whenever' # http://github.com/javan/whenever
+gem 'delayed_job' # http://media.railscasts.com/videos/171_delayed_job.mov
+
+gem 'rforce' # https://github.com/undees/rforce
+gem 'oauth'
 
 group :development, :test do 
   gem 'younker-generators', ">= 1.0.0" # http://github.com/younker/younker-generators
