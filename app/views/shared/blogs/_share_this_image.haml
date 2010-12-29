@@ -6,12 +6,12 @@
 
 %div.box
   %div.gutter
-    %strong Share this image on your website
+    %strong Use This Image
 
     %textarea.copy_image_code= copy_code
     %div.footnote
-      click the below icon to copy the above embed code
-    = render 'shared/clippy', :text => copy_code
+      Add this image to your website by copying &amp; pasting the above HTML code
+    -#= render 'shared/clippy', :text => copy_code
     -#= image_tag '/images/transparent.gif', :id => 'copy_embed_code_btn', :class => 'reasons_sprite', :alt => 'Copy Embed Code'
 
 

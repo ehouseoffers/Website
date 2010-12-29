@@ -16,8 +16,6 @@
 
 %div#show_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    %h1.green= @blog.title
-
     = render :partial => "shared/blogs/image_driven", :object => @blog, :as => :blog, :locals => {:full_article => false}
 
     %div.article_body.article_gutter.grey85
