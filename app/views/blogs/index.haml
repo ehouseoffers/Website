@@ -9,7 +9,7 @@
 = admin_area do
   = link_to "Create New #{name_for_context}", construct_blog_path(nil, :new, @context)
 
-= render "shared/breadcrumb", :crumbs => [[:home, root_path],[@context.intern, nil]]
+= render "shared/breadcrumb", :crumbs => [[:home, root_path],[formal_name_for_context(@context), nil]]
 
 %div.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48

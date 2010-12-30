@@ -8,6 +8,14 @@ module BlogsHelper
     end
   end
 
+  def formal_name_for_context(pluralize=false)
+    case @context
+    when "trends"  then "trends"
+    when "reasons" then "reasons to sell"
+    when "guides"  then "guides"
+    end
+  end
+
   # Informal name
   def name_for_context(pluralize=false)
     pluralize ? @context.pluralize.titlelize : @context.singularize.titleize
