@@ -9,9 +9,11 @@
   %div.box
     %div.gutter.clearfix
       %ul
-        - collection.each do |item|
+        - collection.each_with_index do |item, idx|
           %li
             - if item.class.eql?(Blog)
               = link_to item.title, construct_blog_path(item, :show)
             - else
               = link_to item.title, send("#{item.class.name.downcase}_path", item.title_for_url)
+          - if idx%3==2
+            %br.clear

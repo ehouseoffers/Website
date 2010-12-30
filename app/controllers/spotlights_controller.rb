@@ -9,7 +9,7 @@ class SpotlightsController < ApplicationController
 
   def index
     @spotlights = Spotlight.paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
-    @other_spotlights = Spotlight.where("id not in ('?')", @spotlights.collect{|s| s.id}).limit(10).order('created_at desc')
+    @other_spotlights = Spotlight.where("id not in ('?')", @spotlights.collect{|s| s.id}).limit(9).order('created_at desc')
 
     respond_to do |format|
       format.html # index.haml
@@ -19,7 +19,7 @@ class SpotlightsController < ApplicationController
 
   def show
     @spotlight = Spotlight.find_by_title_for_url(params[:id]) || Spotlight.find_by_id(params[:id])
-    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).order('created_at desc').limit(12)
+    @other_spotlights = Spotlight.where("id != ?", @spotlight.id).limit(9).order('created_at desc')
   
     respond_to do |format|
       format.html

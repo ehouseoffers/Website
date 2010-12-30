@@ -13,7 +13,7 @@ class BlogsController < ApplicationController
 
   def index
     @blogs = Blog.where("context = ?", @context).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5
-    @other_blogs = Blog.where("context = ? and id not in ('?')", @context, @blogs.collect{|b| b.id}).limit(10).order('created_at desc')
+    @other_blogs = Blog.where("context = ? and id not in ('?')", @context, @blogs.collect{|b| b.id}).limit(9).order('created_at desc')
 
     respond_to do |format|
       format.html # index.haml relative to controller calling it (could be /guides/index or /blogs/index)
@@ -48,7 +48,7 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by_title_for_url(params[:id]) || Blog.find_by_id(params[:id])
-    @other_blogs = Blog.where("context = ? and id != '?'", @context, @blog.id).limit(10).order('created_at desc').limit(4)
+    @other_blogs = Blog.where("context = ? and id != '?'", @context, @blog.id).limit(9).order('created_at desc')
 
     respond_to do |format|
       format.html # show.haml relative to controller calling it
