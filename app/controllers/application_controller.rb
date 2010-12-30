@@ -28,7 +28,7 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def construct_blog_path(obj, action='index', context=nil)
+  def construct_blog_path(obj, action='index', context=nil, full_path=false)
     if obj.present?
       raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
       context = obj.context
@@ -38,11 +38,13 @@ class ApplicationController < ActionController::Base
       raise "Invalid"
     end
     
-    case action.to_s.intern
+    rel_path = case action.to_s.intern
     when :index, :create, :delete then send("#{context.pluralize}_path")
     when :new, :edit              then send("#{action.to_s}_#{context.singularize}_path")
     when :show, :update           then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
     end
+
+    full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
   end
 
   # Because of the widespead use of the 'seller_listings/form' partial, we need a @seller_listing object on

@@ -61,6 +61,11 @@ class Blog < ActiveRecord::Base
     VALID_CONTEXTS.include?(self.context)
   end
   
+  def context?(c)
+    self.context.eql?(c.to_s.downcase.pluralize)
+  end
+
+  
   # -- Should be called by blogs_controller.setup_for_blog_context --
   # We are changing the route names for the entire site, including our blog types/contexts. for example, 'guides' is
   # now 'real-estate-guides'. So this will translate the route name to the context we have been working with and expect.
