@@ -1,13 +1,15 @@
 :ruby
   extra_css('spotlight')
   
+%hr#top_of_content.space
+
 = admin_area do
   = link_to "Create New Spotlight", new_spotlight_path
   - if @spotlight.present?
     \| 
     = link_to "Edit Spotlight", edit_spotlight_path(@spotlight) 
 
-= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlights, spotlights_path], [@spotlight.title, nil]]
+= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, spotlights_path], [@spotlight.title, nil]]
 
 %div#spotlight_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
