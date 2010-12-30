@@ -27,6 +27,7 @@ div#spotlightC {
     margin : 0 15px;
     color : $grey;
 }
+div#spotlightC div.admin { width : inherit; }
 div#spotlightC h2 { margin-bottom : 1em; }
 
 div#spotlightC p {

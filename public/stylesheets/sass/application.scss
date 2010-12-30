@@ -324,11 +324,14 @@ hr.guides_spacer {
 
 /* ------------------ Admin Boxes Options ----------------- */
 div#content div.admin {
-    float : right;
-    font-size : 12px;
-    line-height : 2em;
-    color : #7FB86B;
-    margin-right : 18px;
+    width      : 916px;
+    text-align : right;
+    color      : #7FB86B;
+    font-size  : 12px;
+    line-height: 20px;
+    margin-top : -20px;
+    position   : relative;
+    z-index    : 101;
 }
 /* ur_ = upper right */
 div#ur_adminC {
