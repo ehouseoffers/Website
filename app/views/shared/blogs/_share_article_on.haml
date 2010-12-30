@@ -1,6 +1,6 @@
 :ruby
   # This can take an agonizingly long time when developing, so just skip it!
-  return if Rails.env.eql?('development')
+  return if Rails.env.eql?('development') && !params[:force]
 
   extra_js('//connect.facebook.net/en_US/all.js')
 

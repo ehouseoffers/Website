@@ -13,9 +13,10 @@
 
 .share_article_onC {
     margin : 12px 27px 0 20px;
+    line-height : 24px;
 }
 .share_article_onC strong {
-    margin-bottom : 7px;
+/*    margin-bottom : 7px;*/
     font-size : .85em;
     font-weight : bold;
     @include inline_block();
@@ -28,6 +29,7 @@
     margin-left : 10px;
     @include inline_block();
     border : 1px solid $light_green;
+    vertical-align : middle;
 }
 .shareC img {
     margin : 0 2px;

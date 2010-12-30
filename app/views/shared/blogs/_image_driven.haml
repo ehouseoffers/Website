@@ -1,10 +1,13 @@
+:ruby
+  show_path = construct_blog_path(blog, :show)
+  show_page = current_page?(show_path)
 
 %div.yui3-g
   %div.blog_left_colC.yui3-u-1-2
-    %h1.green= blog.title
+    %h1.green= link_to_unless show_page, blog.title, show_path
 
     %div.blog_main_imageC
-      = link_to_unless full_article, image_tag(blog.photo.url(:large), :alt => blog.title), construct_blog_path(blog, :show)
+      = link_to_unless show_page, image_tag(blog.photo.url(:large), :alt => blog.title), show_path
     = render :partial => 'shared/blogs/share_article_on', :locals => {:object => blog}
 
   %div.yui3-u-11-24
