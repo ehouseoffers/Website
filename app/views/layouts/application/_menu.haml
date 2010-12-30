@@ -4,4 +4,4 @@
     %li
       - img = image_tag '/images/transparent.gif', :id => section, :class => "app_sprite #{active_section?(section) ? 'selected' : ''}", :alt => section.capitalize
       - path= send("#{section}_path")
-      = link_to_unless current_page?(path), img, path
+      = link_to_unless current_page?(path) && params[:page].to_i<2, img, path
