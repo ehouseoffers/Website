@@ -108,9 +108,19 @@ $(function() {
 			$("#panel_"+(curPanel-1)).click(function(){ change(false); }); 
 		
 			//remove all previous bound functions
-			$("#panel_"+curPanel).unbind();
+            $("#panel_"+curPanel).unbind();
+            make_clickable(curPanel);
 		}
 	}
+
+    function make_clickable(panel_id) {
+        $("#panel_"+panel_id)
+        .hover(function(){ $(this).css('cursor','pointer') },
+               function(){ $(this).css('cursor','default') })
+        .click(function(){
+            window.location = $('img', $(this)).attr('data-path');
+        });
+    }
 
     function scroll_to(move_right, panel) {
         // current position left (location) of scrollbar
@@ -134,6 +144,7 @@ $(function() {
     growBigger("#panel_2");
     var curPanel = 2;
     scroll_to(true, curPanel);
+    make_clickable(curPanel);
 	
 	$("#panel_"+(curPanel+1)).click(function(){ change(true); });
 	$("#panel_"+(curPanel-1)).click(function(){ change(false); });
