@@ -1,0 +1,33 @@
+@import "helpers";
+
+/* ----- SMALL ICONS ----- */
+.facebook_iconS, .twitter_iconS, .youtube_iconS, .linkedin_iconS {
+    @include sprite('social_icons', 0, 0, 14, 14);
+}
+.twitter_iconS  { background-position : -51px  -90px; }
+.linkedin_iconS { background-position : -66px  -90px; }
+.facebook_iconS { background-position : -66px -105px; }
+.youtube_iconS  { background-position : -51px -105px; }
+
+
+/* ----- MEDIUM ICONS ----- */
+.facebook_iconM, .twitter_iconM, .youtube_iconM, .linkedin_iconM {
+    @include sprite('social_icons', 0, 0, 24, 24);
+}
+.twitter_iconM  { background-position :   0px  -90px; }
+.linkedin_iconM { background-position : -26px  -90px; }
+.facebook_iconM { background-position : -25px -115px; }
+.youtube_iconM  { background-position :   0px -115px; }
+
+
+/* ----- LARGE ICONS ----- */
+.linkedin_icon, .facebook_icon, .twitter_icon, .youtube_icon {
+    @include sprite('social_contact', 0, 0, 44, 43);
+}
+.twitter_icon  { background-position :   0px  0px; }
+.linkedin_icon { background-position : -44px  0px; }
+.youtube_icon  { background-position :   0px -45px; }
+.facebook_icon { background-position : -44px -45px; }
+
+
+

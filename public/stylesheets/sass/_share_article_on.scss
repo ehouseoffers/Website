@@ -1,16 +1,5 @@
 @import "helpers";
 
-#twitterL  { @include sprite('social_contact',   0,   0, 44, 44); }
-#linkedinL { @include sprite('social_contact', -44,   0, 44, 44); }
-#youtubeL  { @include sprite('social_contact',   0, -45, 44, 44); }
-#facebookL { @include sprite('social_contact', -44, -45, 44, 44); }
-
-#envelopeS { @include sprite('social_contact',   0, -91, 14, 15); }
-#facebookS { @include sprite('social_contact', -18, -91, 14, 14); }
-#twitterS  { @include sprite('social_contact', -34, -91, 14, 15); }
-#youtubeS  { @include sprite('social_contact', -51, -91, 14, 15); }
-#linkedinS { @include sprite('social_contact', -68, -91, 14, 15); }
-
 .share_article_onC {
     margin : 12px 27px 0 20px;
     line-height : 24px;

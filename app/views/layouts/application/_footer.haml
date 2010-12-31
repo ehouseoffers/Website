@@ -41,10 +41,17 @@
   %div#f_right.yui3-u-1-3
     %div.clearfix.ie_stretch
       %div#follow_us
-        = image_tag '/images/transparent.gif', :id => 'facebook', :class => 'app_sprite', :alt => 'Facebook'
-        = image_tag '/images/transparent.gif', :id => 'twitter', :class => 'app_sprite', :alt => 'Twitter'
-        - env = image_tag '/images/transparent.gif', :id => 'email', :class => 'app_sprite', :alt => 'Contact Us'
-        = link_to env, about_path(:anchor => :contact_us)
+        - li_icon = image_tag '/images/transparent.gif', :class => 'linkedin_iconM', :alt => 'LinkedIn'
+        = social_link(:linkedin, li_icon)
+
+        - fb_icon = image_tag '/images/transparent.gif', :class => 'facebook_iconM', :alt => 'Facebook'
+        = social_link(:facebook, fb_icon)
+
+        - tw_icon = image_tag '/images/transparent.gif', :class => 'twitter_iconM', :alt => 'Twitter'
+        = social_link(:twitter, tw_icon)
+
+        - yt_icon = image_tag '/images/transparent.gif', :class => 'youtube_iconM', :alt => 'YouTube'
+        = social_link(:youtube, yt_icon)
 
       %h6 Follow us on
 

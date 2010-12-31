@@ -78,4 +78,15 @@ module ApplicationHelper
   def image_tag_url(image, options)
     image_tag "#{root_url}images/#{image}", options
   end
+  
+  def social_link(site,target,args={})
+    path = case site.to_s.intern
+    when :linkedin then 'http://www.linkedin.com/groups?mostPopular=&gid=3186741'
+    when :twitter  then 'http://twitter.com/ehouseoffers'
+    when :facebook then 'http://www.facebook.com/pages/eHouseOfferscom/129602593768138'
+    when :youtube  then 'http://www.youtube.com/user/ehouseoffers'
+    end
+
+    link_to target, path, args
+  end
 end

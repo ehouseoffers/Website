@@ -7,20 +7,20 @@
     
     %div.yui3-g
       %div.iconC.yui3-u-1-4
-        - lin = image_tag '/images/transparent.gif', :id => 'linked_in_iconL', :alt => 'LinkedIn'
-        = link_to lin, ''
+        - lin = image_tag '/images/transparent.gif', :class => 'linkedin_icon', :alt => 'LinkedIn'
+        = social_link(:linkedin, lin)
 
       %div.iconC.yui3-u-1-4
-        - face = image_tag '/images/transparent.gif', :id => 'facebook_iconL', :alt => 'Facebook'
-        = link_to face, ''
+        - face = image_tag '/images/transparent.gif', :class => 'facebook_icon', :alt => 'Facebook'
+        = social_link(:facebook, face)
 
       %div.iconC.yui3-u-1-4
-        - twit = image_tag '/images/transparent.gif', :id => 'twitter_iconL', :alt => 'Twitter'
-        = link_to twit, ''
+        - twit = image_tag '/images/transparent.gif', :class => 'twitter_icon', :alt => 'Twitter'
+        = social_link(:twitter, twit)
 
       %div.iconC.yui3-u-1-4
-        - tube = image_tag '/images/transparent.gif', :id => 'you_tube_iconL', :alt => 'YouTube'
-        = link_to tube, ''
+        - tube = image_tag '/images/transparent.gif', :class => 'youtube_icon', :alt => 'YouTube'
+        = social_link(:youtube, tube)
 
     %div.yui3-g.bhalf
       %div.yui3-u-7-24
@@ -53,10 +53,20 @@
     $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
 
     var form_container = $('#contact_us');
-    if ( window.location.hash != '#contact_us' ) form_container.css('display','none');
 
-    form_container.default_form_values()
-    .submit(function(){
+    // Setup the default value behavior first so that if the location.hash is #contact_us, the default value is
+    // removed when we focus() on the first input element
+    form_container.default_form_values();
+
+    // Make sure we can see the contact form if requested, and focus on the first field
+    if ( window.location.hash == '#contact_us' ) {
+      $('input#message_subject', form_container).focus();
+    } else {
+      form_container.css('display','none');
+    }
+
+    // Ajax-ify the form
+    form_container.submit(function(){
       var rc = $('div#form_reportC');
       if ( !rc.size() ) rc = $('<div id="form_reportC" style="margin-top:1em"></div>').insertAfter(this);
       rc.html('submitting...');

@@ -42,9 +42,9 @@ div#request_offerC p  {
     line-height : 1em;
 }
 div#request_offerC img#request_offer  {
-    background-position: -762px -290px;
+    background-position: -674px -290px;
     height : 37px;
-    width  : 99px;
+    width  : 98px;
 }
 
 #headerC img#free_consult {
@@ -187,8 +187,8 @@ div#f_right {
 }
 #follow_us img {
     height : 24px;
-    width  : 25px;
-    margin-right : 3px;
+    width  : 24px;
+    margin-right : 4px;
 }
 #email          { background-position : -675px -290px; }
 #twitter        { background-position : -705px -290px; }
@@ -353,11 +353,12 @@ body.minimal #footerC {
 
 
 
-@import "yui3_additions"; /* layout                         */
-@import "breadcrumb";     /* 95% of the pages have this     */
-@import "jquery.growl";   /* how we show our flash messages */
-@import "pieces_of_blueprint";
-@import "box";            /* common box; used for side-bar seller listing form, so it's on most pages */
+@import "yui3_additions";      /* layout                                                */
+@import "breadcrumb";          /* 95% of the pages have this                            */
+@import "jquery.growl";        /* how we show our flash messages                        */
+@import "pieces_of_blueprint"; /* small bits of the blueprint css framework that I like */
+@import "box";                 /* common box; used for side-bar seller listing form, so it's on most pages */
+@import "social_icons";        /* smaller icons used in the footer                      */
 
 /* imports I should place into specific files once I move them over the sass */
 

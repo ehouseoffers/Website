@@ -14,7 +14,7 @@
   %strong share article on:
   %div.shareC
     - SocialProfile::SOCIAL_SITES.each do |social_profile|
-      - img = image_tag '/images/transparent.gif', :id => "#{social_profile.to_s}S", :alt => social_profile.to_s.capitalize
+      - img = image_tag '/images/transparent.gif', :class => "#{social_profile.to_s}_iconS", :alt => social_profile.to_s.capitalize
       - if share = share_on_for_site(social_profile, object)
         - if share.social_site.eql?('facebook')
           %div#facebook_likeC

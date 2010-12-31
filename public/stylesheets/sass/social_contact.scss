@@ -2,13 +2,6 @@
 @import "form_basics";
 
 /* Start Sprites */
-#linked_in_iconL, #facebook_iconL, #twitter_iconL, #you_tube_iconL {
-    @include sprite('social_contact', 0, 0, 44, 43);
-}
-#twitter_iconL   { background-position :   0px  0px; }
-#linked_in_iconL { background-position : -44px  0px; }
-#you_tube_iconL  { background-position :   0px -45px; }
-#facebook_iconL  { background-position : -44px -45px; }
 
 .social_contactC {
     color : $grey;
