@@ -24,9 +24,9 @@ module Rails
                 :SSLEnable => true,
                 :SSLVerifyClient => OpenSSL::SSL::VERIFY_NONE,
                 :SSLPrivateKey => OpenSSL::PKey::RSA.new(
-                       File.open("tmp/ssl/ehouseoffers.key").read),
+                       File.open("tmp/ssl/server.key").read),
                 :SSLCertificate => OpenSSL::X509::Certificate.new(
-                       File.open("tmp/ssl/ehouseoffers.crt").read),
+                       File.open("tmp/ssl/server.crt").read),
                 :SSLCertName => [["CN", WEBrick::Utils::getservername]]
             })
         end
