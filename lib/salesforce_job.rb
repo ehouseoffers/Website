@@ -5,7 +5,6 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   LEAD         = 'Lead'
   LEAD_SOURCE  = 'Web'
   LEAD_COUNTRY = 'USA'   # Hard-coded b/c it's all we support right now
-  LEAD_COMPANY = '28dev' # Bogus until we can switch to busines-to-customer salesforce account
 
   def perform
     Rails.logger.info("+ Begin delayed job")
@@ -19,7 +18,6 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       :type,       LEAD,
       :LeadSource, LEAD_SOURCE,
       :Country,    LEAD_COUNTRY,
-      :Company,    LEAD_COMPANY,
       :FirstName,  sl.user.first_name,
       :LastName,   sl.user.last_name,
       :Email,      sl.user.email,
