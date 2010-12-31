@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
+gem 'rack-ssl'
 
 gem 'haml'
 gem 'mysql', ">= 2.8.1"
@@ -22,6 +23,7 @@ gem 'delayed_job' # http://media.railscasts.com/videos/171_delayed_job.mov
 
 gem 'rforce' # https://github.com/undees/rforce
 gem 'oauth'
+
 
 group :development, :test do 
   gem 'younker-generators', ">= 1.0.0" # http://github.com/younker/younker-generators

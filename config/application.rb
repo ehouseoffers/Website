@@ -1,4 +1,5 @@
 require File.expand_path('../boot', __FILE__)
+require 'rack/ssl'
 
 require 'yaml'
 KEYS_TMP = YAML.load(File.read(File.expand_path('../keys.yml', __FILE__)))
@@ -16,6 +17,8 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Ehouseoffers
   class Application < Rails::Application
+    config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
+
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
     # -- all .rb files in that directory are automatically loaded.
@@ -63,6 +66,5 @@ module Ehouseoffers
     #       :user_name      => KEYS['email']['mailbox_username'],
     #       :password       => KEYS['email']['mailbox_password']
     #     }
-
   end
 end
