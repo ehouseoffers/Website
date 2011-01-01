@@ -43,12 +43,12 @@ class SellerListingsController < ApplicationController
       # Creates user, address and phone objects needed for seller listing
       seller_listing = SellerListing.wizard_step1(params['seller_listing'])
 
-      # Everybody who becomes owns a seller listing completes the first step (here). However, not everybody will
+      # Everybody who becomes has a seller listing completes the first step (here). However, not everybody will
       # complete the second step. There is valuable data in the second step so we want it if possible, but we also
       # want to create the salesforce data as soon as possible so we can open communication. So, we delay the
       # salesforce creation by an arbitrary period of time (10 minutes) assuming that if the person is going to
       # finish the process, they will do so in the next 10 minutes
-      Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 10.minutes.from_now})
+      Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 5.minutes.from_now})
 
       sign_out(current_user) if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
 
@@ -77,7 +77,7 @@ class SellerListingsController < ApplicationController
 
     respond_to do |format|
       if seller_listing.update_attributes(params[:seller_listing])
-        format.html { redirect_to home_offer_3_path }
+        format.html { redirect_to home_offer_3_path(seller_listing.id) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }

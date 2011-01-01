@@ -33,7 +33,7 @@ Ehouseoffers::Application.routes.draw do
 
   match '/home-offer-1', :as => :new_home_offer, :to => 'seller_listings#new'
   match '/home-offer-2/:id', :as => :home_offer_2, :to => 'seller_listings#homeoffer2'
-  match '/home-offer-3', :as => :home_offer_3, :to => 'seller_listings#homeoffer3'
+  match '/home-offer-3/:id', :as => :home_offer_3, :to => 'seller_listings#homeoffer3'
   resources 'home-offer', :as => :seller_listings, :controller => :seller_listings  do
     # get :homeoffer2, :on => :member # Registration 2nd step form display
     # get :homeoffer3, :on => :member # Registration confirmation/appreciation
