@@ -18,6 +18,10 @@ class HomeController < ApplicationController
   
   def terms
   end
+
+  def become_a_buyer
+    @message = Message.new
+  end
   
   def generate_url_friendly_string
     render :text => params[:string].make_url_friendly

@@ -1,0 +1,78 @@
+/* Used by (permanent) about page and (temporary) become a buyer page */
+
+#diagram {
+    @include sprite('about',0,0,240,609);
+}
+#headshot_photo {
+    @include sprite('about',-365,-242,208,243);
+    background-color : #fff;
+    float : left;
+    padding : 0 20px 20px 0;
+}
+#mint_logo {
+    @include sprite('about',0,-241,50,115);
+}
+#zillow_logo {
+    @include sprite('about',-116,-241,50,127);
+}
+.pawn {
+    float : left;
+    margin-right : 10px;
+}
+#green_pawn { @include sprite('about',-244,-241,36,34); }
+#blue_pawn  { @include sprite('about',-278,-241,36,34); }
+
+
+#ec_button {
+    float : left;
+    margin : 2px 5px 0 0;
+}
+.expand   { @include sprite('about',-316,-242,17,17); }
+.contract { @include sprite('about',-316,-260,17,17); }
+
+
+
+/* the rest of the page */
+#about_pageC {
+    color : #666;
+    font-size : .85em;
+    line-height : 1.4em;
+}
+#about_pageC h1 {
+    font-size : 1.5em;
+    margin-bottom : 10px;
+    letter-spacing : -0.02em;
+}
+#about_pageC hr {
+    width : 104%;
+    margin : 2em 0 2em -2%;
+}
+#about_pageC .hpad {
+    margin : 0 30px;
+}
+#about_pageC p {
+    line-height : 1.55em;
+    margin-bottom : 1.45em; /* match margin-bottom for hr.space */
+}
+#in_the_newsC .url {
+    line-height : 48px;
+}
+div.url a {
+    color : #666;
+}
+#about_pageC .founderC  { margin-right : 40px; }
+#about_pageC .last      { margin-right : 0; }
+
+.founderC h3 {
+    line-height : 36px;
+}
+
+
+
+
+
+
+
+
+
+

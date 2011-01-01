@@ -22,7 +22,7 @@
 
 /* ----- LARGE ICONS ----- */
 .linkedin_icon, .facebook_icon, .twitter_icon, .youtube_icon {
-    @include sprite('social_contact', 0, 0, 44, 43);
+    @include sprite('social_icons', 0, 0, 44, 43);
 }
 .twitter_icon  { background-position :   0px  0px; }
 .linkedin_icon { background-position : -44px  0px; }

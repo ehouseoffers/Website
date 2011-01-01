@@ -1,6 +1,11 @@
 :ruby
   extra_js('jquery.smart_toggle')
 
+  # There are two ways we can show and/or get focus on the contact form. The first is to pass a param to this partial.
+  # The second is to have linked to this page with the /foo/bar#contact_us hash link in the url
+  show_contact_form  = show_contact_form.nil? ? false : show_contact_form
+  contact_form_focus = show_contact_form && contact_form_focus.present? ? contact_form_focus : false
+
 %div.social_contactC.box
   %div.gutter
     %h1 Contact Us
@@ -47,7 +52,6 @@
 
       = render :partial => "contact/form", :locals => {:message => Message.new}
 
-
 :javascript
   $(document).ready(function() {
     $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
@@ -59,9 +63,10 @@
     form_container.default_form_values();
 
     // Make sure we can see the contact form if requested, and focus on the first field
-    if ( window.location.hash == '#contact_us' ) {
+    if ( window.location.hash == '#contact_us' || #{contact_form_focus ? 'true' : 'false'}) {
       $('input#message_subject', form_container).focus();
-    } else {
+    }
+    if ( window.location.hash != '#contact_us' && #{show_contact_form ? 'false' : 'true'} ) {
       form_container.css('display','none');
     }
 

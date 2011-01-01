@@ -1,18 +1,17 @@
 @import "helpers";
-@import "seller_signup";
 @import "form_validations";
 @import "social_contact";
 @import "tos";
-
 
 /* Page Banner */
 #menuC { margin-bottom : 6px; }
 #mainC div#tab_arrow { display : none; }
 
 #mainC img#top {
-    background : url(/images/page_banners/about.png) no-repeat scroll 0px 0px transparent;
+    background : url(/images/page_banners/become_a_buyer.png) no-repeat scroll 0px 0px transparent;
     height : 105px;
 }
 hr#about_page.space { margin-bottom : 7px; }
 
 @import "about";
+

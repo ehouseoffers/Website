@@ -42,13 +42,14 @@ Ehouseoffers::Application.routes.draw do
     end
   end
 
-  resources '/real-estate-spotlight', :as => :spotlights, :controller => :spotlights
+  resources 'real-estate-spotlight', :as => :spotlights, :controller => :spotlights
   resources 'how-to-sell-house',  :as => :guides,  :controller => :guides
   resources 'sell-my-house',      :as => :reasons, :controller => :blogs
   resources 'real-estate-trends', :as => :trends,  :controller => :blogs
 
-  match '/we-buy-houses', :as => :about, :to => 'home#about'
-  match '/terms-of-service', :as => :terms, :to => 'home#terms'
+  match '/become-a-home-buyer', :as => :become_a_buyer, :to => 'home#become_a_buyer'
+  match '/we-buy-houses',       :as => :about,          :to => 'home#about'
+  match '/terms-of-service',    :as => :terms,          :to => 'home#terms'
 
   match '/generate-url-friendly-string', :as => 'generate_url_friendly_string', :to => 'home#generate_url_friendly_string'
   match '/what-we-do', :as => 'what_we_do', :to => 'home#what_we_do'

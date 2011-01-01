@@ -3,6 +3,8 @@
   # The expand/contract images are found in the about sprite. you may need to mvoe those images into the
   # application sprite if this is needed elsewhere on the site
 
+  show_tos = show_tos.nil? ? false : show_tos
+
 %span#tos
   %h1.green
     %div#ec_button.expand{'data-target' => '#tos_veil'} &nbsp;
@@ -63,3 +65,10 @@
       %li
         %h3 DISPUTE RESOLUTION
         %p THIS AGREEMENT PROVIDES THAT ALL DISPUTES BETWEEN YOU AND eHouseOffers.com WILL BE RESOLVED BY BINDING ARBITRATION WITH THE BINDING ARBITRATION TO TAKE PLACE IN KING COUNTY, WASHINGTON. YOU THUS GIVE UP YOUR RIGHT TO GO TO COURT TO ASSERT OR DEFEND YOUR RIGHTS. YOU ALSO GIVE UP YOUR RIGHT TO PARTICIPATE IN OR BRING CLASS ACTIONS. YOUR RIGHTS WILL BE DETERMINED BY NEUTRAL ARBITRATORS AND NOT A JUDGE OR JURY. Should a dispute arise and should the arbitration provisions herein become inapplicable or unenforceable, or in any instance of any lawsuit between you and eHouseOffers.com, the parties agree that jurisdiction over and venue of any suit shall be exclusively in the state and federal courts sitting in King County, Washington and further agree that the laws of the state of Washington shall govern the agreement and any dispute between the parties or with respect to this agreement. In the event eHouseOffers.com employs attorneys to enforce any right in connection with any dispute, lawsuit, or disagreement, eHouseOffers.com shall be entitled to recover reasonable attorneys’ fees.
+        
+:javascript
+  $(document).ready(function() {
+    if ( window.location.hash == '#tos' || #{show_tos ? 'true' : 'false'}) {
+      $('#ec_button').trigger('click');
+    }
+  });

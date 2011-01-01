@@ -1,0 +1,38 @@
+:ruby
+  extra_css('buyer')
+  extra_js('about')
+
+%hr#about_page.space
+
+-#= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:become_a_buyer, nil]]
+
+%div#about_pageC.xs_two_col.yui3-g
+  %div#left_col.yui3-u-33-48
+    = image_tag '/images/transparent.gif', :id => 'diagram', :alt => 'Diagram of our Process'
+
+    %hr.space
+
+    %div.hpad
+      = image_tag '/images/transparent.gif', :id => 'headshot_photo', :alt => 'About Us'
+
+      = render :partial => 'our_story'
+
+      %hr
+      = render :partial => 'home_buyers_you_can_trust'
+
+      - if false
+        %hr
+        = render :partial => 'in_the_news'
+
+      - if false
+        %hr
+        = render :partial => 'founders'
+
+      %hr
+      = render :partial => 'about_our_home_buyers'
+
+      %hr
+      = render :partial => 'shared/tos'
+
+  %div#right_col.yui3-u-7-24
+    = render :partial => "shared/social_contact", :locals => {:show_contact_form => true, :contact_form_focus => true}
