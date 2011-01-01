@@ -25,14 +25,16 @@
       -# %td= link_to 'Show', seller_listing
       -# %td= link_to 'Edit', edit_seller_listing_path(seller_listing)
       %td{:style => 'white-space:nowrap'}
-        = link_to 'Edit', comp_data_seller_listing_path(seller_listing)
+        = link_to 'Edit', edit_seller_listing_path(seller_listing)
         &nbsp;&nbsp;
         = link_to 'X', seller_listing, :confirm => 'Are you sure?', :method => :delete
 
     - if seller_listing.selling_reason.present?
       %tr
         %td{:colspan => 2} &nbsp
-        %td{:colspan => 7}= raw "<b>Selling Reason:</b> #{seller_listing.selling_reason}"
+        %td{:colspan => 7}
+          %strong Selling Reason:
+          = seller_listing.selling_reason
 
     - if seller_listing.salesforce_lead_id.present? || seller_listing.salesforce_lead_owner_id.present?
       %tr

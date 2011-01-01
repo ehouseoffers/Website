@@ -1,7 +1,6 @@
-
 %ul
   - %w[home trends spotlights reasons guides].each do |section|
     %li
       - img = image_tag '/images/transparent.gif', :id => section, :class => "app_sprite #{active_section?(section) ? 'selected' : ''}", :alt => section.capitalize
-      - path= send("#{section}_path")
+      - path= send("#{section}_seo_path")
       = link_to_unless current_page?(path) && params[:page].to_i<2, img, path

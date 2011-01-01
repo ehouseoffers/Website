@@ -71,10 +71,15 @@ class Blog < ActiveRecord::Base
   # now 'real-estate-guides'. So this will translate the route name to the context we have been working with and expect.
   # https://ehouseoffers.fogbugz.com/default.asp?8
   def self.translate_route_to_context(route)
+    # For SEO purposes we have different paths for the index page and the show pages.
+    # See https://ehouseoffers.fogbugz.com/default.asp?21#108
     case route
-    when 'real-estate-trends' then VALID_CONTEXTS[0]
+    when 'real-estate-trends' then VALID_CONTEXTS[0] # full path translations
     when 'sell-my-house'      then VALID_CONTEXTS[1]
     when 'how-to-sell-house'  then VALID_CONTEXTS[2]
+    when 't'                  then VALID_CONTEXTS[0] # terse path translations
+    when 'r'                  then VALID_CONTEXTS[1]
+    when 'g'                  then VALID_CONTEXTS[2]
     end
   end
 

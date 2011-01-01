@@ -55,7 +55,7 @@ class SellerListingsController < ApplicationController
       sign_in :user, seller_listing.user if !user_signed_in?
 
       # Send to second step
-      redirect_to [:comp_data, seller_listing]
+      redirect_to home_offer_2_path(seller_listing.id)
 
     rescue Exception => e
       # FIXME -- younker [2010-12-06 13:52]
@@ -67,7 +67,7 @@ class SellerListingsController < ApplicationController
   end
 
   # Step 2a: Comparables Form Display (get)
-  def comp_data
+  def homeoffer2
     @seller_listing = SellerListing.find(params[:id])
   end
 
@@ -77,7 +77,7 @@ class SellerListingsController < ApplicationController
 
     respond_to do |format|
       if seller_listing.update_attributes(params[:seller_listing])
-        format.html { redirect_to [:thank_you, seller_listing] }
+        format.html { redirect_to home_offer_3_path }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -86,7 +86,7 @@ class SellerListingsController < ApplicationController
     end
   end
 
-  def thank_you
+  def homeoffer3
     # @seller_listing = SellerListing.find_by_email(params[:id])
     respond_to do |format|
       format.html

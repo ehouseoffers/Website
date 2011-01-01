@@ -36,7 +36,7 @@ class ContactController < ApplicationController
 
     respond_to do |format|
       if success
-        format.html { redirect_to contact_path(:thank_you) }
+        format.html { redirect_to contact_path(:homeoffer3) }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
         format.json { render :json => @message.to_json }
       else

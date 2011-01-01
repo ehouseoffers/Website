@@ -31,9 +31,12 @@ Ehouseoffers::Application.routes.draw do
     end
   end
 
-  resources :seller_listings do
-    get :comp_data, :on => :member # Registration 2nd step form display
-    get :thank_you, :on => :member # Registration confirmation/appreciation
+  match '/home-offer-1', :as => :new_home_offer, :to => 'seller_listings#new'
+  match '/home-offer-2/:id', :as => :home_offer_2, :to => 'seller_listings#homeoffer2'
+  match '/home-offer-3', :as => :home_offer_3, :to => 'seller_listings#homeoffer3'
+  resources 'home-offer', :as => :seller_listings, :controller => :seller_listings  do
+    # get :homeoffer2, :on => :member # Registration 2nd step form display
+    # get :homeoffer3, :on => :member # Registration confirmation/appreciation
   end
 
   resources :social_profiles do
@@ -42,10 +45,17 @@ Ehouseoffers::Application.routes.draw do
     end
   end
 
-  resources 'real-estate-spotlight', :as => :spotlights, :controller => :spotlights
-  resources 'how-to-sell-house',  :as => :guides,  :controller => :guides
-  resources 'sell-my-house',      :as => :reasons, :controller => :blogs
-  resources 'real-estate-trends', :as => :trends,  :controller => :blogs
+  match '/how-to-sell-house', :as => :guides_seo, :to => 'guides#index'
+  resources 'g',  :as => :guides,  :controller => :guides
+
+  match '/real-estate-spotlight', :as => :spotlights_seo, :to => 'spotlights#index'
+  resources 's', :as => :spotlights, :controller => :spotlights
+
+  match '/sell-my-house', :as => :reasons_seo, :to => 'blogs#index'
+  resources 'r', :as => :reasons, :controller => :blogs
+
+  match '/real-estate-trends', :as => :trends_seo, :to => 'blogs#index'
+  resources 't', :as => :trends,  :controller => :blogs
 
   match '/become-a-home-buyer', :as => :become_a_buyer, :to => 'home#become_a_buyer'
   match '/we-buy-houses',       :as => :about,          :to => 'home#about'
@@ -55,7 +65,7 @@ Ehouseoffers::Application.routes.draw do
   match '/what-we-do', :as => 'what_we_do', :to => 'home#what_we_do'
 
   root :to => 'home#home'
-  match '/', :to => 'home#home', :as => 'home'
+  match '/', :to => 'home#home', :as => 'home_seo'
 
   # Ajax Only
   match '/pfz', :to => 'ajax#placefinder_by_zip', :as => 'placefinder_by_zip'
