@@ -1,6 +1,8 @@
 @import "helpers";
-@import "seller_signup";
 @import "form_validations";
+@import "quotes_row";
+@import "security";
+
 
 p {
     font-size : .85em;
@@ -27,25 +29,6 @@ p {
 #get_cash_offer {
     @include sprite('home',-300,-2,77,288);
     margin : 1px 0 11px -2px;
-}
-#lock_icon {
-    @include sprite('home',0,-110,22,15);
-    vertical-align : sub;
-}
-#stars {
-    @include sprite('home',-589,-28,14,64);
-}
-#truste {
-    @include sprite('home',-350,-80,28,101);
-    margin : -2px 0 0 20px;
-}
-#verisign {
-    @include sprite('home',-456,-81,26,61);
-    margin : -2px 0 0 13px;
-}
-#mcafee {
-    @include sprite('home',-523,-84,22,62);
-    margin : 1px 0 0 12px;
 }
 #get_cash_offer_btn {
     @include sprite('home',-121,-89,48,222);
@@ -155,20 +138,8 @@ form#new_seller_listing div#last_name.field, form#new_seller_listing div#state.f
 .submitC {
     padding-top : 12px;
 }
-.submitC #securityC {
-    @include inline_block();
-    font-size : 11px;
-    color : #666;
-    position : relative;
-    top : -22px;
-    left : 5px;
-}
-#security_iconsC {
-    margin-top : 16px;
-}
-#security_iconsC > img {
-    float : left;
-}
+
+
 
 
 /* Resources Row */
@@ -195,14 +166,3 @@ form#new_seller_listing div#last_name.field, form#new_seller_listing div#state.f
 .bottom_contentC a {
     color : #7fb86b;
 }
-
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    

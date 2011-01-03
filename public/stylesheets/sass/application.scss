@@ -360,6 +360,3 @@ body.minimal #footerC {
 @import "box";                 /* common box; used for side-bar seller listing form, so it's on most pages */
 @import "social_icons";        /* smaller icons used in the footer                      */
 
-/* imports I should place into specific files once I move them over the sass */
-
-@import "quotes_row";  /* Quotes Row -- homepage and seller listing pipeline */

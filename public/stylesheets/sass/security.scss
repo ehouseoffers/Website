@@ -1,0 +1,25 @@
+@import "helpers";
+
+.locked_icon   { @include sprite('security',   0, -58, 23,  17); }
+.locked_secure { @include sprite('security',   0, -58, 23,  83); }
+.truste_icon   { @include sprite('security',   0,   0, 28, 101); margin : 0 0 0 20px; }
+.verisign_icon { @include sprite('security',   0, -29, 26,  61); margin : 0 0 0 7px; }
+.mcafee_icon   { @include sprite('security', -62, -30, 22,  62); margin : 0 0 0 4px; }
+
+
+.submitC #securityC {
+    @include inline_block();
+    position : relative;
+    top  : -14px;
+    left : 5px;
+}
+.submitC #security_iconsC {
+    margin-top : 16px;
+}
+
+
+
+
+
+
+

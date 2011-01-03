@@ -1,11 +1,19 @@
 :ruby
-  extra_css('new_seller_listing')
+  # extra_css('new_seller_listing')
+  extra_css('home_offer_1')
 
 %div#step_one_contentC
   %div.box
     %div.gutter.clearfix
-      = image_tag '/images/transparent.gif', :id => 'step_one_register', :alt => 'Step 1: Register'
+      %div#box_title
+        = image_tag '/images/transparent.gif', :id => 'get_a_cash_offer', :alt => 'Get a Cash Offer'
+        = image_tag '/images/transparent.gif', :id => 'on_your_house', :alt => 'on your House Today!'
 
-      %div#form_gutter
-        = render :partial => 'seller_listings/form'
+      %div.yui3-u-g
+        %div.yui3-u-1-2
+          = image_tag '/images/transparent.gif', :id => 'satisfied_sellers', :alt => 'Satisfied home sellers Tom and Sharon'
 
+        %div.yui3-u
+          = render :partial => 'seller_listings/form'
+
+      = render :partial => 'shared/quotes_row'

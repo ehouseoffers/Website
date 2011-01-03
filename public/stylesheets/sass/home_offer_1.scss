@@ -1,52 +1,61 @@
 @import "helpers";
 @import "form_validations";
+@import "security";
+@import "quotes_row";
 
-/* Start Sprites */
-/*.sprite { background : url(/images/sprites/seller-register-step1.png) no-repeat scroll 0px 500px transparent; }*/
-#step_one_register  {
-    @include sprite('seller-register-step1', -166, -32, 75, 190);
-}
-#lock_icon  {
-    @include sprite('seller-register-step1', -360, -57, 25, 85);
-    vertical-align : middle;
-    margin-left : 7px;
-}
-#truste {
-    @include sprite('seller-register-step1', 0, -125, 28, 101);
-    margin : 0 0 0 20px;
-}
-#verisign {
-    @include sprite('seller-register-step1', -103, -125, 26, 61);
-    margin : 0 0 0 7px;
-}
-#mcafee {
-    @include sprite('seller-register-step1', -360, -32, 22, 62);
-    margin : 0 0 0 4px;
-}
-form input[type="image"] {
-    @include sprite('seller-register-step1', -166, -108, 48, 224);
-}
-/* end sprites */
-
+/* Banner & box placement/padding */
 #mainC img#top {
     height : 96px;
     background : url(/images/page_banners/seller-listing-register-step1.png) no-repeat scroll 0px 0px transparent;
 }
 #mainC div#content { padding : 0px; }
-
 #step_one_contentC {
     padding : 27px 33px;
 }
 div#form_gutter {
-    padding : 25px 0 0 91px;
+    padding : 5px;
+}
+div#box_title {
+    position : relative;
+    width : 555px;
+    height : 65px;
+    margin : 10px auto 0;
 }
 
+/* Sprites */
+#get_a_cash_offer  {
+    @include sprite('home_offer_1', -4, -340,  25, 236);
+    position : absolute;
+    top  : 0;
+    left : 0;
+}
+#on_your_house     {
+    @include sprite('home_offer_1', 0, -368,  39, 311);
+    position : absolute;
+    top  : 2px;
+    left : 243px;
+}
+#satisfied_sellers {
+    @include sprite('home_offer_1', 0,    0, 335, 420);
+}
+form#new_seller_listing input[type="image"] {
+    @include sprite('home_offer_1', -2, -412, 48, 224);
+}
+
+.submitC {
+    padding-top : 12px;
+}
+
+
+
+
+/* Form */
 form#new_seller_listing label {
     display : none;
 }
 form#new_seller_listing .field,
 form#new_seller_listing input[type="text"] {
-    width : 450px;
+    width : 375px;
 }
 div#email, div#address_zip {
     clear : both;
@@ -56,12 +65,12 @@ form#new_seller_listing div#city.field,
 form#new_seller_listing input#seller_listing_address_city {
     float : left;
     margin-right : 26px;
-    width : 324px;
+    width : 300px;
 }
 form#new_seller_listing div#state.field,
 form#new_seller_listing input#seller_listing_address_state {
     float : left;
-    width : 100px;
+    width : 48px;
 }
 
 
@@ -71,27 +80,17 @@ form#new_seller_listing div#last_name.field,
 form#new_seller_listing input#seller_listing_user_last_name,
 form#new_seller_listing div#address_zip.field,
 form#new_seller_listing input#seller_listing_address_zip {
-    width : 212px;
+    width : 175px;
 }
 form#new_seller_listing div#first_name.field {
     float : left;
-    margin-right : 26px;
+    margin-right : 25px;
 }
 form#new_seller_listing div#last_name.field {
     float : left;
 }
-#securityC span { display : none; }
-#security_iconsC {
-    margin-top : 8px;
-}
-.submitC {
-    padding-top : 12px;
-}
-.submitC #securityC {
-    @include inline_block();
-    font-size : .9em;
-    color : #666;
-    position : relative;
-    top : -22px;
-    left : 5px;
-}
+
+
+
+
+

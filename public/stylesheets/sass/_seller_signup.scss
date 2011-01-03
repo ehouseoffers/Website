@@ -1,21 +1,6 @@
 @import "helpers";
+@import "security";
 
-/* Start Sprites */
-#lock_icon  {
-    @include sprite('seller-register-step1', -360, -57, 25, 85);
-    vertical-align : middle;
-}
-#truste {
-    @include sprite('seller-register-step1', 0, -125, 28, 101);
-    margin : 0 0 0 20px;
-}
-#mcafee {
-    @include sprite('seller-register-step1', -360, -32, 22, 62);
-    margin : 0 0 0 4px;
-}
-form input[type="image"] {
-    @include sprite('seller-register-step1', 0, -81, 40, 119);
-}
 .seller_signup_boxC {
     /*width : 260px; rm'd so right col widgets have a consistent width */
     margin-bottom : 50px; /* to account for how we placed the #security_iconsC (see below) */
@@ -68,22 +53,27 @@ span.shared_seller_signup div#address1.field, span.shared_seller_signup input#se
     width : 208px !important;
 }
 
+div.seller_signup_boxC img#get_offer_narrow {
+    @include sprite('seller-register-sidebar', 0, 0, 55, 213);
+}
+span.shared_seller_signup input[type="image"] {
+    @include sprite('seller-register-sidebar', 0, -57, 39, 119);
+}
 
-.seller_signup_boxC #securityC span { display : none; }
-
-#security_iconsC {
+span.shared_seller_signup #security_iconsC {
     float      : left; /* to take it out of the flow */
     margin-top : 17px; /* to place it below the form#new_seller_listing box */
 }
-.seller_signup_boxC .submitC {
-    padding-top : 12px;
-    width : 230px;
+span.shared_seller_signup .submitC > #securityC {
+    top : -10px;
 }
-.seller_signup_boxC  #securityC {
-    @include inline_block();
-    font-size : .9em;
-    color : #666;
-    position : relative;
-    top : -22px;
-    left : 5px;
+
+span.shared_seller_signup #security_iconsC > img.verisign_icon {
+    display : none;
 }
+    
+    
+    
+    
+    
+    
