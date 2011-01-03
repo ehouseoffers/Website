@@ -32,7 +32,7 @@ test:
       app_secret: '07b63899d7c2257b53a560f8d76866e9'
     salesforce:
       base: 'https://test.salesforce.com/services/Soap/c/20.0'
-      username: 'donktwo@28dev.com.eho'
+      username: 'ehouseoffers@28dev.com.eho'
       password: 'eH0use0ffers'
       token: 'TWy65qVwBXaFdtCzWgYUaG2D'
       default_account_id: '001C000000nnPUcIAM'
@@ -63,7 +63,7 @@ development:
       app_secret: '07b63899d7c2257b53a560f8d76866e9'
     salesforce:
       base: 'https://www.salesforce.com/services/Soap/u/10.0'
-      username: 'donktwo@28dev.com'
+      username: 'ehouseoffers@28dev.com'
       password: 'eH0use0ffers'
       token: 'HEazAX4dUK1t8LRXFOViTysH'
       default_account_id: '001C000000nnPUcIAM'
@@ -94,7 +94,7 @@ staging:
       app_secret: '07b63899d7c2257b53a560f8d76866e9'
     salesforce:
       base: 'https://www.salesforce.com/services/Soap/u/10.0'
-      username: 'donktwo@28dev.com'
+      username: 'ehouseoffers@28dev.com'
       password: 'eH0use0ffers'
       token: 'HEazAX4dUK1t8LRXFOViTysH'
       default_account_id: '001C000000nnPUcIAM'
