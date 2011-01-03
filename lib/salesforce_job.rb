@@ -2,6 +2,12 @@ require 'ostruct'
 
 # http://railscasts.com/episodes/171-delayed-job
 class SalesforceJob < Struct.new(:seller_listing_id)
+  # Created in prod by me (younker) and I am hard coding it here b/c 1) we are running out of tiem, 2) if we don't find
+  # an account to bind this lead to and we already know what our ehouse account is (this one) we should not have to do
+  # another sforce api query to get it and 3) we could come up with another way to store this (db) without hard-coding
+  # it but whatever. this will work for now.
+  EHOUSE_SFORCE_ACCOUNT_ID = KEYS['salesforce']['default_account_id']
+
   LEAD         = 'Lead'
   LEAD_SOURCE  = 'Web'
   LEAD_COUNTRY = 'USA'   # Hard-coded b/c it's all we support right now
@@ -67,6 +73,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       OpenStruct.new('ok?' => false, :code => resp[:Fault][:faultcode], :error => resp[:Fault][:faultstring])
     else
       begin
+        # If not records were returned, :result will be nil so this will raise an exception
         records = resp[:searchResponse][:result][:searchRecords]
         if records.is_a?(Array)
           records_str = records.collect{|r| r[:record][:Id]}.join(', ')
@@ -79,9 +86,9 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         end
       rescue => e
         Rails.logger.warn(":: Exception :: #{e.inspect}")
-        err = "Unknown data structure returned: #{resp.inspect} (#{e})"
+        err = "Unknown data structure returned: #{resp.inspect} (#{e}). Assigning to default eHouse account."
         Rails.logger.warn(":: WARN :: salesforce_job.munge_search_results -- #{err}")
-        OpenStruct.new('ok?' => false, :code => 'Unknown', :error => err)
+        OpenStruct.new('ok?' => true, :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID)
       end
     end
   end
