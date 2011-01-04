@@ -29,16 +29,18 @@ module ApplicationHelper
   # If you are looking here because extra_js and extra_css are NOT loading the files you want, check first to see
   # if your controller is using InheritedResources::Base. If so, that is the problem. See interviews_controller
   # some more details.
-  @@js_targets = []
+
   def extra_js(*targets)
+    @js_targets ||= []
+
     Rails.logger.info("+ Extra JS: Request to add extra js: #{targets.inspect}")
     targets.each do |filename|
-      if extra_js?(filename)
+      if @js_targets.include?(filename)
         Rails.logger.info("- Extra JS: @js_targets already has entry for #{filename}. Skipping")
       else
-        Rails.logger.info("- Extra JS: #{filename} not found in @@js_targets")
-        @@js_targets.push(filename)
-        
+        Rails.logger.info("- Extra JS: #{filename} not found in @js_targets")
+        @js_targets.push(filename)
+
         # allow 'http://path' or '//path'
         path = filename.match(/^(http(s)?:)?\/\//).present? ? filename : "/javascripts/#{filename}.js"
         content_for :extra_js do
@@ -48,19 +50,19 @@ module ApplicationHelper
         end
       end
     end
-    Rails.logger.info("- Extra JS: Current @@js_targets: #{@@js_targets.inspect}")
+    Rails.logger.info("- Extra JS: Current @js_targets: #{@js_targets.inspect}")
   end
-  def extra_js?(target) ; @@js_targets.include?(target) ; end
 
-  @@css_targets = []
   def extra_css(*targets)
+    @css_targets ||= []
+
     Rails.logger.info("+ Extra CSS: Request to add extra css: #{targets.inspect}")
     targets.each do |filename|
-      if extra_css?(filename)
+      if @css_targets.include?(filename)
         Rails.logger.info("- Extra CSS: @css_targets already has entry for #{filename}. Skipping")
       else
-        Rails.logger.info("- Extra CSS: #{filename} not found in @@css_targets")
-        @@css_targets.push(filename)
+        Rails.logger.info("- Extra CSS: #{filename} not found in @css_targets")
+        @css_targets.push(filename)
         content_for :extra_css do
           css = "<link href='/stylesheets/#{filename}.css' media='screen' rel='stylesheet' type='text/css' />\n"
           Rails.logger.info("- Extra CSS: Adding: #{css}")
@@ -68,9 +70,9 @@ module ApplicationHelper
         end
       end
     end
-    Rails.logger.info("- Extra CSS: Current @@css_targets: #{@@css_targets.inspect}")
+    Rails.logger.info("- Extra CSS: Current @css_targets: #{@css_targets.inspect}")
   end
-  def extra_css?(target) ; @@css_targets.include?(target) ; end
+
 
   # http://media.railscasts.com/videos/208_erb_blocks_in_rails_3.mov
   def admin_area(&block)

@@ -65,13 +65,14 @@
 
   .submitC
     = image_submit_tag '/images/transparent.gif', :id => 'make_offer'
-
     #securityC
-      = image_tag '/images/transparent.gif', :id => 'lock_icon', :alt => 'Secure!'
+      = image_tag '/images/transparent.gif', :class => 'locked_secure', :alt => 'Secure!'
     #security_iconsC
-      = image_tag '/images/transparent.gif', :id => 'mcafee', :alt => 'McAfee'
-      = image_tag '/images/transparent.gif', :id => 'truste', :alt => 'Truste Certified Privacy'
-      = image_tag '/images/transparent.gif', :id => 'verisign', :class => 'last', :alt => 'Verisign'
+      = image_tag '/images/transparent.gif', :class => 'mcafee_icon', :alt => 'McAfee'
+      = image_tag '/images/transparent.gif', :class => 'truste_icon', :alt => 'Truste Certified Privacy'
+      = image_tag '/images/transparent.gif', :class => 'verisign_icon', :alt => 'Verisign'
+
+
 
 
 :javascript

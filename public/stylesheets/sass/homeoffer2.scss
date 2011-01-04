@@ -1,6 +1,15 @@
 @import "helpers";
 @import "form_validations";
+@import "security";
 @import "quotes_row";
+
+/* Banner & box placement/padding */
+div#mainC div#content { padding : 10px 30px; }
+
+div#form_gutter {
+    padding : 25px 0 0 29px;
+}
+
 
 /* Start Sprites */
 #step_two_comps {
@@ -11,40 +20,7 @@ input[type="image"] {
     margin : 16px 0 0 0px;
 }
 
-
-/* sprites needed from step 1 sprite */
-#lock_icon  {
-    @include sprite('seller-register-step1', -359, -56, 25, 85);
-    vertical-align : middle;
-    margin-left : 7px;
-}
-#truste {
-    @include sprite('seller-register-step1', 0, -125, 28, 101);
-    margin : 0 0 0 20px;
-}
-#verisign {
-    @include sprite('seller-register-step1', -103, -125, 26, 61);
-    margin : 0 0 0 7px;
-}
-#mcafee {
-    @include sprite('seller-register-step1', -360, -32, 22, 62);
-    margin : 0 0 0 4px;
-}
-
-/* END Sprites */
-
-#mainC img#top {
-    height : 96px;
-    background : url(/images/page_banners/seller-listing-register-step1.png) no-repeat scroll 0px 0px transparent;
-}
-#mainC div#content { padding : 0px; }
-
-#step_two_contentC {
-    padding : 27px 33px;
-}
-div#form_gutter {
-    padding : 25px 0 0 29px;
-}
+/* form */
 textarea,
 input[type="text"] {
     width : 350px;
@@ -66,33 +42,3 @@ textarea { height : 3em; }
     font-size : .75em;
 }
 
-/* submit icons stolen from step 1 */
-#securityC span { display : none; }
-#security_iconsC {
-    margin-top : 8px;
-}
-.submitC {
-    padding-top : 12px;
-    margin-left : 58px;
-}
-.submitC #securityC {
-    @include inline_block();
-    font-size : .9em;
-    color : $grey;
-    position : relative;
-    top : -22px;
-    left : 5px;
-}
-
-
-/* shared quotes partial */
-div#step_one_contentC #quotes_rowC { margin : 0 0 0 15px; }
-#quotes_rowC p {
-    font-size : .85em;
-    line-height : 1.05em;
-    color : $grey;
-    margin-bottom : 5px;
-}
-
-#other_others_quote { @include sprite('home', 0, -138, 24, 329); }
-#top_pick_quote     { @include sprite('home', -330, -138, 24, 3341); }

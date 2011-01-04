@@ -4,14 +4,8 @@
 @import "quotes_row";
 
 /* Banner & box placement/padding */
-#mainC img#top {
-    height : 96px;
-    background : url(/images/page_banners/seller-listing-register-step1.png) no-repeat scroll 0px 0px transparent;
-}
-#mainC div#content { padding : 0px; }
-#step_one_contentC {
-    padding : 27px 33px;
-}
+div#mainC div#content { padding : 10px 30px; }
+
 div#form_gutter {
     padding : 5px;
 }
@@ -24,22 +18,22 @@ div#box_title {
 
 /* Sprites */
 #get_a_cash_offer  {
-    @include sprite('home_offer_1', -4, -340,  25, 236);
+    @include sprite('homeoffer1', -4, -340,  25, 236);
     position : absolute;
     top  : 0;
     left : 0;
 }
 #on_your_house     {
-    @include sprite('home_offer_1', 0, -368,  39, 311);
+    @include sprite('homeoffer1', 0, -368,  39, 311);
     position : absolute;
     top  : 2px;
     left : 243px;
 }
 #satisfied_sellers {
-    @include sprite('home_offer_1', 0,    0, 335, 420);
+    @include sprite('homeoffer1', 0,    0, 335, 420);
 }
 form#new_seller_listing input[type="image"] {
-    @include sprite('home_offer_1', -2, -412, 48, 224);
+    @include sprite('homeoffer1', -2, -412, 48, 224);
 }
 
 .submitC {
