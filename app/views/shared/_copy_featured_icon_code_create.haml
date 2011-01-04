@@ -1,8 +1,0 @@
-:ruby
-  image = image_tag_url 'featured/home-buyer-resource.png', :alt => "#{spotlight.title} : eHouseOffers.com"
-  image_ln = link_to(image, :controller => :spotlights, :action => :show, :id => spotlight.title_for_url, :only_path => false)
-
-  home_buyers = link_to 'home buyers', :controller => :home, :action => :home, :only_path => false
-  note = "Find #{home_buyers} at eHouseOffers"
-
-%div{:style => 'width:112px; text-align:center; font-size:9px; color:#666'}= "#{image_ln}<br />#{note}"

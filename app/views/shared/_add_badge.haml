@@ -1,15 +1,18 @@
 :ruby
   extra_js('add_badge')
 
-  copy_code = render :partial => 'shared/copy_featured_icon_code_create', :locals => {:spotlight => spotlight}
+  # copy_code = render :partial => 'shared/copy_featured_icon_code_create', :locals => {:spotlight => spotlight}
+
+  image = image_tag_url 'featured/home-buyer-resource.png', :alt => "#{spotlight.title} : eHouseOffers.com"
+  image_ln = link_to(image, :controller => :spotlights, :action => :show, :id => spotlight.title_for_url, :only_path => false)
 
 %div.add_badgeC.box
   %div.gutter
     %h4 Add Badge to your Website
     %small by copying and pasting the below text
     
-    = image_tag '/images/transparent.gif', :class => 'featured', :alt => 'Featured: Home Buyer Resource'
+    = image
     
-    %textarea.copyC= copy_code
+    %textarea.copyC= image_ln
 
     
