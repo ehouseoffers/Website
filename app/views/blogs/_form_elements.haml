@@ -3,7 +3,7 @@
   # You need to call this inside a form_for block. For example, see app/views/guides/_form.html.haml
 
   # blog.js is needed for generate_string call
-  extra_js('tiny_mce/tiny_mce','tiny_mce_init','blog','url_friendly_string')
+  extra_js('blog','url_friendly_string','/ckeditor/ckeditor.js','/ckeditor/adapters/jquery.js','jquery.growl')
   extra_css('scaffold')
 
 
@@ -33,7 +33,7 @@
 
 .field
   = f.label :content
-  = f.text_area :content
+  = f.text_area :content, :class => 'editor'
 
 .yui3-g
   - if model_obj.photo?

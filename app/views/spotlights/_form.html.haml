@@ -1,8 +1,7 @@
 :ruby
-  # younker [2010-11-30 14:19]
-  # If we are going to add tiny_mce, then we need to do something about 1) huge page load times and 2) tall textareas
-  # extra_js('tiny_mce/tiny_mce','tiny_mce_init','url_friendly_string')
-  extra_js('url_friendly_string')
+  # TODO -- younker [2011-01-04 14:31] -- make the QA answer fields ckeditor-able
+  # extra_js('url_friendly_string','jquery.growl','/ckeditor/ckeditor.js','/ckeditor/adapters/jquery.js')
+  extra_js('url_friendly_string','jquery.growl')
 
 = form_for @spotlight, :html => {:multipart => true} do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @spotlight}

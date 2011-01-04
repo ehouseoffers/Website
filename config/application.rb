@@ -44,7 +44,7 @@ module Ehouseoffers
 
     # CSS/JavaScript files you want as :defaults
     config.action_view.stylesheet_expansions[:defaults] = %w(application)
-    config.action_view.javascript_expansions[:defaults] = %w(jquery rails application jquery.growl)
+    config.action_view.javascript_expansions[:defaults] = %w(jquery rails application)
 
     config.generators do |g|
       g.template_engine :haml

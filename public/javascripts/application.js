@@ -6,9 +6,18 @@ $(document).ready(function() {
         $.load_external_resource('jquery.ketchup.js,jquery.default_values.js,jquery.tooltip.js');
         $.ajaxSetup({async: true});
 
-        $('form')
-        .ketchup({ validationAttribute : 'data-validation' })
+        var f = $('form');
+        f.ketchup({ validationAttribute : 'data-validation' })
         .default_form_values();
+
+        // Nothing that happens inside here is the end of the world, so just discard if there are problems
+        try {
+            $('.editor', f).ckeditor({
+                height  : '300px',
+                toolbar : 'simple',
+                filebrowserUploadUrl : '/admin/uploaded_photos'
+            });
+        } catch(e) {}
     }
 
     var modals = $('.uso_modal');
