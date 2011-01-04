@@ -1,7 +1,7 @@
 %div.yui3-g
   %div.yui3-u-1-3
     - logo = image_tag '/images/transparent.gif', :id => 'main_logo', :class => 'app_sprite', :alt => 'eHouseOffers.com: Professional Home Buyers'
-    = link_to_unless current_page?(root_url), logo, root_url
+    = link_to_unless @frame.to_s.eql?('minimal') || current_page?(root_url), logo, root_url
 
   %div.yui3-u-5-24.right
     %div#request_offerC.yui3-g

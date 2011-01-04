@@ -36,13 +36,13 @@ p {
     border : none !important;
 }
 #welcome_title {
-    @include sprite('home',0,-164,17,256);
+    @include sprite('home',0,-139,17,256);
 }
 #what_we_do_title {
     @include sprite('home',-509,-113,15,117);
 }
 #our_home_buyers_title {
-    @include sprite('home',-258,-164,21,157);
+    @include sprite('home',-258,-139,21,157);
     margin-top : 2px;
 }
 #seller_resources_title {

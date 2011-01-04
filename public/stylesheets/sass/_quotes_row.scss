@@ -1,3 +1,5 @@
+@import 'helpers';
+
 .quotes_rowC {
     margin : 20px 0 0 7%;
     letter-spacing : 0em;
@@ -14,6 +16,7 @@
     @include sprite('quotes', 0, -23,  22, 340);
 }
 .quotes_rowC p {
+    color : #676767;
     font-size : .85em;
     padding-right : 20px;
 }

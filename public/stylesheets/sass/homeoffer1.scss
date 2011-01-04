@@ -37,7 +37,7 @@ form#new_seller_listing input[type="image"] {
 }
 
 .submitC {
-    padding-top : 12px;
+    padding-top : 8px;
 }
 
 
@@ -47,8 +47,12 @@ form#new_seller_listing input[type="image"] {
 form#new_seller_listing label {
     display : none;
 }
-form#new_seller_listing .field,
+form#new_seller_listing .field {
+    margin-bottom : 13px;
+    width : 375px;
+}
 form#new_seller_listing input[type="text"] {
+    padding : 5px;
     width : 375px;
 }
 div#email, div#address_zip {
@@ -84,6 +88,7 @@ form#new_seller_listing div#last_name.field {
     float : left;
 }
 
+.quotes_rowC { margin-top : 35px; }
 
 
 

@@ -1,9 +1,8 @@
-#discountsC {
-    margin-top : 20px;
+div#mainC div#content {
+    padding : 10px 30px;
 }
 
 #discountsC h1 {
-
     padding : 20px 0 50px 0;
     font-size : 2em;
     text-align : center;
@@ -41,20 +40,10 @@
 
 /* END Sprites */
 
-#mainC img#top {
-    height : 102px;
-    background : url(/images/page_banners/seller-listing-register-thank-you.png) no-repeat scroll 0px 0px transparent;
-}
-.box_contentC {
-    padding-left : 33px;
-    padding-right : 33px;
-}
+
 #thanksC {
     padding-top : 21px;
     padding-bottom : 10px;
-}
-#discountsC .gutter {
-    padding : 36px 30px 36px 50px;
 }
 div#discountsC h4 {
     font-size : .95em;
@@ -76,22 +65,3 @@ div#discountsC p {
     font-size : .9em;
 }
 
-/* shared quotes partial */
-div#discountsC #quotes_rowC { margin : 0 0 0 15px; }
-#quotes_rowC p {
-    font-size : .85em;
-    line-height : 1.05em;
-    color : #888;
-    margin-bottom : 5px;
-}
-
-#other_others_quote {
-    background : url(/images/sprites/home.png) no-repeat scroll 0px -138px transparent;
-    height : 24px;
-    width : 329px;
-}
-#top_pick_quote {
-    background : url(/images/sprites/home.png) no-repeat scroll -330px -138px transparent;
-    height : 24px;
-    width : 341px;
-}
