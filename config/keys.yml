@@ -119,10 +119,10 @@ production:
     linkedin:
       base: 'http://www.linkedin.com/shareArticle'
     facebook:
-      app_name: ynkr
-      app_url: 'http://www.ynkr.org/'
-      app_id: '138541152866086'
-      app_secret: '07b63899d7c2257b53a560f8d76866e9'
+      app_name: eHouseOffers
+      app_url: 'http://www.ehouseoffers.com/'
+      app_id: '188144401202780'
+      app_secret: '436466a049c719b784113559071152c6'
     salesforce:
       base: 'https://www.salesforce.com/services/Soap/u/10.0'
       username: 'ehouseoffers@28dev.com'
