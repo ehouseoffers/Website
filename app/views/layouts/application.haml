@@ -36,8 +36,13 @@
       %meta{:name => 'robots', :content => 'noydir,noodp'}
 
     = stylesheet_link_tag :defaults
+    - Rails.logger.info("+ Content_for :extra_css? -  = '#{content_for?(:extra_css)}'")
+    - Rails.logger.info("- Dump extra_css -- #{yield(:extra_css)}")
     = yield(:extra_css) if content_for?(:extra_css)
+
     = javascript_include_tag :defaults
+    - Rails.logger.info("+ Content_for :extra_js? -  = '#{content_for?(:extra_js)}'")
+    - Rails.logger.info("- Dump extra_js -- #{yield(:extra_js)}")
     = yield(:extra_js) if content_for?(:extra_js)
 
     :plain
