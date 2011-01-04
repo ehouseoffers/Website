@@ -28,7 +28,7 @@
 
   .field.half_height
     = f.label :teaser
-    = f.text_area :teaser
+    = f.text_field :teaser, :maxlength => 165, 'data-validation' => 'validate(required)'
 
   .field.yui3-g
     - if @spotlight.photo?

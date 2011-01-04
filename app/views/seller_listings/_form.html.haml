@@ -59,7 +59,8 @@
   jQuery.placefinder_by_zip_path = "#{placefinder_by_zip_path}";
 
   $(document).ready(function() {
-    $('input#seller_listing_user_first_name').focus();    
+    // the scope is specific to the home-offer-1 page
+    $('input#seller_listing_user_first_name', 'div#step_one_contentC').focus();
   });
 
 
