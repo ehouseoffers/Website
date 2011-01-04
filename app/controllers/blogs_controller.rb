@@ -10,6 +10,7 @@ class BlogsController < ApplicationController
   before_filter :set_seller_listing,    :only   => [:index, :show]
   before_filter :set_noindex,           :only   => [:index]
   before_filter :setup_for_blog_context
+  before_filter :ensure_full_path_name, :only   => [:index]
 
   def index
     @blogs = Blog.where("context = ?", @context).paginate :page => params[:page], :order => 'created_at desc', :per_page => 5

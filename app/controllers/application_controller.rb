@@ -39,9 +39,10 @@ class ApplicationController < ActionController::Base
     end
     
     rel_path = case action.to_s.intern
-    when :index, :create, :delete then send("#{context.pluralize}_path")
-    when :new, :edit              then send("#{action.to_s}_#{context.singularize}_path")
-    when :show, :update           then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
+    when :index           then "/#{Blog.translate_context_to_route(obj.context)}"
+    when :create, :delete then send("#{context.pluralize}_path")
+    when :new, :edit      then send("#{action.to_s}_#{context.singularize}_path")
+    when :show, :update   then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
     end
 
     full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
@@ -62,6 +63,14 @@ class ApplicationController < ActionController::Base
   # See check for @noindex in application.haml for relevance
   def set_noindex
     @noindex = params[:page].to_i>1
+  end
+
+  def ensure_full_path_name
+    if request.fullpath.match(/^\/[trg]$/)
+      redirect_to "/#{Blog.translate_context_to_route(@context)}", :status => '301'
+    elsif request.fullpath.match(/^\/s$/)
+      redirect_to "/real-estate-spotlight", :status => '301'
+    end
   end
 
   # Rules
