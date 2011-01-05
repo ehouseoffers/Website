@@ -5,21 +5,19 @@
 
 = admin_area do
   = link_to "Create New Spotlight", new_spotlight_path
-  - if @spotlight.present?
-    \| 
-    = link_to "Edit Spotlight", edit_spotlight_path(@spotlight) 
+  \| 
+  = link_to "Edit Spotlight", edit_spotlight_path(@spotlight) 
+  \| 
+  = link_to 'Delete', spotlight_path(@spotlight.id), :confirm => 'Are you sure?', :method => :delete
+
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, spotlights_path], [@spotlight.title, nil]]
 
 %div#spotlight_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
-    - if !@spotlight.present?
-      %p.sorry_no_results
-        = "Sorry, but no spotlights are available right now#{params[:page].present? ? ' for this page.' : '.'}"
-    - else
-      = render :partial => "spotlights/show/spotlight", :object => @spotlight
-      %hr
-      = render :partial => 'shared/boxed_resource_list', :locals => {:title => 'Other Spotlights', :collection => @other_spotlights}
+    = render :partial => "spotlights/show/spotlight", :object => @spotlight
+    %hr
+    = render :partial => 'shared/boxed_resource_list', :locals => {:title => 'Other Spotlights', :collection => @other_spotlights}
 
   %div#right_col.yui3-u-7-24
     = render :partial => "shared/seller_signup"

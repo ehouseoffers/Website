@@ -1,8 +1,16 @@
 class ApplicationController < ActionController::Base
   protect_from_forgery
 
+  rescue_from ActiveRecord::RecordNotFound, :with => :render_404
+
   # make these available to the views
   helper_method :active_section?, :construct_blog_path, :encrypt, :decrypt
+
+  def render_404
+    @frame = nil
+    @active_section = nil
+    render :template => 'shared/exceptions/404.haml', :status => '404'
+  end
 
   def layout
     request.xhr? ? false : 'application'
@@ -40,9 +48,9 @@ class ApplicationController < ActionController::Base
     
     rel_path = case action.to_s.intern
     when :index           then "/#{Blog.translate_context_to_route(obj.context)}"
-    when :create, :delete then send("#{context.pluralize}_path")
+    when :create          then send("#{context.pluralize}_path")
     when :new, :edit      then send("#{action.to_s}_#{context.singularize}_path")
-    when :show, :update   then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
+    when :show, :update, :delete then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
     end
 
     full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path

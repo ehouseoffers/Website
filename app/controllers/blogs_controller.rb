@@ -49,6 +49,8 @@ class BlogsController < ApplicationController
 
   def show
     @blog = Blog.find_by_title_for_url(params[:id]) || Blog.find_by_id(params[:id])
+    raise ActiveRecord::RecordNotFound unless @blog.present?
+
     @other_blogs = Blog.where("context = ? and id != '?'", @context, @blog.id).limit(9).order('created_at desc')
 
     respond_to do |format|
@@ -86,8 +88,9 @@ class BlogsController < ApplicationController
   end
 
   def destroy
-    flash[:error] = 'Sorry, we do not destroy blog entries.'
-    redirect_to :back
+      blog = Blog.find_by_title_for_url(params[:id]) || Blog.find_by_id(params[:id])
+      return_path = redirect_to(construct_blog_path(blog, :index))
+      blog.destroy
   end
 
   def email_image

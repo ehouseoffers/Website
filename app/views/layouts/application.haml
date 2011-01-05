@@ -38,7 +38,7 @@
     = stylesheet_link_tag :defaults
     = yield(:extra_css) if content_for?(:extra_css)
 
-    = javascript_include_tag :defaults
+    = javascript_include_tag :defaults, 'jquery.growl'
     = yield(:extra_js) if content_for?(:extra_js)
 
     :plain

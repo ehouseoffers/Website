@@ -20,6 +20,8 @@ class SpotlightsController < ApplicationController
 
   def show
     @spotlight = Spotlight.find_by_title_for_url(params[:id]) || Spotlight.find_by_id(params[:id])
+    raise ActiveRecord::RecordNotFound unless @spotlight.present?
+
     @other_spotlights = Spotlight.where("id != ?", @spotlight.id).limit(9).order('created_at desc')
   
     respond_to do |format|
