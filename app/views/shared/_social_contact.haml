@@ -84,7 +84,7 @@
         dataType: 'json',
         success : function (data, status, xhr) {
           $('.x_cform_trigger').trigger('click');
-          $('div#form_reportC').html('<strong>Thank you</strong>. Your email has been sent.');
+          $('div#form_reportC').html('<b>Thank you</b>. Your email has been sent.');
         },
         error: function (xhr, status, error) {
           $('div#form_reportC').html('An error occurred. Please try again later or email us directly at <a href="mailto:info@ehouseoffers.com">info@ehouseoffers.com</a>');

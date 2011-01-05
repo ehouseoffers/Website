@@ -17,26 +17,26 @@ class ContactController < ApplicationController
   def create
     @message = Message.new(params[:message])
 
+    # 1. If signed in, the contact form didn't give them these fields, so fill them in now since Message requires them
+    if user_signed_in?
+      @message.email = current_user.email
+      @message.name = current_user.name
+    end
+
     success = false
     if @message.valid?
-      # 1. If signed in, the contact form didn't give them these fields, so fill them in now since Message requires them
-      if user_signed_in?
-        @message.email = current_user.email
-        @message.name = current_user.name
-      end
-
       # 2. Send us their contact email
-      ContactMailer.send_us_their_email(@message).deliver
+      Mailer.send_us_their_email(@message).deliver
 
       # 3. Send the user an email letting them know we received their contact
-      ContactMailer.user_contact_confirmation(@message).deliver    
+      Mailer.user_contact_confirmation(@message).deliver
 
       success = true
     end
 
     respond_to do |format|
       if success
-        format.html { redirect_to contact_path(:homeoffer3) }
+        format.html { redirect_to :back }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
         format.json { render :json => @message.to_json }
       else

@@ -1,7 +1,2 @@
-%h1= "Hello #{@message.name},"
-
-%p
-  We have received your email and will be responding as quickly as we can. Thank you for contacting us!
-
-%p
-  = link_to 'eHouseOffers.com', root_url
+- body = render :partial => 'user_contact_confirmation', :locals => {:message => @message}
+= render :partial => 'html_email_template', :locals => {:body => body}

@@ -1,4 +1,1 @@
-= "A Message from #{@message.name} <#{@message.email}>,"
-
-%p{:style => 'border:solid 1px #123;background-color:#dadada;padding:10px;white-space:pre'}
-  = @message.body
+= render :partial => 'html_email_template', :locals => {:body => @message.body}

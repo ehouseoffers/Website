@@ -1,5 +1,5 @@
-# Tableless Model : http://media.railscasts.com/videos/219_active_model.mov
-
+# Tableless model to allow us to construct messages to mail and run basic validations on them.
+# For more on tableless models, see http://media.railscasts.com/videos/219_active_model.mov
 class Message
   include ActiveModel::Validations
   include ActiveModel::Conversion
