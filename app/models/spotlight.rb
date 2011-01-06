@@ -19,7 +19,7 @@
 # +----------------------+--------------+------+-----+---------+----------------+
 class Spotlight < ActiveRecord::Base
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :id, :title, :title_for_url, :teaser, :about_title, :interview_title, :interview_subtitle,
+  attr_accessible :id, :title, :title_for_url, :teaser, :content, :about_title, :interview_title, :interview_subtitle,
                   :social_profile_title, :photo
 
   has_many :qas,             :foreign_key => "context_id", :conditions => "context='Spotlight'", :order => 'created_at asc'

@@ -4,8 +4,5 @@
     = render :partial => 'shared/blogs/share_article_on', :locals => {:object => spotlight}
 
   %h2.green= spotlight.title
-  %p= spotlight.teaser.truncate(165)
-
-  
-
+  %p= raw spotlight.content
 
