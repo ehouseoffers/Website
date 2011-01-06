@@ -2,8 +2,6 @@ class Mailer < ActionMailer::Base
   include ActiveModel::Validations
   include ApplicationHelper
   
-  # layout 'email'
-
   # Attachments
   # attachments["emily.jpg"] = File.read("#{Rails.root}/public/images/e.jpg")  
 
