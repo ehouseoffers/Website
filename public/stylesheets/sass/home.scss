@@ -58,9 +58,13 @@ p {
 #homeC {
     margin-top : 16px;
 }
+#homeC div#hs_one {
+    width : 2%;
+}
 #homeC #welcome_messageC {
-    width  : 54%;
+    width  : 52%;
     height : 437px;
+    padding-left : 20px;
 }
 #homeC #how_video_frame {
     margin-bottom : 1.5em;

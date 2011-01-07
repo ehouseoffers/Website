@@ -1,17 +1,23 @@
 #how_video_frame  {
-    @include sprite('how_it_works_video',0,0,335,415);
+    @include sprite('how_it_works_video',0,0,335,418);
     position : relative;
 }
 #how_preview {
-    @include sprite('how_it_works_video',-416,0,300,395);
+    @include sprite('how_it_works_video',-418,0,300,398);
     position : absolute;
     top  : 10px;
     left : 10px;
 }
 #how_play_button_hover {
-    @include sprite('how_it_works_video',-812,0,104,104);
+    @include sprite('how_it_works_video',-816,0,104,104);
     position : absolute;
     top  : 94px;
     left : 54px;
     display : none;
+}
+#screen {
+    position : relative;
+    z-index : 99;
+    top  : 10px;
+    left : 10px;
 }
