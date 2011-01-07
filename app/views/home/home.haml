@@ -27,18 +27,18 @@
   %div#resources_rowC
     %div.yui3-u-3-8.yui3-g
       - tips_icon = image_tag '/images/transparent.gif', :id => 'tips_for_selling_icon', :alt => 'Tips for Selling'
-      = link_to tips_icon, about_path()
+      = link_to tips_icon, guides_seo_path
 
       %div#sv_contentC.bottom_contentC
         %h1
           - tips_img = image_tag '/images/transparent.gif', :id => 'tips_for_selling_title', :alt => 'Tips for Selling'
-          = link_to tips_img, about_path()
+          = link_to tips_img, guides_seo_path
 
         %p
-          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
+          Check out our free guides for best practices for home sellers seeking a fast home offer.
 
         %p
-          = link_to 'See Some Tips', about_path()
+          = link_to 'See Some Tips', guides_seo_path
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'
 
       
@@ -58,16 +58,16 @@
 
     %div.yui3-u-7-24
       - ricon_img = image_tag '/images/transparent.gif', :id => 'seller_resources_icon', :class => 'sprite', :alt => 'Seller Resources'
-      = link_to ricon_img, guides_path()
+      = link_to ricon_img, guides_seo_path()
       %div#rs_contentC.bottom_contentC
         %h1
           - rtitle_img = image_tag '/images/transparent.gif', :id => 'seller_resources_title', :class => 'sprite', :alt => 'Seller Resources'
-          = link_to rtitle_img, guides_path()
+          = link_to rtitle_img, guides_seo_path()
         %p
           Our free guides give home sellers the tools they need to make informed home sale decisions
 
         %p
-          = link_to 'Read Seller Guides', guides_path()
+          = link_to 'Read Seller Guides', guides_seo_path()
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'            
 
 
