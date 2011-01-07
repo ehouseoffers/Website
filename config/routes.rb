@@ -62,13 +62,13 @@ Ehouseoffers::Application.routes.draw do
   match '/become-a-home-buyer', :as => :become_a_buyer, :to => 'home#become_a_buyer'
   match '/we-buy-houses',       :as => :about,          :to => 'home#about'
   match '/terms-of-service',    :as => :terms,          :to => 'home#terms'
-
-  match '/generate-url-friendly-string', :as => 'generate_url_friendly_string', :to => 'home#generate_url_friendly_string'
-  match '/what-we-do', :as => 'what_we_do', :to => 'home#what_we_do'
+  match '/what-we-do',          :as => 'what_we_do',    :to => 'home#what_we_do'
 
   root :to => 'home#home'
   match '/', :to => 'home#home', :as => 'home_seo'
 
+
   # Ajax Only
   match '/pfz', :to => 'ajax#placefinder_by_zip', :as => 'placefinder_by_zip'
+  match '/generate-url-friendly-string', :as => 'generate_url_friendly_string', :to => 'home#generate_url_friendly_string'
 end

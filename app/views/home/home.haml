@@ -5,16 +5,17 @@
   extra_css('home')
 
 %div#homeC.yui3-g
-  %div#welcome_messageC.yui3-u-3-5
-    = image_tag '/images/transparent.gif', :id => 'satisfied_sellers', :class => 'sprite', :alt => 'Tom &amp; Sharon: Satisfied Home Sellers'
-    %div#welcome_message_opacity &nbsp;
+  %div.yui3-u-1-24 &nbsp;
+  %div#welcome_messageC.yui3-u-13-24
+
+    = render :partial => 'how_it_works_video'
+
     %div#welcome_message
       %h1
         = image_tag '/images/transparent.gif', :id => 'welcome_title', :class => 'sprite', :alt => h1_title
       %p
         At eHouseOffers you’ll find resources for home sellers, information on real estate trends & a community of
         professional home buyers.
-
 
   %div#cash_offer_formC.yui3-u-2-5
     = image_tag '/images/transparent.gif', :id => 'get_cash_offer', :class => 'sprite', :alt => 'Get a cash offer on your house today!'
@@ -25,18 +26,19 @@
 
   %div#resources_rowC
     %div.yui3-u-3-8.yui3-g
-      - video_img = image_tag '/images/transparent.gif', :id => 'what_we_do_video_preview', :class => 'sprite', :alt => 'Video Preview'
-      = what_we_do_modal(video_img)
+      - tips_icon = image_tag '/images/transparent.gif', :id => 'tips_for_selling_icon', :alt => 'Tips for Selling'
+      = link_to tips_icon, about_path()
+
       %div#sv_contentC.bottom_contentC
         %h1
-          - seller_vid = image_tag '/images/transparent.gif', :id => 'what_we_do_title', :class => 'sprite', :alt => 'Sellers Video'
-          = what_we_do_modal(seller_vid)
+          - tips_img = image_tag '/images/transparent.gif', :id => 'tips_for_selling_title', :alt => 'Tips for Selling'
+          = link_to tips_img, about_path()
 
         %p
-          Click on the above video above to learn who we are and find out how we can help you sell your house.
+          Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore
 
         %p
-          = what_we_do_modal('Watch Demo Video')
+          = link_to 'See Some Tips', about_path()
           = image_tag '/images/transparent.gif', :class => 'sprite rArr'
 
       
