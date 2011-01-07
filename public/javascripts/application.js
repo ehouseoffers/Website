@@ -17,6 +17,12 @@ $(document).ready(function() {
                 toolbar : 'simple',
                 filebrowserUploadUrl : '/admin/uploaded_photos'
             });
+
+            // attach tooltips to anything with a data-example
+            $('input[data-example], textarea[data-example]').tooltip({
+                eventTrigger : 'focus',
+                content      : 'data-example'
+            });
         } catch(e) {}
     }
 
@@ -61,11 +67,7 @@ $(document).ready(function() {
         return false;
     });
     
-    // attach tooltips to anything with a data-example
-    $('input[data-example], textarea[data-example]').tooltip({
-      eventTrigger : 'focus',
-      content      : 'data-example'
-    });
+ 
 
 
 });
