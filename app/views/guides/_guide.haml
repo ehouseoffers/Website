@@ -7,8 +7,9 @@
     %h1.green
       = link_to raw(guide.title), construct_blog_path(guide, :show)
 
-    %p.grey85.teaser
-      = guide.teaser.truncate(165)
+    - unless guide.teaser.nil?
+      %p.grey85.teaser= guide.teaser.truncate(165)
+
 
     = link_to image_tag('/images/transparent.gif', :class => 'read_full_article', :alt => 'Read Full Article'), construct_blog_path(guide, :show)
     

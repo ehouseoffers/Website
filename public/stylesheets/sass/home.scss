@@ -2,7 +2,7 @@
 @import "form_validations";
 @import "quotes_row";
 @import "security";
-
+@import "how_it_works_video";
 
 p {
     font-size : .85em;
@@ -10,43 +10,43 @@ p {
     color : #676767;
     margin-bottom : 5px;
 }
-
-#what_we_do_video_preview  {
-    @include sprite('home',0,-2,106,119);
-    margin-top : 4px;
+    
+#tips_for_selling_icon  {
+    @include sprite('home',-4,0,88,107);
+    margin : 4px 0 0 20px;
     float : left;
 }
 #seller_resources_icon {
-    @include sprite('home',-119,-2,85,88);
+    @include sprite('home',-119,0,85,88);
     margin : 24px 0 0 -7px;
     float : left;
 }
 #our_home_buyers_icons {
-    @include sprite('home',-214,-2,83,87);
+    @include sprite('home',-214,0,83,87);
     margin : 13px 0 0 -9px;
     float : left;
 }
 #get_cash_offer {
-    @include sprite('home',-300,-2,77,288);
-    margin : 1px 0 11px -2px;
+    @include sprite('home',-300,0,77,288);
+    margin : 1px 0 11px -1px;
 }
 #get_cash_offer_btn {
-    @include sprite('home',-121,-89,48,222);
+    @include sprite('home',0,-89,48,222);
     width  : 222px !important;
     border : none !important;
 }
 #welcome_title {
-    @include sprite('home',0,-139,17,256);
+    @include sprite('home',-223,-85,17,256);
 }
-#what_we_do_title {
-    @include sprite('home',-509,-113,15,117);
+#tips_for_selling_title {
+    @include sprite('home',-385,-107,22,146);
 }
 #our_home_buyers_title {
-    @include sprite('home',-258,-139,21,157);
+    @include sprite('home',-223,-125,22,158);
     margin-top : 2px;
 }
 #seller_resources_title {
-    @include sprite('home',-345,-111,17,160);
+    @include sprite('home',-224,-106,17,160);
 }
 #other_others_quote {
     @include sprite('home',0,-138,24,329);
@@ -55,39 +55,17 @@ p {
     @include sprite('home',-330,-138,24,341);
 }
 
-
-
 #homeC {
     margin-top : 16px;
 }
 #homeC #welcome_messageC {
-    width  : 541px;
+    width  : 54%;
     height : 437px;
-    position : relative;
 }
-#welcome_messageC #satisfied_sellers {
-    @include sprite('satisfied_sellers',-9,0,437,541);
-    position : absolute;
-    top : 0;
-    left : 0;
-    z-index : 7;
+#homeC #how_video_frame {
+    margin-bottom : 1.5em;
 }
-#welcome_messageC div#welcome_message_opacity {
-    height : 122px;
-    width : 100%;
-    opacity : .9;
-    background-color : white;
-    position : absolute;
-    top : 315px;
-    z-index : 8;
-}
-#welcome_messageC div#welcome_message {
-    position : absolute;
-    top : 343px;
-    left : 55px;
-    z-index : 9;
-}
-/*div#welcome_message h1 {*/
+
 h1 {
     line-height : 1em;
     font-size : 1.5em;
@@ -95,14 +73,13 @@ h1 {
     color : #f89a36;
     letter-spacing : -.3px;
 }
+div#welcome_message {
+    width : 85%;
+}
 div#welcome_message p {
-/*    color : #555555;*/
     font-size : .8em;
     line-height : 1.4em;
     margin-top : .3em;
-}
-#homeC #cash_offer_formC {
-    margin-left : 13px;
 }
 form#new_seller_listing div.field,
 form#new_seller_listing .field {
