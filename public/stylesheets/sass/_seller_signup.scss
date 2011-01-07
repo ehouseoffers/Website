@@ -6,7 +6,7 @@
     margin-bottom : 50px; /* to account for how we placed the #security_iconsC (see below) */
 }
 .seller_signup_boxC div.gutter {
-    padding : 15px 22px 5px;    
+    padding : 15px 22px 15px;
 }
 .seller_signup_boxC p,
 .seller_signup_boxC strong {
@@ -62,7 +62,7 @@ span.shared_seller_signup input[type="image"] {
 
 span.shared_seller_signup #security_iconsC {
     float      : left; /* to take it out of the flow */
-    margin-top : 17px; /* to place it below the form#new_seller_listing box */
+    margin-top : 28px; /* to place it below the form#new_seller_listing box */
 }
 span.shared_seller_signup .submitC > #securityC {
     top : -10px;
