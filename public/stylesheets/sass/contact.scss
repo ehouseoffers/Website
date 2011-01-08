@@ -1,3 +1,4 @@
+@import "helpers";
 @import "seller_signup";
 @import "form_validations";
 @import "form_basics";
@@ -5,3 +6,13 @@
 
 .social_contactC { font-size : .85em; }
 
+#new_contactC #left_col {
+    color : $grey;
+}
+#new_contactC #left_col > h1 {
+    margin-bottom : 1em;
+}
+#new_contactC #left_col > p {
+    font-size : .95em;
+    margin-bottom : 1.5em;
+}

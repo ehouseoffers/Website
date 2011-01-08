@@ -3,12 +3,16 @@
 
 -#= render "shared/breadcrumb", :crumbs => [[:home, root_path], [:contact_us, nil]]
 
-%div.xs_two_col.yui3-g
+%div#new_contactC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
+    %h1
+      Want to become a home buyer?
+
+    %p
+      Interested in becoming a buyer with eHouseOffers? Then give us a call at 866.384.9068 or drop us a line.
+
     = render :partial => "contact/form", :locals => {:message => @message}
 
   %div#right_col.yui3-u-7-24
-    = render :partial => "shared/seller_signup"
-    %hr.space
-    = render :partial => "shared/social_contact"
+    = render :partial => "shared/social_contact", :locals => {:include_contact_form => false}
 

@@ -21,6 +21,7 @@ class HomeController < ApplicationController
 
   def become_a_buyer
     @message = Message.new
+    render :template => 'contact/new'
   end
   
   def generate_url_friendly_string
