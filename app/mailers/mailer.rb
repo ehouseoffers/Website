@@ -36,6 +36,8 @@ class Mailer < ActionMailer::Base
          :subject => "Offer on your Home in #{seller_listing.address.city}"
   end
   
+  # Send an email to a new seller. This is the action to take when salesforce_job.perform successfully ties a
+  # seller to a buyer in salesforce and creates the new lead for that seller
   def new_seller_confirmation(seller_listing)
     @seller_listing = seller_listing
     @tracking_params = {:utm_source => 'seller', :utm_medium => 'email', :utm_campaign => 'offer+request+confirmation'}
@@ -43,6 +45,17 @@ class Mailer < ActionMailer::Base
          :from    => 'Chris Richter <christopher@ehouseoffers.com>',
          :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com, chris@ehouseoffers.com',
          :subject => 'Home Offer Request Confirmation'
+  end
+
+  # Send an email to all buyers associated with a zip code for a recently added seller. This action is a direct result
+  # of salesforce_job.perform completing successfully
+  def buyer_lead_notification(recipients, seller_listing)
+    @seller_listing = seller_listing
+    @tracking_params = {:utm_source => 'buyer', :utm_medium => 'email', :utm_campaign => 'lead+notification'}
+    mail :to      => recipients,
+         :from    => 'Motivated Seller <motivated-seller@ehouseoffers.com>',
+         :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
+         :subject => "eHouseOffers Motivated Seller - #{seller_listing.user.name}"
   end
 end
 

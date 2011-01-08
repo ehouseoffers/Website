@@ -1,0 +1,25 @@
+:ruby
+  closing = closing.nil? || closing.blank? ? nil : closing
+  from = from.nil? || from.blank? ? nil : from
+  from_byline = from_byline.nil? || from_byline.blank? ? nil : from_byline
+
+=""
+- if closing.present?
+  = closing
+
+- if from.present?
+  = from
+- else
+  eHouseOffers
+
+- if from_byline.present?
+  = from_byline
+- else
+  = root_url
+
+=""
+1752 NW Market St. #520 
+Seattle, WA 
+98107
+=""
+=""

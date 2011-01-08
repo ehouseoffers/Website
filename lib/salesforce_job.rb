@@ -42,26 +42,28 @@ class SalesforceJob < Struct.new(:seller_listing_id)
     lead.push(:SellingReason__c,   sl.selling_reason)             if sl.selling_reason.present?
 
     # Who owns this zip?
-    account_id = SalesforceJob.account_owner_for_zip(binding, sl)
-    lead.push(:Owned_by_Account__c, account_id) if account_id.present?
+    owner_resp = SalesforceJob.account_owner_for_zip(binding, sl)
+    if owner_resp.ok?
+      account_id = owner_resp.salesforce_account_id
+      lead.push(:Owned_by_Account__c, account_id)
 
-    # Create Lead!
-    lead = binding.create :sObject => lead
-    resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
+      # Create Lead!
+      lead = binding.create :sObject => lead
+      create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
 
-    if resp.ok?
-      sl.salesforce_lead_id = resp.salesforce_lead_id
-      sl.salesforce_lead_owner_id = account_id
-      sl.save!
+      if create_resp.ok?
+        sl.salesforce_lead_id = resp.salesforce_lead_id
+        sl.salesforce_lead_owner_id = account_id
+        sl.save!
 
-      # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
-      # seller listing confirmation email according to the specs outlined here:
-      #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
-      # Because we already waited to process this (see seller_listings_controller.create), we send this email
-      # out without delay despite what the ticket says.
-      Mailer.new_seller_confirmation(sl)
-    else
-      raise "#{resp.code} -- #{resp.error}"
+        # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
+        # seller listing confirmation email according to the specs outlined here:
+        #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
+        # Because we already waited to process this (see seller_listings_controller.create), we send this email
+        # out without delay despite what the ticket says. We just use delayed job to make it it's own process
+        DelayedJobs::Salesforce.new_seller_confirmation(seller_listing)
+        DelayedJobs::Salesforce.buyer_lead_notification(seller_listing, owner_resp.buyer_emails)
+      end
     end
   end
   
@@ -69,13 +71,12 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   
   # search salesforce accounts for somebody who owns a given zip
   def self.account_owner_for_zip(binding, seller_listing)
-    results = binding.search :searchString => "find {*#{seller_listing.address.zip}*} in postal_codes fields returning account(id)"
-    resp = SalesforceJob.munge_search_results(results, seller_listing)
-    resp.ok? ? resp.salesforce_account_id : null
+    results = binding.search :searchString => "find {*#{seller_listing.address.zip}*} in postal_codes fields returning account(id, email__c)"
+    SalesforceJob.munge_search_results(results, seller_listing)
   end
 
   # 1) if the search returned a :Fault, log fatal
-  # 2) if no record was found, send email to seller
+  # 2) if no record was found, raise RecordNotFound and send email to seller
   # 3) if multiple buyers were found for a zip, pick the first and log a warn
   # 4) if we can't make sense of the response, log fatal and assign to default buyer account
   def self.munge_search_results(resp, seller_listing)
@@ -88,12 +89,19 @@ class SalesforceJob < Struct.new(:seller_listing_id)
 
         records = resp[:searchResponse][:result][:searchRecords]
         if records.is_a?(Array)
-          records_str = records.collect{|r| r[:record][:Id]}.join(', ')
-          record_id = records.first[:record][:Id]
-          Rails.logger.warn("More than one account has claimed area code #{seller_listing.address.zip}. The following Salesforce Account ids own this zip: #{records_str}. Picking the first entry (#{record_id}) to assign lead to.")
-          OpenStruct.new('ok?' => true, :salesforce_account_id => record_id)
-        elsif record_id = records[:records][:Id]
-          OpenStruct.new('ok?' => true, :salesforce_account_id => record_id)
+          emails = records.collect{|r| r[:record][:Email__c]}
+          owner = records.first[:record]
+          Rails.logger.warn("More than one account has claimed area code #{seller_listing.address.zip}. The following Salesforce Account emails own this zip: #{emails.join(',')}. Picking the first entry (#{owner[:Id]}) to assign lead to.")
+          OpenStruct.new('ok?' => true,
+                         :salesforce_account_id => owner[:Id],
+                         :salesforce_account_email => owner[:Email__c],
+                         :buyer_emails => emails)
+
+        elsif record_id = records[:record][:Id]
+          OpenStruct.new('ok?' => true,
+                         :salesforce_account_id => record_id,
+                         :salesforce_account_email => records[:record][:Email__c],
+                         :buyer_emails => records[:record][:Email__c].to_a)
         else
           raise 'Unknown data structure'
         end
@@ -101,8 +109,11 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         e.setup_no_buyer_for_zip_email(seller_listing)
         OpenStruct.new('ok?' => false, :error => "Salesforce buyer account not found for zip #{seller_listing.address.zip}")
       rescue => e
-        Rails.logger.fatal("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
-        OpenStruct.new('ok?' => false, :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID)
+        Rails.logger.warn("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
+        OpenStruct.new('ok?' => true,
+                       :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID,
+                       :salesforce_account_email => KEYS['smtp']['intercept_recipient'],
+                       :buyer_emails => KEYS['smtp']['intercept_recipient'])
       end
     end
   end

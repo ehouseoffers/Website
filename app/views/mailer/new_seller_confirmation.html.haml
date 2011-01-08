@@ -1,2 +1,2 @@
 - body = render :partial => 'new_seller_confirmation'
-= render :partial => 'html_email_template', :locals => {:body => body}
+= render :partial => 'mailer/layouts/html_template', :locals => {:body => body, :from => 'Chris', :from_byline => '(&amp; the eHouseOffers Team)'}

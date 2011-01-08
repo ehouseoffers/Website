@@ -1,4 +1,4 @@
-= "Hi #{@seller_listing.user.first_name}"
+= "Hi #{@seller_listing.user.first_name},"
 = ''
 Thanks for choosing eHouseOffers. Your request for a home offer has been processed and a qualified local home buyer will contact you within 48 hours.
 = ''
@@ -6,5 +6,4 @@ In the meantime, if you have any questions feel free to contact me directly at a
 = ''
 We look forward to speaking with you,
 = ''
-\- Chris
-(& the eHouseOffers Team)
+= render :partial => 'mailer/layouts/text_footer', :locals => {:from => 'Chris', :from_byline => '(& the eHouseOffers Team)'}
