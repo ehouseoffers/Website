@@ -31,9 +31,18 @@ class Mailer < ActionMailer::Base
     @seller_listing = seller_listing
     @tracking_params = {:utm_source => 'seller', :utm_medium => 'email', :utm_campaign => 'no+buyer+in+area'}
     mail :to      => "#{seller_listing.user.name} <#{seller_listing.user.email}>",
-         :from    => 'christopher@ehouseoffers.com',
+         :from    => 'Chris Richter <christopher@ehouseoffers.com>',
          :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
          :subject => "Offer on your Home in #{seller_listing.address.city}"
+  end
+  
+  def new_seller_confirmation(seller_listing)
+    @seller_listing = seller_listing
+    @tracking_params = {:utm_source => 'seller', :utm_medium => 'email', :utm_campaign => 'offer+request+confirmation'}
+    mail :to      => "#{seller_listing.user.name} <#{seller_listing.user.email}>",
+         :from    => 'Chris Richter <christopher@ehouseoffers.com>',
+         :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com, chris@ehouseoffers.com',
+         :subject => 'Home Offer Request Confirmation'
   end
 end
 

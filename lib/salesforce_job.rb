@@ -53,6 +53,13 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       sl.salesforce_lead_id = resp.salesforce_lead_id
       sl.salesforce_lead_owner_id = account_id
       sl.save!
+
+      # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
+      # seller listing confirmation email according to the specs outlined here:
+      #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
+      # Because we already waited to process this (see seller_listings_controller.create), we send this email
+      # out without delay despite what the ticket says.
+      Mailer.new_seller_confirmation(sl)
     else
       raise "#{resp.code} -- #{resp.error}"
     end
