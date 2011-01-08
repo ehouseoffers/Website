@@ -1,6 +1,7 @@
 class Mailer < ActionMailer::Base
   include ActiveModel::Validations
   include ApplicationHelper
+  include MailerHelper
   
   # Attachments
   # attachments["emily.jpg"] = File.read("#{Rails.root}/public/images/e.jpg")  
@@ -21,6 +22,18 @@ class Mailer < ActionMailer::Base
     mail :to      => message.email,
          :from    => "eHouseOffers <#{KEYS['smtp']['noreply']}>",
          :subject => @title
+  end
+
+  # - Setup via delayed_jobs.
+  # - Send email to a new seller listing (customer) who wants to sell a home in an zip code for which
+  #   we do NOT have a buyer
+  def no_sforce_buyer_for_zip(seller_listing)
+    @seller_listing = seller_listing
+    @tracking_params = {:utm_source => 'seller', :utm_medium => 'email', :utm_campaign => 'no+buyer+in+area'}
+    mail :to      => "#{seller_listing.user.name} <#{seller_listing.user.email}>",
+         :from    => 'christopher@ehouseoffers.com',
+         :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
+         :subject => "Offer on your Home in #{seller_listing.address.city}"
   end
 end
 

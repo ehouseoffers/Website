@@ -1,0 +1,19 @@
+%h1
+  = "Hi #{@seller_listing.user.first_name}"
+
+%p
+  = "Unfortunately, we don’t have a qualified buyer in #{@seller_listing.address.city} at this time. We have been interviewing buyers but haven’t yet found anyone who meets the qualifications for financing as well as experience."
+
+%p
+  As a courtesy, you will be updated as soon as a buyer is approved in your area. In the meantime, we hope that you will find our home seller guides on our website useful in achieving a sound and solid offer on your home.
+
+%p
+  Best Regards,
+
+%p
+  Chris
+
+%hr
+
+%p
+  = "If you're looking for financial services we recommend the folks at Trinity Credit Services. Numerous home sellers in #{@seller_listing.address.state} (and around the country) have used them with great success."

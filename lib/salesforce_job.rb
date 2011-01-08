@@ -42,18 +42,17 @@ class SalesforceJob < Struct.new(:seller_listing_id)
     lead.push(:SellingReason__c,   sl.selling_reason)             if sl.selling_reason.present?
 
     # Who owns this zip?
-    account_id = SalesforceJob.account_owner_for_zip(binding, sl.address.zip)
+    account_id = SalesforceJob.account_owner_for_zip(binding, sl)
     lead.push(:Owned_by_Account__c, account_id) if account_id.present?
 
     # Create Lead!
     lead = binding.create :sObject => lead
-    resp = SalesforceJob.munge_create_results(lead)
+    resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
 
     if resp.ok?
       sl.salesforce_lead_id = resp.salesforce_lead_id
       sl.salesforce_lead_owner_id = account_id
       sl.save!
-      Rails.logger.info("+ SUCCESS -- For seller listing #{sl.id}, a salesforce lead was created with id #{sl.salesforce_lead_id} and is owned by the salesforce account with id #{sl.salesforce_lead_owner_id}.")
     else
       raise "#{resp.code} -- #{resp.error}"
     end
@@ -62,57 +61,73 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   # private
   
   # search salesforce accounts for somebody who owns a given zip
-  def self.account_owner_for_zip(binding, zip)
-    results = binding.search :searchString => "find {*#{zip}*} in postal_codes fields returning account(id)"
-    resp = SalesforceJob.munge_search_results(results, zip)
+  def self.account_owner_for_zip(binding, seller_listing)
+    results = binding.search :searchString => "find {*#{seller_listing.address.zip}*} in postal_codes fields returning account(id)"
+    resp = SalesforceJob.munge_search_results(results, seller_listing)
     resp.ok? ? resp.salesforce_account_id : null
   end
 
-  def self.munge_search_results(resp, zip)
+  # 1) if the search returned a :Fault, log fatal
+  # 2) if no record was found, send email to seller
+  # 3) if multiple buyers were found for a zip, pick the first and log a warn
+  # 4) if we can't make sense of the response, log fatal and assign to default buyer account
+  def self.munge_search_results(resp, seller_listing)
     if resp[:Fault].present?
+      Rails.logger.fatal("Salesforce search bombed for seller listing #{seller_listing.id} with: #{resp.inspect}")
       OpenStruct.new('ok?' => false, :code => resp[:Fault][:faultcode], :error => resp[:Fault][:faultstring])
     else
       begin
-        # If not records were returned, :result will be nil so this will raise an exception
+        raise RecordNotFound if resp[:searchResponse][:result].nil?
+
         records = resp[:searchResponse][:result][:searchRecords]
         if records.is_a?(Array)
           records_str = records.collect{|r| r[:record][:Id]}.join(', ')
           record_id = records.first[:record][:Id]
-          err = "More than one account has claimed area code #{zip}. The following Salesforce Account ids own this zip: #{records_str}. Picking the first entry (#{record_id}) to assign lead to."
-          Rails.logger.warn(":: WARN :: salesforce_job.munge_search_results -- #{err}")
+          Rails.logger.warn("More than one account has claimed area code #{seller_listing.address.zip}. The following Salesforce Account ids own this zip: #{records_str}. Picking the first entry (#{record_id}) to assign lead to.")
+          OpenStruct.new('ok?' => true, :salesforce_account_id => record_id)
+        elsif record_id = records[:records][:Id]
           OpenStruct.new('ok?' => true, :salesforce_account_id => record_id)
         else
-          OpenStruct.new('ok?' => true, :salesforce_account_id => records[:record][:Id])
+          raise 'Unknown data structure'
         end
+      rescue RecordNotFound => e
+        e.setup_no_buyer_for_zip_email(seller_listing)
+        OpenStruct.new('ok?' => false, :error => "Salesforce buyer account not found for zip #{seller_listing.address.zip}")
       rescue => e
-        Rails.logger.warn(":: Exception :: #{e.inspect}")
-        err = "Unknown data structure returned: #{resp.inspect} (#{e}). Assigning to default eHouse account."
-        Rails.logger.warn(":: WARN :: salesforce_job.munge_search_results -- #{err}")
-        OpenStruct.new('ok?' => true, :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID)
+        Rails.logger.fatal("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
+        OpenStruct.new('ok?' => false, :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID)
       end
     end
   end
 
-
-
   # munge the results of a salesforce object create() request. NOT very scalable at all!
-  def self.munge_create_results(resp)
-    if resp[:Fault].present?
-      OpenStruct.new('ok?' => false, :code => resp[:Fault][:detail][:faultcode], :error => lead[:Fault][:faultstring])
+  def self.munge_create_salesforce_lead_results(resp, seller_listing)
+    begin
+      if resp[:Fault].present?
+        Rails.logger.fatal("Salesforce was unable to create a new lead for seller listing #{seller_listing.id}. Response = #{resp.inspect}")
+        OpenStruct.new('ok?' => false, :code => resp[:Fault][:detail][:faultcode], :error => resp[:Fault][:faultstring])
 
-    elsif resp[:createResponse].present? && resp[:createResponse][:result].present?
-      result = resp[:createResponse][:result]
-      if result[:success].eql?("false")
-        err = result[:errors].inspect
-        Rails.logger.warn(":: WARN :: salesforce_job.munge_create_results -- #{err}")
-        OpenStruct.new('ok?' => false, :code => 'Unknown', :error => err)
-      else
-        OpenStruct.new('ok?' => result[:success], :salesforce_lead_id => result[:id])
+      else result = resp[:createResponse][:result]
+        if result[:success].eql?("false")
+          Rails.logger.fatal("Unable to create new salesforce lead for seller listing #{seller_listing.id}. Result = #{result.inspect}")
+          OpenStruct.new('ok?' => false, :code => 'Unknown', :error => result[:errors].inspect)
+        elsif id = result[:id]
+          OpenStruct.new('ok?' => result[:success], :salesforce_lead_id => id)
+        else
+          raise 'Unexpected data structure'
+        end
       end
-    else
-      err = "Unknown data structure returned: #{resp.inspect}"
-      Rails.logger.warn(":: WARN :: salesforce_job.munge_create_results -- #{err}")
-      OpenStruct.new('ok?' => false, :code => 'Unknown', :error => err)
+    rescue => e
+      Rails.logger.fata("Unknown response when attempting to munge salesforce lead creation results. Exception => #{e.inspect}. Response = #{resp.inspect}")
+      OpenStruct.new('ok?' => false, :code => 'Unknown', :error => 'Exception raised when trying to munge results')
+    end
+  end
+
+  class RecordNotFound < Exception
+    def setup_no_buyer_for_zip_email(seller_listing)
+      # No salesforce buyer for this zip code? Send out an email according to the following:
+      # https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_no_buyers_in_area.rtf
+      DelayedJobs::Salesforce.no_buyer_for_zip(seller_listing)
     end
   end
 end

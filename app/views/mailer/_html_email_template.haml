@@ -8,29 +8,40 @@
       img{border:none;}
       a{color:#8eae5b;}
       h1{color:#333;font-size:18px;margin:0 0 10px 0;}
-      p,pre{margin:0 0 10px 0;}
+      p{margin:0 0 10px 0;}
 
 %body{:style => 'padding:0;margin:0;'}
   %center
     %div{:style => 'width:620px;text-align:left;margin:20px 0 0 0;'}
-      = link_to image_tag("https://#{KEYS['host']}/images/email/ehouseoffers-logo.png", :alt => 'eHouseOffers.com: Professional Home Buyers'), root_url(:protocol => 'https')
+      - logo = image_tag("http://#{KEYS['host']}/images/email/ehouseoffers-logo.png", :alt => 'Professional Home Buyers: eHouseOffers.com')
+      = mailer_link(logo, root_url(:protocol => 'https'))
       %hr
       
-      %pre= body
+      %p= body
 
       %strong eHouseOffers
       %br
       %span{:style => 'font-size:12px;'}
-        = link_to root_url(:protocol => 'https'), root_url(:protocol => 'https')
+      = mailer_link(root_url(:protocol => 'https'), root_url(:protocol => 'https'))
+
+      %br
+      1752 NW Market St. #520
+      %br
+      Seattle, WA 
+      %br
+      98107
 
       %hr
       %div{:style => 'font-size:11px;color:#888'}
-        = raw "Call Today for a #{link_to 'Free Cash Home Offer', new_home_offer_url(:protocol => 'https')} 866.384.9068"
+        - free_cash_home_offer = mailer_link('Free Cash Home Offer', new_home_offer_url(:protocol => 'https'))
+        = raw "Call Today for a #{free_cash_home_offer} 866.384.9068"
         %br
-        = raw "or contact us at #{mail_to 'contact@ehouseoffers.com', 'contact@ehouseoffers.com'} to find out how to #{link_to 'become a home buyer', become_a_buyer_url(:protocol => 'https')}"
+        - become_a_buyer = mailer_link('become a home buyer', become_a_buyer_url(:protocol => 'https'))
+        = raw "or contact us at #{mail_to 'contact@ehouseoffers.com', 'contact@ehouseoffers.com'} to find out how to #{become_a_buyer}"
+
         %br
         Visit us on
-        = link_to 'linkedin', 'http://www.linkedin.com/groups?mostPopular=&gid=3186741'
-        = link_to 'facebook', 'http://www.facebook.com/pages/eHouseOfferscom/129602593768138'
-        = link_to 'twitter', 'http://twitter.com/ehouseoffers'
-        = link_to 'youtube', 'http://www.youtube.com/user/ehouseoffers'
+        = mailer_link('linkedin', 'http://www.linkedin.com/groups', {:mostPopular => '', :gid => '3186741'})
+        = mailer_link('facebook', 'http://www.facebook.com/pages/eHouseOfferscom/129602593768138')
+        = mailer_link('twitter', 'http://twitter.com/ehouseoffers')
+        = mailer_link('youtube', 'http://www.youtube.com/user/ehouseoffers')
