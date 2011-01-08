@@ -7,7 +7,7 @@ ActionMailer::Base.smtp_settings = {
   :password       => KEYS['smtp']['password']
 }
 
-ActionMailer::Base.default_charset = "utf-8"
+ActionMailer::Base.charset = "utf-8"
 
 ActionMailer::Base.default_url_options[:host] = KEYS['host']
 
