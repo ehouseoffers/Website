@@ -4,7 +4,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   # make these available to the views
-  helper_method :active_section?, :construct_blog_path, :encrypt, :decrypt
+  helper_method :active_section?, :encrypt, :decrypt
 
   def render_404
     @frame = nil
@@ -36,26 +36,6 @@ class ApplicationController < ActionController::Base
     end
   end
 
-  def construct_blog_path(obj, action='index', context=nil, full_path=false)
-    if obj.present?
-      raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
-      context = obj.context
-    elsif context.present?
-      raise "Invalid Context -- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
-    else
-      raise "Invalid"
-    end
-    
-    rel_path = case action.to_s.intern
-    when :index           then "/#{Blog.translate_context_to_route(obj.context)}"
-    when :create          then send("#{context.pluralize}_path")
-    when :new, :edit      then send("#{action.to_s}_#{context.singularize}_path")
-    when :show, :update, :delete then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
-    end
-
-    full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
-  end
-
   # Because of the widespead use of the 'seller_listings/form' partial, we need a @seller_listing object on
   # probably 80% of our pages. Additionally, that object needs to have user info when possible to pre-populate
   # the fields
@@ -73,6 +53,8 @@ class ApplicationController < ActionController::Base
     @noindex = params[:page].to_i>1
   end
 
+  # Used as before_filter for index pages to make sure we do not get any of the 1-character section names when we
+  # should have the full section name
   def ensure_full_path_name
     if request.fullpath.match(/^\/[trg]$/)
       redirect_to "/#{Blog.translate_context_to_route(@context)}", :status => '301'

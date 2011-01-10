@@ -1,10 +1,23 @@
 class Mailer < ActionMailer::Base
   include ActiveModel::Validations
   include ApplicationHelper
-  include MailerHelper
+
   
-  # Attachments
-  # attachments["emily.jpg"] = File.read("#{Rails.root}/public/images/e.jpg")  
+  # Currently specific to the blogs_controller.email_image
+  # Args should contain:
+  #  
+  def email_image(recipient_email, recommended_by_email, blog)
+    @recipient_email = recipient_email
+    @recommended_by_email = recommended_by_email
+    @blog = blog
+    @tracking_params = {:utm_source => 'share', :utm_medium => 'email', :utm_campaign => 'share+article+with+friend'}
+
+    attachments[blog.photo_file_name] = File.read(blog.photo.path(:medium))
+    mail :to      => recipient_email + recommended_by_email,
+         :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
+         :from    => "share@ehouseoffers.com",
+         :subject => "#{recommended_by_email} Has Recommended an Article for You"
+  end
 
   # When a user wants to contact us, this is the method that is used to send us their message.
   def send_us_their_email(message)

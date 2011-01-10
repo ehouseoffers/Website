@@ -109,4 +109,25 @@ module ApplicationHelper
 
     link_to target, path, args
   end
+
+  def construct_blog_path(obj, action='index', context=nil, full_path=false)
+    if obj.present?
+      raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
+      context = obj.context
+    elsif context.present?
+      raise "Invalid Context -- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
+    else
+      raise "Invalid"
+    end
+    
+    rel_path = case action.to_s.intern
+    when :index           then "/#{Blog.translate_context_to_route(obj.context)}"
+    when :create          then send("#{context.pluralize}_path")
+    when :new, :edit      then send("#{action.to_s}_#{context.singularize}_path")
+    when :show, :update, :delete then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
+    end
+  
+    full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
+  end
+
 end

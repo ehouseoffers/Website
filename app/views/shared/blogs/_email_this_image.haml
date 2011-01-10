@@ -6,9 +6,7 @@
     = form_tag email_image_blog_path(blog.title_for_url), :method => :post, :class => 'email_image_form' do
       .field
         = label_tag 'your_email', 'Your Email'
-        -# Do not auto-populate. it could be confusing (email to who? Me? Why is my email address in there?)
-        -#= text_field_tag 'your_email', (user_signed_in? ? current_user.email : ''), 'data-validation' => 'validate(required, email)', 'data-example' => 'Your Email'
-        = text_field_tag 'your_email', '', 'data-validation' => 'validate(required, email)', 'data-example' => 'Your Email'
+        = text_field_tag 'your_email', (user_signed_in? ? current_user.email : ''), 'data-validation' => 'validate(required, email)', 'data-example' => 'Your Email'
 
       .field
         = label_tag 'friends_email', 'Friends Email'
@@ -17,4 +15,6 @@
       .submitC
         = image_submit_tag '/images/transparent.gif', :id => 'send_image_btn', :class => 'reasons_sprite'
 
+      .js_reportC &nbsp;
+        
 

@@ -43,7 +43,7 @@
       }
       
       // So that other things which hook into the action (form submit) are aware of what our validations found
-      action.passed_validations = tasty;
+      $.data(action, 'passed_validations', tasty);
 
       if(!tasty) return false;
     });

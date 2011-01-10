@@ -1,0 +1,18 @@
+:ruby
+  blog_page = construct_blog_path(@blog, :show, nil, true)
+  image = image_tag "#{root_url}#{@blog.photo.url(:large)}"
+
+%p
+  Hi,
+
+%p
+  = "The following article on eHouseOffers.com was shared by #{@recommended_by_email}."
+
+%p
+  %strong= mailer_link @blog.title, blog_page
+
+%p
+  = mailer_link image, blog_page
+
+%p
+  = raw "#{@blog.teaser}...#{mailer_link 'Read Full Article', blog_page}"

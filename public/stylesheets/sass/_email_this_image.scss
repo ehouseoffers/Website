@@ -1,9 +1,5 @@
-
-#send_image_btn {
-    background : url(/images/sprites/reasons_to_sell.png) no-repeat scroll 0px 0px transparent;
-    height : 34px;
-    width : 128px;
-}
+@import "helpers";
+#send_image_btn { @include sprite('reasons_to_sell',0,0,34,128); }
 
 form.email_image_form .field,
 form.email_image_form input[type="text"] {
@@ -11,4 +7,10 @@ form.email_image_form input[type="text"] {
 }
 form.email_image_form .submitC {
     padding : 0;
+}
+form.email_image_form .js_reportC {
+    margin-top : 1em;
+    display : none;
+    font-size : .85em;
+    color : $grey;
 }

@@ -1,0 +1,14 @@
+:ruby
+  blog_page = construct_blog_path(@blog, :show, nil, true)
+
+Hi,
+=""
+= "The following article on eHouseOffers.com was shared by #{@recommended_by_email}."
+=""
+= @blog.title
+=""
+= "#{@blog.teaser}..."
+=""
+= "You can read more here: #{blog_page}"
+=""
+= render :partial => 'mailer/layouts/text_footer', :locals => email_image_footer_args
