@@ -1,4 +1,5 @@
 class SellerListingsController < ApplicationController
+  ssl_required :show, :new, :create, :homeoffer2, :update, :edit
 
   # ensure the user is logged in
   before_filter :redirect_unless_admin, :only => [:index, :edit, :destroy]

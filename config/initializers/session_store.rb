@@ -1,6 +1,6 @@
 # Be sure to restart your server when you modify this file.
 
-Ehouseoffers::Application.config.session_store :cookie_store, :key => '_ehouseoffers_secure_session'
+Ehouseoffers::Application.config.session_store :cookie_store, :key => '_ehouseoffers_session'
 
 # Use the database for sessions instead of the cookie-based default,
 # which shouldn't be used to store highly confidential information

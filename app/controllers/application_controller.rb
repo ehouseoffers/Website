@@ -1,4 +1,6 @@
 class ApplicationController < ActionController::Base
+  include Younker::SslRequirement
+
   protect_from_forgery
 
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404

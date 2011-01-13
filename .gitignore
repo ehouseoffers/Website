@@ -1,4 +1,5 @@
 config/keys.yml
+script/rails-https
 restart
 .bundle
 db/*.sqlite3

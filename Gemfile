@@ -1,7 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'rails', '3.0.1'
-gem 'rack-ssl'
+gem 'younker-ssl_requirement'
 
 gem 'haml'
 gem 'mysql', ">= 2.8.1"
