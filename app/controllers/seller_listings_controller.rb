@@ -1,12 +1,12 @@
 class SellerListingsController < ApplicationController
-  ssl_required :show, :new, :create, :homeoffer2, :update, :edit
+  ssl_required :show, :new, :create, :homeoffer2, :update, :edit, :homeoffer3
 
   # ensure the user is logged in
   before_filter :redirect_unless_admin, :only => [:index, :edit, :destroy]
   before_filter :authenticate_user!, :only => [:index]
   before_filter :owner_or_admin, :except => [:index, :new, :create]
 
-  layout :minimal_layout
+  layout :pick_layout
 
   def index
     @seller_listings = SellerListing.all
@@ -78,7 +78,7 @@ class SellerListingsController < ApplicationController
 
     respond_to do |format|
       if seller_listing.update_attributes(params[:seller_listing])
-        format.html { redirect_to home_offer_3_path(seller_listing.id) }
+        format.html { redirect_to home_offer_3_path(seller_listing.id, :protocol => 'https') }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
@@ -114,6 +114,12 @@ class SellerListingsController < ApplicationController
   end
 
   private
+
+  def pick_layout
+    minimal_layout() unless self.action_name.eql?('homeoffer3')
+    'application'
+  end
+
 
   # TODO -- younker [2010-11-12 14:35]
   # move this into app controller and allow params to be passed (so we check ownership of an object passed in)

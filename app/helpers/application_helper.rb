@@ -130,4 +130,9 @@ module ApplicationHelper
     full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
   end
 
+  def url_for_ssl(url_cmd, id=nil)
+    url = id.nil? ? send(url_cmd, :protocol => 'https') : send(url_cmd.to_s, id, :protocol => 'https')
+    url.gsub!(/3000/,'3001') if Rails.env.eql?('development')
+    url
+  end
 end
