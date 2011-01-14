@@ -107,7 +107,7 @@ module ApplicationHelper
     when :youtube  then 'http://www.youtube.com/user/ehouseoffers'
     end
 
-    link_to target, path, args
+    link_to target, path, args.merge(:target => 'new')
   end
 
   def construct_blog_path(obj, action='index', context=nil, full_path=false)
