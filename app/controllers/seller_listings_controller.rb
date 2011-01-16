@@ -6,7 +6,7 @@ class SellerListingsController < ApplicationController
   before_filter :authenticate_user!, :only => [:index]
   before_filter :owner_or_admin, :except => [:index, :new, :create]
 
-  layout :pick_layout
+  layout :minimal
 
   def index
     @seller_listings = SellerListing.all
@@ -114,11 +114,6 @@ class SellerListingsController < ApplicationController
   end
 
   private
-
-  def pick_layout
-    minimal_layout() unless self.action_name.eql?('homeoffer3')
-    'application'
-  end
 
 
   # TODO -- younker [2010-11-12 14:35]

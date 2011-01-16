@@ -1,59 +1,16 @@
 :ruby
+  # https://ehouseoffers.fogbugz.com/default.asp?30
+  # For when we come back and turn this into a model, tracking data you will need to create a sound model is outlined
+  # in that ticket
+
   extra_css('homeoffer3')
 
--# Until we get the image pieces, use one big image
-  %div.box_contentC
-    %div.box
-      %div.gutter
-        = image_tag '/images/transparent.gif', :id => 'thanks_for_choosing', :class => 'sprite', :alt => 'Thanks for choosing eHouseOffers.com'
-      
-        %strong
-          You are in good hands when you get a home offer through eHouse Offers.
-
-        %ul
-          %li Thousands of Houses Sold
-          %li Commitment Free
-          %li Helpful Customer Service
-
--#%div#thanksC.box_contentC
-  %div#thanks_tmp.sprite &nbsp;
-
-%div#discountsC.box_contentC
+%div.box_contentC
   %div.box
-    %div.gutter.yui3-g
-      %h1.orange 30-Day Limited Time Savings
-      .yui3-u-1-3
-        .yui3-u-5-24
-          &nbsp;
-        .yui3-u-3-4
-          = image_tag '/images/transparent.gif', :id => 'uhaul_icon', :class => 'discount', :alt => 'U-haul Discounts'
-          %h4
-            Get up to 25% off your move
-          %p
-            Join U-Haul Family Beginnings and get trusted help for the journey ahead.
-        
-      .yui3-u-15-48
-        .yui3-u-5-24
-          &nbsp;
-        .yui3-u-3-4
-          = image_tag '/images/transparent.gif', :id => 'public_storage_icon', :class => 'discount', :alt => 'Public Storage Discounts'
-          %h4
-            3-free Months of Storage
-          %p
-            Buy 2 months of storage and get 3-free months of additional storage.
-        
-      .yui3-u-1-3
-        .yui3-u-5-24
-          &nbsp;
-        .yui3-u-3-4
-          = image_tag '/images/transparent.gif', :id => 'american_finance_icon', :class => 'discount', :alt => 'American Finance Discounts'
-          %h4
-            Free Debt Consultation
-          %p
-            Talk to a professional debt consolidation expert consolidate your debt.
+    %div.gutter
+      = image_tag '/images/transparent.gif', :id => 'step_three_title', :alt => 'Thank You! A Local Home Buyer will Contact you within 48 Hours'
 
-      %hr.space
-      %div#buttonC
-        = image_tag '/images/transparent.gif', :id => 'send_me_discounts', :class => 'discount', :alt => 'Send Me Discounts!'
-        = link_to 'no thanks', root_path
-      
+      %div#affiliatesC
+        - lex_img = image_tag '/images/affiliate_ads/credit_repair_lexington.png', :alt => 'Need Credit Repair Help? See Lexington Law'
+        = link_to lex_img, 'http://www.lexingtonlaw.com/?tid=1934.0.thankyou'
+        = link_to 'No Thanks', root_path

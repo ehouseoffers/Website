@@ -18,7 +18,7 @@ class ApplicationController < ActionController::Base
     request.xhr? ? false : 'application'
   end
 
-  def minimal_layout
+  def minimal
     @frame = :minimal
     layout
   end
