@@ -7,7 +7,7 @@ module MailerHelper
   def mailer_link(target_name, target_url, target_params={})
     @tracking_params ||= {}
     query_string = target_params.merge(@tracking_params).to_query
-    path = query_string.present? ? "#{target_url}?#{query_string}" : target_url
+    path = query_string.present? ? "#{target_url}##{query_string}" : target_url
     link_to(target_name, path)
   end
 
