@@ -17,4 +17,5 @@
             - else
               = link_to item.title, send("#{item.class.name.downcase}_path", item.title_for_url)
           - if idx%3==2
-            %br.clear
+            %div.clearfix &nbsp;
+      %div.clearfix &nbsp;
