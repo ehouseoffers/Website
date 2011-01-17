@@ -62,6 +62,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         # Because we already waited to process this (see seller_listings_controller.create), we send this email
         # out without delay despite what the ticket says. We just use delayed job to make it it's own process
         DelayedJobs::Salesforce.new_seller_confirmation(seller_listing)
+        DelayedJobs::Salesforce.new_seller_affiliate_services(seller_listing, true)
         DelayedJobs::Salesforce.buyer_lead_notification(seller_listing, owner_resp.buyer_emails)
       end
     end
@@ -146,6 +147,9 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       # No salesforce buyer for this zip code? Send out an email according to the following:
       # https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_no_buyers_in_area.rtf
       DelayedJobs::Salesforce.no_buyer_for_zip(seller_listing)
+
+      # https://ehouseoffers.fogbugz.com/default.asp?34
+      DelayedJobs::Salesforce.new_seller_affiliate_services(seller_listing, false)
     end
   end
 end

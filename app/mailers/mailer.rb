@@ -60,6 +60,17 @@ class Mailer < ActionMailer::Base
          :subject => 'Home Offer Request Confirmation'
   end
 
+  # Send our new sellers some information about affiliate services.
+  # See DelayedJobs::Salesforce.new_seller_affiliate_services for more info on when these are sent.
+  def new_seller_affiliate_services(seller_listing)
+    @seller_listing = seller_listing
+    @tracking_params = {:utm_source => 'seller', :utm_medium => 'email', :utm_campaign => 'partner+credit+repair'}
+    mail :to      => "#{seller_listing.user.name} <#{seller_listing.user.email}>",
+         :from    => 'Chris Richter <christopher@ehouseoffers.com>',
+         :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
+         :subject => "3 Credit Repair Tips for Home Sellers in #{seller_listing.address.city}"
+  end
+
   # Send an email to all buyers associated with a zip code for a recently added seller. This action is a direct result
   # of salesforce_job.perform completing successfully
   def buyer_lead_notification(recipients, seller_listing)

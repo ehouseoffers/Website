@@ -7,6 +7,49 @@ require 'ostruct'
 class DelayedJobs
   class Salesforce
     ##
+    ## New Seller Affiliate Services
+    ##
+    def self.new_seller_affiliate_services(seller_listing, has_buyer, send_now=false)
+      job = DelayedJobs::Salesforce::NewSellerAffiliateServices.new(seller_listing.id)
+
+      # Business Rules for when this email should be send are as follows:
+      # - If we have a buyer for the area (has_buyer), then an email should go out at at 10:00 am PST the Tuesday
+      #   after submission of the offer request
+      #   * If the following Tuesday falls within 5 days of the offer request then send the following Tuesday.
+      #   - so, if this is submitted on a thursday, send the email next tuesday (5 days from now). If it is submitted
+      #     on friday, send the email a week from next tuesday (11 days from now)
+      # - If No Buyer in area then send email at 10:00 am PST the day after an offer request is submitted.
+      if Rails.env.eql?('development') && send_now
+        Rails.logger.debug(":: Debug :: overriding :run_at and setting up delayed job now")
+        job.perform
+      elsif has_buyer
+        tuesday = case Time.now.strftime("%u")
+        when "1" then  8.days.from_now
+        when "2" then  7.days.from_now
+        when "3" then  6.days.from_now
+        when "4" then  5.days.from_now
+        when "5" then 11.days.from_now
+        when "6" then 10.days.from_now
+        when "7" then  9.days.from_now
+        end
+        ten_am_tuesday = Time.local(tuesday.year, tuesday.month, tuesday.day, 10)
+        Delayed::Job.enqueue(job, {:run_at => ten_am_tuesday})
+      else
+        tomorrow = 1.day.from_now
+        ten_am_tomorrow = Time.local(tomorrow.year, tomorrow.month, tomorrow.day, 10)
+        Delayed::Job.enqueue(job, {:run_at => ten_am_tomorrow})
+      end
+    end
+    class NewSellerAffiliateServices < Struct.new(:seller_listing_id)
+      def perform
+        sl = SellerListing.find(seller_listing_id)
+        mail = Mailer.new_seller_affiliate_services(sl)
+        mail.deliver
+      end
+    end
+
+
+    ##
     ## No Buyer for Zip
     ##
     def self.no_buyer_for_zip(seller_listing, send_now=false)
