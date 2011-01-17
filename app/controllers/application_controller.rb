@@ -6,7 +6,7 @@ class ApplicationController < ActionController::Base
   rescue_from ActiveRecord::RecordNotFound, :with => :render_404
 
   # make these available to the views
-  helper_method :active_section?, :encrypt, :decrypt
+  helper_method :active_section?, :encrypt, :decrypt, :ga_tracker?
 
   def render_404
     @frame = nil
@@ -29,6 +29,16 @@ class ApplicationController < ActionController::Base
 
   def active_section?(section)
     @active_section && @active_section.to_s.eql?(section)
+  end
+
+  # Set in the controller...
+  def ga_tracker(include_ga_tracker=!Rails.env.production?)
+    @ga_tracker = include_ga_tracker
+  end
+
+  # ...available to the helpers (see helper_method above)
+  def ga_tracker?
+    @ga_tracker.nil? ? ga_tracker() : @ga_tracker
   end
 
   def redirect_unless_admin

@@ -57,6 +57,8 @@
     :javascript
       var AUTH_TOKEN = encodeURIComponent(#{form_authenticity_token.inspect});
 
+    = render 'shared/ga_tracker'
+
 %body{:class => @frame || 'full'}
   = render :partial => 'shared/admin_options'
 
