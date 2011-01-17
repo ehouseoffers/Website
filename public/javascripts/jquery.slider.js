@@ -51,14 +51,16 @@ $(function() {
 	};
 	
 	function growBigger(element) {
-	    var img = $(element)
-                    .animate({ width: curWidth })
-                    .find("img")
-                    .animate({ width: curImgWidth });
+        try {
+    	    var img = $(element)
+                        .animate({ width: curWidth })
+                        .find("img")
+                        .animate({ width: curImgWidth });
 
-        var path = img.attr('data-path');
-        var title = img.attr('alt');
-        $title.html($(document.createElement('a')).attr('href', path).html(title));
+            var path = img.attr('data-path');
+            var title = img.attr('alt');
+            $title.html($(document.createElement('a')).attr('href', path).html(title));
+        } catch(e) {}
 	}
 	
 	// if move_right is not true, then we are moving left
