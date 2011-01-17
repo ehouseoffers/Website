@@ -131,7 +131,7 @@ class SellerListingsController < ApplicationController
       end
 
       flash[:error] = 'Sorry, but you are not permitted to view that page.'
-      redirect_to new_seller_listing_path
+      redirect_to new_home_offer_path
     end
   end
 end
