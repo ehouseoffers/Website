@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   # We need construct_blog_path() for respond_to actions
   include ApplicationHelper
 
-  before_filter :redirect_unless_admin, :except => [:index, :show]
+  before_filter :redirect_unless_admin, :except => [:index, :show, :email_image]
   before_filter :set_seller_listing,    :only   => [:index, :show]
   before_filter :set_noindex,           :only   => [:index]
   before_filter :setup_for_blog_context
@@ -104,6 +104,7 @@ class BlogsController < ApplicationController
 
       render :json => {:success => true}.to_json, :status => 200
     rescue => e
+      log_exception(e)
       render :json => {:success => false}.to_json, :status => 500
     end
   end
@@ -117,6 +118,16 @@ class BlogsController < ApplicationController
     
     # Controls menu highlighting and arrow
     active_section(@context)
+  end
+
+  def log_exception(e)
+    Rails.logger.fatal("#{e.class} (#{e.message}):\n" + clean_backtrace(e).join("\n    "));
+  end
+
+  def clean_backtrace(e)
+    if backtrace = e.backtrace
+      backtrace.map { |line| line.sub Rails.root.to_s, '' }
+    end
   end
 
 end

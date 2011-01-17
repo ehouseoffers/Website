@@ -1,6 +1,6 @@
 :ruby
   blog_page = construct_blog_path(@blog, :show, nil, true)
-  image = image_tag "#{root_url}#{@blog.photo.url(:large)}"
+  image = image_tag "#{root_url}#{@blog.photo.url(:large).gsub(/^\//,'')}"
 
 %p
   Hi,
