@@ -61,9 +61,9 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
         # Because we already waited to process this (see seller_listings_controller.create), we send this email
         # out without delay despite what the ticket says. We just use delayed job to make it it's own process
-        DelayedJobs::Salesforce.new_seller_confirmation(seller_listing)
-        DelayedJobs::Salesforce.new_seller_affiliate_services(seller_listing, true)
-        DelayedJobs::Salesforce.buyer_lead_notification(seller_listing, owner_resp.buyer_emails)
+        DelayedJobs::Salesforce.new_seller_confirmation(sl)
+        DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
+        DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
       end
     end
   end
