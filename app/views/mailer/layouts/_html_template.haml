@@ -21,8 +21,8 @@
 %body{:style => 'padding:10px 0 30px 0;margin:0;'}
   %center
     %div{:style => 'width:620px;text-align:left;margin:20px 0 0 0;'}
-      - logo = image_tag("http://#{KEYS['host']}/images/email/ehouseoffers-logo.png", :alt => 'Professional Home Buyers: eHouseOffers.com')
-      = mailer_link(logo, root_url(:protocol => 'https'))
+      - logo = image_tag("http://#{KEYS['host']}/images/email/ehouseoffers-logo.png", :alt => 'Professional Home Buyers: eHouseOffers.com', :style => 'border:none')
+      = mailer_link(logo, root_url)
       %hr
       
       %p= body
@@ -41,7 +41,7 @@
         - if from_byline.present?
           = from_byline
         - else
-          = mailer_link(root_url(:protocol => 'https'), root_url(:protocol => 'https'))
+          = mailer_link(root_url, root_url)
 
       %br
       1752 NW Market St. #520
@@ -52,10 +52,10 @@
 
       %hr
       %div{:style => 'font-size:11px;color:#888'}
-        - free_cash_home_offer = mailer_link('Free Cash Home Offer', new_home_offer_url(:protocol => 'https'))
+        - free_cash_home_offer = mailer_link('Free Cash Home Offer', new_home_offer_url)
         = raw "Call Today for a #{free_cash_home_offer} 800.383.1459"
         %br
-        - become_a_buyer = mailer_link('become a home buyer', become_a_buyer_url(:protocol => 'https'))
+        - become_a_buyer = mailer_link('become a home buyer', become_a_buyer_url)
         = raw "or contact us at #{mail_to 'contact@ehouseoffers.com', 'contact@ehouseoffers.com'} to find out how to #{become_a_buyer}"
 
         %br

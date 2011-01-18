@@ -78,7 +78,7 @@ class SellerListingsController < ApplicationController
 
     respond_to do |format|
       if seller_listing.update_attributes(params[:seller_listing])
-        format.html { redirect_to home_offer_3_path(seller_listing.id, :protocol => 'https') }
+        format.html { redirect_to home_offer_3_path(seller_listing.id) }
         format.xml  { head :ok }
       else
         format.html { render :action => "edit" }
