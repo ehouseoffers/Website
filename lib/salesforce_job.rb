@@ -52,7 +52,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
 
       if create_resp.ok?
-        sl.salesforce_lead_id = resp.salesforce_lead_id
+        sl.salesforce_lead_id = create_resp.salesforce_lead_id
         sl.salesforce_lead_owner_id = account_id
         sl.save!
 
