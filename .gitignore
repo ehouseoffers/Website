@@ -1,3 +1,4 @@
+staging_backups
 config/keys.yml
 restart
 .bundle
