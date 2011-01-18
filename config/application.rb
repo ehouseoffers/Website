@@ -1,5 +1,4 @@
 require File.expand_path('../boot', __FILE__)
-require 'rack/ssl'
 
 require 'yaml'
 KEYS_TMP = YAML.load(File.read(File.expand_path('../keys.yml', __FILE__)))
@@ -17,7 +16,6 @@ Bundler.require(:default, Rails.env) if defined?(Bundler)
 
 module Ehouseoffers
   class Application < Rails::Application
-    config.middleware.insert_before ActionDispatch::Cookies, Rack::SSL
 
     # Settings in config/environments/* take precedence over those specified here.
     # Application configuration should go into files in config/initializers
@@ -37,6 +35,7 @@ module Ehouseoffers
     # Run "rake -D time" for a list of tasks for finding time zone names. Default is UTC.
     # config.time_zone = 'Central Time (US & Canada)'
     config.time_zone = 'Pacific Time (US & Canada)'
+    config.active_record.default_timezone = :local
 
     # The default locale is :en and all translations from config/locales/*.rb,yml are auto loaded.
     # config.i18n.load_path += Dir[Rails.root.join('my', 'locales', '*.{rb,yml}').to_s]
@@ -56,6 +55,6 @@ module Ehouseoffers
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.action_mailer.delivery_method = :sendmail
+    # Mailer Config: see setup_mail.rb for mailing stuff
   end
 end

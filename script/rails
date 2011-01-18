@@ -1,40 +1,44 @@
 #!/usr/bin/env ruby
 # This command will automatically be run when you run "rails" with Rails 3 gems installed from the root of your application.
 
-# Getting SSL to work with Rails3:
-#   http://www.akadia.com/services/ssh_test_certificate.html
-#   http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html
-#   http://collectiveidea.com/blog/archives/2010/11/29/ssl-with-rails/
-require 'rubygems'
-require 'rails/commands/server'
-require 'rack'
-require 'webrick'
-require 'webrick/https'
+if ARGV.include?('-s')
+  ARGV.delete_at(ARGV.index('-s')) # otherwise rails will barf
 
-module Rails
-    class Server < ::Rack::Server
-        def default_options
-            super.merge({
-                :Port => 3000,
-                :environment => ("development").dup,
-                :daemonize => false,
-                :debugger => false,
-                :pid => File.expand_path("tmp/pids/server.pid"),
-                :config => File.expand_path("config.ru"),
-                :SSLEnable => true,
-                :SSLVerifyClient => OpenSSL::SSL::VERIFY_NONE,
-                :SSLPrivateKey => OpenSSL::PKey::RSA.new(
-                       File.open("tmp/ssl/server.key").read),
-                :SSLCertificate => OpenSSL::X509::Certificate.new(
-                       File.open("tmp/ssl/server.crt").read),
-                :SSLCertName => [["CN", WEBrick::Utils::getservername]]
-            })
-        end
-    end
+  # Getting SSL to work with Rails3:
+  #   http://www.akadia.com/services/ssh_test_certificate.html
+  #   http://www.nearinfinity.com/blogs/chris_rohr/configuring_webrick_to_use_ssl.html
+  #   http://collectiveidea.com/blog/archives/2010/11/29/ssl-with-rails/
+  require 'rubygems'
+  require 'rails/commands/server'
+  require 'rack'
+  require 'webrick'
+  require 'webrick/https'
+
+  module Rails
+      class Server < ::Rack::Server
+          def default_options
+              super.merge({
+                  :Port => 3001,
+                  :environment => ("development").dup,
+                  :daemonize => false,
+                  :debugger => false,
+                  :pid => File.expand_path("tmp/pids/server.pid"),
+                  :config => File.expand_path("config.ru"),
+                  :SSLEnable => true,
+                  :SSLVerifyClient => OpenSSL::SSL::VERIFY_NONE,
+                  :SSLPrivateKey => OpenSSL::PKey::RSA.new(
+                         File.open("tmp/ssl/server.key").read),
+                  :SSLCertificate => OpenSSL::X509::Certificate.new(
+                         File.open("tmp/ssl/server.crt").read),
+                  :SSLCertName => [["CN", WEBrick::Utils::getservername]]
+              })
+          end
+      end
+  end
 end
-
-
 
 APP_PATH = File.expand_path('../../config/application',  __FILE__)
 require File.expand_path('../../config/boot',  __FILE__)
 require 'rails/commands'
+
+

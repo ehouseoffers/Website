@@ -1,4 +1,6 @@
 class AjaxController < ApplicationController
+  ssl_allowed :placefinder_by_zip
+
   def placefinder_by_zip
     pf = Placefinder.new(:postal => params[:zip])
 

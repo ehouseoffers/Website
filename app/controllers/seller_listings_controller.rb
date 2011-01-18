@@ -1,11 +1,12 @@
 class SellerListingsController < ApplicationController
+  ssl_required :show, :new, :create, :homeoffer2, :update, :edit, :homeoffer3
 
   # ensure the user is logged in
   before_filter :redirect_unless_admin, :only => [:index, :edit, :destroy]
   before_filter :authenticate_user!, :only => [:index]
   before_filter :owner_or_admin, :except => [:index, :new, :create]
 
-  layout :minimal_layout
+  layout :minimal
 
   def index
     @seller_listings = SellerListing.all
@@ -43,12 +44,12 @@ class SellerListingsController < ApplicationController
       # Creates user, address and phone objects needed for seller listing
       seller_listing = SellerListing.wizard_step1(params['seller_listing'])
 
-      # Everybody who becomes has a seller listing completes the first step (here). However, not everybody will
-      # complete the second step. There is valuable data in the second step so we want it if possible, but we also
-      # want to create the salesforce data as soon as possible so we can open communication. So, we delay the
-      # salesforce creation by an arbitrary period of time (10 minutes) assuming that if the person is going to
-      # finish the process, they will do so in the next 10 minutes
-      Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 5.minutes.from_now})
+      # Everybody who creates a new seller listing gets here, completion of the first step. However, not everybody
+      # will complete the second step. There is valuable data in the second step so we want it if possible, but we
+      # also want to create the salesforce data as soon as possible so we can open communication. So, we delay the
+      # salesforce creation by an arbitrary period of time assuming that if the person is going to finish the process,
+      # they will do so in the next n minutes
+      Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 6.minutes.from_now})
 
       sign_out(current_user) if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
 
@@ -114,6 +115,7 @@ class SellerListingsController < ApplicationController
 
   private
 
+
   # TODO -- younker [2010-11-12 14:35]
   # move this into app controller and allow params to be passed (so we check ownership of an object passed in)
   def owner_or_admin
@@ -129,7 +131,7 @@ class SellerListingsController < ApplicationController
       end
 
       flash[:error] = 'Sorry, but you are not permitted to view that page.'
-      redirect_to new_seller_listing_path
+      redirect_to new_home_offer_path
     end
   end
 end

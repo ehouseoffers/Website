@@ -36,7 +36,7 @@ class ContactController < ApplicationController
 
     respond_to do |format|
       if success
-        format.html { redirect_to :back }
+        format.html { flash[:notice] = 'Thank you. Your email has been sent.' ; redirect_to :back }
         format.xml  { render :xml => @message, :status => :created, :location => @message }
         format.json { render :json => @message.to_json }
       else

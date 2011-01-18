@@ -1,6 +1,6 @@
 $(document).ready(function() {
     if ( $('form').length > 0 ) {
-        // B/c it can take some time to load an external file so you can’t always run functions from within that file
+        // B/c it can take some time to load an external file so you can't always run functions from within that file
         // straight away
         $.ajaxSetup({async: false});
         $.load_external_resource('jquery.ketchup.js,jquery.default_values.js,jquery.tooltip.js');
@@ -16,6 +16,14 @@ $(document).ready(function() {
                 height  : '300px',
                 toolbar : 'simple',
                 filebrowserUploadUrl : '/admin/uploaded_photos'
+            });
+        } catch(e) {}
+
+        try {
+            // attach tooltips to anything with a data-example
+            $('input[data-example], textarea[data-example]').tooltip({
+                eventTrigger : 'focus',
+                content      : 'data-example'
             });
         } catch(e) {}
     }
@@ -61,11 +69,7 @@ $(document).ready(function() {
         return false;
     });
     
-    // attach tooltips to anything with a data-example
-    $('input[data-example], textarea[data-example]').tooltip({
-      eventTrigger : 'focus',
-      content      : 'data-example'
-    });
+ 
 
 
 });

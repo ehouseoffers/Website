@@ -1,7 +1,8 @@
 :ruby
   return if collection.empty?
 
-%div#boxed_resource_listC{:class => collection.first.class.name.downcase}
+-# That border fixes some odd IE7 issue. don't know why, don't care. F'ing IE
+%div#boxed_resource_listC.clearfix{:class => collection.first.class.name.downcase, :style => 'border:solid 1px #fff;'}
   %div.titleC
     %div#icon &nbsp;
     %h3= title
@@ -16,4 +17,5 @@
             - else
               = link_to item.title, send("#{item.class.name.downcase}_path", item.title_for_url)
           - if idx%3==2
-            %br.clear
+            %div.clearfix &nbsp;
+      %div.clearfix &nbsp;

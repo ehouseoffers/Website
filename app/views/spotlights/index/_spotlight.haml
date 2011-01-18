@@ -8,7 +8,7 @@
       = link_to raw(spotlight.title), spotlight_path(spotlight.title_for_url)
 
     %p.grey85.teaser
-      = spotlight.teaser
+      = spotlight.teaser.truncate(165)
 
     = link_to image_tag('/images/transparent.gif', :class => 'read_full_article', :alt => 'Read Full Article'), spotlight_path(spotlight.title_for_url)
     

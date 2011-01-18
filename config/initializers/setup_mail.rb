@@ -1,13 +1,13 @@
 ActionMailer::Base.smtp_settings = {
-  :address        => "smtp.webfaction.com",
-  :authentication => :login,
-  :domain         => "webfaction.com",
-  :port           => 25,
+  :address        => KEYS['smtp']['address'],
+  :authentication => KEYS['smtp']['authentication'].intern,
+  :domain         => KEYS['smtp']['domain'],
+  :port           => KEYS['smtp']['port'],
   :user_name      => KEYS['smtp']['username'],
   :password       => KEYS['smtp']['password']
 }
 
-ActionMailer::Base.default_charset = "utf-8"
+ActionMailer::Base.charset = "utf-8"
 
 ActionMailer::Base.default_url_options[:host] = KEYS['host']
 

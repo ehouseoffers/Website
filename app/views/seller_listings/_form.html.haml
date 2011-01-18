@@ -4,8 +4,7 @@
   # We have a bunch of css which hinges on this, so regardless of create or edit, make the form_id constant
   form_id = 'new_seller_listing'
 
-  
-= form_for @seller_listing, :html => {:id => form_id} do |f|
+= form_for @seller_listing, :url => url_for_ssl(:seller_listings_url), :html => {:id => form_id} do |f|
   = render :partial => 'shared/user_notice', :locals => {:model_obj => @seller_listing}
 
   = f.fields_for @seller_listing.user do |field|
@@ -29,7 +28,7 @@
   = f.fields_for @seller_listing.user.addresses.new do |field|
     .field#address1
       = field.label :address1, 'Address'
-      = field.text_field :address1, 'data-validation' => 'validate(required)', 'data-example' => 'Address'
+      = field.text_field :address1, 'data-validation' => 'validate(required)', 'data-example' => 'Street Address'
 
     #city_stateC.hidden
       .field#city

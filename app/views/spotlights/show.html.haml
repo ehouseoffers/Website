@@ -13,7 +13,7 @@
 
 = render "shared/breadcrumb", :crumbs => [[:home, root_path], [:spotlight, spotlights_path], [@spotlight.title, nil]]
 
-%div#spotlight_pageC.xs_two_col.yui3-g
+%div#spotlight_pageC.show_pageC.xs_two_col.yui3-g
   %div#left_col.yui3-u-33-48
     = render :partial => "spotlights/show/spotlight", :object => @spotlight
     %hr

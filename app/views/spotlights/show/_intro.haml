@@ -1,0 +1,8 @@
+%div#teaserC.clearfix
+  %div#main_spotlight_imageC
+    = image_tag spotlight.photo.url(:medium), :id => 'main_spotlight_image'
+    = render :partial => 'shared/blogs/share_article_on', :locals => {:object => spotlight}
+
+  %h2.green= spotlight.title
+  %p= raw spotlight.content
+

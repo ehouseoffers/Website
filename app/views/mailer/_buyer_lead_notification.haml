@@ -1,0 +1,61 @@
+%strong= "Salesforce Lead ID - #{@seller_listing.salesforce_lead_id}"
+
+%h2{:style => 'margin-top:20px'} Home Seller Information
+%table{:cellspacing => '3', :cellpadding => '0', :border => '0', :style => 'margin-left:10px'}
+  %tr
+    %th First
+    %td= @seller_listing.user.first_name
+  %tr
+    %th Last
+    %td= @seller_listing.user.last_name
+  %tr
+    %th Phone
+    %td= @seller_listing.user.phone_numbers.primary.number
+  %tr
+    %th Email
+    %td= @seller_listing.user.email
+  %tr
+    %th Address
+    %td
+      - addr = @seller_listing.user.addresses.primary
+      = addr.address1
+      %br
+      - if addr.address2.present?
+        = addr.address2
+        %br
+      = "#{addr.city}, #{addr.state}"
+      %br
+      = addr.zip
+
+:ruby
+  value  = @seller_listing.estimated_value
+  asking = @seller_listing.asking_price
+  loan   = @seller_listing.loan_amount
+  timeframe = @seller_listing.time_frame
+  mfi_show = value.present? || asking.present? || loan.present? || timeframe.present?
+  
+- if mfi_show
+  %h2{:style => 'margin-top:20px'} Motivation &amp; Financial Information
+  %table{:cellspacing => '3', :cellpadding => '0', :border => '0', :style => 'margin-left:10px'}
+    %tr
+      %th Estimated Home Value
+      %td= value.present? ? value : 'Not Given'
+    %tr
+      %th Asking Price
+      %td= asking.present? ? asking : 'Not Given'
+    %tr
+      %th Loan Amount
+      %td= loan.present? ? loan : 'Not Given'
+    %tr
+      %th Desired Sell Time
+      %td= timeframe.present? ? "#{timeframe} month#{timeframe==1 ? '' : 's'}" : 'Not Given'
+
+- if @seller_listing.selling_reason.present?
+  %h2{:style => 'margin-top:20px'} Other Info
+  %table{:cellspacing => '3', :cellpadding => '0', :border => '0', :style => 'margin-left:10px'}
+    %tr
+      %th Reason for Selling
+      %td= @seller_listing.selling_reason
+
+%br
+%br

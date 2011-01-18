@@ -1,0 +1,48 @@
+:ruby
+  extra_js('/videos/player/swfobject.js','/videos/player/jwplayer.js')
+
+#how_video_frame
+  #how_preview &nbsp;
+  #how_play_button_hover &nbsp;
+  #screen
+
+:javascript
+  $(document).ready(function() {
+    var hover_btn = $('#how_play_button_hover');
+    var preview = $('#how_preview');
+    videobind();
+
+    function videobind() {
+      $('#how_video_frame')
+      .mouseover(function(){hover_btn.css('display','block')})
+      .mouseout(function(){hover_btn.css('display','none')})
+      .click(function(){
+        hover_btn.css('display','none');
+        preview.css('display','none');
+        $(this).unbind();
+
+        var movie = $('object#screen');
+        if ( $.data(movie,'played') ) {
+          movie.css('zIndex','99');
+          preview.css('display','none');
+          jwplayer('screen').play();
+        } else {
+          $.data(movie,'played',true);
+          jwplayer("screen").setup({
+            flashplayer : "/videos/player/player.swf",
+            file        : "/videos/how_it_works.flv",
+            width       : 398,
+            height      : 299,
+            autostart   : true,
+            events      : {
+              onComplete : function(){
+                $('object#screen').css({zIndex:-1});
+                preview.css('display','block');
+                videobind();
+              }
+            }
+          });
+        }
+      });
+    }
+  });

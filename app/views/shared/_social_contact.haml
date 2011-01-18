@@ -1,6 +1,10 @@
 :ruby
   extra_js('jquery.smart_toggle')
 
+  # For some pages, like include_contact_form (contact/new), we have a contact form elsewhere on the page, so don't
+  # include one here
+  include_contact_form = include_contact_form.nil? ? true : include_contact_form
+
   # There are two ways we can show and/or get focus on the contact form. The first is to pass a param to this partial.
   # The second is to have linked to this page with the /foo/bar#contact_us hash link in the url
   show_contact_form  = show_contact_form.nil? ? false : show_contact_form
@@ -31,67 +35,71 @@
       %div.yui3-u-7-24
         %strong Phone:
       %div.yui3-u-17-24
-        866-384-9068
+        (800) 383-1459
 
       %div.yui3-u-7-24
         %strong Email:
       %div.yui3-u-17-24
-        = mail_to 'info@ehouseoffers.com', 'info@ehouseoffers.com', :class => 'show_cform_trigger', 'data-target' => '#contact_us'
+        - if include_contact_form
+          = mail_to 'info@ehouseoffers.com', 'info@ehouseoffers.com', :class => 'show_cform_trigger', 'data-target' => '#contact_us'
+        - else
+          info@ehouseoffers.com
     
     %p.addr
       1752 NW Market St. Seattle WA 98107
 
-    -# Do not hide this
-    -# If we hide the #contact_us container, then jquery cannot select it and thus won't get the default_form_values
-    -# functionality. So hide via js when applicable
-    %div#contact_us
-      %h1
-        Email Us
-        %div.right= link_to '[X]', 'javascript:void(0)', :class => 'x_cform_trigger', 'data-target' => '#contact_us'
+    - if include_contact_form
+      -# Do not hide this
+      -# If we hide the #contact_us container, then jquery cannot select it and thus won't get the default_form_values
+      -# functionality. So hide via js when applicable
+      %div#contact_us
+        %h1
+          Email Us
+          %div.right= link_to '[X]', 'javascript:void(0)', :class => 'x_cform_trigger', 'data-target' => '#contact_us'
 
 
-      = render :partial => "contact/form", :locals => {:message => Message.new}
+        = render :partial => "contact/form", :locals => {:message => Message.new}
 
-:javascript
-  $(document).ready(function() {
-    $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
+      :javascript
+        $(document).ready(function() {
+          $('.show_cform_trigger, .x_cform_trigger').smart_toggle();
 
-    var form_container = $('#contact_us');
+          var form_container = $('#contact_us');
 
-    // Setup the default value behavior first so that if the location.hash is #contact_us, the default value is
-    // removed when we focus() on the first input element
-    form_container.default_form_values();
+          // Setup the default value behavior first so that if the location.hash is #contact_us, the default value is
+          // removed when we focus() on the first input element
+          form_container.default_form_values();
 
-    // Make sure we can see the contact form if requested, and focus on the first field
-    if ( window.location.hash == '#contact_us' || #{contact_form_focus ? 'true' : 'false'}) {
-      $('input#message_subject', form_container).focus();
-    }
-    if ( window.location.hash != '#contact_us' && #{show_contact_form ? 'false' : 'true'} ) {
-      form_container.css('display','none');
-    }
+          // Make sure we can see the contact form if requested, and focus on the first field
+          if ( window.location.hash == '#contact_us' || #{contact_form_focus ? 'true' : 'false'}) {
+            $('input#message_subject', form_container).focus();
+          }
+          if ( window.location.hash != '#contact_us' && #{show_contact_form ? 'false' : 'true'} ) {
+            form_container.css('display','none');
+          }
 
-    // Ajax-ify the form
-    form_container.submit(function(){
-      var rc = $('div#form_reportC');
-      if ( !rc.size() ) rc = $('<div id="form_reportC" style="margin-top:1em"></div>').insertAfter(this);
-      rc.html('submitting...');
+          // Ajax-ify the form
+          form_container.submit(function(){
+            var rc = $('div#form_reportC');
+            if ( !rc.size() ) rc = $('<div id="form_reportC" style="margin-top:1em"></div>').insertAfter(this);
+            rc.html('submitting...');
 
-      var f = $('form', this);
-      $.ajax({
-        url     : f.attr('action'),
-        type    : f.attr('method'),
-        data    : f.serialize(),
-        dataType: 'json',
-        success : function (data, status, xhr) {
-          $('.x_cform_trigger').trigger('click');
-          $('div#form_reportC').html('<b>Thank you</b>. Your email has been sent.');
-        },
-        error: function (xhr, status, error) {
-          $('div#form_reportC').html('An error occurred. Please try again later or email us directly at <a href="mailto:info@ehouseoffers.com">info@ehouseoffers.com</a>');
-        }
-      });
+            var f = $('form', this);
+            $.ajax({
+              url     : f.attr('action'),
+              type    : f.attr('method'),
+              data    : f.serialize(),
+              dataType: 'json',
+              success : function (data, status, xhr) {
+                $('.x_cform_trigger').trigger('click');
+                $('div#form_reportC').html('<b>Thank you</b>. Your email has been sent.');
+              },
+              error: function (xhr, status, error) {
+                $('div#form_reportC').html('An error occurred. Please try again later or email us directly at <a href="mailto:info@ehouseoffers.com">info@ehouseoffers.com</a>');
+              }
+            });
 
-      return false;
-    });
+            return false;
+          });
 
-  });
+        });

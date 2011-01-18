@@ -1,0 +1,39 @@
+%h1= "Hi #{@seller_listing.user.first_name},"
+
+%p
+  = "60% of home sellers in #{@seller_listing.address.state} could save hundreds, if not thousands, in interest charges by cleaning up their credit. But there are a lot of scams out there and getting started can be daunting. So to help demystify the credit repair process, here are a few recommended steps to follow."
+
+%h2
+  1) Hire Someone vs. Do-it-yourself
+
+%p
+  Whether you should hire a credit repair firm or do-it-yourself depends on your willingness to work, as well as your ability to be organized and follow through on the process. If you're not a finance expert and you don't want to deal with handling the detail work yourself, there might be an advantage to hiring a professional.
+
+%p
+  %ul
+    %li Hire Someone - preferably an attorney who knows the credit laws.
+    %li Do-it-yourself - using a good quality guide and your 3-in-1 credit report.
+
+%h2
+  2) Use a Reputable Company
+
+%p
+  Finding a loan with poor credit isn't hard, getting a decent interest rate can be. At eHouseOffers we recommend Lexington Law because they're reputable, knowledgeable & they've helped thousands of home sellers.  
+
+%center
+  - lex_logo = image_tag_url 'email/credit_repair_lexington.png', :alt => 'Lexington Law: Free Consultation from the Credit Professionals'
+  = link_to lex_logo, 'http://www.lexingtonlaw.com/?tid=1934.0.email'
+
+%br
+%h2
+  3) Be Informed & Have a Plan 
+
+%p
+  Whether you hire someone or do-it-yourself, we strongly recommend that you learn what you need to do to repair your credit legally so that you can qualify for low rate loans and credit cards.
+  %ul
+    %li Don't fall for scams that tell you to create a new credit file ... that's credit fraud if you do it, and can make you subject to legal repercussions.
+    %li= raw "Read the #{link_to 'Fair Credit Reporting Act', 'http://www.ftc.gov/os/statutes/fcra.htm'} so you have an idea of your rights while you go through the credit repair process."
+    %li Get yourself organized and committed to the process, there is no overnight fix.
+    %li If you use an online service, you want to know what the fees will be, monthly or "as you go" is best, and you want to be able to cancel at anytime.
+    %li Always act in a cooperative and professional manner when dealing with creditors or collection agencies.
+    %li Don't make threats, however subtle, if you can't back them up.

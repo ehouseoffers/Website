@@ -95,8 +95,8 @@ module ApplicationHelper
   #   image   : path (from the /images directory) to the image
   #   options : any options which image_tag will take. See:
   #             http://api.rubyonrails.org/classes/ActionView/Helpers/AssetTagHelper.html#M001690
-  def image_tag_url(image, options)
-    image_tag "#{root_url}images/#{image}", options
+  def image_tag_url(image, options={})
+    image_tag "#{root_url}images/#{image.gsub(/^\//,'')}", options
   end
   
   def social_link(site,target,args={})
@@ -107,6 +107,32 @@ module ApplicationHelper
     when :youtube  then 'http://www.youtube.com/user/ehouseoffers'
     end
 
-    link_to target, path, args
+    link_to target, path, args.merge(:target => 'new')
+  end
+
+  def construct_blog_path(obj, action='index', context=nil, full_path=false)
+    if obj.present?
+      raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
+      context = obj.context
+    elsif context.present?
+      raise "Invalid Context -- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
+    else
+      raise "Invalid"
+    end
+    
+    rel_path = case action.to_s.intern
+    when :index           then "/#{Blog.translate_context_to_route(obj.context)}"
+    when :create          then send("#{context.pluralize}_path")
+    when :new, :edit      then send("#{action.to_s}_#{context.singularize}_path")
+    when :show, :update, :delete then send("#{context.singularize}_path", obj.respond_to?(:title_for_url) ? obj.title_for_url : obj.id)
+    end
+  
+    full_path ? "#{root_url}#{rel_path.gsub(/^\//,'')}" : rel_path
+  end
+
+  def url_for_ssl(url_cmd, id=nil)
+    url = id.nil? ? send(url_cmd) : send(url_cmd.to_s, id)
+    url.gsub!(/3000/,'3001') if Rails.env.eql?('development')
+    url
   end
 end

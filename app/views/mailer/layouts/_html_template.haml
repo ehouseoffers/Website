@@ -1,0 +1,66 @@
+:ruby
+  closing = closing.nil? || closing.blank? ? nil : closing
+  from = from.nil? || from.blank? ? nil : from
+  from_byline = from_byline.nil? || from_byline.blank? ? nil : from_byline
+
+%html
+  %head
+    %title= "#{@title} :: eHouseOffers" || 'eHouseOffers.com'
+    %meta{:content => "text/html;charset=UTF-8", "http-equiv" => "content-type"}/
+    :css
+      html{background:#f2f6dc;color:#333;font-size:14px;font-family:arial,helvetica,sans-serif;}
+      hr{background:#75973e;color:#75973e;clear:both;float:none;width:100%;height:.1em;margin:1em 0;border:none;}
+      img{border:none;}
+      a{color:#8eae5b;}
+      h1{color:#333;font-size:16px;margin:0 0 8px 0;}
+      h2{color:#333;font-size:14px;margin:0 0 7px 0;}
+      p{margin:0 0 10px 0;}
+      th{font-weight:bold;}
+      th,td{text-align:left;vertical-align:top}
+
+%body{:style => 'padding:10px 0 30px 0;margin:0;'}
+  %center
+    %div{:style => 'width:620px;text-align:left;margin:20px 0 0 0;'}
+      - logo = image_tag("http://#{KEYS['host']}/images/email/ehouseoffers-logo.png", :alt => 'Professional Home Buyers: eHouseOffers.com', :style => 'border:none')
+      = mailer_link(logo, root_url)
+      %hr
+      
+      %p= body
+
+      - if closing.present?
+        = closing
+        %br
+
+      - if from.present?
+        = from
+      - else
+        %strong eHouseOffers
+      %br
+
+      %div{:style => 'font-size:12px;'}
+        - if from_byline.present?
+          = from_byline
+        - else
+          = mailer_link(root_url, root_url)
+
+      %br
+      1752 NW Market St. #520
+      %br
+      Seattle, WA 
+      %br
+      98107
+
+      %hr
+      %div{:style => 'font-size:11px;color:#888'}
+        - free_cash_home_offer = mailer_link('Free Cash Home Offer', new_home_offer_url)
+        = raw "Call Today for a #{free_cash_home_offer} 800.383.1459"
+        %br
+        - become_a_buyer = mailer_link('become a home buyer', become_a_buyer_url)
+        = raw "or contact us at #{mail_to 'contact@ehouseoffers.com', 'contact@ehouseoffers.com'} to find out how to #{become_a_buyer}"
+
+        %br
+        Visit us on
+        = mailer_link('linkedin', 'http://www.linkedin.com/groups', {:mostPopular => '', :gid => '3186741'})
+        = mailer_link('facebook', 'http://www.facebook.com/pages/eHouseOfferscom/129602593768138')
+        = mailer_link('twitter', 'http://twitter.com/ehouseoffers')
+        = mailer_link('youtube', 'http://www.youtube.com/user/ehouseoffers')
