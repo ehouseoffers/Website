@@ -55,6 +55,17 @@ module Ehouseoffers
     # Configure sensitive parameters which will be filtered from the log file.
     config.filter_parameters += [:password]
 
-    config.action_mailer.delivery_method = :sendmail
+    # config.action_mailer.delivery_method = :sendmail
+    config.action_mailer.default_charset = "utf-8"
+    config.action_mailer.delivery_method = :smtp
+    config.action_mailer.smtp_settings   = {
+       :address        => KEYS['smtp']['address'],
+       :authentication => :plain,
+       :domain         => KEYS['smtp']['domain'],
+       :port           => 25,
+       :user_name      => KEYS['smtp']['username'],
+       :password       => KEYS['smtp']['password']
+     }
+
   end
 end
