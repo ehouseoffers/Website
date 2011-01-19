@@ -64,6 +64,8 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         DelayedJobs::Salesforce.new_seller_confirmation(sl)
         DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
         DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
+      else
+        Rails.logger.fatal("Salesforce create lead bombed! create_resp = #{create_resp.inspect}")
       end
     end
   end
