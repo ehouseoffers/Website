@@ -252,7 +252,10 @@ h3 {
     font-weight : bold;
     letter-spacing : -0.75px;
 }
-
+ol li {
+    list-style : decimal inside none;
+    margin-bottom : 1em;
+}
 .green  { color : $green; }
 .orange { color : $orange; }
 
