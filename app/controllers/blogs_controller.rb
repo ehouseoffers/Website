@@ -44,7 +44,10 @@ class BlogsController < ApplicationController
         format.html { redirect_to(construct_blog_path(@blog, :show), :notice => "#{@blog.title} was successfully created.") }
         format.xml  { render :xml => @blog, :status => :created, :location => @blog }
       else
-        format.html { render :action => "new" }
+        set_seller_listing
+        setup_for_blog_context
+        @blog.context = @context
+        format.html { render :template => "blogs/new" }
         format.xml  { render :xml => @blog.errors, :status => :unprocessable_entity }
       end
     end

@@ -112,10 +112,10 @@ module ApplicationHelper
 
   def construct_blog_path(obj, action='index', context=nil, full_path=false)
     if obj.present?
-      raise "Invalid Context -- #{obj.context}" unless obj.valid_context?
+      raise "Invalid Context (obj) -- #{obj.context}" unless obj.valid_context?
       context = obj.context
     elsif context.present?
-      raise "Invalid Context -- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
+      raise "Invalid Context (param)-- #{context}" unless Blog::VALID_CONTEXTS.include?(context.to_s)
     else
       raise "Invalid"
     end
