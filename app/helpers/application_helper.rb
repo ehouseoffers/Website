@@ -84,7 +84,7 @@ module ApplicationHelper
   end
   
   def standard_oops_message(type='data')
-    "We're sorry, but there was a problem removing this #{type}. Please reload the page and try again. If the problem persists, please email contact@ehouseoffer.com."
+    "We're sorry, but there was a problem removing this #{type}. Please reload the page and try again. If the problem persists, please email customer-service@ehouseoffers.com."
   end
 
 

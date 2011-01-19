@@ -113,8 +113,8 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         Rails.logger.warn("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
         OpenStruct.new('ok?' => true,
                        :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID,
-                       :salesforce_account_email => KEYS['smtp']['intercept_recipient'],
-                       :buyer_emails => KEYS['smtp']['intercept_recipient'])
+                       :salesforce_account_email => KEYS['our_email'],
+                       :buyer_emails => KEYS['our_email'])
       end
     end
   end

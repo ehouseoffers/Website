@@ -56,7 +56,7 @@
         = raw "Call Today for a #{free_cash_home_offer} 800.383.1459"
         %br
         - become_a_buyer = mailer_link('become a home buyer', become_a_buyer_url)
-        = raw "or contact us at #{mail_to 'contact@ehouseoffers.com', 'contact@ehouseoffers.com'} to find out how to #{become_a_buyer}"
+        = raw "or contact us at #{mail_to KEYS['our_email'], KEYS['our_email']} to find out how to #{become_a_buyer}"
 
         %br
         Visit us on

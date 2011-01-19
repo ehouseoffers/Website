@@ -23,7 +23,7 @@ class Mailer < ActionMailer::Base
   def send_us_their_email(message)
     @message = message
     @title = message.subject
-    mail :to      => 'contact@ehouseoffers.com',
+    mail :to      => KEYS['our_email'],
          :from    => "#{@message.name} <#{@message.email}>",
          :subject => message.subject
   end
