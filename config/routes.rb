@@ -1,9 +1,9 @@
 Ehouseoffers::Application.routes.draw do
-  # Redir all non-www to www
-  constraints(:host => /ehouseoffers.com/) do
-    root :to => redirect("http://www.ehouseoffers.com")
-    match '/*path', :to => redirect {|params| "http://www.ehouseoffers.com/#{params[:path]}"}
-  end
+  # # Redir all non-www to www
+  # constraints(:host => /ehouseoffers.com/) do
+  #   root :to => redirect("http://www.ehouseoffers.com")
+  #   match '/*path', :to => redirect {|params| "http://www.ehouseoffers.com/#{params[:path]}"}
+  # end
 
   devise_for :users
   # match '/users', :to => 'users#index'
