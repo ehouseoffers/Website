@@ -32,7 +32,7 @@ class ApplicationController < ActionController::Base
   end
 
   # Set in the controller...
-  def ga_tracker(include_ga_tracker=!Rails.env.production?)
+  def ga_tracker(include_ga_tracker=Rails.env.production?)
     @ga_tracker = include_ga_tracker
   end
 
