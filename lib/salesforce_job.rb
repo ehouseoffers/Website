@@ -14,7 +14,6 @@ class SalesforceJob < Struct.new(:seller_listing_id)
 
   def perform
     begin
-      Rails.logger.info("+ Begin delayed job")
       binding = RForce::Binding.new KEYS['salesforce']['base']
       binding.login KEYS['salesforce']['username'], KEYS['salesforce']['password'] + KEYS['salesforce']['token']
 
@@ -44,33 +43,36 @@ class SalesforceJob < Struct.new(:seller_listing_id)
 
       # Who owns this zip?
       owner_resp = SalesforceJob.account_owner_for_zip(binding, sl)
+
       if owner_resp.ok?
         account_id = owner_resp.salesforce_account_id
         lead.push(:Owned_by_Account__c, account_id)
-
-        # Create Lead!
-        lead = binding.create :sObject => lead
-        create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
-
-        if create_resp.ok?
-          sl.salesforce_lead_id = create_resp.salesforce_lead_id
-          sl.salesforce_lead_owner_id = account_id
-          sl.save!
-
-          # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
-          # seller listing confirmation email according to the specs outlined here:
-          #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
-          # Because we already waited to process this (see seller_listings_controller.create), we send this email
-          # out without delay despite what the ticket says. We just use delayed job to make it it's own process
-          DelayedJobs::Salesforce.new_seller_confirmation(sl)
-          DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
-          DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
-        else
-          Rails.logger.fatal("Salesforce create lead bombed! create_resp = #{create_resp.inspect}")
-        end
       end
+
+      # Create Lead!
+      lead = binding.create :sObject => lead
+      create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
+
+      if create_resp.ok?
+        sl.salesforce_lead_id = create_resp.salesforce_lead_id
+        sl.salesforce_lead_owner_id = account_id
+        sl.save!
+
+        # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
+        # seller listing confirmation email according to the specs outlined here:
+        #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
+        # Because we already waited to process this (see seller_listings_controller.create), we send this email
+        # out without delay despite what the ticket says. We just use delayed job to make it it's own process
+        DelayedJobs::Salesforce.new_seller_confirmation(sl)
+        DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
+        DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
+      else
+        Rails.logger.fatal("Salesforce create lead bombed! create_resp = #{create_resp.inspect}")
+      end
+
     rescue => e
       Rails.logger.fatal("SalesforceJob.perform bombed with the following exception: "+ e)
+      raise e
     end
   end
   
@@ -89,7 +91,11 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   def self.munge_search_results(resp, seller_listing)
     if resp[:Fault].present?
       Rails.logger.fatal("Salesforce search bombed for seller listing #{seller_listing.id} with: #{resp.inspect}")
-      OpenStruct.new('ok?' => false, :code => resp[:Fault][:faultcode], :error => resp[:Fault][:faultstring])
+      # OpenStruct.new('ok?' => false, :code => resp[:Fault][:faultcode], :error => resp[:Fault][:faultstring])
+      OpenStruct.new('ok?' => true,
+                     :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID,
+                     :salesforce_account_email => KEYS['our_email'],
+                     :buyer_emails => KEYS['our_email'])
     else
       begin
         raise RecordNotFound if resp[:searchResponse][:result].nil?
@@ -114,7 +120,12 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         end
       rescue RecordNotFound => e
         e.setup_no_buyer_for_zip_email(seller_listing)
-        OpenStruct.new('ok?' => false, :error => "Salesforce buyer account not found for zip #{seller_listing.address.zip}")
+        # OpenStruct.new('ok?' => false, :error => "Salesforce buyer account not found for zip #{seller_listing.address.zip}")
+        OpenStruct.new('ok?' => true,
+                       :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID,
+                       :salesforce_account_email => KEYS['our_email'],
+                       :buyer_emails => KEYS['our_email'])
+
       rescue => e
         Rails.logger.warn("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
         OpenStruct.new('ok?' => true,
