@@ -18,6 +18,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       sl = SellerListing.find(seller_listing_id)
 
       # User, address and phone info must be here to create a seller listing
+      # http://www.salesforce.com/us/developer/docs/api/index.htm [search for Lead]
       lead = [
         :type,       LEAD,
         :LeadSource, LEAD_SOURCE,
@@ -27,9 +28,13 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         :Email,      sl.user.email,
         :Phone,      sl.phone_number.number,
         :Property_Address__c, [sl.address.address1, sl.address.address2].join(' '),
+        :Street,              [sl.address.address1, sl.address.address2].join(' '),
         :Property_City__c,    sl.address.city,
+        :City,                sl.address.city,
         :Property_State__c,   sl.address.state,
+        :State,               sl.address.state,
         :Property_Zip__c,     sl.address.zip,
+        :Zip__c,              sl.address.zip,
         :PostalCode,          sl.address.zip
       ]
 
