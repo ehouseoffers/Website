@@ -13,7 +13,7 @@ class Mailer < ActionMailer::Base
     @tracking_params = {:utm_source => 'share', :utm_medium => 'email', :utm_campaign => 'share+article+with+friend'}
 
     attachments[blog.photo_file_name] = File.read(blog.photo.path(:medium))
-    mail :to      => recipient_email + recommended_by_email,
+    mail :to      => [recipient_email, recommended_by_email],
          :bcc     => 'ehouseoffers@gmail.com, sam@ehouseoffers.com',
          :from    => "share@ehouseoffers.com",
          :subject => "#{recommended_by_email} Has Recommended an Article for You"
