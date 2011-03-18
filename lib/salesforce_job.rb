@@ -13,60 +13,64 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   LEAD_COUNTRY = 'USA'   # Hard-coded b/c it's all we support right now
 
   def perform
-    Rails.logger.info("+ Begin delayed job")
-    binding = RForce::Binding.new KEYS['salesforce']['base']
-    binding.login KEYS['salesforce']['username'], KEYS['salesforce']['password'] + KEYS['salesforce']['token']
+    begin
+      Rails.logger.info("+ Begin delayed job")
+      binding = RForce::Binding.new KEYS['salesforce']['base']
+      binding.login KEYS['salesforce']['username'], KEYS['salesforce']['password'] + KEYS['salesforce']['token']
 
-    sl = SellerListing.find(seller_listing_id)
+      sl = SellerListing.find(seller_listing_id)
 
-    # User, address and phone info must be here to create a seller listing
-    lead = [
-      :type,       LEAD,
-      :LeadSource, LEAD_SOURCE,
-      :Country,    LEAD_COUNTRY,
-      :FirstName,  sl.user.first_name,
-      :LastName,   sl.user.last_name,
-      :Email,      sl.user.email,
-      :Phone,      sl.phone_number.number,
-      :City,       sl.address.city,
-      :State,      sl.address.state,
-      :PostalCode, sl.address.zip
-    ]
+      # User, address and phone info must be here to create a seller listing
+      lead = [
+        :type,       LEAD,
+        :LeadSource, LEAD_SOURCE,
+        :Country,    LEAD_COUNTRY,
+        :FirstName,  sl.user.first_name,
+        :LastName,   sl.user.last_name,
+        :Email,      sl.user.email,
+        :Phone,      sl.phone_number.number,
+        :City,       sl.address.city,
+        :State,      sl.address.state,
+        :PostalCode, sl.address.zip
+      ]
 
-    # Check and see if we have second-step data yet (which is, of course, the entire reason for delaying this
-    # job [to give the user enough time to finish step 2])
-    lead.push(:EstimatedValue__c,  sl.estimated_value(true).to_s) if sl.estimated_value.present?
-    lead.push(:AskingPrice__c,     sl.asking_price(true).to_s)    if sl.asking_price.present?
-    lead.push(:LoanAmount__c,      sl.loan_amount(true).to_s)     if sl.loan_amount.present?
-    lead.push(:DesiredSellTime__c, sl.time_frame.to_s)            if sl.time_frame.present?
-    lead.push(:SellingReason__c,   sl.selling_reason)             if sl.selling_reason.present?
+      # Check and see if we have second-step data yet (which is, of course, the entire reason for delaying this
+      # job [to give the user enough time to finish step 2])
+      lead.push(:EstimatedValue__c,  sl.estimated_value(true).to_s) if sl.estimated_value.present?
+      lead.push(:AskingPrice__c,     sl.asking_price(true).to_s)    if sl.asking_price.present?
+      lead.push(:LoanAmount__c,      sl.loan_amount(true).to_s)     if sl.loan_amount.present?
+      lead.push(:DesiredSellTime__c, sl.time_frame.to_s)            if sl.time_frame.present?
+      lead.push(:SellingReason__c,   sl.selling_reason)             if sl.selling_reason.present?
 
-    # Who owns this zip?
-    owner_resp = SalesforceJob.account_owner_for_zip(binding, sl)
-    if owner_resp.ok?
-      account_id = owner_resp.salesforce_account_id
-      lead.push(:Owned_by_Account__c, account_id)
+      # Who owns this zip?
+      owner_resp = SalesforceJob.account_owner_for_zip(binding, sl)
+      if owner_resp.ok?
+        account_id = owner_resp.salesforce_account_id
+        lead.push(:Owned_by_Account__c, account_id)
 
-      # Create Lead!
-      lead = binding.create :sObject => lead
-      create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
+        # Create Lead!
+        lead = binding.create :sObject => lead
+        create_resp = SalesforceJob.munge_create_salesforce_lead_results(lead, sl)
 
-      if create_resp.ok?
-        sl.salesforce_lead_id = create_resp.salesforce_lead_id
-        sl.salesforce_lead_owner_id = account_id
-        sl.save!
+        if create_resp.ok?
+          sl.salesforce_lead_id = create_resp.salesforce_lead_id
+          sl.salesforce_lead_owner_id = account_id
+          sl.save!
 
-        # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
-        # seller listing confirmation email according to the specs outlined here:
-        #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
-        # Because we already waited to process this (see seller_listings_controller.create), we send this email
-        # out without delay despite what the ticket says. We just use delayed job to make it it's own process
-        DelayedJobs::Salesforce.new_seller_confirmation(sl)
-        DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
-        DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
-      else
-        Rails.logger.fatal("Salesforce create lead bombed! create_resp = #{create_resp.inspect}")
+          # Now that we sucessfully tied this seller listing to a buyer account in salesforce, send out our new
+          # seller listing confirmation email according to the specs outlined here:
+          #   https://ehouseoffers.fogbugz.com/default.asp?28 -- seller_offer_request_confirmation.rtf
+          # Because we already waited to process this (see seller_listings_controller.create), we send this email
+          # out without delay despite what the ticket says. We just use delayed job to make it it's own process
+          DelayedJobs::Salesforce.new_seller_confirmation(sl)
+          DelayedJobs::Salesforce.new_seller_affiliate_services(sl, true)
+          DelayedJobs::Salesforce.buyer_lead_notification(sl, owner_resp.buyer_emails)
+        else
+          Rails.logger.fatal("Salesforce create lead bombed! create_resp = #{create_resp.inspect}")
+        end
       end
+    rescue => e
+      Rails.logger.fatal("SalesforceJob.perform bombed with the following exception: "+ e)
     end
   end
   
@@ -139,7 +143,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         end
       end
     rescue => e
-      Rails.logger.fata("Unknown response when attempting to munge salesforce lead creation results. Exception => #{e.inspect}. Response = #{resp.inspect}")
+      Rails.logger.fatal("Unknown response when attempting to munge salesforce lead creation results. Exception => #{e.inspect}. Response = #{resp.inspect}")
       OpenStruct.new('ok?' => false, :code => 'Unknown', :error => 'Exception raised when trying to munge results')
     end
   end
