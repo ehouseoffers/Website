@@ -2,10 +2,8 @@ require 'ostruct'
 
 # http://railscasts.com/episodes/171-delayed-job
 class SalesforceJob < Struct.new(:seller_listing_id)
-  # Created in prod by me (younker) and I am hard coding it here b/c 1) we are running out of tiem, 2) if we don't find
-  # an account to bind this lead to and we already know what our ehouse account is (this one) we should not have to do
-  # another sforce api query to get it and 3) we could come up with another way to store this (db) without hard-coding
-  # it but whatever. this will work for now.
+
+  # If there is no 'owner' in salesforce for this seller listing's zip, assign to our salesforce account
   EHOUSE_SFORCE_ACCOUNT_ID = KEYS['salesforce']['default_account_id']
 
   LEAD         = 'Lead'
@@ -28,9 +26,11 @@ class SalesforceJob < Struct.new(:seller_listing_id)
         :LastName,   sl.user.last_name,
         :Email,      sl.user.email,
         :Phone,      sl.phone_number.number,
-        :City,       sl.address.city,
-        :State,      sl.address.state,
-        :PostalCode, sl.address.zip
+        :Property_Address__c, [sl.address.address1, sl.address.address2].join(' '),
+        :Property_City__c,    sl.address.city,
+        :Property_State__c,   sl.address.state,
+        :Property_Zip__c,     sl.address.zip,
+        :PostalCode,          sl.address.zip
       ]
 
       # Check and see if we have second-step data yet (which is, of course, the entire reason for delaying this
