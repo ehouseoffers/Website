@@ -21,21 +21,18 @@ class SalesforceJob < Struct.new(:seller_listing_id)
       # http://www.salesforce.com/us/developer/docs/api/index.htm [search for Lead]
       lead = [
         :type,       LEAD,
-        :LeadSource, LEAD_SOURCE,
+        :Lead_Source__c, LEAD_SOURCE,
         :Country,    LEAD_COUNTRY,
         :FirstName,  sl.user.first_name,
+        :First_Name2__c, sl.user.first_name,
         :LastName,   sl.user.last_name,
+        :Last_Name2__c, sl.user.last_name,
         :Email,      sl.user.email,
         :Phone,      sl.phone_number.number,
         :Property_Address__c, [sl.address.address1, sl.address.address2].join(' '),
-        :Street,              [sl.address.address1, sl.address.address2].join(' '),
         :Property_City__c,    sl.address.city,
-        :City,                sl.address.city,
         :Property_State__c,   sl.address.state,
-        :State,               sl.address.state,
-        :Property_Zip__c,     sl.address.zip,
-        :Zip__c,              sl.address.zip,
-        :PostalCode,          sl.address.zip
+        :Property_Zip__c, sl.address.zip.to_s
       ]
 
       # Check and see if we have second-step data yet (which is, of course, the entire reason for delaying this
@@ -85,7 +82,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
   
   # search salesforce accounts for somebody who owns a given zip
   def self.account_owner_for_zip(binding, seller_listing)
-    results = binding.search :searchString => "find {*#{seller_listing.address.zip}*} in postal_codes fields returning account(id, email__c)"
+    results = binding.search :searchString => "find {*#{seller_listing.address.zip}*} in postal_codes fields returning account(id, email__c, type)"
     SalesforceJob.munge_search_results(results, seller_listing)
   end
 
@@ -107,7 +104,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
 
         records = resp[:searchResponse][:result][:searchRecords]
         if records.is_a?(Array)
-          emails = records.collect{|r| r[:record][:Email__c]}
+          emails = records.reject{|r| r[:record][:Type] != 'Lead Buyer'}.collect{|r| r[:record][:Email__c]}
           owner = records.first[:record]
           Rails.logger.warn("More than one account has claimed area code #{seller_listing.address.zip}. The following Salesforce Account emails own this zip: #{emails.join(',')}. Picking the first entry (#{owner[:Id]}) to assign lead to.")
           OpenStruct.new('ok?' => true,
@@ -115,12 +112,15 @@ class SalesforceJob < Struct.new(:seller_listing_id)
                          :salesforce_account_email => owner[:Email__c],
                          :buyer_emails => emails)
 
-        elsif record_id = records[:record][:Id]
+        elsif records[:record][:Id].present? && records[:record][:Type] == 'Lead Buyer'
+          record_id = records[:record][:Id]
           OpenStruct.new('ok?' => true,
                          :salesforce_account_id => record_id,
                          :salesforce_account_email => records[:record][:Email__c],
                          :buyer_emails => records[:record][:Email__c].to_a)
-        else
+        elsif records[:record][:Type] != 'Lead Buyer'
+          raise "Account returned was not of type Lead Buyer"
+        elese
           raise 'Unknown data structure'
         end
       rescue RecordNotFound => e
@@ -132,7 +132,7 @@ class SalesforceJob < Struct.new(:seller_listing_id)
                        :buyer_emails => KEYS['our_email'])
 
       rescue => e
-        Rails.logger.warn("Unknown data structure returned for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
+        Rails.logger.warn("Exception raised for seller listing #{seller_listing.id}. Salesforce search response = #{resp.inspect} (#{e}). Assigning to default eHouse account.")
         OpenStruct.new('ok?' => true,
                        :salesforce_account_id => EHOUSE_SFORCE_ACCOUNT_ID,
                        :salesforce_account_email => KEYS['our_email'],
