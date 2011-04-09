@@ -26,6 +26,8 @@ gem 'oauth'
 
 
 group :development, :test do 
+  gem 'rspec-rails', '~> 2.5'
+
   gem 'younker-generators', ">= 1.0.0" # http://github.com/younker/younker-generators
   gem "haml-rails"
   gem 'capistrano'

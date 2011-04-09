@@ -1,6 +1,7 @@
 staging_backups
 config/keys.yml
 restart
+stop
 .bundle
 db/*.sqlite3
 log/*.log
@@ -9,3 +10,4 @@ scratch
 /public/assets
 /public/stylesheets/.sass-cache/
 /Docs/*
+/trash
