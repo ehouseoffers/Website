@@ -23,7 +23,7 @@
   = f.fields_for @seller_listing.user.phone_for_form do |field|
     .field#number
       = field.label :number, 'Phone'
-      = field.text_field :number, 'data-validation' => 'validate(required)', 'data-example' => 'Phone Number'
+      = field.text_field :number, 'data-validation' => 'validate(required, minlength(7))', 'data-example' => 'Phone Number'
 
   = f.fields_for @seller_listing.user.addresses.new do |field|
     .field#address1
