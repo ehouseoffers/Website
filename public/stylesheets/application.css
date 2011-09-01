@@ -1,1 +1,629 @@
-html{background:url(/images/bg.png) repeat-x scroll 0 0 #b4d66a}body{margin:auto;width:953px;font-family:arial, helvetica, sans-serif}@media screen and (-webkit-min-device-pixel-ratio:0){body{font-size:95%}}.app_sprite{background:url(/images/sprites/application.png) repeat-x scroll 0px 0px transparent}#headerC{height:90px;position:relative}#headerC img#main_logo{background-position:0px -289px;height:59px;width:312px;position:absolute;left:12px;top:18px}#headerC div#request_offerC{position:absolute;right:220px;top:33px;width:333px;text-align:right}div#request_offerC p{color:#57662f;font-size:.8em;margin-top:7px;line-height:1em}div#request_offerC img#request_offer{background-position:-674px -290px;height:37px;width:98px}#headerC img#free_consult{background-position:-312px -289px;width:196px;height:34px;position:absolute;right:14px;top:35px}#menuC{height:53px;margin-bottom:19px}#menuC ul{margin:0;padding:0}#menuC li{float:left;list-style:none}#menuC img{height:53px}#menuC #home{background-position:0px -55px;width:161px}#menuC #reasons{background-position:-162px -55px;width:188px}#menuC #spotlights{background-position:-351px -55px;width:188px}#menuC #trends{background-position:-540px -55px;width:188px}#menuC #guides{background-position:-729px -55px;width:225px}#menuC #home:hover,#menuC #home.selected{background-position:0px 0px}#menuC #reasons:hover,#menuC #reasons.selected{background-position:-162px 0px}#menuC #spotlights:hover,#menuC #spotlights.selected{background-position:-351px 0px}#menuC #trends:hover,#menuC #trends.selected{background-position:-540px 0px}#menuC #guides:hover,#menuC #guides.selected{background-position:-729px 0px}#mainC{margin-bottom:19px;position:relative}#mainC div#tab_arrow{background:url(/images/sprites/application.png) repeat-x scroll -316px -324px transparent;width:25px;height:14px;position:absolute;top:0;left:0;display:none}#mainC img#top{background-position:0px -235px;height:25px;width:100%}#mainC div#content{background-color:#fff;margin:-5px 0 0 0;padding:5px 0 0 20px}#mainC img#bottom{background-position:0px -261px;height:25px;width:100%}#footerC{background:url(/images/sprites/application.png) repeat-x scroll 0px -109px transparent;height:124px;width:100%;position:relative;color:#666666;font-size:.8em;margin-bottom:20px}html* #footerC{font-size:.7em}#footerC #footer{width:803px;position:absolute;left:120px;top:23px}div#f_right{text-align:right;margin-top:-7px}#footer h5{font-size:1.2em;font-weight:bold;margin-bottom:2px;letter-spacing:-0.1px}#footer h6{float:right;font-size:1em;font-weight:bold;color:#889c59;line-height:35px;margin-right:5px}#footer p{margin-bottom:8px;font-size:0.85em}#footer #copyright{float:left;background-position:-510px -289px;height:14px;width:14px;margin:-2px 3px 0 0}#footer_links div.delimeter{display:inline-block;zoom:1;*display:inline;width:15px;text-align:center;color:#7FB86B}#f_signin a{float:none}#footer #follow_us{float:right;background-color:#f0f3da;padding:6px 5px 2px 8px;border-radius:5px;-moz-border-radius:5px;-webkit-border-radius:5px}#follow_us img{height:24px;width:24px;margin-right:4px}#email{background-position:-675px -290px}#twitter{background-position:-705px -290px}#facebook{background-position:-733px -290px}#f_right > p{margin-top:10px}#get_home_offer{background-position:-528px -290px;height:28px;width:145px}div.xs_two_col div#left_col{margin-right:15px}div.xs_two_col div#right_col{width:260px}.xs_two_col .right_col{margin-left:10px}a{color:#7FB86B;text-decoration:none}a:hover{text-decoration:underline}label.empty{color:#999}.field{margin-bottom:10px}h1{font-size:1.3em;font-weight:bold;margin:-2px 0 5px 0}h2{font-size:1.2em;line-height:1.2em;font-weight:bold}h3{font-size:1.1em;font-weight:bold;letter-spacing:-0.75px}ol li{list-style:decimal inside none;margin-bottom:1em}.green{color:#75973e}.orange{color:#f89a36}.grey85{color:#676767;font-size:.85em;line-height:1.4em}textarea,input[type="text"],input[type="password"]{padding:4px;border:1px solid #dadada;color:#333}input[type="checkbox"]{float:left;margin-right:5px}p.sorry_no_results{padding:0 15px;color:#444444}strong{font-weight:bold;color:#333333}ul.green{margin-left:1em}ul.green li{list-style:disc inside none;color:#75973e;margin-bottom:.5em}ul.green span{color:#676767}.right{float:right}.left{float:left}.hidden{display:none}.indent{margin-left:20px}.inline{display:inline !important}.small{font-size:.9em}.normal{font-weight:normal}.rArr{background:url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;height:9px;width:9px;vertical-align:middle}hr.guides_spacer{background:#dadada;color:#dadada;width:95%;margin:36px auto 40px}div#content div.admin{width:916px;text-align:right;color:#7FB86B;font-size:12px;line-height:20px;margin-top:-20px;position:relative;z-index:101}div#ur_adminC{position:absolute;top:2px;right:2px;font-size:.85em}div#ur_adminC a{color:#123}body.minimal #request_offerC,body.minimal #menuC,body.minimal #footerC{display:none}.yui3-u-11-48,.yui3-u-15-48,.yui3-u-33-48,.yui3-u-35-48{display:inline-block;zoom:1;*display:inline;letter-spacing:normal;vertical-align:top;word-spacing:normal}.yui3-u-11-48{width:22.91%}.yui3-u-15-48{width:31.25%}.yui3-u-33-48{width:68.75%}.yui3-u-35-48{width:72.91%}ul.breadcrumbC{font-size:.75em;margin:0 0 1em 0;padding:0;color:#53aa47;height:2em;overflow:hidden}ul.breadcrumbC a{color:#53aa47}ul.breadcrumbC li{list-style:none;float:left;margin-left:.5em;line-height:2em}ul.breadcrumbC li#crumb_home{margin-left:0}li#crumb_home .rArr{background:url(/images/sprites/application.png) no-repeat scroll -343px -324px transparent;height:14px;width:14px;vertical-align:middle}#growlcontainer{position:fixed;right:20px;top:20px;z-index:1000;font-size:1.1em;width:300px}#growlcontainer ol li{list-style:decimal inside none}.growlstatus{position:relative;background:url(/images/opacity_60.png) repeat scroll 0px 0px transparent;border:3px #000 solid;padding:15px;color:#fff;margin-bottom:5px;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px}.growlstatus .growltitle{font-weight:bold;margin-bottom:5px}.growlstatusclose{position:absolute;top:5px;right:5px;width:30px;height:30px;cursor:pointer;display:none;background:transparent url(/images/growl_close_btn.png) no-repeat}.growlstatus:hover{background-color:#000;border:3px #666 solid}.growlstatus:hover .growlstatusclose{display:block}.growlwithicon{padding-left:50px}#growlcontainer h2{color:#fff;border-bottom:1px dotted #fff;margin-bottom:5px;padding-bottom:5px}#growlcontainer li{font-size:.9em;margin-bottom:5px}#growlicon{height:32px;width:32px;position:absolute;top:6px;left:9px}#growlicon.growlicon_notice{background-image:url(/images/icons/notice.png)}.growlicon_error{background-image:url(/images/icons/error.png)}.clearfix:after,.container:after{content:"\0020";display:block;height:0;clear:both;visibility:hidden;overflow:hidden}.clearfix,.container{display:block}.clear{clear:both}html * .clearfix.ie_stretch{width:100%}hr{background:#ececec;color:#ececec;clear:both;float:none;width:100%;height:.1em;margin:0 0 1.45em;border:none}hr.space{background:#fff;color:#fff;visibility:hidden}hr.indent{margin:0 5%;width:90%}.box{border:1px solid #d4e3a9;color:#676767;background-color:#f0f3da;border-radius:10px;-moz-border-radius:10px;-webkit-border-radius:10px}.box div.gutter{padding:17px 15px}.box strong{display:block;font-weight:bold;margin-bottom:9px}.facebook_iconS,.twitter_iconS,.youtube_iconS,.linkedin_iconS{background:url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;height:14px;width:14px}.twitter_iconS{background-position:-51px -90px}.linkedin_iconS{background-position:-66px -90px}.facebook_iconS{background-position:-66px -105px}.youtube_iconS{background-position:-51px -105px}.facebook_iconM,.twitter_iconM,.youtube_iconM,.linkedin_iconM{background:url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;height:24px;width:24px}.twitter_iconM{background-position:0px -90px}.linkedin_iconM{background-position:-26px -90px}.facebook_iconM{background-position:-25px -115px}.youtube_iconM{background-position:0px -115px}.linkedin_icon,.facebook_icon,.twitter_icon,.youtube_icon{background:url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;height:44px;width:43px}.twitter_icon{background-position:0px  0px}.linkedin_icon{background-position:-44px 0px}.youtube_icon{background-position:0px -45px}.facebook_icon{background-position:-44px -45px}
+/* See the very bottom for (more) @imports */
+html {
+  background: url(/images/bg.png) repeat-x scroll 0 0 #bcd295; }
+
+body {
+  margin: auto;
+  width: 953px;
+  font-family: arial, helvetica, sans-serif; }
+
+/* apple webkit browsers (chrome/safari) */
+@media screen and (-webkit-min-device-pixel-ratio:0) {
+  body {
+    font-size: 95%; } }
+
+.app_sprite {
+  background: url(/images/sprites/application.png) repeat-x scroll 0px 0px transparent; }
+
+/* ----------------- Header -------------- */
+#headerC {
+  height: 90px;
+  position: relative; }
+
+#headerC img#main_logo {
+  background-position: 0px -289px;
+  height: 59px;
+  width: 312px;
+  position: absolute;
+  left: 12px;
+  top: 18px; }
+
+#headerC div#request_offerC {
+  position: absolute;
+  right: 220px;
+  top: 33px;
+  width: 333px;
+  text-align: right; }
+
+div#request_offerC p {
+  color: #57662f;
+  font-size: .8em;
+  margin-top: 7px;
+  line-height: 1em; }
+
+div#request_offerC img#request_offer {
+  background-position: -674px -290px;
+  height: 37px;
+  width: 98px; }
+
+#headerC img#free_consult {
+  background-position: -312px -289px;
+  width: 196px;
+  height: 34px;
+  position: absolute;
+  right: 14px;
+  top: 35px; }
+
+/* ------------------ Menu --------------- */
+#menuC {
+  height: 53px;
+  margin-bottom: 19px; }
+
+#menuC ul {
+  margin: 0;
+  padding: 0; }
+
+#menuC li {
+  float: left;
+  list-style: none; }
+
+#menuC img {
+  height: 53px; }
+
+#menuC #home {
+  background-position: 0px -55px;
+  width: 161px; }
+
+#menuC #reasons {
+  background-position: -162px -55px;
+  width: 188px; }
+
+#menuC #spotlights {
+  background-position: -351px -55px;
+  width: 188px; }
+
+#menuC #trends {
+  background-position: -540px -55px;
+  width: 188px; }
+
+#menuC #guides {
+  background-position: -729px -55px;
+  width: 225px; }
+
+#menuC #home:hover,
+#menuC #home.selected {
+  background-position: 0px 0px; }
+
+#menuC #reasons:hover,
+#menuC #reasons.selected {
+  background-position: -162px 0px; }
+
+#menuC #spotlights:hover,
+#menuC #spotlights.selected {
+  background-position: -351px 0px; }
+
+#menuC #trends:hover,
+#menuC #trends.selected {
+  background-position: -540px 0px; }
+
+#menuC #guides:hover,
+#menuC #guides.selected {
+  background-position: -729px 0px; }
+
+/* ------------------ Main --------------- */
+#mainC {
+  margin-bottom: 19px;
+  position: relative; }
+
+#mainC div#tab_arrow {
+  background: url(/images/sprites/application.png) repeat-x scroll -316px -324px transparent;
+  width: 25px;
+  height: 14px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  display: none; }
+
+#mainC img#top {
+  background-position: 0px -235px;
+  height: 25px;
+  width: 100%; }
+
+#mainC div#content {
+  background-color: #fff;
+  margin: -5px 0 0 0;
+  padding: 5px 0 0 20px;
+  /*    padding : 5px 20px;*/ }
+
+#mainC img#bottom {
+  background-position: 0px -261px;
+  height: 25px;
+  width: 100%; }
+
+/* ----------------- Footer -------------- */
+#footerC {
+  background: url(/images/sprites/application.png) repeat-x scroll 0px -109px transparent;
+  height: 124px;
+  width: 100%;
+  position: relative;
+  color: #666666;
+  font-size: .8em;
+  margin-bottom: 20px; }
+
+html* #footerC {
+  font-size: .7em; }
+
+#footerC #footer {
+  width: 803px;
+  position: absolute;
+  left: 120px;
+  top: 23px; }
+
+div#f_right {
+  text-align: right;
+  margin-top: -7px; }
+
+#footer h5 {
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-bottom: 2px;
+  letter-spacing: -0.1px; }
+
+#footer h6 {
+  float: right;
+  font-size: 1em;
+  font-weight: bold;
+  color: #889c59;
+  line-height: 35px;
+  margin-right: 5px; }
+
+#footer p {
+  margin-bottom: 8px;
+  font-size: 0.85em; }
+
+#footer #copyright {
+  float: left;
+  background-position: -510px -289px;
+  height: 14px;
+  width: 14px;
+  margin: -2px 3px 0 0; }
+
+#footer_links div.delimeter {
+  display: inline-block;
+  /* for css compliant browsers */
+  zoom: 1;
+  /* IE Hack */
+  *display: inline;
+  /* IE Hack */
+  width: 15px;
+  text-align: center;
+  color: #7FB86B; }
+
+#f_signin a {
+  float: none; }
+
+#footer #follow_us {
+  float: right;
+  background-color: #f0f3da;
+  padding: 6px 5px 2px 8px;
+  border-radius: 5px;
+  -moz-border-radius: 5px;
+  -webkit-border-radius: 5px; }
+
+#follow_us img {
+  height: 24px;
+  width: 24px;
+  margin-right: 4px; }
+
+#email {
+  background-position: -675px -290px; }
+
+#twitter {
+  background-position: -705px -290px; }
+
+#facebook {
+  background-position: -733px -290px; }
+
+#f_right > p {
+  margin-top: 10px; }
+
+#get_home_offer {
+  background-position: -528px -290px;
+  height: 28px;
+  width: 145px; }
+
+/* High-level Frame Stuff
+   errr, I'm not sure why we have an id and a class of the same name with the same parent
+*/
+div.xs_two_col div#left_col {
+  /* yui3-u-33-48 - 68.75% */
+  margin-right: 15px; }
+
+div.xs_two_col div#right_col {
+  /* yui3-u-7-24  - 29.1666% */
+  width: 260px;
+  /* width override so we match the mocks */ }
+
+/* The most common, x-site content two-col setup */
+.xs_two_col .right_col {
+  margin-left: 10px; }
+
+/*---------------- Site Wide Element Changes --------------*/
+a {
+  color: #7FB86B;
+  text-decoration: none; }
+
+a:hover {
+  text-decoration: underline; }
+
+label.empty {
+  color: #999; }
+
+.field {
+  margin-bottom: 10px; }
+
+h1 {
+  font-size: 1.3em;
+  font-weight: bold;
+  margin: -2px 0 5px 0; }
+
+h2 {
+  font-size: 1.2em;
+  line-height: 1.2em;
+  font-weight: bold; }
+
+h3 {
+  font-size: 1.1em;
+  font-weight: bold;
+  letter-spacing: -0.75px; }
+
+ol li {
+  list-style: decimal inside none;
+  margin-bottom: 1em; }
+
+.green {
+  color: #75973e; }
+
+.orange {
+  color: #f89a36; }
+
+.grey85 {
+  color: #676767;
+  font-size: .85em;
+  line-height: 1.4em; }
+
+textarea,
+input[type="text"],
+input[type="password"] {
+  padding: 4px;
+  border: 1px solid #dadada;
+  color: #333; }
+
+input[type="checkbox"] {
+  float: left;
+  margin-right: 5px; }
+
+p.sorry_no_results {
+  padding: 0 15px;
+  color: #444444; }
+
+strong {
+  font-weight: bold;
+  color: #333333; }
+
+ul.green {
+  margin-left: 1em; }
+
+ul.green li {
+  list-style: disc inside none;
+  color: #75973e;
+  margin-bottom: .5em; }
+
+ul.green span {
+  color: #676767; }
+
+/*------------ My own custom -----------------------------*/
+.right {
+  float: right; }
+
+.left {
+  float: left; }
+
+.hidden {
+  display: none; }
+
+.indent {
+  margin-left: 20px; }
+
+.inline {
+  display: inline !important; }
+
+.small {
+  font-size: .9em; }
+
+.normal {
+  font-weight: normal; }
+
+.rArr {
+  /* right arrow */
+  background: url(/images/sprites/application.png) repeat-x scroll -513px -305px transparent;
+  height: 9px;
+  width: 9px;
+  vertical-align: middle; }
+
+/* /shared/spacers/<class name> */
+hr.guides_spacer {
+  background: #dadada;
+  color: #dadada;
+  width: 95%;
+  margin: 36px auto 40px; }
+
+/* ------------------ Admin Boxes Options ----------------- */
+div#content div.admin {
+  width: 916px;
+  text-align: right;
+  color: #7FB86B;
+  font-size: 12px;
+  line-height: 20px;
+  margin-top: -20px;
+  position: relative;
+  z-index: 101; }
+
+/* ur_ = upper right */
+div#ur_adminC {
+  position: absolute;
+  top: 2px;
+  right: 2px;
+  font-size: .85em; }
+
+div#ur_adminC a {
+  color: #123; }
+
+/* ------------------ Layout/Frame types ----------------- */
+/* Minimal -- A minimal @frame consists only of the header logo & main body */
+body.minimal #request_offerC,
+body.minimal #menuC,
+body.minimal #footerC {
+  display: none; }
+
+/*------------ My own custom yui3 units ------------------*/
+.yui3-u-11-48, .yui3-u-15-48, .yui3-u-33-48, .yui3-u-35-48 {
+  display: inline-block;
+  /* for css compliant browsers */
+  zoom: 1;
+  /* IE Hack */
+  *display: inline;
+  /* IE Hack */
+  letter-spacing: normal;
+  /* copied from http://yui.yahooapis.com/3.2.0/build/cssgrids/grids-min.css */
+  vertical-align: top;
+  /* these are base styles for all the original yui3 units                   */
+  word-spacing: normal; }
+
+.yui3-u-11-48 {
+  width: 22.91%; }
+
+.yui3-u-15-48 {
+  width: 31.25%; }
+
+.yui3-u-33-48 {
+  width: 68.75%; }
+
+.yui3-u-35-48 {
+  width: 72.91%; }
+
+/* layout                                                */
+ul.breadcrumbC {
+  font-size: .75em;
+  margin: 0 0 1em 0;
+  padding: 0;
+  color: #53aa47;
+  height: 2em;
+  overflow: hidden; }
+
+ul.breadcrumbC a {
+  color: #53aa47; }
+
+ul.breadcrumbC li {
+  list-style: none;
+  float: left;
+  margin-left: .5em;
+  line-height: 2em; }
+
+ul.breadcrumbC li#crumb_home {
+  margin-left: 0; }
+
+/* (bigger) right arrow specifically for the home page breadcrumb. All the others use .rArr*/
+li#crumb_home .rArr {
+  background: url(/images/sprites/application.png) no-repeat scroll -343px -324px transparent;
+  height: 14px;
+  width: 14px;
+  vertical-align: middle; }
+
+/* 95% of the pages have this                            */
+#growlcontainer {
+  position: fixed;
+  right: 20px;
+  top: 20px;
+  z-index: 1000;
+  font-size: 1.1em;
+  width: 300px; }
+
+#growlcontainer ol li {
+  list-style: decimal inside none; }
+
+.growlstatus {
+  position: relative;
+  background: url(/images/opacity_60.png) repeat scroll 0px 0px transparent;
+  border: 3px #000 solid;
+  padding: 15px;
+  color: #fff;
+  margin-bottom: 5px;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
+
+.growlstatus .growltitle {
+  font-weight: bold;
+  margin-bottom: 5px; }
+
+.growlstatusclose {
+  position: absolute;
+  top: 5px;
+  right: 5px;
+  width: 30px;
+  height: 30px;
+  cursor: pointer;
+  display: none;
+  background: transparent url(/images/growl_close_btn.png) no-repeat; }
+
+.growlstatus:hover {
+  background-color: #000;
+  border: 3px #666 solid; }
+
+.growlstatus:hover .growlstatusclose {
+  display: block; }
+
+.growlwithicon {
+  padding-left: 50px;
+  /*  background-position: 5px 10px;*/
+  /*  background-repeat:no-repeat;*/ }
+
+#growlcontainer h2 {
+  color: #fff;
+  border-bottom: 1px dotted #fff;
+  margin-bottom: 5px;
+  padding-bottom: 5px; }
+
+#growlcontainer li {
+  font-size: .9em;
+  margin-bottom: 5px; }
+
+/****** growl icons ******* 
+--------------------------*/
+#growlicon {
+  height: 32px;
+  width: 32px;
+  position: absolute;
+  top: 6px;
+  left: 9px; }
+
+#growlicon.growlicon_notice {
+  background-image: url(/images/icons/notice.png); }
+
+.growlicon_error {
+  background-image: url(/images/icons/error.png); }
+
+/* how we show our flash messages                        */
+/*------------ Stolen from Blueprint ---------------------*/
+.clearfix:after, .container:after {
+  content: "\0020";
+  display: block;
+  height: 0;
+  clear: both;
+  visibility: hidden;
+  overflow: hidden; }
+
+.clearfix, .container {
+  display: block; }
+
+.clear {
+  clear: both; }
+
+html * .clearfix.ie_stretch {
+  width: 100%; }
+
+hr {
+  background: #ececec;
+  color: #ececec;
+  clear: both;
+  float: none;
+  width: 100%;
+  height: .1em;
+  margin: 0 0 1.45em;
+  border: none; }
+
+hr.space {
+  background: #fff;
+  color: #fff;
+  visibility: hidden; }
+
+hr.indent {
+  margin: 0 5%;
+  width: 90%; }
+
+/* small bits of the blueprint css framework that I like */
+/* green box with cream bg. For example, see new seller registration */
+.box {
+  border: 1px solid #d4e3a9;
+  color: #676767;
+  background-color: #f0f3da;
+  border-radius: 10px;
+  -moz-border-radius: 10px;
+  -webkit-border-radius: 10px; }
+
+.box div.gutter {
+  padding: 17px 15px; }
+
+.box strong {
+  display: block;
+  /*    font-size : 0.85em;*/
+  font-weight: bold;
+  margin-bottom: 9px; }
+
+/* common box; used for side-bar seller listing form, so it's on most pages */
+/* ----- SMALL ICONS ----- */
+.facebook_iconS, .twitter_iconS, .youtube_iconS, .linkedin_iconS {
+  background: url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;
+  height: 14px;
+  width: 14px; }
+
+.twitter_iconS {
+  background-position: -51px -90px; }
+
+.linkedin_iconS {
+  background-position: -66px -90px; }
+
+.facebook_iconS {
+  background-position: -66px -105px; }
+
+.youtube_iconS {
+  background-position: -51px -105px; }
+
+/* ----- MEDIUM ICONS ----- */
+.facebook_iconM, .twitter_iconM, .youtube_iconM, .linkedin_iconM {
+  background: url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;
+  height: 24px;
+  width: 24px; }
+
+.twitter_iconM {
+  background-position: 0px -90px; }
+
+.linkedin_iconM {
+  background-position: -26px -90px; }
+
+.facebook_iconM {
+  background-position: -25px -115px; }
+
+.youtube_iconM {
+  background-position: 0px -115px; }
+
+/* ----- LARGE ICONS ----- */
+.linkedin_icon, .facebook_icon, .twitter_icon, .youtube_icon {
+  background: url(/images/sprites/social_icons.png) no-repeat scroll 0px 0px transparent;
+  height: 44px;
+  width: 43px; }
+
+.twitter_icon {
+  background-position: 0px  0px; }
+
+.linkedin_icon {
+  background-position: -44px 0px; }
+
+.youtube_icon {
+  background-position: 0px -45px; }
+
+.facebook_icon {
+  background-position: -44px -45px; }
+
+/* smaller icons used in the footer                      */
