@@ -119,11 +119,6 @@ ActiveRecord::Schema.define(:version => 20110106074405) do
     t.string   "teaser"
   end
 
-  create_table "salesforce_contacts", :force => true do |t|
-    t.datetime "created_at"
-    t.datetime "updated_at"
-  end
-
   create_table "seller_listings", :force => true do |t|
     t.integer  "user_id",                                                 :null => false
     t.integer  "address_id",                                              :null => false
