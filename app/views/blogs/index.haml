@@ -6,7 +6,7 @@
 
 %hr#top_of_content.space
 
-= admin_area do
+= editor_area do
   = link_to "Create New #{name_for_context}", construct_blog_path(nil, :new, @context)
 
 -#= render "shared/breadcrumb", :crumbs => [[:home, root_path],[formal_name_for_context(@context), nil]]

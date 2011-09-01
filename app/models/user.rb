@@ -38,7 +38,7 @@ class User < ActiveRecord::Base
   end
 
   # Setup accessible (or protected) attributes for your model
-  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :admin
+  attr_accessible :first_name, :last_name, :email, :password, :password_confirmation, :remember_me, :admin, :copy_editor
 
   def addresses?
     self.addresses.present?

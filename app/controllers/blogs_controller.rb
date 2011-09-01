@@ -9,7 +9,7 @@ class BlogsController < ApplicationController
   # We need construct_blog_path() for respond_to actions
   include ApplicationHelper
 
-  before_filter :redirect_unless_admin, :except => [:index, :show, :email_image]
+  before_filter :redirect_unless_editor, :except => [:index, :show, :email_image]
   before_filter :set_seller_listing,    :only   => [:index, :show]
   before_filter :set_noindex,           :only   => [:index]
   before_filter :setup_for_blog_context

@@ -79,6 +79,11 @@ module ApplicationHelper
     content_tag(:div, :class => "admin", &block) if user_signed_in? && current_user.admin?
   end
 
+  def editor_area(&block)
+    content_tag(:div, :class => "admin", &block) if user_signed_in? && current_user.copy_editor?
+  end
+
+
   def admin?
     user_signed_in? && current_user.admin?
   end

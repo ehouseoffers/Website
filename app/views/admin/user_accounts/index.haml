@@ -11,6 +11,7 @@
     %th Email
     %th Sign In Count
     %th.center Admin?
+    %th.center Editor?
     %th Become User
 
   - @users.each do |u|
@@ -23,6 +24,10 @@
       %td
         = form_for u, :url => admin_user_account_path(u), :method => :put do |f|
           = f.check_box :admin, :class => 'admin_checkbox'
+      %td
+        = form_for u, :url => admin_user_account_path(u), :method => :put do |f|
+          = f.check_box :copy_editor, :class => 'admin_checkbox'
+
       %td.center
         - if current_user != u
           = link_to 'login as', admin_become_user_path(u.id)

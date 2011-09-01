@@ -43,10 +43,18 @@ class ApplicationController < ActionController::Base
 
   def redirect_unless_admin
     unless user_signed_in? && current_user.admin?
-      flash[:error] = 'You are not permitted to view that page.'
+      flash[:error] = 'You are not permitted to view that page. [a]'
       redirect_to (request.env["HTTP_REFERER"].present? ? request.env["HTTP_REFERER"] : root_path)
     end
   end
+
+  def redirect_unless_editor
+    unless user_signed_in? && (current_user.copy_editor? || current_user.admin?)
+      flash[:error] = 'You are not permitted to view that page. [ce]'
+      redirect_to (request.env["HTTP_REFERER"].present? ? request.env["HTTP_REFERER"] : root_path)
+    end
+  end
+
 
   # Because of the widespead use of the 'seller_listings/form' partial, we need a @seller_listing object on
   # probably 80% of our pages. Additionally, that object needs to have user info when possible to pre-populate
