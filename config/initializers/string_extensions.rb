@@ -20,6 +20,8 @@ class String
     return if self.blank?
     l = length - truncate_string.length
     self.length > length ? self[/\A.{#{l}}\w*\;?/m][/.*[\w\;]/m] + truncate_string : self
+  rescue
+    self[0..100]
   end
 
   def strip_html
