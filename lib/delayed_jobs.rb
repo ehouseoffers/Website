@@ -98,4 +98,15 @@ class DelayedJobs
     end
 
   end
+  
+  ##
+  ## Temporary, see seller_listings_controller.rb
+  ##
+  class TempMailerJob < Struct.new(:seller_listing_id)
+    def perform
+      seller = SellerListing.find(seller_listing_id)
+      Mailer.buyer_lead_notification('chris@ehouseoffers.com, sam@ehouseoffers.com', seller).deliver
+      Mailer.new_seller_confirmation(seller).deliver
+    end
+  end
 end
