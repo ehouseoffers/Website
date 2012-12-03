@@ -105,7 +105,8 @@ class DelayedJobs
   class TempMailerJob < Struct.new(:seller_listing_id)
     def perform
       seller = SellerListing.find(seller_listing_id)
-      Mailer.buyer_lead_notification('chris@ehouseoffers.com, sam@ehouseoffers.com', seller).deliver
+      route_to = seller.route_manager
+      Mailer.buyer_lead_notification(route_to, seller).deliver
       Mailer.new_seller_confirmation(seller).deliver
     end
   end

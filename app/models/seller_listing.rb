@@ -84,6 +84,14 @@ class SellerListing < ActiveRecord::Base
     dj.upload_new_seller_listing_data(self)
   end
 
+  def local?
+    LocalZipCodes.local?(address.zip)
+  end
+
+  def route_manager
+    local? ? Mailer::EHOUSE_LEAD_MANAGER : Mailer::DEFAULT_LEAD_MANAGER;
+  end
+
   private
   
   def sanitize_price(string)
