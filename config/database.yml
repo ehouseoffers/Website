@@ -28,12 +28,11 @@ test:
   password:
   socket: /tmp/mysql.sock
 
-production:
-  adapter: mysql2
-  encoding: utf8
-  reconnect: false
-  database: ehouseoffers_production
-  pool: 5
-  username: root
-  password:
-  socket: /tmp/mysql.sock
+# mysql -udeploy -p6dJceejAVb production
+# production:
+#   adapter:   mysql
+#   database:  production
+#   username:  deploy
+#   password:  foo
+#   host:      localhost
+#   reconnect: true
