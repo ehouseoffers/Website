@@ -49,10 +49,7 @@ class SellerListingsController < ApplicationController
       # also want to create the salesforce data as soon as possible so we can open communication. So, we delay the
       # salesforce creation by an arbitrary period of time assuming that if the person is going to finish the process,
       # they will do so in the next n minutes
-      # Delayed::Job.enqueue( SalesforceJob.new(seller_listing.id), {:run_at => 6.minutes.from_now})
-      
-      # TEMP FIX: Until we re-enable Salesforce.
-      Delayed::Job.enqueue(DelayedJobs::TempMailerJob.new(seller_listing.id), {:run_at => 6.minutes.from_now})
+      Delayed::Job.enqueue(DelayedJobs::RouteNewListing.new(seller_listing.id), {:run_at => 6.minutes.from_now})
 
       sign_out(current_user) if user_signed_in? && current_user.email != params['seller_listing']['user']['email']
       sign_in :user, seller_listing.user if !user_signed_in?

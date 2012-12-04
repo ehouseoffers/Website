@@ -102,12 +102,31 @@ class DelayedJobs
   ##
   ## Temporary, see seller_listings_controller.rb
   ##
-  class TempMailerJob < Struct.new(:seller_listing_id)
+  class RouteNewListing < Struct.new(:seller_listing_id)
     def perform
-      seller = SellerListing.find(seller_listing_id)
-      route_to = seller.route_manager
-      Mailer.buyer_lead_notification(route_to, seller).deliver
-      Mailer.new_seller_confirmation(seller).deliver
+      seller_listing = SellerListing.find(seller_listing_id)
+
+
+      # TODO -- younker [2012-12-04 11:15] -- This just outlines the steps. You can clean this
+      # up considerably if desired.
+      success = false
+      if !seller_listing.local?
+        fast_home_offer = FastHomeOffer.new(seller_listing)
+
+        if fast_home_offer.sendable?
+          fast_home_offer.post_to_fast_home!
+        end
+
+        success = fast_home_offer.post_success?
+      end
+
+      # success can either be it is a local listing or a non-local listing that failed the
+      # fast homes POST attempt. Either way, send to our EHOUSE_LEAD_MANAGER(s)
+      unless success
+        Mailer.buyer_lead_notification(Mailer::EHOUSE_LEAD_MANAGER, seller_listing).deliver
+        Mailer.new_seller_confirmation(seller_listing).deliver
+      end
+
     end
   end
 end

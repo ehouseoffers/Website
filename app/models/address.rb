@@ -30,4 +30,8 @@ class Address < ActiveRecord::Base
     end
   end
 
+  def address
+    address1 + address2
+  end
+
 end

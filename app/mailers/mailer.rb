@@ -2,11 +2,7 @@ class Mailer < ActionMailer::Base
   include ActiveModel::Validations
   include ApplicationHelper
 
-  # younker [2012-12-03 15:37] Once we set up the proper format, we need to change the
-  # DEFAULT_LEAD_MANAGER to Jeremy Brandt. Ask sam@ for the criteria.
   EHOUSE_LEAD_MANAGER = 'chris@richternorthwest.com, sam.niccolls@gmail.com'
-  DEFAULT_LEAD_MANAGER = 'chris@richternorthwest.com, sam.niccolls@gmail.com'
-
   
   # Currently specific to the blogs_controller.email_image
   # Args should contain:
