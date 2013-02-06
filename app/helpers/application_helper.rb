@@ -44,7 +44,7 @@ module ApplicationHelper
         # allow 'http://path' or '//path'
         path = filename.match(/^(http(s)?:\/)?\//).present? ? filename : "/javascripts/#{filename}.js"
         content_for :extra_js do
-          js = "<script src='#{path}' type='text/javascript'></script>\n"
+          js = "<script src='#{path}' type='text/javascript'></script>\n".html_safe
           # Rails.logger.info("- Extra JS: Adding: #{js}")
           js
         end
@@ -64,7 +64,7 @@ module ApplicationHelper
         # Rails.logger.info("- Extra CSS: #{filename} not found in @css_targets")
         @css_targets.push(filename)
         content_for :extra_css do
-          css = "<link href='/stylesheets/#{filename}.css' media='screen' rel='stylesheet' type='text/css' />\n"
+          css = "<link href='/stylesheets/#{filename}.css' media='screen' rel='stylesheet' type='text/css' />\n".html_safe
           # Rails.logger.info("- Extra CSS: Adding: #{css}")
           css
         end
