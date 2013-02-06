@@ -1,6 +1,6 @@
 source 'http://rubygems.org'
 
-gem 'rails', '3.0.1'
+gem 'rails', '3.0.20'
 gem 'younker-ssl_requirement'
 gem 'hoptoad_notifier'
 gem 'haml'
