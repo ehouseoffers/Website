@@ -38,11 +38,11 @@ class Placefinder
 
   protected
   def validate
-    if self.response['ResultSet']['Error'].eql?(1)
+    if self.response['ResultSet']['Error'].to_i == 1
       self.error_message = self.response['ResultSet']['ErrorMessage']
       raise self.error_message
 
-    elsif self.response['ResultSet']['Found'] == 0
+    elsif self.response['ResultSet']['Found'].to_i == 0
       self.error_message = "This zip code did not match any know zip code inside the United States."
       raise self.error_message
 
@@ -50,12 +50,12 @@ class Placefinder
       self.error_message = "The zip code must be a valid zip code for property inside the United States."
       raise self.error_message
       
-    elsif self.response['ResultSet']['Found'] > 1
+    elsif self.response['ResultSet']['Found'].to_i > 1
       self.error = false
       Rails.logger.warn("We got back more than 1 result in our ResultSet. Picking the first one and hoping for the best. ResultSet = #{self.response['ResultSet'].inspect}")
       self.parse_results(self.response['ResultSet']['Results'].first)
 
-    elsif self.response['ResultSet']['Found'] == 1
+    elsif self.response['ResultSet']['Found'].to_i == 1
       self.error = false
       self.parse_results(self.response['ResultSet']['Results'].first)
 
