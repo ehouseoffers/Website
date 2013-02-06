@@ -34,6 +34,7 @@ p {
     @include sprite('home',0,-89,48,222);
     width  : 222px !important;
     border : none !important;
+    outline: none;
 }
 #welcome_title {
     @include sprite('home',-223,-85,17,256);
