@@ -58,3 +58,9 @@ module Ehouseoffers
     # Mailer Config: see setup_mail.rb for mailing stuff
   end
 end
+
+# younker [2013-03-25 11:38] VERY quick paperclip fix.
+# See https://github.com/thoughtbot/paperclip/issues/337
+class ActionDispatch::Http::UploadedFile
+  include Paperclip::Upfile
+end
