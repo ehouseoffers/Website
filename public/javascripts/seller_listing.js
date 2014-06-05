@@ -24,26 +24,30 @@ $(document).ready(function() {
           if ( $.blank(state.val()) ) state.val(data['state']).trigger('blur');
 
           // show the new fields
-          city_stateC.removeClass('hidden').addClass('clearfix');
+          // city_stateC.removeClass('hidden').addClass('clearfix');
 
           if ( submit_form ) {
             // true if we hit submit from the zip field
             $('form#new_seller_listing').trigger('submit');
           } else {
             // trigger blur on each element so we get the validations
-            city.trigger('blur');
-            state.trigger('blur');
+            //city.trigger('blur');
+            //state.trigger('blur');
           }
         },
         error: function (xhr, status, error) {
-          zip.val(zip.attr('data-example')).removeClass('valid').addClass('invalid');
-          $('div.form_validation_icon', $('div#address_zip')).removeClass('valid').addClass('invalid');
+          // zip.val(zip.attr('data-example')).removeClass('valid').addClass('invalid');
+          // $('div.form_validation_icon', $('div#address_zip')).removeClass('valid').addClass('invalid');
 
-          $.Growl.show({
-            message : xhr.responseText,
-            icon    : 'error',
-            timeout : 7500
-          });
+          // $.Growl.show({
+          //   message : xhr.responseText,
+          //   icon    : 'error',
+          //   timeout : 7500
+          // });
+
+          city.val('---');
+          sate.val('--');
+          $('form#new_seller_listing').trigger('submit');          
         }
       });
     }
